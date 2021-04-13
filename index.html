@@ -8,6 +8,8 @@
   <!--CSS-->
   <link rel="stylesheet" type="text/css" href="./src/css/bootstrap.min.css" />
   <link rel="stylesheet" type="text/css" href="./src/css/style.css" />
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Kosugi+Maru&display=swap" rel="stylesheet" />
 </head>
 
 <body>
@@ -17,37 +19,58 @@
         <a class="navbar-brand">BINGO</a>
       </div>
     </nav>
-  <div class="body">
-    <div class="container">
-    <div class="number-wrap col-sm-6">
-      <div class="number">
-        <div class="number-inner">
-        12
+    <div class="body" id="body">
+      <div class="container">
+        <div class="row">
+          <div class="number-wrap col-sm-6">
+            <div class="number" id="bingoNumber">
+              <div class="number-inner">
+                12
+              </div>
+            </div>
+          </div>
+          <div class="history-wrap col-sm-6">
+            <div class="history">
+              <div class="history-inner card">
+                <div class="card-header">
+                  履歴
+                </div>
+                <div class="card-body">
+                  1,2,3,...<br>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-    <div class="history-wrap col-sm-6">
-      <div class="history">
-    <div class="history-inner card">
-      <div class="card-header">
-        履歴
+    <div class="footer bg-light">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-2 buttons">
+          <button type="button" class="btn btn-primary" onclick="">Spin</button>
+          <button type="button" class="btn btn-outline-danger" onclick="">RESET</button>
+          </div>
+          <div class="col-sm-6">
+            <div class="bingoMax">
+          <label for="bingoMax" class="form-label">最大値</label>
+          <input type="range" class="form-range" min="1" max="99" step="1" id="bingoMax">
+          <div class="bingoMaxText">
+          <input class="form-control" type="number" aria-label="最大値" id="bingoMaxText" min="1" max="99" value="75">
+          </div>
+          </div>
+          </div> 
+          <div class="col-sm-4">
+            <label for="formFileSm" class="form-label">効果音</label>
+            <input class="form-control form-control-sm" id="formFileSm" type="file">
+          </div> 
+          </div>
       </div>
-      <div class="card-body">
-        1,2,3,...
-      </div>
     </div>
-    </div>
-    </div>
-    </div>
-  </div>
-  <div class="footer bg-light">
-    <div class="container">
-    footer
-    </div>
-  </div>
   </div>
   <!--JavaScript-->
   <script src="./src/js/bootstrap.min.js"></script>
+  <script src="./src/js/script.js"></script>
 </body>
 
 </html>
