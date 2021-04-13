@@ -25,6 +25,7 @@ html,body{
 }
 .number-wrap,.history-wrap{
     height: 90%;
+　　box-sizing: border-box;
 }
 .number{
     border-radius: 50%;
