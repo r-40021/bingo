@@ -30,10 +30,12 @@ body {
 .number-wrap,
 .history-wrap {
   height: 90%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .number {
   border-radius: 50%;
-  width: 95%;
   border: 15px solid #ffa500;
   color: rgb(54, 54, 54);
   display: flex;
