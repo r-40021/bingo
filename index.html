@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8" />
-  <title>Document</title>
+  <title>BINGO Machine</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <!--CSS-->
   <link rel="stylesheet" type="text/css" href="./src/css/bootstrap.min.css" />
@@ -24,8 +24,8 @@
         <div class="row">
           <div class="number-wrap col-sm-6" id="number-wrap">
             <div class="number" id="bingoNumber">
-              <div class="number-inner">
-                12
+              <div class="number-inner" id="number-inner">
+                
               </div>
             </div>
           </div>
@@ -35,8 +35,8 @@
                 <div class="card-header">
                   履歴
                 </div>
-                <div class="card-body">
-                  1,2,3,...<br>
+                <div class="card-body" id="history-body">
+                  
                 </div>
               </div>
             </div>
@@ -48,7 +48,7 @@
       <div class="container">
         <div class="row">
           <div class="col-sm-2 buttons">
-          <button type="button" class="btn btn-primary" onclick="">Spin</button>
+          <button type="button" class="btn btn-primary" onclick="spin()">Spin</button>
           <button type="button" class="btn btn-outline-danger" onclick="">RESET</button>
           </div>
           <div class="col-sm-6">
@@ -62,7 +62,7 @@
           </div> 
           <div class="col-sm-4">
             <label for="formFileSm" class="form-label">効果音</label>
-            <input class="form-control form-control-sm" id="formFileSm" type="file">
+            <input class="form-control form-control-sm" id="formFileSm" type="file" accept="audio/*">
           </div> 
           </div>
       </div>
