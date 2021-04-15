@@ -3,7 +3,13 @@ var myHistory = [];
 var select = [];
 var colorList = ["#ffa500", "#d3e15c", "#b384c7", "#F06060", "#a9ceec"];
 document.addEventListener("DOMContentLoaded", function () {
+  if (storageAvailable('localStorage')) {
+}
+else {
+  alert('お使いの環境では、保存機能はご利用になれません。');//Localstorageが利用不可のとき
+}
   resize();
+  //読み込み
   if (localStorage.getItem("myHistory")) {
     var his = localStorage.getItem("myHistory");
     myHistory = JSON.parse(his);
@@ -30,6 +36,7 @@ window.addEventListener("resize", function () {
   resize();
 });
 document.addEventListener("DOMContentLoaded", function () {
+  //レンジとテキストボックスを連動
   var range = document.getElementById("bingoMax");
   var rangeText = document.getElementById("bingoMaxText");
   range.addEventListener("input", function () {
@@ -50,6 +57,7 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 function spin() {
+  //シャッフル
   if (select.length <= 0) {
     var endModal = new bootstrap.Modal(document.getElementById("end-modal"));
     endModal.show();
@@ -85,6 +93,7 @@ function spin() {
 }
 
 function resize() {
+  //レイアウトの調整
   var numberElement = document.getElementById("bingoNumber");
   var wrapElement = document.getElementById("number-wrap");
   if (wrapElement.clientHeight > wrapElement.clientWidth) {
@@ -128,6 +137,7 @@ function resetAsk() {
   new bootstrap.Modal(document.getElementById("reset-modal")).show();
 }
 function reset() {
+  //リセット
   makeDisableSet();
   localStorage.removeItem("myHistory");
   localStorage.removeItem("max");
@@ -143,6 +153,7 @@ function reset() {
   removeDisableSet();
 }
 function once() {
+  //やり直す
   makeDisableSet();
   localStorage.removeItem("myHistory");
   document.getElementById("number-inner").innerHTML = null;
@@ -154,6 +165,7 @@ function once() {
   removeDisableSet();
 }
 function storageAvailable(type) {
+  //localStorageが利用可能かチェック
   var storage;
   try {
     storage = window[type];
