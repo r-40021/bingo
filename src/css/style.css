@@ -36,7 +36,7 @@ body {
 }
 .number {
   border-radius: 50%;
-  border: 15px solid;
+  border: 10px solid;
   border-color: #ffa500;
   color: rgb(54, 54, 54);
   display: flex;

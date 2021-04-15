@@ -48,8 +48,8 @@
       <div class="container">
         <div class="row">
           <div class="col-sm-2 buttons">
-          <button type="button" class="btn btn-primary" onclick="spin()">Spin</button>
-          <button type="button" class="btn btn-outline-danger" onclick="">RESET</button>
+          <button type="button" class="btn btn-primary" id="spin" onclick="spin()">Spin</button>
+          <button type="button" class="btn btn-outline-danger" id="reset" onclick="">RESET</button>
           </div>
           <div class="col-sm-6">
             <div class="bingoMax">
@@ -68,6 +68,24 @@
       </div>
     </div>
   </div>
+  <div class="modal fade" id="end-modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel">終了</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          1周しました。リセットして続けますか？
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-primary">もう1周</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
   <!--JavaScript-->
   <script src="./src/js/bootstrap.min.js"></script>
   <script src="./src/js/script.js"></script>
