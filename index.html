@@ -3,8 +3,22 @@
 
 <head>
   <meta charset="UTF-8" />
-  <title>BINGO Machine</title>
+  <title>やまだBINGO</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
+  <!--favicon-->
+  <link rel="icon" type="image/png" sizes="32x32" href="./favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="./favicon/favicon-16x16.png">
+  <link rel="manifest" href="./favicon/site.webmanifest">
+  <link rel="mask-icon" href="./favicon/safari-pinned-tab.svg" color="#5bbad5">
+  <link rel="shortcut icon" href="./favicon/favicon.ico">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="msapplication-config" content="./favicon/browserconfig.xml">
+  <meta name="theme-color" content="#ffffff">
+  <!--iOS-->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="やまだBINGO">
+  <link rel="apple-touch-icon" sizes="180x180" href="./favicon/apple-touch-icon.png">
   <!--CSS-->
   <link rel="stylesheet" type="text/css" href="./src/css/bootstrap.min.css" />
   <link rel="stylesheet" type="text/css" href="./src/css/style.css" />
@@ -14,18 +28,20 @@
 
 <body>
   <div class="flex">
+    <!--navbar-->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="container-fluid">
         <a class="navbar-brand">BINGO</a>
       </div>
     </nav>
+    <!--body-->
     <div class="body" id="body">
       <div class="container">
         <div class="row">
           <div class="number-wrap col-sm-6" id="number-wrap">
             <div class="number" id="bingoNumber">
               <div class="number-inner" id="number-inner">
-                
+
               </div>
             </div>
           </div>
@@ -36,7 +52,7 @@
                   履歴
                 </div>
                 <div class="card-body" id="history-body">
-                  
+
                 </div>
               </div>
             </div>
@@ -44,31 +60,32 @@
         </div>
       </div>
     </div>
+    <!--footer-->
     <div class="footer bg-light">
       <div class="container">
         <div class="row">
-          <div class="col-sm-2 buttons">
-          <button type="button" class="btn btn-primary" id="spin" onclick="spin()">Spin</button>
-          <button type="button" class="btn btn-outline-danger" id="reset" onclick="">RESET</button>
+          <div class="col-sm-4 buttons">
+            <button type="button" class="btn btn-primary" id="spin" onclick="spin()" disabled>Spin</button>
+            <button type="button" class="btn btn-outline-danger" id="reset" onclick="resetAsk();"
+              disabled>RESET</button>
           </div>
           <div class="col-sm-6">
             <div class="bingoMax">
-          <label for="bingoMax" class="form-label">最大値</label>
-          <input type="range" class="form-range" min="1" max="99" step="1" id="bingoMax">
-          <div class="bingoMaxText">
-          <input class="form-control" type="number" aria-label="最大値" id="bingoMaxText" min="1" max="99" value="75">
+              <label for="bingoMax" class="form-label">最大値</label>
+              <input type="range" class="form-range" min="1" max="99" step="1" id="bingoMax" disabled>
+              <div class="bingoMaxText">
+                <input class="form-control" type="number" aria-label="最大値" id="bingoMaxText" min="1" max="99" value="75"
+                  disabled>
+              </div>
+            </div>
           </div>
-          </div>
-          </div> 
-          <div class="col-sm-4">
-            <label for="formFileSm" class="form-label">効果音</label>
-            <input class="form-control form-control-sm" id="formFileSm" type="file" accept="audio/*">
-          </div> 
-          </div>
+        </div>
       </div>
     </div>
   </div>
-  <div class="modal fade" id="end-modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <!--end-modal-->
+  <div class="modal fade" id="end-modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="end-modal" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -76,16 +93,37 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          1周しました。リセットして続けますか？
+          1周しました。履歴をリセットして続けますか？
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-          <button type="button" class="btn btn-primary">もう1周</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">キャンセル</button>
+          <button type="button" class="btn btn-primary" onclick="once()" data-bs-dismiss="modal">もう1周</button>
         </div>
       </div>
     </div>
   </div>
-  
+  <!-- Reset-Modal -->
+  <div class="modal fade" id="reset-modal" data-bs-backdrop="static" tabindex="-1" aria-labelledby="Reset-Modal"
+    aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">リセットしますか？</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p>リセットすると、設定やデータが初期値にリセットされます。</p>
+          <p>この操作は元に戻せません。
+          <p>それでも実行しますか？</p>
+          </p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">キャンセル</button>
+          <button type="button" class="btn btn-danger" onclick="reset()" data-bs-dismiss="modal">リセット</button>
+        </div>
+      </div>
+    </div>
+  </div>
   <!--JavaScript-->
   <script src="./src/js/bootstrap.min.js"></script>
   <script src="./src/js/script.js"></script>

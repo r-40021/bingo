@@ -72,8 +72,9 @@ body {
     text-align: right;
 }
 #bingoMaxText{
-    width: 15%;
+    width: 25%;
     display: inline;
+    text-align: right;
 }
 .history.card {
   width: 100%;
