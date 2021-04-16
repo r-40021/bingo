@@ -3,11 +3,10 @@ var myHistory = [];
 var select = [];
 var colorList = ["#ffa500", "#d3e15c", "#b384c7", "#F06060", "#a9ceec"];
 document.addEventListener("DOMContentLoaded", function () {
-  if (storageAvailable('localStorage')) {
-}
-else {
-  alert('お使いの環境では、保存機能はご利用になれません。');//Localstorageが利用不可のとき
-}
+  if (storageAvailable("localStorage")) {
+  } else {
+    alert("お使いの環境では、保存機能はご利用になれません。"); //Localstorageが利用不可のとき
+  }
   resize();
   //読み込み
   if (localStorage.getItem("myHistory")) {
@@ -29,6 +28,9 @@ else {
     document.getElementById("bingoMax").value = max;
     document.getElementById("bingoMaxText").value = max;
   }
+  if (localStorage.getItem("lastColor")) {
+    document.getElementById("bingoNumber").style.borderColor = colorList[Number(localStorage.getItem("lastColor"))];
+  }
   addSelect();
   removeDisableSet();
 });
@@ -48,12 +50,16 @@ document.addEventListener("DOMContentLoaded", function () {
     range.value = rangeText.value;
     max = range.value;
     addSelect();
+  });
+  rangeText.addEventListener("change", function () {
     if (rangeText.value < 1) {
       rangeText.value = 1;
     }
     if (rangeText.value > 99) {
       rangeText.value = 99;
     }
+    range.value = rangeText.value;
+    max = range.value;
   });
 });
 function spin() {
@@ -65,13 +71,14 @@ function spin() {
     makeDisableSet();
     var count = 0;
     var numberElement = document.getElementById("bingoNumber");
-    var stop = Math.floor(Math.random() * (15 - 5) + 5);
+    var stop = Math.floor(Math.random() * (12 - 5) + 5);
     var historyBody = document.getElementById("history-body");
     var spin = setInterval(() => {
       var index = Math.floor(Math.random() * select.length);
       var display = select[index];
       document.getElementById("number-inner").innerHTML = display;
-      numberElement.style.borderColor = colorList[count % colorList.length];
+      var colorIndex = count % colorList.length;
+      numberElement.style.borderColor = colorList[colorIndex];
       count++;
       if (count >= stop) {
         clearInterval(spin);
@@ -80,6 +87,7 @@ function spin() {
         div.innerHTML = display;
         myHistory.push(display);
         localStorage.setItem("myHistory", JSON.stringify(myHistory));
+        localStorage.setItem("lastColor", colorIndex);
         select.splice(select.indexOf(display), 1);
         historyBody.appendChild(div);
         historyBody.scroll(
@@ -88,7 +96,7 @@ function spin() {
         );
         removeDisableSet();
       }
-    }, 200);
+    }, 325);
   }
 }
 
@@ -103,7 +111,7 @@ function resize() {
     numberElement.style.height = "90%";
     numberElement.style.width = numberElement.offsetHeight + "px";
   }
-  numberElement.style.fontSize = (numberElement.offsetHeight / 3) * 2 + "px";
+  numberElement.style.fontSize = (numberElement.offsetHeight / 5) * 3 + "px";
 }
 function addSelect() {
   select = [];
@@ -140,6 +148,7 @@ function reset() {
   //リセット
   makeDisableSet();
   localStorage.removeItem("myHistory");
+  localStorage.removeItem("lastColor");
   document.getElementById("number-inner").innerHTML = null;
   document.getElementById("history-body").innerHTML = null;
   document.getElementById("bingoNumber").style.borderColor = colorList[0];

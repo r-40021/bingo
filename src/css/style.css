@@ -36,7 +36,7 @@ body {
 }
 .number {
   border-radius: 50%;
-  border: 10px solid;
+  border: 20px solid;
   border-color: #ffa500;
   color: rgb(54, 54, 54);
   display: flex;
@@ -74,7 +74,7 @@ body {
 #bingoMaxText {
   width: 25%;
   display: inline;
-  text-align: rightf;
+  text-align: right;
 }
 .history.card {
   width: 100%;
@@ -95,6 +95,12 @@ body {
   font-size: 25px;
   display: inline-block;
   text-align: center;
+}
+* {
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 @media screen and (max-width: 992px) {
   .number-wrap,
