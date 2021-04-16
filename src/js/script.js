@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
   } else {
     alert("お使いの環境では、保存機能はご利用になれません。"); //Localstorageが利用不可のとき
   }
+  flex();
   resize();
   //読み込み
   if (localStorage.getItem("myHistory")) {
@@ -36,6 +37,7 @@ document.addEventListener("DOMContentLoaded", function () {
   removeDisableSet();
 });
 window.addEventListener("resize", function () {
+  flex();
   resize();
 });
 document.addEventListener("DOMContentLoaded", function () {
@@ -189,4 +191,10 @@ function storageAvailable(type) {
       storage.length !== 0
     );
   }
+}
+function flex() {
+  /*スマホのURLバーに隠されないように*/
+  var height = window.innerHeight;
+  document.getElementsByClassName("flex")[0].style.height = height + "px";
+  document.body.style.height = height + "px";
 }
