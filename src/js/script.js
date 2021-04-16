@@ -88,7 +88,7 @@ function spin() {
         );
         removeDisableSet();
       }
-    }, 100);
+    }, 200);
   }
 }
 
