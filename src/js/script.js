@@ -140,22 +140,6 @@ function reset() {
   //リセット
   makeDisableSet();
   localStorage.removeItem("myHistory");
-  localStorage.removeItem("max");
-  document.getElementById("number-inner").innerHTML = null;
-  document.getElementById("history-body").innerHTML = null;
-  document.getElementById("bingoNumber").style.borderColor = colorList[0];
-  max = 75;
-  myHistory = [];
-  select = [];
-  addSelect();
-  document.getElementById("bingoMax").value = max;
-  document.getElementById("bingoMaxText").value = max;
-  removeDisableSet();
-}
-function once() {
-  //やり直す
-  makeDisableSet();
-  localStorage.removeItem("myHistory");
   document.getElementById("number-inner").innerHTML = null;
   document.getElementById("history-body").innerHTML = null;
   document.getElementById("bingoNumber").style.borderColor = colorList[0];

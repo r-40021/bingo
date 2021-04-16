@@ -107,7 +107,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">キャンセル</button>
-          <button type="button" class="btn btn-primary" onclick="once()" data-bs-dismiss="modal">もう1周</button>
+          <button type="button" class="btn btn-primary" onclick="reset()" data-bs-dismiss="modal">つづける</button>
         </div>
       </div>
     </div>
@@ -122,10 +122,8 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <p>リセットすると、設定やデータが初期値にリセットされます。</p>
-          <p>この操作は元に戻せません。
-          <p>それでも実行しますか？</p>
-          </p>
+          <p>リセットすると、データが初期値にリセットされます。</p>
+          <p>この操作は元に戻せません。</p>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">キャンセル</button>
@@ -139,23 +137,23 @@
   <script src="./src/js/script.js"></script>
   <script>
     /*Service Worker*/
-if ("serviceWorker" in navigator) {
-  window.addEventListener("load", function () {
-    navigator.serviceWorker.register("sw.js").then(
-      function (registration) {
-        // Registration was successful
-        console.log(
-          "ServiceWorker registration successful with scope: ",
-          registration.scope
+    if ("serviceWorker" in navigator) {
+      window.addEventListener("load", function () {
+        navigator.serviceWorker.register("sw.js").then(
+          function (registration) {
+            // Registration was successful
+            console.log(
+              "ServiceWorker registration successful with scope: ",
+              registration.scope
+            );
+          },
+          function (err) {
+            // registration failed :(
+            console.log("ServiceWorker registration failed: ", err);
+          }
         );
-      },
-      function (err) {
-        // registration failed :(
-        console.log("ServiceWorker registration failed: ", err);
-      }
-    );
-  });
-}
+      });
+    }
   </script>
 </body>
 
