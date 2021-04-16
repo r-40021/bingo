@@ -60,6 +60,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     range.value = rangeText.value;
     max = range.value;
+    addSelect();
   });
 });
 function spin() {
