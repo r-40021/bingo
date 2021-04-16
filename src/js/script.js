@@ -29,7 +29,8 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("bingoMaxText").value = max;
   }
   if (localStorage.getItem("lastColor")) {
-    document.getElementById("bingoNumber").style.borderColor = colorList[Number(localStorage.getItem("lastColor"))];
+    document.getElementById("bingoNumber").style.borderColor =
+      colorList[Number(localStorage.getItem("lastColor"))];
   }
   addSelect();
   removeDisableSet();
@@ -72,7 +73,11 @@ function spin() {
     makeDisableSet();
     var count = 0;
     var numberElement = document.getElementById("bingoNumber");
-    var stop = Math.floor(Math.random() * (12 - 5) + 5);
+    if (select.length === 1) {
+      var stop = 5;
+    } else {
+      var stop = Math.floor(Math.random() * (12 - 5) + 5);
+    }
     var historyBody = document.getElementById("history-body");
     var spin = setInterval(() => {
       var index = Math.floor(Math.random() * select.length);
