@@ -103,6 +103,12 @@ body {
   -ms-user-select: none;
   user-select: none;
 }
+input{
+  -moz-user-select: auto;
+  -webkit-user-select: auto;
+  -ms-user-select: auto;
+  user-select: auto;
+}
 ::-webkit-scrollbar{
   width: 5px;
   height: 5px;

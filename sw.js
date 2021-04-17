@@ -1,4 +1,4 @@
-const CACHE_NAME = '20210417v4';
+const CACHE_NAME = '20210417v5';
 const urlsToCache = [
   'index.html',
   './src/css/style.css',
