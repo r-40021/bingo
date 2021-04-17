@@ -103,6 +103,19 @@ body {
   -ms-user-select: none;
   user-select: none;
 }
+::-webkit-scrollbar{
+  width: 5px;
+  height: 5px;
+}
+::-webkit-scrollbar-track{
+  border-radius: 5px;
+  background-color: rgba(0, 0, 0, 0.021);
+
+}
+::-webkit-scrollbar-thumb{
+  background-color: #ccc;
+  border-radius: 5px;
+}
 @media screen and (max-width: 992px) {
   .number-wrap,
   .history-wrap {
