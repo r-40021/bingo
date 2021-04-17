@@ -3,7 +3,11 @@ This is a bingo machine which saves the history and the settings auto automatica
 
 (Except for some browsers.)
 
-![image](./favicon/ogp.png)
+<img src="./favicon/ogp.png" alt="OGP Image" width="40%">
+
+# Screenshots
+<img src="https://user-images.githubusercontent.com/75155258/115099131-e741cc00-9f6e-11eb-828c-5af2ee9a8199.jpg" alt="screenshot" width="70%">
+
 # Features
 - The data of this application are automatically saved in LocalStorage. (Except for some browsers)
 - It is easy to use this app.
