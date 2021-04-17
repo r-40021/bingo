@@ -1,4 +1,4 @@
-const CACHE_NAME = '20210416v6';
+const CACHE_NAME = '20210417';
 const urlsToCache = [
   'index.html',
   './src/css/style.css',
@@ -21,7 +21,7 @@ self.addEventListener('install', function (event) {
 
 self.addEventListener('activate', function (event) {
 
-  var cacheAllowlist = ['20210416v6'];
+  var cacheAllowlist = [CACHE_NAME];
 
   event.waitUntil(
     caches.keys().then(function (cacheNames) {

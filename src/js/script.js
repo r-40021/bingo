@@ -104,7 +104,7 @@ function spin() {
         );
         removeDisableSet();
       }
-    }, 325);
+    }, 300);
   }
 }
 
@@ -120,6 +120,7 @@ function resize() {
     numberElement.style.width = numberElement.offsetHeight + "px";
   }
   numberElement.style.fontSize = (numberElement.offsetHeight / 5) * 3 + "px";
+  numberElement.style.borderWidth = numberElement.offsetHeight * 0.1 + "px";
 }
 function addSelect() {
   select = [];
