@@ -199,3 +199,15 @@ function flex() {
   document.getElementsByClassName("flex")[0].style.height = height + "px";
   document.body.style.height = height + "px";
 }
+function copy() {
+  /*URLコピー*/
+  clearTimeout(checked);
+  var url = location.href;
+  navigator.clipboard.writeText(url);
+  document.getElementById('checked-icon').style.display = "inline";
+  document.getElementById('url-icon').style.display = "none";
+  var checked = setTimeout(() => {
+    document.getElementById('checked-icon').style.display = "none";
+    document.getElementById('url-icon').style.display = "inline";
+  }, 5000);
+}
