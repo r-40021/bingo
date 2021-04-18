@@ -44,7 +44,7 @@ body {
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
-  font-family: "Kosugi Maru", sans-serif;
+  font-family: "Kosugi Maru", "ヒラギノ丸ゴ Pro W4","ヒラギノ丸ゴ Pro","Hiragino Maru Gothic Pro","ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro","HG丸ｺﾞｼｯｸM-PRO","HGMaruGothicMPRO",sans-serif;
 }
 .footer {
   box-shadow: 0px -5px 5px rgba(119, 119, 119, 0.055);

@@ -1,4 +1,4 @@
-const CACHE_NAME = '20210418';
+const CACHE_NAME = '20210418v5';
 const urlsToCache = [
   'index.html',
   './src/css/style.css',
@@ -6,6 +6,11 @@ const urlsToCache = [
   './src/css/bootstrap.min.css',
   './src/js/bootstrap.min.js',
   './favicon/favicon.ico',
+  './src/css/bootstrap-icons.css',
+  './src/css/fonts/bootstrap-icons.woff?231ce25e89ab5804f9a6c427b8d325c9',
+  './src/css/fonts/bootstrap-icons.woff',
+  './src/css/fonts/bootstrap-icons.woff2?231ce25e89ab5804f9a6c427b8d325c9',
+  './src/css/fonts/bootstrap-icons.woff2'
 ];
 
 self.addEventListener('install', function (event) {
