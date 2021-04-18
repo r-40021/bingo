@@ -129,6 +129,9 @@ input{
   align-items: center;
   justify-content: center;
 }
+.share .btn-group{
+  min-width: 60%;
+}
 .share i{
   margin: 0.3em;
 }
