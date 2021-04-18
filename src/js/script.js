@@ -199,3 +199,12 @@ function flex() {
   document.getElementsByClassName("flex")[0].style.height = height + "px";
   document.body.style.height = height + "px";
 }
+function copy() {
+  /*URLコピー*/
+  var url = location.href;
+  navigator.clipboard.writeText(url);
+  var checked = setTimeout(() => {
+    document.getElementById('checked-icon').style.display = "none";
+    document.
+  }, 5000);
+}

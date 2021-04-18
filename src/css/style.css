@@ -122,6 +122,17 @@ input{
   background-color: #ccc;
   border-radius: 5px;
 }
+.share{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.sh-content{
+  margin: 50px 0px;
+}
+.sh-content i{
+  margin-right: 3px;
+}
 @media screen and (max-width: 992px) {
   .number-wrap,
   .history-wrap {
