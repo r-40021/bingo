@@ -112,6 +112,7 @@ function resize() {
   //レイアウトの調整
   var numberElement = document.getElementById("bingoNumber");
   var wrapElement = document.getElementById("number-wrap");
+  var historyElement = document.getElementById("history-body")
   if (wrapElement.clientHeight > wrapElement.clientWidth) {
     numberElement.style.width = "90%";
     numberElement.style.height = numberElement.offsetWidth + "px";
@@ -121,6 +122,11 @@ function resize() {
   }
   numberElement.style.fontSize = (numberElement.offsetHeight / 5) * 3 + "px";
   numberElement.style.borderWidth = numberElement.offsetHeight * 0.1 + "px";
+  if (window.innerWidth <= 576) {
+    historyElement.style.fontSize = historyElement.clientWidth *0.15 /3 *2 + "px";
+  } else {
+  historyElement.style.fontSize = historyElement.clientWidth *0.1 /3 *2 + "px";
+  }
 }
 function addSelect() {
   select = [];
