@@ -201,10 +201,13 @@ function flex() {
 }
 function copy() {
   /*URLコピー*/
+  clearTimeout(checked);
   var url = location.href;
   navigator.clipboard.writeText(url);
+  document.getElementById('checked-icon').style.display = "inline";
+  document.getElementById('url-icon').style.display = "none";
   var checked = setTimeout(() => {
     document.getElementById('checked-icon').style.display = "none";
-    document.
+    document.getElementById('url-icon').style.display = "inline";
   }, 5000);
 }
