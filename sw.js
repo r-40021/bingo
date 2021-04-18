@@ -1,5 +1,5 @@
-const CACHE_NAME = "20210418v6";
-const urlsToCache = [
+var CACHE_NAME = "20210418v7";
+var urlsToCache = [
   "index.html",
   "./src/css/style.css",
   "./src/js/script.js",
@@ -9,7 +9,7 @@ const urlsToCache = [
   "./src/css/bootstrap-icons.css",
   "./src/css/fonts/bootstrap-icons.woff?231ce25e89ab5804f9a6c427b8d325c9",
   "./src/css/fonts/bootstrap-icons.woff2?231ce25e89ab5804f9a6c427b8d325c9",
-  "./favicon/site.webmanifest",
+  "./favicon/site.webmanifest"
 ];
 
 self.addEventListener("install", function (event) {
