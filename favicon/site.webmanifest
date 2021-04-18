@@ -16,7 +16,7 @@
     "theme_color": "#f8f9fa",
     "background_color": "#f8f9fa",
     "display": "standalone",
-    "start_url":"/bingo/index.html",
+    "start_url":"../index.html",
     "dir":"ltr",
     "lang":"ja-jp"
 }
