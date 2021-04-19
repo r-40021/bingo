@@ -76,10 +76,26 @@
       <div class="container">
         <div class="row">
           <div class="col-sm-4 buttons">
-            <button type="button" class="btn btn-primary" id="spin" onclick="spin()" disabled>Spin</button>
-            <button type="button" class="btn btn-outline-danger" id="reset" onclick="resetAsk();"
-              disabled>RESET</button>
+            <div class="button">
+            <div class="inline">
+
+              <button type="button" class="btn btn-primary" id="spin" onclick="spin()" disabled>Spin</button>
+              <button type="button" class="btn btn-outline-danger" id="reset" onclick="resetAsk();"
+                disabled>RESET</button>
+            </div>
+
+            <div class="inline">
+ 
+              <div class="btn-group btn-group-sm">
+                <button type="button" class="btn btn-outline-secondary" onclick="undo()" aria-label="取り消す" title="取り消す" id="undo"><i class="bi bi-arrow-return-left"></i>取り消す</button>
+                <button type="button" class="btn btn-outline-secondary" onclick="startOver()" aria-label="やり直す" title="やり直す" id="startOver"><i
+                    class="bi bi-arrow-return-right"></i>やり直す</button>
+              </div>
+
+            </div>
+            </div>
           </div>
+
           <div class="col-sm-6 col-8">
             <div class="bingoMax">
               <label for="bingoMax" class="form-label">最大値</label>
@@ -91,11 +107,13 @@
             </div>
           </div>
           <div class="col-sm-2 col-4 share">
-            <div class="btn-group">
-            <a class="btn btn-outline-primary btn-sm" aria-label="共有" data-bs-toggle="modal" data-bs-target="#share" title="共有"><i class="bi bi-share-fill"></i></a>
-            <a class="btn btn-outline-primary btn-sm" href="https://r-40021.github.io/privacy.html" target="_blank" rel="noopener" aria-label="プライバシーポリシー" title="プライバシーポリシー"><i class="bi bi-lock"></i></a>
+            <div class="btn-group btn-group-sm">
+              <a class="btn btn-outline-primary" aria-label="共有" data-bs-toggle="modal" data-bs-target="#share"
+                title="共有"><i class="bi bi-share-fill"></i></a>
+              <a class="btn btn-outline-primary" href="https://r-40021.github.io/privacy.html" target="_blank"
+                rel="noopener" aria-label="プライバシーポリシー" title="プライバシーポリシー"><i class="bi bi-lock"></i></a>
             </div>
-        </div>
+          </div>
         </div>
       </div>
     </div>
@@ -140,40 +158,43 @@
     </div>
   </div>
   <!-- Share modal -->
-<div class="modal fade" id="share" tabindex="-1" aria-labelledby="share" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel"><i class="bi bi-share-fill"></i>共有</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <div class="sh-content">
-        <p>このアプリは、皆様の口コミによって支えられています。</p>
-        <p>どんどん拡散してください！ご協力よろしくお願いします。</p>
-        <div class="list-group">
-          <a class="list-group-item list-group-item-action" aria-current="true" onclick="copy()">
-            <i class="bi bi-link-45deg" id="url-icon"></i><i class="bi bi-check2 text-success" id="checked-icon"></i>URLをコピー
-          </a>
-          <a class="list-group-item list-group-item-action" href="https://twitter.com/intent/tweet?text=自動保存機能付きビンゴマシーン%0a&url=https://r-40021.github.io/bingo&hashtags=やまだBINGO,やまだけんいち"
-          onClick="window.open(encodeURI(decodeURI(this.href)), 'tweetwindow', 'width=650, height=470, personalbar=0, toolbar=0, scrollbars=1, sizable=1'); return false;"
-          rel="nofollow"><i class="bi bi-twitter"></i>ツイート</a>
+  <div class="modal fade" id="share" tabindex="-1" aria-labelledby="share" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel"><i class="bi bi-share-fill"></i>共有</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        </div>
-        <div class="sh-content">
-        <p>もしよろしければ、以下もご覧ください。</p>
-        <div class="list-group">
-          <a class="list-group-item list-group-item-action" aria-current="true" href="https://github.com/r-40021/bingo" target="_blank" rel="nofollow">
-            <i class="bi bi-github"></i>ソースコード
-          </a>
-          <a class="list-group-item list-group-item-action" href="https://r-40021.github.io/" target="_blank"
-          rel="nofollow"><i class="bi bi-person"></i>作者HP</a>
-        </div>
+        <div class="modal-body">
+          <div class="sh-content">
+            <p>このアプリは、皆様の口コミによって支えられています。</p>
+            <p>どんどん拡散してください！ご協力よろしくお願いします。</p>
+            <div class="list-group">
+              <a class="list-group-item list-group-item-action" aria-current="true" onclick="copy()">
+                <i class="bi bi-link-45deg" id="url-icon"></i><i class="bi bi-check2 text-success"
+                  id="checked-icon"></i>URLをコピー
+              </a>
+              <a class="list-group-item list-group-item-action"
+                href="https://twitter.com/intent/tweet?text=自動保存機能付きビンゴマシーン%0a&url=https://r-40021.github.io/bingo&hashtags=やまだBINGO,やまだけんいち"
+                onClick="window.open(encodeURI(decodeURI(this.href)), 'tweetwindow', 'width=650, height=470, personalbar=0, toolbar=0, scrollbars=1, sizable=1'); return false;"
+                rel="nofollow"><i class="bi bi-twitter"></i>ツイート</a>
+            </div>
+          </div>
+          <div class="sh-content">
+            <p>もしよろしければ、以下のサイトもご覧ください。</p>
+            <div class="list-group">
+              <a class="list-group-item list-group-item-action" aria-current="true"
+                href="https://github.com/r-40021/bingo" target="_blank" rel="nofollow">
+                <i class="bi bi-github"></i>ソースコード
+              </a>
+              <a class="list-group-item list-group-item-action" href="https://r-40021.github.io/" target="_blank"
+                rel="nofollow"><i class="bi bi-person"></i>作者HP</a>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
   <!--JavaScript-->
   <script src="./src/js/bootstrap.min.js"></script>
   <script src="./src/js/script.js"></script>
