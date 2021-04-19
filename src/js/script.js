@@ -2,9 +2,10 @@ var max = 75;
 var myHistory = [];
 var select = [];
 var colorList = ["#ffa500", "#d3e15c", "#b384c7", "#F06060", "#a9ceec"];
-var undoStatus = 0;
-var colorHistory = [];
-var revNumber = [];
+var old = new Object();
+old.max = [];
+old.number = [];
+old.color = [];
 document.addEventListener("DOMContentLoaded", function () {
   if (storageAvailable("localStorage")) {
   } else {
@@ -13,28 +14,36 @@ document.addEventListener("DOMContentLoaded", function () {
   flex();
   resize();
   //読み込み
-  if (JSON.parse(localStorage.getItem("myHistory")).length >= 1) {
-    var his = localStorage.getItem("myHistory");
-    myHistory = JSON.parse(his);
-    var historyBody = document.getElementById("history-body");
-    for (let i = 0; i < myHistory.length; i++) {
-      var div = document.createElement("div");
-      div.className = "history-number";
-      div.innerHTML = myHistory[i];
-      historyBody.appendChild(div);
+  if (localStorage.getItem("myHistory")) {
+    if (JSON.parse(localStorage.getItem("myHistory")).length >= 1) {
+      var his = localStorage.getItem("myHistory");
+      myHistory = JSON.parse(his);
+      var historyBody = document.getElementById("history-body");
+      for (let i = 0; i < myHistory.length; i++) {
+        var div = document.createElement("div");
+        div.className = "history-number";
+        div.innerHTML = myHistory[i];
+        historyBody.appendChild(div);
+      }
+      document.getElementById("number-inner").innerHTML =
+        myHistory[myHistory.length - 1];
+      old.number.unshift(myHistory[myHistory.length - 1]);
+      historyBody.scroll(
+        0,
+        historyBody.scrollHeight - historyBody.clientHeight
+      );
     }
-    document.getElementById("number-inner").innerHTML =
-      myHistory[myHistory.length - 1];
-    historyBody.scroll(0, historyBody.scrollHeight - historyBody.clientHeight);
   }
   if (localStorage.getItem("max")) {
     max = Number(localStorage.getItem("max"));
     document.getElementById("bingoMax").value = max;
     document.getElementById("bingoMaxText").value = max;
+    old.max.unshift(max);
   }
   if (localStorage.getItem("lastColor")) {
     document.getElementById("bingoNumber").style.borderColor =
       colorList[Number(localStorage.getItem("lastColor"))];
+    old.color.unshift(Number(localStorage.getItem("lastColor")));
   }
   addSelect();
   removeDisableSet();
@@ -76,6 +85,9 @@ function spin() {
     endModal.show();
   } else {
     makeDisableSet();
+    var undoElement = document.getElementById("undo");
+    undoElement.style.display = "none";
+    document.getElementById("startOver").style = "none";
     var count = 0;
     var numberElement = document.getElementById("bingoNumber");
     if (select.length === 1) {
@@ -93,16 +105,24 @@ function spin() {
       count++;
       if (count >= stop) {
         clearInterval(spin);
-        removeDisable("undo");
         var div = document.createElement("div");
         div.className = "history-number";
         div.innerHTML = display;
         myHistory.push(display);
         localStorage.setItem("myHistory", JSON.stringify(myHistory));
         localStorage.setItem("lastColor", colorIndex);
-        colorHistory.unshift(colorIndex);
         select.splice(select.indexOf(display), 1);
         historyBody.appendChild(div);
+        old.max.unshift(max);
+        old.number.unshift(display);
+        old.color.unshift(colorIndex);
+        if (
+          old.number.length >= 2 &&
+          old.max.length >= 2 &&
+          old.color.length >= 2
+        ) {
+          undoElement.style.display = "inline-block";
+        }
         historyBody.scroll(
           0,
           historyBody.scrollHeight - historyBody.clientHeight
@@ -167,6 +187,8 @@ function resetAsk() {
   new bootstrap.Modal(document.getElementById("reset-modal")).show();
 }
 function reset() {
+  document.getElementById("undo").style.display = "none";
+  document.getElementById("startOver").style = "none";
   //リセット
   makeDisableSet();
   localStorage.removeItem("myHistory");
@@ -176,6 +198,11 @@ function reset() {
   document.getElementById("bingoNumber").style.borderColor = colorList[0];
   myHistory = [];
   select = [];
+  old = new Object();
+  old.max = [];
+  old.number = [];
+  old.color = [];
+  console.log(old);
   addSelect();
   removeDisableSet();
 }
@@ -226,7 +253,7 @@ function copy() {
 }
 if ("serviceWorker" in navigator) {
   window.addEventListener("load", function () {
-    navigator.serviceWorker.register("/bingo/sw.js").then(
+    navigator.serviceWorker.register("sw.js").then(
       function (registration) {
         // Registration was successful
         console.log(
@@ -242,36 +269,41 @@ if ("serviceWorker" in navigator) {
   });
 }
 function undo() {
-  removeDisable("startOver");
-  undoStatus++;
   var numberElements = document.getElementsByClassName("history-number");
   var removeNumber = numberElements[numberElements.length - 1];
-  revNumber.unshift(removeNumber.innerHTML);
   removeNumber.remove();
   myHistory.splice(myHistory.indexOf(removeNumber.innerHTML), 1);
-  document.getElementById("number-inner").innerHTML =
-  myHistory[myHistory.length - 1];
-  select.push(removeNumber);
+  document.getElementById("number-inner").innerHTML = old.number[1];
+  document.getElementById("bingoNumber").style.borderColor =
+    colorList[old.color[1]];
+  max = old.max[1];
+  document.getElementById("bingoMax").value = max;
+  document.getElementById("bingoMaxText").value = max;
+  select.push(removeNumber.innerHTML);
   localStorage.setItem("myHistory", JSON.stringify(myHistory));
-  
-
+  localStorage.setItem("max", old.max[1]);
+  localStorage.setItem("lastColor", old.color[1]);
+  document.getElementById("undo").style.display = "none";
+  document.getElementById("startOver").style.display = "inline-block";
 }
 function startOver() {
   var historyBody = document.getElementById("history-body");
-  var number = revNumber[0];
   var div = document.createElement("div");
+  var oldNumber = old.number[0];
   div.className = "history-number";
-  div.innerHTML = number;
-  myHistory.push(number);
-  localStorage.setItem("myHistory", JSON.stringify(myHistory));
-  localStorage.setItem("lastColor", colorHistory[undoStatus]);
-  document.getElementById("bingoNumber").style.borderColor =
-  colorHistory[undoStatus];
-  select.splice(select.indexOf(number), 1);
+  div.innerHTML = oldNumber;
   historyBody.appendChild(div);
-  historyBody.scroll(0, historyBody.scrollHeight - historyBody.clientHeight);
-  undoStatus--;
-  if (undoStatus <= 0) {
-    makeDisable("undo");
-  }
+  select.splice(myHistory.indexOf(oldNumber), 1);
+  document.getElementById("number-inner").innerHTML = oldNumber;
+  document.getElementById("bingoNumber").style.borderColor =
+    colorList[old.color[0]];
+  max = old.max[0];
+  document.getElementById("bingoMax").value = max;
+  document.getElementById("bingoMaxText").value = max;
+  myHistory.push(oldNumber);
+  localStorage.setItem("myHistory", JSON.stringify(myHistory));
+  localStorage.setItem("max", old.max[0]);
+  localStorage.setItem("lastColor", old.color[0]);
+  document.getElementById("undo").style.display = "inline-block";
+  document.getElementById("startOver").style.display = "none";
 }

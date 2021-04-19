@@ -63,6 +63,9 @@ body {
   align-items: center;
   flex-flow: column;
 }
+.button{
+  text-align: center;
+}
 .buttons button {
   margin: 2px;
 }
@@ -132,10 +135,15 @@ input{
   align-items: center;
   justify-content: center;
 }
+#undo,#startOver{
+  display: none;
+  border-radius: 100vh;
+  margin: 5px;
+}
 .share .btn-group{
   min-width: 60%;
 }
-.share i{
+i{
   margin: 0.3em;
 }
 .sh-content:not(:last-child){
