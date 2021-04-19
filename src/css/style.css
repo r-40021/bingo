@@ -61,6 +61,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-flow: column;
 }
 .buttons button {
   margin: 2px;
@@ -89,7 +90,9 @@ body {
 .history-inner .card-body {
   overflow: auto;
 }
-
+.body .container{
+  min-height: 180px;
+}
 .history-number {
   width: 15%;
   margin: 0 2.5%;
@@ -143,6 +146,12 @@ input{
 }
 #checked-icon{
   display: none;
+}
+.inline{
+  display: inline;
+}
+.inline:not(:last-child){
+  margin-bottom: 5px;
 }
 @media screen and (max-width: 992px) {
   .number-wrap,

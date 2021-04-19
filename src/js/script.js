@@ -2,6 +2,9 @@ var max = 75;
 var myHistory = [];
 var select = [];
 var colorList = ["#ffa500", "#d3e15c", "#b384c7", "#F06060", "#a9ceec"];
+var undoStatus = 0;
+var colorHistory = [];
+var revNumber = [];
 document.addEventListener("DOMContentLoaded", function () {
   if (storageAvailable("localStorage")) {
   } else {
@@ -10,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
   flex();
   resize();
   //読み込み
-  if (localStorage.getItem("myHistory")) {
+  if (JSON.parse(localStorage.getItem("myHistory")).length >= 1) {
     var his = localStorage.getItem("myHistory");
     myHistory = JSON.parse(his);
     var historyBody = document.getElementById("history-body");
@@ -90,12 +93,14 @@ function spin() {
       count++;
       if (count >= stop) {
         clearInterval(spin);
+        removeDisable("undo");
         var div = document.createElement("div");
         div.className = "history-number";
         div.innerHTML = display;
         myHistory.push(display);
         localStorage.setItem("myHistory", JSON.stringify(myHistory));
         localStorage.setItem("lastColor", colorIndex);
+        colorHistory.unshift(colorIndex);
         select.splice(select.indexOf(display), 1);
         historyBody.appendChild(div);
         historyBody.scroll(
@@ -112,7 +117,7 @@ function resize() {
   //レイアウトの調整
   var numberElement = document.getElementById("bingoNumber");
   var wrapElement = document.getElementById("number-wrap");
-  var historyElement = document.getElementById("history-body")
+  var historyElement = document.getElementById("history-body");
   if (wrapElement.clientHeight > wrapElement.clientWidth) {
     numberElement.style.width = "90%";
     numberElement.style.height = numberElement.offsetWidth + "px";
@@ -123,9 +128,11 @@ function resize() {
   numberElement.style.fontSize = (numberElement.offsetHeight / 5) * 3 + "px";
   numberElement.style.borderWidth = numberElement.offsetHeight * 0.1 + "px";
   if (window.innerWidth <= 576) {
-    historyElement.style.fontSize = historyElement.clientWidth *0.15 /3 *2 + "px";
+    historyElement.style.fontSize =
+      ((historyElement.clientWidth * 0.15) / 3) * 2 + "px";
   } else {
-  historyElement.style.fontSize = historyElement.clientWidth *0.1 /3 *2 + "px";
+    historyElement.style.fontSize =
+      ((historyElement.clientWidth * 0.1) / 3) * 2 + "px";
   }
 }
 function addSelect() {
@@ -210,12 +217,12 @@ function copy() {
   clearTimeout(checked);
   var url = location.href;
   navigator.clipboard.writeText(url);
-  document.getElementById('checked-icon').style.display = "inline";
-  document.getElementById('url-icon').style.display = "none";
+  document.getElementById("checked-icon").style.display = "inline";
+  document.getElementById("url-icon").style.display = "none";
   var checked = setTimeout(() => {
-    document.getElementById('checked-icon').style.display = "none";
-    document.getElementById('url-icon').style.display = "inline";
-  }, 5000);
+    document.getElementById("checked-icon").style.display = "none";
+    document.getElementById("url-icon").style.display = "inline";
+  }, 10000);
 }
 if ("serviceWorker" in navigator) {
   window.addEventListener("load", function () {
@@ -233,4 +240,38 @@ if ("serviceWorker" in navigator) {
       }
     );
   });
+}
+function undo() {
+  removeDisable("startOver");
+  undoStatus++;
+  var numberElements = document.getElementsByClassName("history-number");
+  var removeNumber = numberElements[numberElements.length - 1];
+  revNumber.unshift(removeNumber.innerHTML);
+  removeNumber.remove();
+  myHistory.splice(myHistory.indexOf(removeNumber.innerHTML), 1);
+  document.getElementById("number-inner").innerHTML =
+  myHistory[myHistory.length - 1];
+  select.push(removeNumber);
+  localStorage.setItem("myHistory", JSON.stringify(myHistory));
+  
+
+}
+function startOver() {
+  var historyBody = document.getElementById("history-body");
+  var number = revNumber[0];
+  var div = document.createElement("div");
+  div.className = "history-number";
+  div.innerHTML = number;
+  myHistory.push(number);
+  localStorage.setItem("myHistory", JSON.stringify(myHistory));
+  localStorage.setItem("lastColor", colorHistory[undoStatus]);
+  document.getElementById("bingoNumber").style.borderColor =
+  colorHistory[undoStatus];
+  select.splice(select.indexOf(number), 1);
+  historyBody.appendChild(div);
+  historyBody.scroll(0, historyBody.scrollHeight - historyBody.clientHeight);
+  undoStatus--;
+  if (undoStatus <= 0) {
+    makeDisable("undo");
+  }
 }
