@@ -86,8 +86,8 @@ function spin() {
   } else {
     makeDisableSet();
     var undoElement = document.getElementById("undo");
-    undoElement.style.display = "none";
-    document.getElementById("startOver").style = "none";
+    undoElement.style.visibility = "hidden";
+    document.getElementById("startOver").style.visibility = "hidden";
     var count = 0;
     var numberElement = document.getElementById("bingoNumber");
     if (select.length === 1) {
@@ -121,7 +121,7 @@ function spin() {
           old.max.length >= 2 &&
           old.color.length >= 2
         ) {
-          undoElement.style.display = "inline-block";
+          undoElement.style.visibility = "visible";
         }
         historyBody.scroll(
           0,
@@ -187,8 +187,8 @@ function resetAsk() {
   new bootstrap.Modal(document.getElementById("reset-modal")).show();
 }
 function reset() {
-  document.getElementById("undo").style.display = "none";
-  document.getElementById("startOver").style = "none";
+  document.getElementById("undo").style.visibility = "hidden";
+  document.getElementById("startOver").style.visibility = "hidden";
   //リセット
   makeDisableSet();
   localStorage.removeItem("myHistory");
@@ -283,8 +283,9 @@ function undo() {
   localStorage.setItem("myHistory", JSON.stringify(myHistory));
   localStorage.setItem("max", old.max[1]);
   localStorage.setItem("lastColor", old.color[1]);
-  document.getElementById("undo").style.display = "none";
-  document.getElementById("startOver").style.display = "inline-block";
+  document.getElementById("undo").style.visibility = "hidden";
+  document.getElementById("startOver").style.visibility = "visible";
+  document.getElementById("spin").focus();
 }
 function startOver() {
   var historyBody = document.getElementById("history-body");
@@ -304,6 +305,7 @@ function startOver() {
   localStorage.setItem("myHistory", JSON.stringify(myHistory));
   localStorage.setItem("max", old.max[0]);
   localStorage.setItem("lastColor", old.color[0]);
-  document.getElementById("undo").style.display = "inline-block";
-  document.getElementById("startOver").style.display = "none";
+  document.getElementById("undo").style.visibility = "visible";
+  document.getElementById("startOver").style.visibility = "hidden";
+  document.getElementById("spin").focus();
 }

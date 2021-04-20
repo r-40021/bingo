@@ -136,9 +136,19 @@ input{
   justify-content: center;
 }
 #undo,#startOver{
-  display: none;
+  display: inline-block;
   border-radius: 100vh;
   margin: 5px;
+  visibility: hidden;
+}
+#startOver{
+  position: absolute;
+  left: 0;
+}
+.undoButton{
+  position: relative;
+  width: auto;
+  height: auto;
 }
 .share .btn-group{
   min-width: 60%;

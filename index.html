@@ -77,22 +77,23 @@
         <div class="row">
           <div class="col-sm-4 buttons">
             <div class="button">
-            <div class="inline">
+              <div class="inline">
 
-              <button type="button" class="btn btn-primary" id="spin" onclick="spin()" disabled>Spin</button>
-              <button type="button" class="btn btn-outline-danger" id="reset" onclick="resetAsk();"
-                disabled>RESET</button>
-            </div>
-
-            <div class="inline">
- 
-              <div class="btn-group btn-group-sm">
-                <button type="button" class="btn btn-outline-secondary" onclick="undo()" aria-label="取り消す" title="取り消す" id="undo"><i class="bi bi-arrow-return-left"></i>取り消す</button>
-                <button type="button" class="btn btn-outline-secondary" onclick="startOver()" aria-label="やり直す" title="やり直す" id="startOver"><i
-                    class="bi bi-arrow-return-right"></i>やり直す</button>
+                <button type="button" class="btn btn-primary" id="spin" onclick="spin()" disabled>Spin</button>
+                <button type="button" class="btn btn-outline-danger" id="reset" onclick="resetAsk();"
+                  disabled>RESET</button>
               </div>
 
-            </div>
+              <div class="inline undoButton">
+
+                
+                  <button type="button" class="btn btn-outline-secondary btn-sm" onclick="undo()" aria-label="やり直す"
+                    title="やり直す" id="undo"><i class="bi bi-arrow-return-left"></i>やり直す</button>
+                  <button type="button" class="btn btn-outline-secondary btn-sm" onclick="startOver()" aria-label="元に戻す"
+                    title="元に戻す" id="startOver">元に戻す<i class="bi bi-arrow-return-right"></i></button>
+                
+
+              </div>
             </div>
           </div>
 
