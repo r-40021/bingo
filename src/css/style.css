@@ -44,7 +44,9 @@ body {
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
-  font-family: "Kosugi Maru", "ヒラギノ丸ゴ Pro W4","ヒラギノ丸ゴ Pro","Hiragino Maru Gothic Pro","ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro","HG丸ｺﾞｼｯｸM-PRO","HGMaruGothicMPRO",sans-serif;
+  font-family: "Kosugi Maru", "ヒラギノ丸ゴ Pro W4", "ヒラギノ丸ゴ Pro",
+    "Hiragino Maru Gothic Pro", "ヒラギノ角ゴ Pro W3",
+    "Hiragino Kaku Gothic Pro", "HG丸ｺﾞｼｯｸM-PRO", "HGMaruGothicMPRO", sans-serif;
 }
 .footer {
   box-shadow: 0px -5px 5px rgba(119, 119, 119, 0.055);
@@ -63,7 +65,7 @@ body {
   align-items: center;
   flex-flow: column;
 }
-.button{
+.button {
   text-align: center;
 }
 .buttons button {
@@ -93,7 +95,7 @@ body {
 .history-inner .card-body {
   overflow: auto;
 }
-.body .container{
+.body .container {
   min-height: 180px;
 }
 .history-number {
@@ -110,65 +112,65 @@ body {
   user-select: none;
   -webkit-touch-callout: none;
 }
-input{
+input {
   -moz-user-select: auto;
   -webkit-user-select: auto;
   -ms-user-select: auto;
   user-select: auto;
   -webkit-touch-callout: inherit;
 }
-::-webkit-scrollbar{
+::-webkit-scrollbar {
   width: 5px;
   height: 5px;
 }
-::-webkit-scrollbar-track{
+::-webkit-scrollbar-track {
   border-radius: 5px;
   background-color: rgba(0, 0, 0, 0.021);
-
 }
-::-webkit-scrollbar-thumb{
+::-webkit-scrollbar-thumb {
   background-color: #ccc;
   border-radius: 5px;
 }
-.share{
+.share {
   display: flex;
   align-items: center;
   justify-content: center;
 }
-#undo,#startOver{
+#undo,
+#startOver {
   display: inline-block;
   border-radius: 100vh;
   margin: 5px;
   visibility: hidden;
 }
-#startOver{
+#startOver {
   position: absolute;
   left: 0;
 }
-.undoButton{
+.undoButton {
   position: relative;
   width: auto;
   height: auto;
 }
-.share .btn-group{
+.share .btn-group {
   min-width: 60%;
 }
-i{
+i {
   margin: 0.3em;
 }
-.sh-content:not(:last-child){
+.sh-content:not(:last-child) {
   margin-bottom: 70px;
 }
-#share i{
+#share i {
   margin-right: 0.5em;
 }
-#checked-icon{
+#checked-icon {
   display: none;
 }
-.inline{
+.inline {
   display: inline;
 }
-.inline:not(:last-child){
+.inline:not(:last-child) {
   margin-bottom: 5px;
 }
 @media screen and (max-width: 992px) {

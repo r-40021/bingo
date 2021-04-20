@@ -1,4 +1,4 @@
-var CACHE_NAME = "bi-20210419";
+var CACHE_NAME = "bi-20210420";
 var urlsToCache = [
   "index.html",
   "./src/css/style.css",

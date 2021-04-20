@@ -11,6 +11,12 @@ document.addEventListener("DOMContentLoaded", function () {
   } else {
     alert("お使いの環境では、保存機能はご利用になれません。"); //Localstorageが利用不可のとき
   }
+  if (window.navigator.userAgent.toLowerCase().indexOf("android") !== -1) {
+    var elements = document.getElementsByClassName("shareIcon");
+    for (let i = 0; i < elements.length; i++) {
+      elements[i].classList.replace("bi-box-arrow-up", "bi-share-fill");
+    }
+  }
   flex();
   resize();
   //読み込み
@@ -132,7 +138,6 @@ function spin() {
     }, 300);
   }
 }
-
 function resize() {
   //レイアウトの調整
   var numberElement = document.getElementById("bingoNumber");
