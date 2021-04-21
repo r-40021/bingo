@@ -6,10 +6,17 @@ body {
   padding: 0;
   overflow: hidden;
 }
+.fixed{
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  height: 100vh;
+  width: 100%;
+}
 .flex {
   display: flex;
   flex-flow: column;
-  height: 100vh;
+  height: 100%;
   width: 100%;
   margin: 0;
   padding: 0;

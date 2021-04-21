@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function () {
   if (window.navigator.userAgent.toLowerCase().indexOf("android") !== -1) {
     var elements = document.getElementsByClassName("shareIcon");
     for (let i = 0; i < elements.length; i++) {
-      elements[i].classList.replace("bi-box-arrow-up", "bi-share-fill");
+      elements[i].classList.replace("bi-box-arrow-up", "bi-share");
     }
   }
   flex();
@@ -241,17 +241,18 @@ function storageAvailable(type) {
 function flex() {
   /*スマホのURLバーに隠されないように*/
   var height = window.innerHeight;
-  document.getElementsByClassName("flex")[0].style.height = height + "px";
+  document.getElementsByClassName("fixed")[0].style.height = height + "px";
   document.body.style.height = height + "px";
 }
+var checkedTimeout;
 function copy() {
   /*URLコピー*/
-  clearTimeout(checked);
+  clearTimeout(checkedTimeout);
   var url = location.href;
   navigator.clipboard.writeText(url);
   document.getElementById("checked-icon").style.display = "inline";
   document.getElementById("url-icon").style.display = "none";
-  var checked = setTimeout(() => {
+  checkedTimeout = setTimeout(() => {
     document.getElementById("checked-icon").style.display = "none";
     document.getElementById("url-icon").style.display = "inline";
   }, 10000);

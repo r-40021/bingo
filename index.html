@@ -36,6 +36,7 @@
   <meta content="履歴や設定を自動で保存する機能を搭載した、ビンゴマシーン。インストール不要です！" name="description">
 </head>
 <body>
+  <div class="fixed">
   <div class="flex">
     <!--navbar-->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -108,6 +109,7 @@
       </div>
     </div>
   </div>
+  </div>  
   <!--end-modal-->
   <div class="modal fade" id="end-modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
     aria-labelledby="end-modal" aria-hidden="true">
@@ -160,7 +162,7 @@
             <p>このアプリは、皆様の口コミによって支えられています。</p>
             <p>どんどん拡散してください！ご協力よろしくお願いします。</p>
             <div class="list-group">
-              <a class="list-group-item list-group-item-action" aria-current="true" onclick="copy()">
+              <a class="list-group-item list-group-item-action" onclick="copy()" style="cursor: pointer;">
                 <i class="bi bi-link-45deg" id="url-icon"></i><i class="bi bi-check2 text-success"
                   id="checked-icon"></i>URLをコピー
               </a>
