@@ -3,6 +3,7 @@ var myHistory = [];
 var select = [];
 var colorList = ["#ffa500", "#d3e15c", "#b384c7", "#F06060", "#a9ceec"];
 var old = new Object();
+var sound;
 old.max = [];
 old.number = [];
 old.color = [];
@@ -314,12 +315,49 @@ function startOver() {
   document.getElementById("startOver").style.visibility = "hidden";
   document.getElementById("spin").focus();
 }
-function onSound (){
-  if (document.getElementById('flexSwitchCheckDefault').checked) {
-    document.getElementById('soundBtn').style.display = "inline-flex";
-    document.getElementById('soundAlert').style.display = "block";
+function onSound() {
+  if (document.getElementById("flexSwitchCheckDefault").checked) {
+    if (sound) {
+      disAudioMenu();
+    } else {
+      document.getElementById("audioInput").click();
+    }
   } else {
-    document.getElementById('soundBtn').style.display = "none";
-    document.getElementById('soundAlert').style.display = "none";
+    document.getElementById("soundBtn").style.display = "none";
+    document.getElementById("soundAlert").style.display = "none";
   }
+}
+function selectSound() {
+  document.getElementById("audioInput").click();
+}
+function resetSound() {
+  sound = null;
+  document.getElementById("soundBtn").style.display = "none";
+  document.getElementById("soundAlert").style.display = "none";
+}
+
+window.addEventListener("load", () => {
+  /*アラーム音設定・プレビューも*/
+  const f = document.getElementById("audioInput");
+  f.addEventListener("change", (evt) => {
+    let input = evt.target;
+    if (input.files.length == 0) {
+      return;
+    }
+    const file = input.files[0];
+    if (!file.type.match("audio.*")) {
+      return;
+    }
+    const reader = new FileReader();
+    reader.onload = () => {
+      sound = new Audio(reader.result);
+      disAudioMenu();
+    };
+
+    reader.readAsDataURL(file);
+  });
+});
+function disAudioMenu() {
+  document.getElementById("soundBtn").style.display = "inline-flex";
+  document.getElementById("soundAlert").style.display = "block";
 }
