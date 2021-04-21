@@ -314,3 +314,12 @@ function startOver() {
   document.getElementById("startOver").style.visibility = "hidden";
   document.getElementById("spin").focus();
 }
+function onSound (){
+  if (document.getElementById('flexSwitchCheckDefault').checked) {
+    document.getElementById('soundBtn').style.display = "inline-flex";
+    document.getElementById('soundAlert').style.display = "block";
+  } else {
+    document.getElementById('soundBtn').style.display = "none";
+    document.getElementById('soundAlert').style.display = "none";
+  }
+}

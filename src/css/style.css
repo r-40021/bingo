@@ -107,18 +107,31 @@ body {
 }
 .soundMenu{
   position: fixed;
-  top: 0;
+  bottom: 0;
   left: 0;
+  width: 100%;
   background-color: #fff;
   padding: 15px;
   border-radius: 5px;
   box-shadow: 1px 1px 3px rgba(105, 104, 104, 0.288);
+}
+.contents{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 .soundMenu div,p{
   margin: 5px;
 }
 #audioInput{
   display: none;
+}
+#soundBtn,#soundAlert{
+  display: none;
+}
+#soundBtn{
+  width: auto;
 }
 .soundMenu label,p {
   font-size: 14px;

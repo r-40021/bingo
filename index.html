@@ -198,17 +198,19 @@
   </div>
   <!-- Sound -->
   <div class="soundMenu">
+    <div class="contents">
     <div class="form-check form-switch">
-      <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" onclick="onSound">
+      <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" oninput="onSound()">
       <label class="form-check-label" for="flexSwitchCheckDefault">効果音を鳴らす</label>
     </div>
-    <div class="btn-group">
-      <button type="button" class="btn btn-outline-primary"><i class="bi bi-upload"></i>音源を選択</button>
-      <button type="button" class="btn btn-outline-primary"><i class="bi bi-x"></i>リセット</button>
-      <button type="button" class="btn btn-outline-primary"><i class="bi bi-play"></i>試聴</button>
+    <div class="btn-group col-sm-6" id="soundBtn">
+      <button type="button" class="btn btn-outline-primary" onclick="selectSound()"><i class="bi bi-upload"></i>音源を選択</button>
+      <button type="button" class="btn btn-outline-primary" onclick="resetSound()"><i class="bi bi-x"></i>リセット</button>
+      <button type="button" class="btn btn-outline-primary" onclick="testSound()"><i class="bi bi-play"></i>試聴</button>
     </div>
-    <p>選択した音源がサーバーに送信されることはありません。</p>
+    <p id="soundAlert">選択した音源がサーバーに送信されることはありません。</p>
     <input type="file" accept="audio/*" id="audioInput">
+</div>
   </div>
   <!--JavaScript-->
   <script src="./src/js/bootstrap.min.js"></script>
