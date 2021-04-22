@@ -52,6 +52,7 @@ document.addEventListener("DOMContentLoaded", function () {
     old.color.unshift(Number(localStorage.getItem("lastColor")));
   }
   addSelect();
+  getHistoryLength();
   removeDisableSet();
 });
 window.addEventListener("resize", function () {
@@ -133,6 +134,7 @@ function spin() {
           0,
           historyBody.scrollHeight - historyBody.clientHeight
         );
+        getHistoryLength();
         removeDisableSet();
       }
     }, 300);
@@ -209,6 +211,7 @@ function reset() {
   old.color = [];
   console.log(old);
   addSelect();
+  getHistoryLength();
   removeDisableSet();
 }
 function storageAvailable(type) {
@@ -291,6 +294,7 @@ function undo() {
   localStorage.setItem("lastColor", old.color[1]);
   document.getElementById("undo").style.visibility = "hidden";
   document.getElementById("startOver").style.visibility = "visible";
+  getHistoryLength();
   document.getElementById("spin").focus();
 }
 function startOver() {
@@ -313,5 +317,9 @@ function startOver() {
   localStorage.setItem("lastColor", old.color[0]);
   document.getElementById("undo").style.visibility = "visible";
   document.getElementById("startOver").style.visibility = "hidden";
+  getHistoryLength();
   document.getElementById("spin").focus();
+}
+function getHistoryLength (){
+  document.getElementById("historyLength").innerText = myHistory.length;
 }
