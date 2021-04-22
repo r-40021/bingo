@@ -1,8 +1,9 @@
+/*変数の定義*/
 var max = 75;
 var myHistory = [];
 var select = [];
 var colorList = ["#ffa500", "#d3e15c", "#b384c7", "#F06060", "#a9ceec"];
-var old = new Object();
+var old = new Object();//Undoボタン用のオブジェクト
 old.max = [];
 old.number = [];
 old.color = [];
@@ -12,21 +13,23 @@ document.addEventListener("DOMContentLoaded", function () {
     alert("お使いの環境では、保存機能はご利用になれません。"); //Localstorageが利用不可のとき
   }
   if (window.navigator.userAgent.toLowerCase().indexOf("android") !== -1) {
+    /*Androidのときに「共有」アイコンを変化*/
     var elements = document.getElementsByClassName("shareIcon");
     for (let i = 0; i < elements.length; i++) {
       elements[i].classList.replace("bi-box-arrow-up", "bi-share");
     }
   }
   flex();
-  resize();
+  resize();//レイアウト調整処理
   //読み込み
   if (localStorage.getItem("myHistory")) {
+    /*履歴読み込み*/
     if (JSON.parse(localStorage.getItem("myHistory")).length >= 1) {
       var his = localStorage.getItem("myHistory");
       myHistory = JSON.parse(his);
       var historyBody = document.getElementById("history-body");
       for (let i = 0; i < myHistory.length; i++) {
-        var div = document.createElement("div");
+        var div = document.createElement("div");//HTMLに代入　それぞれにdiv要素を作成している
         div.className = "history-number";
         div.innerHTML = myHistory[i];
         historyBody.appendChild(div);
@@ -36,28 +39,30 @@ document.addEventListener("DOMContentLoaded", function () {
       old.number.unshift(myHistory[myHistory.length - 1]);
       historyBody.scroll(
         0,
-        historyBody.scrollHeight - historyBody.clientHeight
+        historyBody.scrollHeight - historyBody.clientHeight//履歴表示エリアを一番下までスクロール
       );
     }
   }
   if (localStorage.getItem("max")) {
+    /*最大値取得*/
     max = Number(localStorage.getItem("max"));
     document.getElementById("bingoMax").value = max;
     document.getElementById("bingoMaxText").value = max;
     old.max.unshift(max);
   }
   if (localStorage.getItem("lastColor")) {
+    /*最後の色を取得*/
     document.getElementById("bingoNumber").style.borderColor =
       colorList[Number(localStorage.getItem("lastColor"))];
     old.color.unshift(Number(localStorage.getItem("lastColor")));
   }
   addSelect();
   getHistoryLength();
-  removeDisableSet();
+  removeDisableSet();//フッターを選択可能に
 });
 window.addEventListener("resize", function () {
   flex();
-  resize();
+  resize();//レイアウト調整
 });
 document.addEventListener("DOMContentLoaded", function () {
   //レンジとテキストボックスを連動
@@ -74,15 +79,16 @@ document.addEventListener("DOMContentLoaded", function () {
     addSelect();
   });
   rangeText.addEventListener("change", function () {
+    /*1~99以外の数字が入力されたときの処理*/
     if (rangeText.value < 1) {
-      rangeText.value = 1;
+      rangeText.value = 1;//1未満なら1にする
     }
     if (rangeText.value > 99) {
-      rangeText.value = 99;
+      rangeText.value = 99;//99より大きれば99にする
     }
     range.value = rangeText.value;
     max = range.value;
-    addSelect();
+    addSelect();//ビンゴの候補のリストを更新
   });
 });
 function spin() {
@@ -111,14 +117,15 @@ function spin() {
       numberElement.style.borderColor = colorList[colorIndex];
       count++;
       if (count >= stop) {
+        /*5~12の乱数回実行したら停止*/
         clearInterval(spin);
         var div = document.createElement("div");
         div.className = "history-number";
         div.innerHTML = display;
         myHistory.push(display);
         localStorage.setItem("myHistory", JSON.stringify(myHistory));
-        localStorage.setItem("lastColor", colorIndex);
-        select.splice(select.indexOf(display), 1);
+        localStorage.setItem("lastColor", colorIndex);//LocalStorageに保存
+        select.splice(select.indexOf(display), 1);//ビンゴ候補のリストから該当する数字を削除
         historyBody.appendChild(div);
         old.max.unshift(max);
         old.number.unshift(display);
@@ -128,11 +135,11 @@ function spin() {
           old.max.length >= 2 &&
           old.color.length >= 2
         ) {
-          undoElement.style.visibility = "visible";
+          undoElement.style.visibility = "visible";//履歴が2つ以上ならUndo機能を有効化
         }
         historyBody.scroll(
           0,
-          historyBody.scrollHeight - historyBody.clientHeight
+          historyBody.scrollHeight - historyBody.clientHeight//履歴表示エリアを下までスクロール
         );
         getHistoryLength();
         removeDisableSet();
@@ -144,16 +151,16 @@ function resize() {
   //レイアウトの調整
   var numberElement = document.getElementById("bingoNumber");
   var wrapElement = document.getElementById("number-wrap");
-  var historyElement = document.getElementById("history-body");
+  var historyElement = document.getElementById("history-body");//要素を変数に代入
   if (wrapElement.clientHeight > wrapElement.clientWidth) {
     numberElement.style.width = "90%";
-    numberElement.style.height = numberElement.offsetWidth + "px";
+    numberElement.style.height = numberElement.offsetWidth + "px";//数字を表示するエリアを正方形に
   } else {
     numberElement.style.height = "90%";
     numberElement.style.width = numberElement.offsetHeight + "px";
   }
-  numberElement.style.fontSize = (numberElement.offsetHeight / 5) * 3 + "px";
-  numberElement.style.borderWidth = numberElement.offsetHeight * 0.1 + "px";
+  numberElement.style.fontSize = (numberElement.offsetHeight / 5) * 3 + "px";//数字表示エリアのフォントサイズを指定
+  numberElement.style.borderWidth = numberElement.offsetHeight * 0.1 + "px";//数字表示エリアの枠線の太さを指定
   if (window.innerWidth <= 576) {
     historyElement.style.fontSize =
       ((historyElement.clientWidth * 0.12) / 3) * 2 + "px";
@@ -163,7 +170,13 @@ function resize() {
   }
 }
 function addSelect() {
-  select = [];
+  select = [];//ビンゴの数字の候補
+  /*==========
+  select(ビンゴの数字の候補を保存するリスト)=max(最大値)までのすべての数-myHistory(履歴)
+  for文を用いて、1からmax(設定した最大値)までの数字が履歴に含まれているかを確認。
+  もし、履歴に含まれていなければselectに追加。
+  この処理に時間がかからないよう、max(最大値)は99までに制限している。
+  ==========*/
   localStorage.setItem("max", max);
   for (let i = 0; i < max; i++) {
     if (myHistory.indexOf(i + 1) === -1) {
@@ -172,18 +185,22 @@ function addSelect() {
   }
 }
 function makeDisable(element) {
+  //指定した要素(element)を選択不可にする
   document.getElementById(element).setAttribute("disabled", null);
 }
 function makeDisableSet() {
+  //「指定した要素(element)を選択不可にする」処理を、楽ちんなセットにしました。
   makeDisable("spin");
   makeDisable("reset");
   makeDisable("bingoMax");
   makeDisable("bingoMaxText");
 }
 function removeDisable(element) {
+  //指定した要素(element)を選択可能にする
   document.getElementById(element).removeAttribute("disabled");
 }
 function removeDisableSet() {
+  //「指定した要素(element)を選択可能にする」処理を、うれしいセットにしました。
   removeDisable("spin");
   removeDisable("reset");
   removeDisable("bingoMax");
@@ -191,31 +208,33 @@ function removeDisableSet() {
   document.getElementById("spin").focus();
 }
 function resetAsk() {
+  //履歴をリセットしてもいいか、尋ねる
   new bootstrap.Modal(document.getElementById("reset-modal")).show();
 }
 function reset() {
+  //履歴のリセット処理
   document.getElementById("undo").style.visibility = "hidden";
-  document.getElementById("startOver").style.visibility = "hidden";
+  document.getElementById("startOver").style.visibility = "hidden";//Undo機能を無効化
   //リセット
-  makeDisableSet();
+  makeDisableSet();//フッターを選択不可にする
   localStorage.removeItem("myHistory");
-  localStorage.removeItem("lastColor");
-  document.getElementById("number-inner").innerHTML = null;
-  document.getElementById("history-body").innerHTML = null;
-  document.getElementById("bingoNumber").style.borderColor = colorList[0];
+  localStorage.removeItem("lastColor");//LocalStorageから、履歴と数字表示エリアの枠線色を削除
+  document.getElementById("number-inner").innerHTML = null;//数字表示エリアを空に
+  document.getElementById("history-body").innerHTML = null;//履歴表示エリアを空に
+  document.getElementById("bingoNumber").style.borderColor = colorList[0];//数字表示エリアの枠線色を初期値に
+  /*変数のリセット*/
   myHistory = [];
   select = [];
   old = new Object();
   old.max = [];
   old.number = [];
   old.color = [];
-  console.log(old);
-  addSelect();
-  getHistoryLength();
-  removeDisableSet();
+  addSelect();//ビンゴの数字候補を更新
+  getHistoryLength();//履歴の数を取得し、HTMLに出力
+  removeDisableSet();//フッターを選択可能にする
 }
 function storageAvailable(type) {
-  //localStorageが利用可能かチェック
+  //localStorageが利用可能かチェック(引用:https://developer.mozilla.org/ja/docs/Web/API/Web_Storage_API/Using_the_Web_Storage_API#testing_for_availability)
   var storage;
   try {
     storage = window[type];
@@ -242,7 +261,7 @@ function storageAvailable(type) {
   }
 }
 function flex() {
-  /*スマホのURLバーに隠されないように*/
+  /*スマホのURLバーに隠されないように、body部分の高さを調整*/
   var height = window.innerHeight;
   document.getElementsByClassName("fixed")[0].style.height = height + "px";
   document.body.style.height = height + "px";
@@ -254,13 +273,16 @@ function copy() {
   var url = location.href;
   navigator.clipboard.writeText(url);
   document.getElementById("checked-icon").style.display = "inline";
-  document.getElementById("url-icon").style.display = "none";
+  document.getElementById("url-icon").style.display = "none";//チェックアイコンを表示
   checkedTimeout = setTimeout(() => {
+    /*10秒後、元に戻す*/
     document.getElementById("checked-icon").style.display = "none";
     document.getElementById("url-icon").style.display = "inline";
   }, 10000);
 }
 if ("serviceWorker" in navigator) {
+  /*Service Worker登録
+  (引用:https://developers.google.com/web/fundamentals/primers/service-workers)*/
   window.addEventListener("load", function () {
     navigator.serviceWorker.register("sw.js").then(
       function (registration) {
@@ -278,48 +300,57 @@ if ("serviceWorker" in navigator) {
   });
 }
 function undo() {
-  var numberElements = document.getElementsByClassName("history-number");
-  var removeNumber = numberElements[numberElements.length - 1];
-  removeNumber.remove();
-  myHistory.splice(myHistory.indexOf(removeNumber.innerHTML), 1);
+  /*Undo処理　ビンゴを1ターン戻す*/
+  var numberElements = document.getElementsByClassName("history-number");//要素を変数に代入
+  var removeNumber = numberElements[numberElements.length - 1];//消去する数をセット
+  removeNumber.remove();//履歴表示エリアから削除
+  myHistory.splice(myHistory.indexOf(removeNumber.innerHTML), 1);//履歴のリストからも削除
+  /*1個前の数字・枠線色を反映*/
   document.getElementById("number-inner").innerHTML = old.number[1];
   document.getElementById("bingoNumber").style.borderColor =
     colorList[old.color[1]];
   max = old.max[1];
+  /*以前の最大値をレンジ/テキストボックスにセット*/
   document.getElementById("bingoMax").value = max;
   document.getElementById("bingoMaxText").value = max;
-  select.push(removeNumber.innerHTML);
+  select.push(removeNumber.innerHTML);//ビンゴの数字候補に以前の数を追加
+  /*LocalStorageに保存*/
   localStorage.setItem("myHistory", JSON.stringify(myHistory));
   localStorage.setItem("max", old.max[1]);
   localStorage.setItem("lastColor", old.color[1]);
   document.getElementById("undo").style.visibility = "hidden";
   document.getElementById("startOver").style.visibility = "visible";
-  getHistoryLength();
-  document.getElementById("spin").focus();
+  getHistoryLength();//履歴の数を取得し、HTMLに出力
+  document.getElementById("spin").focus();//Spinボタンにフォーカス
 }
 function startOver() {
-  var historyBody = document.getElementById("history-body");
+  var historyBody = document.getElementById("history-body");//要素を変数にセット
+  /*もともとの数をHTMLに出力*/
   var div = document.createElement("div");
   var oldNumber = old.number[0];
   div.className = "history-number";
   div.innerHTML = oldNumber;
   historyBody.appendChild(div);
-  select.splice(myHistory.indexOf(oldNumber), 1);
+  select.splice(myHistory.indexOf(oldNumber), 1);//数字候補から削除
+  /*HTMLに出力*/
   document.getElementById("number-inner").innerHTML = oldNumber;
   document.getElementById("bingoNumber").style.borderColor =
     colorList[old.color[0]];
-  max = old.max[0];
+  max = old.max[0];//最大値を変数にセット
+  /*新しい最大値をレンジ/テキストボックスにセット*/
   document.getElementById("bingoMax").value = max;
   document.getElementById("bingoMaxText").value = max;
-  myHistory.push(oldNumber);
+  myHistory.push(oldNumber);//履歴リストに新しい数字を追加
+   /*LocalStorageに保存*/
   localStorage.setItem("myHistory", JSON.stringify(myHistory));
   localStorage.setItem("max", old.max[0]);
   localStorage.setItem("lastColor", old.color[0]);
   document.getElementById("undo").style.visibility = "visible";
-  document.getElementById("startOver").style.visibility = "hidden";
-  getHistoryLength();
-  document.getElementById("spin").focus();
+  document.getElementById("startOver").style.visibility = "hidden";//ボタン切り替え
+  getHistoryLength();//履歴の数を取得し、HTMLに出力
+  document.getElementById("spin").focus();//Spinボタンにフォーカス
 }
 function getHistoryLength() {
+  //履歴の数を取得し、HTMLに出力
   document.getElementById("historyLength").innerText = myHistory.length;
 }
