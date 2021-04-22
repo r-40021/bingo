@@ -156,7 +156,7 @@ function resize() {
   numberElement.style.borderWidth = numberElement.offsetHeight * 0.1 + "px";
   if (window.innerWidth <= 576) {
     historyElement.style.fontSize =
-      ((historyElement.clientWidth * 0.15) / 3) * 2 + "px";
+      ((historyElement.clientWidth * 0.12) / 3) * 2 + "px";
   } else {
     historyElement.style.fontSize =
       ((historyElement.clientWidth * 0.1) / 3) * 2 + "px";
@@ -320,6 +320,6 @@ function startOver() {
   getHistoryLength();
   document.getElementById("spin").focus();
 }
-function getHistoryLength (){
+function getHistoryLength() {
   document.getElementById("historyLength").innerText = myHistory.length;
 }

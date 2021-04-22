@@ -5,8 +5,9 @@ body {
   margin: 0;
   padding: 0;
   overflow: hidden;
+  font-family: sans-serif;
 }
-.fixed{
+.fixed {
   position: fixed;
   left: 0;
   bottom: 0;
@@ -79,15 +80,25 @@ body {
   margin: 2px;
 }
 .bingoMax {
+  display: inline-block;
   width: 100%;
-  display: inline;
+  height: auto;
+  color: rgb(54, 54, 54);
+}
+.bingoMaxInput {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .bingoMaxText {
   text-align: right;
 }
+.bingoMaxRange {
+  flex: 1;
+  padding: 10px;
+}
 #bingoMaxText {
   width: 60px;
-  display: inline;
   text-align: right;
 }
 .history.card {
@@ -184,5 +195,20 @@ i {
   .number-wrap,
   .history-wrap {
     height: 50%;
+  }
+}
+@media screen and (max-width: 576px) {
+  .bingoMaxInput {
+    display: inline;
+  }
+  .bingoMaxRange {
+    width: 100%;
+  }
+  #bingoMaxText {
+    display: inline;
+  }
+  .bingoMax {
+    margin-top: 10px;
+    font-size: small;
   }
 }

@@ -37,79 +37,83 @@
 </head>
 <body>
   <div class="fixed">
-  <div class="flex">
-    <!--navbar-->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <div class="container-fluid">
-        <a class="navbar-brand">BINGO</a>
-      </div>
-    </nav>
-    <!--body-->
-    <div class="body" id="body">
-      <div class="container">
-        <div class="row">
-          <div class="number-wrap col-lg-6" id="number-wrap">
-            <div class="number" id="bingoNumber">
-              <div class="number-inner" id="number-inner">
+    <div class="flex">
+      <!--navbar-->
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+          <a class="navbar-brand">BINGO</a>
+        </div>
+      </nav>
+      <!--body-->
+      <div class="body" id="body">
+        <div class="container">
+          <div class="row">
+            <div class="number-wrap col-lg-6" id="number-wrap">
+              <div class="number" id="bingoNumber">
+                <div class="number-inner" id="number-inner">
+                </div>
               </div>
             </div>
-          </div>
-          <div class="history-wrap col-lg-6">
-            <div class="history">
-              <div class="history-inner card">
-                <div class="card-header">
-                  履歴 (<span id="historyLength"></span>)
-                </div>
-                <div class="card-body" id="history-body">
+            <div class="history-wrap col-lg-6">
+              <div class="history">
+                <div class="history-inner card">
+                  <div class="card-header">
+                    履歴 (<span id="historyLength"></span>)
+                  </div>
+                  <div class="card-body" id="history-body">
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-    <!--footer-->
-    <div class="footer bg-light">
-      <div class="container">
-        <div class="row">
-          <div class="col-sm-4 buttons">
-            <div class="button">
-              <div class="inline">
-                <button type="button" class="btn btn-primary" id="spin" onclick="spin()" disabled>Spin</button>
-                <button type="button" class="btn btn-outline-danger" id="reset" onclick="resetAsk();"
-                  disabled>RESET</button>
-              </div>
-              <div class="inline undoButton">
-                <button type="button" class="btn btn-outline-secondary btn-sm" onclick="undo()" aria-label="やり直す"
-                  title="やり直す" id="undo"><i class="bi bi-arrow-return-left"></i>やり直す</button>
-                <button type="button" class="btn btn-outline-secondary btn-sm" onclick="startOver()" aria-label="元に戻す"
-                  title="元に戻す" id="startOver">元に戻す<i class="bi bi-arrow-return-right"></i></button>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-6 col-8">
-            <div class="bingoMax">
-              <label for="bingoMax" class="form-label">最大値</label>
-              <input type="range" class="form-range" min="1" max="99" step="1" id="bingoMax" disabled>
-              <div class="bingoMaxText">
-                <input class="form-control" type="number" aria-label="最大値" id="bingoMaxText" min="1" max="99" value="75"
-                  disabled pattern="\d*">
+      <!--footer-->
+      <div class="footer bg-light">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-4 buttons">
+              <div class="button">
+                <div class="inline">
+                  <button type="button" class="btn btn-primary" id="spin" onclick="spin()" disabled>Spin</button>
+                  <button type="button" class="btn btn-outline-danger" id="reset" onclick="resetAsk();"
+                    disabled>Reset</button>
+                </div>
+                <div class="inline undoButton">
+                  <button type="button" class="btn btn-outline-secondary btn-sm" onclick="undo()" aria-label="やり直す"
+                    title="やり直す" id="undo"><i class="bi bi-arrow-return-left"></i>やり直す</button>
+                  <button type="button" class="btn btn-outline-secondary btn-sm" onclick="startOver()" aria-label="元に戻す"
+                    title="元に戻す" id="startOver">元に戻す<i class="bi bi-arrow-return-right"></i></button>
+                </div>
               </div>
             </div>
-          </div>
-          <div class="col-sm-2 col-4 share">
-            <div class="btn-group btn-group-sm">
-              <a class="btn btn-outline-primary" aria-label="共有" data-bs-toggle="modal" data-bs-target="#share"
-                title="共有"><i class="bi bi-box-arrow-up shareIcon"></i></a>
-              <a class="btn btn-outline-primary" href="https://r-40021.github.io/privacy.html" target="_blank"
-                rel="noopener" aria-label="プライバシーポリシー" title="プライバシーポリシー"><i class="bi bi-lock"></i></a>
+            <div class="col-sm-6 col-8">
+              <div class="bingoMax">
+                <label for="bingoMax">最大値</label>
+                <div class="bingoMaxInput">
+                  <div class="bingoMaxRange">
+                    <input type="range" class="form-range" min="1" max="99" step="1" id="bingoMax" disabled>
+                  </div>
+                  <div class="bingoMaxText">
+                    <input class="form-control form-control-sm" type="number" aria-label="最大値" id="bingoMaxText" min="1"
+                      max="99" value="75" disabled pattern="\d*">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-2 col-4 share">
+              <div class="btn-group btn-group-sm">
+                <a class="btn btn-outline-primary" aria-label="共有" data-bs-toggle="modal" data-bs-target="#share"
+                  title="共有"><i class="bi bi-box-arrow-up shareIcon"></i></a>
+                <a class="btn btn-outline-primary" href="https://r-40021.github.io/privacy.html" target="_blank"
+                  rel="noopener" aria-label="プライバシーポリシー" title="プライバシーポリシー"><i class="bi bi-lock"></i></a>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-  </div>  
   <!--end-modal-->
   <div class="modal fade" id="end-modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
     aria-labelledby="end-modal" aria-hidden="true">
