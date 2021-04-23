@@ -36,7 +36,7 @@ document.addEventListener("DOMContentLoaded", function () {
       }
       document.getElementById("number-inner").innerHTML =
         myHistory[myHistory.length - 1];
-      old.number.unshift(myHistory[myHistory.length - 1]);
+      old.number.unshift(Number(myHistory[myHistory.length - 1]));
       historyBody.scroll(
         0,
         historyBody.scrollHeight - historyBody.clientHeight//履歴表示エリアを一番下までスクロール
@@ -48,7 +48,7 @@ document.addEventListener("DOMContentLoaded", function () {
     max = Number(localStorage.getItem("max"));
     document.getElementById("bingoMax").value = max;
     document.getElementById("bingoMaxText").value = max;
-    old.max.unshift(max);
+    old.max.unshift(Number(max));
   }
   if (localStorage.getItem("lastColor")) {
     /*最後の色を取得*/
@@ -127,9 +127,9 @@ function spin() {
         localStorage.setItem("lastColor", colorIndex);//LocalStorageに保存
         select.splice(select.indexOf(display), 1);//ビンゴ候補のリストから該当する数字を削除
         historyBody.appendChild(div);
-        old.max.unshift(max);
-        old.number.unshift(display);
-        old.color.unshift(colorIndex);
+        old.max.unshift(Number(max));
+        old.number.unshift(Number(display));
+        old.color.unshift(Number(colorIndex));
         if (
           old.number.length >= 2 &&
           old.max.length >= 2 &&
@@ -313,13 +313,13 @@ function undo() {
   /*以前の最大値をレンジ/テキストボックスにセット*/
   document.getElementById("bingoMax").value = max;
   document.getElementById("bingoMaxText").value = max;
-  select.push(removeNumber.innerHTML);//ビンゴの数字候補に以前の数を追加
+  addSelect();
   /*LocalStorageに保存*/
   localStorage.setItem("myHistory", JSON.stringify(myHistory));
   localStorage.setItem("max", old.max[1]);
   localStorage.setItem("lastColor", old.color[1]);
   document.getElementById("undo").style.visibility = "hidden";
-  document.getElementById("startOver").style.visibility = "visible";
+  document.getElementById("startOver").style.visibility = "visible";//ボタン切り替え
   getHistoryLength();//履歴の数を取得し、HTMLに出力
   document.getElementById("spin").focus();//Spinボタンにフォーカス
 }
@@ -331,7 +331,6 @@ function startOver() {
   div.className = "history-number";
   div.innerHTML = oldNumber;
   historyBody.appendChild(div);
-  select.splice(myHistory.indexOf(oldNumber), 1);//数字候補から削除
   /*HTMLに出力*/
   document.getElementById("number-inner").innerHTML = oldNumber;
   document.getElementById("bingoNumber").style.borderColor =
@@ -341,6 +340,7 @@ function startOver() {
   document.getElementById("bingoMax").value = max;
   document.getElementById("bingoMaxText").value = max;
   myHistory.push(oldNumber);//履歴リストに新しい数字を追加
+  addSelect();
    /*LocalStorageに保存*/
   localStorage.setItem("myHistory", JSON.stringify(myHistory));
   localStorage.setItem("max", old.max[0]);
