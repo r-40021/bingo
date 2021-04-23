@@ -70,12 +70,14 @@ document.addEventListener("DOMContentLoaded", function () {
   var rangeText = document.getElementById("bingoMaxText");
   range.addEventListener("input", function () {
     rangeText.value = range.value;
-    max = range.value;
+    max = Number(range.value);
+    old.max[0]=max;
     addSelect();
   });
   rangeText.addEventListener("input", function () {
     range.value = rangeText.value;
-    max = range.value;
+    max = Number(range.value);
+    old.max[0]=max;
     addSelect();
   });
   rangeText.addEventListener("change", function () {
@@ -87,7 +89,8 @@ document.addEventListener("DOMContentLoaded", function () {
       rangeText.value = 99;//99より大きれば99にする
     }
     range.value = rangeText.value;
-    max = range.value;
+    max = Number(range.value);
+    old.max[0]=max;
     addSelect();//ビンゴの候補のリストを更新
   });
 });
