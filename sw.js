@@ -1,5 +1,5 @@
 /*参考:https://developers.google.com/web/fundamentals/primers/service-workers*/
-var CACHE_NAME = "bi-20210423v2";
+var CACHE_NAME = "bi-20210423v3";
 var urlsToCache = [
   "index.html",
   "./src/css/style.css",
