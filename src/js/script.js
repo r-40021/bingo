@@ -1,12 +1,12 @@
 /*変数の定義*/
-var max = 75;
-var myHistory = [];
-var select = [];
-var colorList = ["#ffa500", "#d3e15c", "#b384c7", "#F06060", "#a9ceec"];
+var max = 75;//最大値
+var myHistory = [];//履歴
+var select = [];//ビンゴの数字候補
+var colorList = ["#ffa500", "#d3e15c", "#b384c7", "#F06060", "#a9ceec"];//数字表示エリアの枠線色
 var old = new Object();//Undoボタン用のオブジェクト
-old.max = [];
-old.number = [];
-old.color = [];
+old.max = [];//過去の最大値を記録（キャッシュしない）
+old.number = [];//過去に出た数字を記録（キャッシュしない）
+old.color = [];//過去の枠線色を記録（キャッシュしない）
 document.addEventListener("DOMContentLoaded", function () {
   if (storageAvailable("localStorage")) {
   } else {
