@@ -18,6 +18,7 @@ body {
 .about {
   display: inline-block;
   cursor: pointer;
+  color: #666;
 }
 .detail {
   display: none;
