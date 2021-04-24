@@ -24,8 +24,8 @@ window.addEventListener("DOMContentLoaded", function () {
       elements[i].classList.replace("bi-box-arrow-up", "bi-share");
     }
   }
-  resize(); //レイアウト調整処理
   flex();
+  resize(); //レイアウト調整処理
   //読み込み
   if (localStorage.getItem("myHistory")) {
     /*履歴読み込み*/
