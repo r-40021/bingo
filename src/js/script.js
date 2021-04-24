@@ -176,8 +176,8 @@ function resize() {
     historyElement.style.fontSize =
       ((historyElement.clientWidth * 0.1) / 3) * 2 + "px";
   }
-  document.getElementById("privacy-iframe").setAttribute("height", document.getElementById("privacy-iframe-wrap").clientHeight);
-  document.getElementById("privacy-iframe").setAttribute("width", document.getElementById("privacy-iframe-wrap").clientWidth);
+  document.getElementById("privacy-iframe-wrap").style.width = document.getElementById("privacyModalBody").clientWidth -40 + "px";
+  document.getElementById("privacy-iframe-wrap").style.height = document.getElementById("privacyModalBody").clientHeight -40 + "px";
 }
 function addSelect() {
   select = []; //ビンゴの数字の候補
