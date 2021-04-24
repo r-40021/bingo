@@ -61,6 +61,14 @@ input[type="number"] {
   bottom: 0;
   height: 100vh;
   width: 100%;
+  opacity: 0;
+  pointer-events: none;
+}
+.fixed.loaded{
+  opacity: 1;
+  pointer-events: auto;
+  transition: opacity 0.5s;
+  -webkit-transition: opacity 0.5s;
 }
 .flex {
   display: flex;

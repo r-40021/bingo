@@ -7,8 +7,17 @@ var old = new Object(); //Undoボタン用のオブジェクト
 old.max = []; //過去の最大値を記録（キャッシュしない）
 old.number = []; //過去に出た数字を記録（キャッシュしない）
 old.color = []; //過去の枠線色を記録（キャッシュしない）
+var loadingTimeout;
+window.addEventListener("DOMContentLoaded", function () {
+  loadingTimeout = setTimeout(() => {
+    document.getElementById("fixed").classList.add("loaded");
+    document.getElementById("loading").classList.add("loaded");
+  }, 10000);
+});
 window.addEventListener("DOMContentLoaded", function () {
   window.addEventListener("load", ()=>{
+    clearTimeout(loadingTimeout);
+    document.getElementById("fixed").classList.add("loaded");
     document.getElementById("loading").classList.add("loaded");
   });
 });
