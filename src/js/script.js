@@ -365,5 +365,6 @@ function getHistoryLength() {
   document.getElementById("historyLength").innerText = myHistory.length;
 }
 document.getElementById("privacy").addEventListener("shown.bs.modal",()=>{
+  document.getElementById("privacy-iframe").contentWindow.location.href = "https://r-40021.github.io/privacy.html";
   resize(); //レイアウト調整処理
 });
