@@ -160,7 +160,7 @@ function resize() {
   var numberElement = document.getElementById("bingoNumber");
   var wrapElement = document.getElementById("number-wrap");
   var historyElement = document.getElementById("history-body"); //要素を変数に代入
-  if (wrapElement.clientHeight > wrapElement.clientWidth) {
+  if (wrapElement.clientHeight >= wrapElement.clientWidth) {
     numberElement.style.width = "90%";
     numberElement.style.height = numberElement.offsetWidth + "px"; //数字を表示するエリアを正方形に
   } else {
@@ -177,6 +177,7 @@ function resize() {
       ((historyElement.clientWidth * 0.1) / 3) * 2 + "px";
   }
   document.getElementById("privacy-iframe").setAttribute("height", document.getElementById("privacy-iframe-wrap").clientHeight);
+  document.getElementById("privacy-iframe").setAttribute("width", document.getElementById("privacy-iframe-wrap").clientWidth);
 }
 function addSelect() {
   select = []; //ビンゴの数字の候補
