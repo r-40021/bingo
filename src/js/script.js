@@ -7,7 +7,12 @@ var old = new Object(); //Undoボタン用のオブジェクト
 old.max = []; //過去の最大値を記録（キャッシュしない）
 old.number = []; //過去に出た数字を記録（キャッシュしない）
 old.color = []; //過去の枠線色を記録（キャッシュしない）
-document.addEventListener("DOMContentLoaded", function () {
+window.addEventListener("DOMContentLoaded", function () {
+  window.addEventListener("load", ()=>{
+    document.getElementById("loading").classList.add("loaded");
+  });
+});
+window.addEventListener("DOMContentLoaded", function () {
   if (storageAvailable("localStorage")) {
   } else {
     alert("お使いの環境では、保存機能はご利用になれません。"); //Localstorageが利用不可のとき
@@ -64,7 +69,7 @@ window.addEventListener("resize", function () {
   flex();
   resize(); //レイアウト調整
 });
-document.addEventListener("DOMContentLoaded", function () {
+window.addEventListener("DOMContentLoaded", function () {
   //レンジとテキストボックスを連動
   var range = document.getElementById("bingoMax");
   var rangeText = document.getElementById("bingoMaxText");
