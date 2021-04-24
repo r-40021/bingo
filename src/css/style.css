@@ -6,7 +6,7 @@ body {
   padding: 0;
   overflow: hidden;
 }
-.info{
+.info {
   position: relative;
   width: auto;
   height: auto;
@@ -14,11 +14,11 @@ body {
   z-index: 99;
   padding: 5px;
 }
-.about{
+.about {
   display: inline-block;
   cursor: pointer;
 }
-.detail{
+.detail {
   display: none;
   z-index: 100;
   max-width: 100%;
@@ -33,7 +33,7 @@ body {
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   padding: 10px;
 }
-.about:hover + .detail{
+.about:hover + .detail {
   display: block;
   animation: SlideIn 0.3s;
   -webkit-animation: SlideIn 0.3s;
@@ -48,7 +48,7 @@ body {
     transform: translateX(0);
   }
 }
-input[type=number]{
+input[type="number"] {
   font-size: 16px;
   transform: scale(0.8);
 }
@@ -103,7 +103,8 @@ input[type=number]{
     "Hiragino Kaku Gothic Pro", "HG丸ｺﾞｼｯｸM-PRO", "HGMaruGothicMPRO", sans-serif;
 }
 .footer {
-  box-shadow: rgba(17, 17, 26, 0.05) 0px -4px 16px, rgba(17, 17, 26, 0.05) 0px -8px 32px;
+  box-shadow: rgba(17, 17, 26, 0.05) 0px -4px 16px,
+    rgba(17, 17, 26, 0.05) 0px -8px 32px;
   border-radius: 15vh 15vh 0 0;
   padding: 15px;
 }
