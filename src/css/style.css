@@ -64,7 +64,7 @@ input[type="number"] {
   opacity: 0;
   pointer-events: none;
 }
-.fixed.loaded{
+.fixed.loaded {
   opacity: 1;
   pointer-events: auto;
   transition: opacity 0.5s;
@@ -255,14 +255,14 @@ i {
   margin-bottom: 5px;
 }
 .iframe-content {
-  overflow:auto; 
-  -webkit-overflow-scrolling:touch; 
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
 }
 .iframe-content iframe {
   display: block;
-  width:100%;
-  height:100%;
-  border:none;
+  width: 100%;
+  height: 100%;
+  border: none;
 }
 /* loader */
 .loader-wrap {

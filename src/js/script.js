@@ -15,7 +15,7 @@ window.addEventListener("DOMContentLoaded", function () {
   }, 10000);
 });
 window.addEventListener("DOMContentLoaded", function () {
-  window.addEventListener("load", ()=>{
+  window.addEventListener("load", () => {
     clearTimeout(loadingTimeout);
     document.getElementById("fixed").classList.add("loaded");
     document.getElementById("loading").classList.add("loaded");
@@ -185,8 +185,10 @@ function resize() {
     historyElement.style.fontSize =
       ((historyElement.clientWidth * 0.1) / 3) * 2 + "px";
   }
-  document.getElementById("privacy-iframe-wrap").style.width = document.getElementById("privacyModalBody").clientWidth -40 + "px";
-  document.getElementById("privacy-iframe-wrap").style.height = document.getElementById("privacyModalBody").clientHeight -40 + "px";
+  document.getElementById("privacy-iframe-wrap").style.width =
+    document.getElementById("privacyModalBody").clientWidth - 40 + "px";
+  document.getElementById("privacy-iframe-wrap").style.height =
+    document.getElementById("privacyModalBody").clientHeight - 40 + "px";
 }
 function addSelect() {
   select = []; //ビンゴの数字の候補
@@ -373,7 +375,8 @@ function getHistoryLength() {
   //履歴の数を取得し、HTMLに出力
   document.getElementById("historyLength").innerText = myHistory.length;
 }
-document.getElementById("privacy").addEventListener("shown.bs.modal",()=>{
-  document.getElementById("privacy-iframe").contentWindow.location.href = "https://r-40021.github.io/privacy.html";
+document.getElementById("privacy").addEventListener("shown.bs.modal", () => {
+  document.getElementById("privacy-iframe").contentWindow.location.href =
+    "https://r-40021.github.io/privacy.html";
   resize(); //レイアウト調整処理
 });

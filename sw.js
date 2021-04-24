@@ -10,7 +10,7 @@ var urlsToCache = [
   "./src/css/bootstrap-icons.css",
   "./src/css/fonts/bootstrap-icons.woff?231ce25e89ab5804f9a6c427b8d325c9",
   "./src/css/fonts/bootstrap-icons.woff2?231ce25e89ab5804f9a6c427b8d325c9",
-  "./favicon/site.webmanifest"
+  "./favicon/site.webmanifest",
 ];
 self.addEventListener("install", function (event) {
   // Perform install steps
