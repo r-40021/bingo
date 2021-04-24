@@ -8,6 +8,7 @@ body {
 }
 .info {
   position: relative;
+  top: 10px;
   width: auto;
   height: auto;
   text-align: right;
@@ -24,7 +25,7 @@ body {
   max-width: 100%;
   position: absolute;
   right: 40px;
-  top: 10px;
+  top: 0;
   width: auto;
   height: auto;
   text-align: left;
