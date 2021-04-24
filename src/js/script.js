@@ -12,6 +12,9 @@ window.addEventListener("DOMContentLoaded", function () {
     document.getElementById("loading").classList.add("loaded");
   });
 });
+document.getElementById("privacy").addEventListener("shown.bs.modal",()=>{
+  resize(); //レイアウト調整処理
+});
 window.addEventListener("DOMContentLoaded", function () {
   if (storageAvailable("localStorage")) {
   } else {
@@ -24,8 +27,8 @@ window.addEventListener("DOMContentLoaded", function () {
       elements[i].classList.replace("bi-box-arrow-up", "bi-share");
     }
   }
-  flex();
   resize(); //レイアウト調整処理
+  flex();
   //読み込み
   if (localStorage.getItem("myHistory")) {
     /*履歴読み込み*/
@@ -176,6 +179,7 @@ function resize() {
     historyElement.style.fontSize =
       ((historyElement.clientWidth * 0.1) / 3) * 2 + "px";
   }
+  document.getElementById("privacy-iframe").style.height = document.getElementById("privacy-iframe-wrap").clientHeight + "px";
 }
 function addSelect() {
   select = []; //ビンゴの数字の候補
