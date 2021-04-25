@@ -1,3 +1,4 @@
+/* 全体 */
 html,
 body {
   height: 100vh;
@@ -6,6 +7,35 @@ body {
   padding: 0;
   overflow: hidden;
 }
+/* 選択不可(inputのぞく) */
+* {
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+}
+input {
+  -moz-user-select: auto;
+  -webkit-user-select: auto;
+  -ms-user-select: auto;
+  user-select: auto;
+  -webkit-touch-callout: inherit;
+}
+/* スクロールバー(webkitのみ) */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+::-webkit-scrollbar-track {
+  border-radius: 5px;
+  background-color: rgba(0, 0, 0, 0.021);
+}
+::-webkit-scrollbar-thumb {
+  background-color: #ccc;
+  border-radius: 5px;
+}
+/* 右上 */
 .info {
   position: relative;
   top: 10px;
@@ -50,11 +80,12 @@ body {
     transform: translateX(0);
   }
 }
+/* iPhone対策 */
 input[type="number"] {
   font-size: 16px;
   transform: scale(0.8);
 }
-
+/* カラムを覆う要素 */
 .fixed {
   position: fixed;
   left: 0;
@@ -78,6 +109,7 @@ input[type="number"] {
   margin: 0;
   padding: 0;
 }
+/* body */
 .body {
   flex: 1;
   overflow: auto;
@@ -92,6 +124,10 @@ input[type="number"] {
   display: flex;
   align-items: center;
 }
+.body .container {
+  min-height: 180px;
+}
+/* 数字の周り */
 .number-wrap,
 .history-wrap {
   height: 90%;
@@ -99,6 +135,7 @@ input[type="number"] {
   align-items: center;
   justify-content: center;
 }
+/* 枠線 */
 .number {
   border-radius: 50%;
   border-style: solid;
@@ -113,12 +150,7 @@ input[type="number"] {
     "Hiragino Maru Gothic Pro", "ヒラギノ角ゴ Pro W3",
     "Hiragino Kaku Gothic Pro", "HG丸ｺﾞｼｯｸM-PRO", "HGMaruGothicMPRO", sans-serif;
 }
-.footer {
-  box-shadow: rgba(17, 17, 26, 0.05) 0px -4px 16px,
-    rgba(17, 17, 26, 0.05) 0px -8px 32px;
-  border-radius: 15vh 15vh 0 0;
-  padding: 15px;
-}
+/* カードを覆う */
 .history {
   display: flex;
   justify-content: center;
@@ -126,6 +158,36 @@ input[type="number"] {
   width: 100%;
   height: 100%;
 }
+/* カード */
+.history .card {
+  width: 100%;
+  height: 100%;
+  color: rgb(42, 42, 42);
+}
+.history-inner .card-body {
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.history-inner {
+  width: 80%;
+  height: 80%;
+}
+/* カード内の数字 */
+.history-number {
+  width: 15%;
+  margin: 0 2.5%;
+  display: inline-block;
+  text-align: center;
+  color: rgb(54, 54, 54);
+}
+/* フッター */
+.footer {
+  box-shadow: rgba(17, 17, 26, 0.05) 0px -4px 16px,
+    rgba(17, 17, 26, 0.05) 0px -8px 32px;
+  border-radius: 15vh 15vh 0 0;
+  padding: 15px;
+}
+/* ボタン4つ */
 .footer .buttons {
   display: flex;
   justify-content: center;
@@ -138,82 +200,33 @@ input[type="number"] {
 .buttons button {
   margin: 2px;
 }
+/* レンジ+テキストボックス */
+.bingoMaxInput {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+/* レンジとトラベル*/
 .bingoMax {
   display: inline-block;
   width: 100%;
   height: auto;
   color: rgb(54, 54, 54);
 }
-.bingoMaxInput {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.bingoMaxText {
-  text-align: right;
-}
+/* レンジ */
 .bingoMaxRange {
   flex: 1;
   padding: 10px;
+}
+/* テキストボックス */
+.bingoMaxText {
+  text-align: right;
 }
 #bingoMaxText {
   width: 60px;
   text-align: right;
 }
-.history.card {
-  width: 100%;
-  height: 100%;
-  color: rgb(42, 42, 42);
-}
-.history-inner {
-  width: 80%;
-  height: 80%;
-}
-.history-inner .card-body {
-  overflow: auto;
-  -webkit-overflow-scrolling: touch;
-}
-.body .container {
-  min-height: 180px;
-}
-.history-number {
-  width: 15%;
-  margin: 0 2.5%;
-  display: inline-block;
-  text-align: center;
-  color: rgb(54, 54, 54);
-}
-* {
-  -moz-user-select: none;
-  -webkit-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  -webkit-touch-callout: none;
-}
-input {
-  -moz-user-select: auto;
-  -webkit-user-select: auto;
-  -ms-user-select: auto;
-  user-select: auto;
-  -webkit-touch-callout: inherit;
-}
-::-webkit-scrollbar {
-  width: 5px;
-  height: 5px;
-}
-::-webkit-scrollbar-track {
-  border-radius: 5px;
-  background-color: rgba(0, 0, 0, 0.021);
-}
-::-webkit-scrollbar-thumb {
-  background-color: #ccc;
-  border-radius: 5px;
-}
-.share {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+/* やり直す・元に戻すボタン */
 #undo,
 #startOver {
   display: inline-block;
@@ -230,6 +243,12 @@ input {
   width: auto;
   height: auto;
 }
+/* シェアボタン */
+.share {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .share .btn-group {
   min-width: 60%;
 }
@@ -239,6 +258,7 @@ i {
 .btn i {
   margin: 0;
 }
+/* シェアモーダル */
 .sh-content:not(:last-child) {
   margin-bottom: 70px;
 }
@@ -254,6 +274,7 @@ i {
 .inline:not(:last-child) {
   margin-bottom: 5px;
 }
+/* プライバシーポリシー(埋め込み) */
 .iframe-content {
   overflow: auto;
   -webkit-overflow-scrolling: touch;
@@ -281,7 +302,7 @@ i {
   display: none;
 }
 .loader {
-  color: rgba(102, 102, 102, 0.815);
+  color: rgb(102, 102, 102);
   font-size: 90px;
   text-indent: -9999em;
   overflow: hidden;
@@ -378,13 +399,14 @@ i {
     transform: rotate(360deg);
   }
 }
-
+/* タブレット・スマホの設定 */
 @media screen and (max-width: 992px) {
   .number-wrap,
   .history-wrap {
     height: 50%;
   }
 }
+/* スマホのみに適用 */
 @media screen and (max-width: 576px) {
   .bingoMaxInput {
     display: inline;
