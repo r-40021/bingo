@@ -5,6 +5,8 @@ This is a bingo machine which saves the history and the settings auto automatica
 
 <img src="./favicon/ogp.png" alt="OGP Image" width="40%">
 
+[Open the app](https://r-40021.github.io/bingo/)
+
 # Screenshot
 <img src="https://user-images.githubusercontent.com/75155258/115976733-eb439e80-a5ab-11eb-8133-782b151c9af8.png" alt="screenshot" width="70%">
 
