@@ -123,6 +123,7 @@ input[type="number"] {
 .body .row {
   display: flex;
   align-items: center;
+  margin-left: 0 !important;
 }
 .body .container {
   min-height: 180px;
