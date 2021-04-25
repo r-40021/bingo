@@ -403,7 +403,7 @@ i {
 @media screen and (max-width: 992px) {
   .number-wrap,
   .history-wrap {
-    height: 50%;
+    height: 45%;
   }
 }
 /* スマホのみに適用 */
