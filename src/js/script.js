@@ -200,7 +200,7 @@ function addSelect() {
   ==========*/
   localStorage.setItem("max", max);
   for (let i = 0; i < max; i++) {
-    if (myHistory.indexOf(i + 1) === -1) {
+    if (myHistory.indexOf(i + 1) === -1 && select.indexOf(i + 1) === -1) {
       select.push(i + 1);
     }
   }
