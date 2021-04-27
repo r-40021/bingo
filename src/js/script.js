@@ -380,3 +380,6 @@ document.getElementById("privacy").addEventListener("shown.bs.modal", () => {
   iframeElement.location.href = "https://r-40021.github.io/privacy.html";
   resize(); //レイアウト調整処理
 });
+function openPage(url){
+  window.open(url);
+}

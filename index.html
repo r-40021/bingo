@@ -190,25 +190,24 @@
             <p>このアプリは、皆様の口コミによって支えられています。</p>
             <p>どんどん拡散してください！ご協力よろしくお願いします。</p>
             <div class="list-group">
-              <a class="list-group-item list-group-item-action" onclick="copy()" style="cursor: pointer">
+              <button class="list-group-item list-group-item-action" onclick="copy()" style="cursor: pointer" data-bs-dismiss="modal">
                 <i class="bi bi-link-45deg" id="url-icon"></i><i class="bi bi-check2 text-success"
                   id="checked-icon"></i>URLをコピー
-              </a>
-              <a class="list-group-item list-group-item-action"
-                href="https://twitter.com/intent/tweet?text=自動保存機能付きビンゴマシーン%0a&url=https://r-40021.github.io/bingo&hashtags=やまだBINGO,やまだけんいち"
-                onClick="window.open(encodeURI(decodeURI(this.href)), 'tweetwindow', 'width=650, height=470, personalbar=0, toolbar=0, scrollbars=1, sizable=1'); return false;"
-                rel="nofollow"><i class="bi bi-twitter"></i>ツイート</a>
+              </button>
+              <button class="list-group-item list-group-item-action"
+                onClick="window.open(encodeURI(decodeURI('https://twitter.com/intent/tweet?text=自動保存機能付きビンゴマシーン%0a&url=https://r-40021.github.io/bingo&hashtags=やまだBINGO,やまだけんいち')), 'tweetwindow', 'width=650, height=470, personalbar=0, toolbar=0, scrollbars=1, sizable=1'); return false;"
+                rel="nofollow" data-bs-dismiss="modal"><i class="bi bi-twitter"></i>ツイート</button>
             </div>
           </div>
           <div class="sh-content">
             <p>もしよろしければ、以下のサイトもご覧ください。</p>
             <div class="list-group">
-              <a class="list-group-item list-group-item-action" aria-current="true"
-                href="https://github.com/r-40021/bingo" target="_blank" rel="nofollow">
+              <button class="list-group-item list-group-item-action" aria-current="true"
+                onclick="openPage('https://github.com/r-40021/bingo')" rel="nofollow" data-bs-dismiss="modal">
                 <i class="bi bi-github"></i>ソースコード
-              </a>
-              <a class="list-group-item list-group-item-action" href="https://r-40021.github.io/" target="_blank"
-                rel="nofollow"><i class="bi bi-person"></i>作者HP</a>
+              </button>
+              <button class="list-group-item list-group-item-action" onclick="openPage('https://r-40021.github.io')"
+                rel="nofollow" data-bs-dismiss="modal"><i class="bi bi-person"></i>作者HP</button>
             </div>
           </div>
         </div>
@@ -236,8 +235,8 @@
           </div>
         </div>
         <div class="modal-footer">
-          <a href="https://r-40021.github.io/privacy.html" target="_blank" rel="nofollow"
-            class="btn btn-secondary">新しいタブで開く</a>
+          <button onclick="openPage('https://r-40021.github.io/privacy.html')" data-bs-dismiss="modal"
+            class="btn btn-secondary" rel="nofollow">新しいタブで開く</button>
           <button type="button" class="btn btn-primary" data-bs-dismiss="modal">
             閉じる
           </button>
