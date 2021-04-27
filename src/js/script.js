@@ -183,7 +183,7 @@ function resize() {
       ((historyElement.clientWidth * 0.12) / 3) * 2 + "px";
   } else {
     historyElement.style.fontSize =
-      ((historyElement.clientWidth * 0.1) / 3) * 2 + "px";
+      ((historyElement.clientWidth * 0.09) / 3) * 2 + "px";
   }
   document.getElementById("privacy-iframe-wrap").style.width =
     document.getElementById("privacyModalBody").clientWidth - 40 + "px";
