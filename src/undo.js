@@ -1,3 +1,4 @@
+import {max, myHistory, colorList, old, changeVar, pushList, unshiftList, deleteList} from "./index";
 export function undo() {
     /*Undo処理　ビンゴを1ターン戻す*/
     var numberElements = document.getElementsByClassName("history-number"); //要素を変数に代入

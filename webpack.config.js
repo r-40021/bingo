@@ -1,15 +1,20 @@
 module.exports = {
-    // メインとなるJavaScriptファイル（エントリーポイント）
-    entry: `./src/index.js`,
-  
-    // ファイルの出力設定
-    output: {
-      // 出力ファイル名
-      filename: "main.js"
-    },
-    mode: "development",
-    devServer: {
-      contentBase: "dist",
-      open: true
-    }
-  };
+  // モード値を production に設定すると最適化された状態で、
+  // development に設定するとソースマップ有効でJSファイルが出力される
+  mode: "development",
+  module: {
+    rules: [
+      {
+        // 対象となるファイルの拡張子(cssのみ)
+        test: /\.css$/,
+        // Sassファイルの読み込みとコンパイル
+        use: [
+          // スタイルシートをJSからlinkタグに展開する機能
+          "style-loader",
+          // CSSをバンドルするための機能
+          "css-loader"
+        ],
+      },
+    ],
+  },
+};

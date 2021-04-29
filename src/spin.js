@@ -1,3 +1,5 @@
+import {max, myHistory, select, colorList, old, changeVar, pushList, unshiftList, deleteList} from "./index";
+const bootstrap = require('bootstrap') 
 export function spin() {
     //シャッフル
     if (select.length <= 0) {

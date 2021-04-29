@@ -1,3 +1,8 @@
+import {flex, resize} from "./resize";
+import {removeDisableSet} from "./btnDisabled";
+import {getHistoryLength} from "./history";
+
+import {max, myHistory, select, colorList, old, changeVar, pushList, unshiftList, deleteList} from "./index";
 export function checking() {
     if (storageAvailable("localStorage")) {
     } else {
@@ -17,7 +22,7 @@ export function checking() {
       /*履歴読み込み*/
       if (JSON.parse(localStorage.getItem("myHistory")).length >= 1) {
         var his = localStorage.getItem("myHistory");
-        myHistory = JSON.parse(his);
+        changeVar("myHistory",JSON.parse(his))
         var historyBody = document.getElementById("history-body");
         for (let i = 0; i < myHistory.length; i++) {
           var div = document.createElement("div"); //HTMLに代入　それぞれにdiv要素を作成している
@@ -27,7 +32,7 @@ export function checking() {
         }
         document.getElementById("number-inner").innerHTML =
           myHistory[myHistory.length - 1];
-        old.number.unshift(Number(myHistory[myHistory.length - 1]));
+        unshiftList("old.number",Number(myHistory[myHistory.length - 1]));
         historyBody.scroll(
           0,
           historyBody.scrollHeight - historyBody.clientHeight //履歴表示エリアを一番下までスクロール
@@ -36,23 +41,23 @@ export function checking() {
     }
     if (localStorage.getItem("max")) {
       /*最大値取得*/
-      max = Number(localStorage.getItem("max"));
+      changeVar("max",Number(localStorage.getItem("max")))
       document.getElementById("bingoMax").value = max;
       document.getElementById("bingoMaxText").value = max;
-      old.max.unshift(Number(max));
+      unshiftList("old.max", Number(max));
     }
     if (localStorage.getItem("lastColor")) {
       /*最後の色を取得*/
       document.getElementById("bingoNumber").style.borderColor =
         colorList[Number(localStorage.getItem("lastColor"))];
-      old.color.unshift(Number(localStorage.getItem("lastColor")));
+      unshiftList("old.color", Number(localStorage.getItem("lastColor")));
     }
     addSelect();
     getHistoryLength();
     removeDisableSet(); //フッターを選択可能に
   }
 export function addSelect() {
-    select = []; //ビンゴの数字の候補
+    changeVar("select",[]);
     /*==========
     select(ビンゴの数字の候補を保存するリスト)=max(最大値)までのすべての数-myHistory(履歴)
     for文を用いて、1からmax(設定した最大値)までの数字が履歴に含まれているかを確認。
@@ -62,7 +67,7 @@ export function addSelect() {
     localStorage.setItem("max", max);
     for (let i = 0; i < max; i++) {
       if (myHistory.indexOf(i + 1) === -1 && select.indexOf(i + 1) === -1) {
-        select.push(i + 1);
+        pushList("select", i+1);
       }
     }
   }

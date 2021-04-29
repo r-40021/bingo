@@ -1,3 +1,4 @@
+import {myHistory, select, colorList, old, changeVar, pushList, unshiftList, deleteList} from "./index";
 import {makeDisableSet,removeDisableSet} from "./btnDisabled";
 export function reset() {
     //履歴のリセット処理

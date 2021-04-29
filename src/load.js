@@ -1,3 +1,4 @@
+var loadingTimeout;
 export function loading() {
     loadingTimeout = setTimeout(() => {
       document.getElementById("fixed").classList.add("loaded");
