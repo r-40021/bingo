@@ -51,7 +51,6 @@ input {
   color: #666;
 }
 .detail {
-  display: none;
   z-index: 100;
   max-width: 100%;
   position: absolute;
@@ -64,21 +63,15 @@ input {
   background-color: #fff;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   padding: 10px;
+  opacity: 0;
+  transform: translateX(10px);
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
 }
 .about:hover + .detail {
   display: block;
-  animation: SlideIn 0.3s;
-  -webkit-animation: SlideIn 0.3s;
-}
-@keyframes SlideIn {
-  0% {
-    opacity: 0;
-    transform: translateX(10px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateX(0);
-  }
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
 }
 /* iPhone対策 */
 input[type="number"] {
@@ -304,7 +297,8 @@ i {
   z-index: 99999999999999999999;
 }
 .loader-wrap.loaded {
-  display: none;
+  opacity: 0;
+  transition: opacity 0.5s;
 }
 .loader {
   color: rgb(102, 102, 102);
