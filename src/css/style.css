@@ -65,13 +65,13 @@ input {
   padding: 10px;
   opacity: 0;
   transform: translateX(10px);
-  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+  transition: opacity 0.25s ease-in-out, transform 0.25s ease-in-out;
 }
 .about:hover + .detail {
   display: block;
   opacity: 1;
   transform: translateX(0);
-  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+  transition: opacity 0.25s ease-in-out, transform 0.25s ease-in-out;
 }
 /* iPhone対策 */
 input[type="number"] {
