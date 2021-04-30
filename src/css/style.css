@@ -55,7 +55,7 @@
     filter: invert(1) hue-rotate(180deg);
   }
 }
-*{
+.fixed *,.modal *,.fixed,.modal{
   transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
 }
 html,
@@ -65,6 +65,7 @@ body {
   margin: 0;
   padding: 0;
   overflow: hidden;
+  background-color: var(--bgcolor);
 }
 /* 選択不可(inputのぞく) */
 * {
@@ -111,9 +112,10 @@ input {
   color: var(--textcolor);
 }
 .detail {
-  z-index: 100;
+  z-index: -1;
   max-width: 100%;
   position: absolute;
+  display: block;
   right: 40px;
   top: 0;
   width: auto;
@@ -122,17 +124,18 @@ input {
   font-size: small;
   background-color: var(--bgcolor);
   color:var(--textcolor);
-  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  box-shadow: rgba(149, 157, 165, 0.103) 0px 8px 24px;
   padding: 10px;
   opacity: 0;
   transform: translateX(10px);
-  transition: opacity 0.25s ease-in-out, transform 0.25s ease-in-out;
+  transition: opacity 0.25s ease-in-out, transform 0.25s ease-in-out, z-index 0.25s ease-in-out;
 }
 .about:hover + .detail {
+  z-index: 100;
   display: block;
   opacity: 1;
   transform: translateX(0);
-  transition: opacity 0.25s ease-in-out, transform 0.25s ease-in-out;
+  transition: opacity 0.25s ease-in-out, transform 0.25s ease-in-out, z-index 0.25s ease-in-out;
 }
 /* iPhone対策 */
 input[type="number"] {
