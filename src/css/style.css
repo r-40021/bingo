@@ -60,10 +60,16 @@
     border-right-color: #333;
     border-bottom-color: #333;
   }
-
+} 
 .fixed *,.modal *,.fixed,.modal{
-  transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
+  transition: background-color 1s ease-in-out;
 }
+.btn{
+  transition: background-color .5s, color .5s;
+
+}
+.fade{
+  transition: opacity .15s linear;
 }
 html,
 body {
@@ -73,6 +79,7 @@ body {
   padding: 0;
   overflow: hidden;
   background-color: var(--bgcolor);
+  font-family: "Helvetica Neue", Helvetica, Arial, 'Noto Sans JP',"游ゴシック体", "Yu Gothic", YuGothic, "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
 }
 /* 選択不可(inputのぞく) */
 * {
