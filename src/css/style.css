@@ -20,8 +20,8 @@ body {
   padding: 0;
   overflow: hidden;
   background-color: var(--bgcolor);
-  font-family: "Helvetica Neue", Helvetica, Arial, "Noto Sans JP",
-    "游ゴシック体", "Yu Gothic", YuGothic, "Hiragino Kaku Gothic ProN", Meiryo,
+  font-family: "Helvetica Neue", Helvetica, Arial, 
+    "游ゴシック体", "Yu Gothic", YuGothic, "Hiragino Kaku Gothic ProN", Meiryo,"Noto Sans JP",
     sans-serif;
 }
 /* 選択不可(inputのぞく) */
