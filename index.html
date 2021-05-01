@@ -25,10 +25,10 @@
     <meta property="og:site_name" content="やまだBINGO" />
     <meta property="og:image" content="https://r-40021.github.io/bingo/favicon/ogp.png" />
     <link rel="stylesheet" type="text/css" href="./src/css/bootstrap.min.css" />
-    <link rel="stylesheet" type="text/css" href="./src/css/style.css" />
+    <link rel="stylesheet" type="text/css" href="./src/css/style.min.css" />
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Kosugi+Maru&display=swap" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="./src/css/bootstrap-icons.css" />
+    <link rel="stylesheet" type="text/css" href="./src/css/bootstrap-icons.min.css" />
     <meta content="履歴や設定を自動で保存する機能を搭載した、ビンゴマシーン。インストール不要です！" name="description" />
 </head>
 
@@ -91,7 +91,7 @@
                         <div class="col-sm-2 col-4 share">
                             <div class="btn-group btn-group-sm">
                                 <button class="btn btn-outline-primary nomargin" data-bs-toggle="modal" data-bs-target="#theme"
-                                    aria-label="テーマ切り替え" title="テーマ切り替え"><i class="bi bi-brightness-high nomargin" id="themeBtn"></i></button>
+                                    aria-label="テーマ切り替え" title="テーマ切り替え"><i class="bi bi-sun nomargin" id="themeBtn"></i></button>
                                 <button class="btn btn-outline-primary" aria-label="共有"
                                     data-bs-toggle="modal" data-bs-target="#share" title="共有"><i
                                         class="bi bi-box-arrow-up shareIcon nomargin"></i></button><button
@@ -191,7 +191,7 @@
         <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel"><i class="bi bi-brightness-high"></i>テーマ切り替え</h5>
+                    <h5 class="modal-title" id="exampleModalLabel"><i class="bi bi-sun"></i>テーマ切り替え</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -201,7 +201,7 @@
                         <div class="list-group"><button class="list-group-item list-group-item-action active" id="auto" onclick="toggleTheme('a')"
                                 style="cursor: pointer"><i class="bi bi-gear-wide-connected"></i>端末の設定に従う
                             </button><button class="list-group-item list-group-item-action" id="light"
-                                onclick="toggleTheme('l')"><i class="bi bi-brightness-high"></i>ライトモード</button>
+                                onclick="toggleTheme('l')"><i class="bi bi-sun"></i>ライトモード</button>
                         <button class="list-group-item list-group-item-action" id="dark"
                                 onclick="toggleTheme('d')"><i class="bi bi-moon"></i>ダークモード</button></div>
                     </div>
@@ -210,7 +210,7 @@
         </div>
     </div>
     <script src="./src/js/bootstrap.min.js"></script>
-    <script src="./src/js/script.js"></script>
+    <script src="./src/js/script.min.js"></script>
 </body>
 
 </html>

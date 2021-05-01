@@ -416,13 +416,13 @@ function toggleTheme(mql) {
   if (themeStatus) {
     if (mql === "d") {
       document.body.classList.add("dark");
-      document.getElementById("themeBtn").classList.replace("bi-brightness-high","bi-moon-fill");
+      document.getElementById("themeBtn").classList.replace("bi-sun","bi-moon-fill");
       noActive();
       dark.classList.add("active");
       localStorage.setItem("theme","dark");
     } else if (mql === "l") {
       document.body.classList.remove("dark");
-      document.getElementById("themeBtn").classList.replace("bi-moon-fill","bi-brightness-high");
+      document.getElementById("themeBtn").classList.replace("bi-moon-fill","bi-sun");
       noActive();
       light.classList.add("active");
       localStorage.setItem("theme","light");
@@ -430,12 +430,12 @@ function toggleTheme(mql) {
       if (isDark.matches) {
         /* ダークテーマの時 */
         document.body.classList.add("dark");
-        document.getElementById("themeBtn").classList.replace("bi-brightness-high","bi-moon-fill");
+        document.getElementById("themeBtn").classList.replace("bi-sun","bi-moon-fill");
         localStorage.setItem("theme","auto");
       } else {
         /* ライトテーマの時 */
         document.body.classList.remove("dark");
-        document.getElementById("themeBtn").classList.replace("bi-moon-fill","bi-brightness-high");
+        document.getElementById("themeBtn").classList.replace("bi-moon-fill","bi-sun");
         localStorage.setItem("theme","auto");
       }
       noActive();
@@ -445,7 +445,7 @@ function toggleTheme(mql) {
     if ((isDark.matches || mql === "d") && mql !== "l") {
       /* ダークテーマの時 */
       document.body.classList.add("dark");
-      document.getElementById("themeBtn").classList.replace("bi-brightness-high","bi-moon-fill");
+      document.getElementById("themeBtn").classList.replace("bi-sun","bi-moon-fill");
       if (mql === "d") {
         noActive();
         dark.classList.add("active");
@@ -456,6 +456,7 @@ function toggleTheme(mql) {
     } else {
       /* ライトテーマの時 */
       document.body.classList.remove("dark");
+      document.getElementById("themeBtn").classList.replace("bi-moon-fill","bi-sun");
       if (mql === "l") {
         noActive();
         light.classList.add("active");
