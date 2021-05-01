@@ -25,7 +25,7 @@
     <meta property="og:site_name" content="やまだBINGO" />
     <meta property="og:image" content="https://r-40021.github.io/bingo/favicon/ogp.png" />
     <link rel="stylesheet" type="text/css" href="./src/css/bootstrap.min.css" />
-    <link rel="stylesheet" type="text/css" href="./src/css/style.min.css" />
+    <link rel="stylesheet" type="text/css" href="./src/css/style.css" />
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Kosugi+Maru&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="./src/css/bootstrap-icons.css" />
@@ -89,11 +89,14 @@
                             </div>
                         </div>
                         <div class="col-sm-2 col-4 share">
-                            <div class="btn-group btn-group-sm"><a class="btn btn-outline-primary" aria-label="共有"
+                            <div class="btn-group btn-group-sm">
+                                <button class="btn btn-outline-primary nomargin" data-bs-toggle="modal" data-bs-target="#theme"
+                                    aria-label="テーマ切り替え" title="テーマ切り替え"><i class="bi bi-brightness-high nomargin" id="themeBtn"></i></button>
+                                <button class="btn btn-outline-primary" aria-label="共有"
                                     data-bs-toggle="modal" data-bs-target="#share" title="共有"><i
-                                        class="bi bi-box-arrow-up shareIcon nomargin"></i></a><a
+                                        class="bi bi-box-arrow-up shareIcon nomargin"></i></button><button
                                     class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#privacy"
-                                    aria-label="プライバシーポリシー" title="プライバシーポリシー"><i class="bi bi-lock nomargin"></i></a>
+                                    aria-label="プライバシーポリシー" title="プライバシーポリシー"><i class="bi bi-lock nomargin"></i></button>
                             </div>
                         </div>
                     </div>
@@ -184,8 +187,30 @@
             </div>
         </div>
     </div>
+     <div class="modal fade" id="theme" tabindex="-1" aria-labelledby="share" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel"><i class="bi bi-brightness-high"></i>テーマ切り替え</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="sh-content">
+                        <p>アプリのテーマを切り替えることができます。</p>
+                        <p>定番のライトモードを選ぶか、最近話題のダークモードを選ぶかはあなた次第！</p>
+                        <div class="list-group"><button class="list-group-item list-group-item-action active" id="auto" onclick="toggleTheme('a')"
+                                style="cursor: pointer"><i class="bi bi-gear-wide-connected"></i>端末の設定に従う
+                            </button><button class="list-group-item list-group-item-action" id="light"
+                                onclick="toggleTheme('l')"><i class="bi bi-brightness-high"></i>ライトモード</button>
+                        <button class="list-group-item list-group-item-action" id="dark"
+                                onclick="toggleTheme('d')"><i class="bi bi-moon"></i>ダークモード</button></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <script src="./src/js/bootstrap.min.js"></script>
-    <script src="./src/js/script.min.js"></script>
+    <script src="./src/js/script.js"></script>
 </body>
 
 </html>

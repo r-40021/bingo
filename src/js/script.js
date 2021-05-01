@@ -7,21 +7,25 @@ var old = new Object(); //Undoボタン用のオブジェクト
 old.max = []; //過去の最大値を記録（キャッシュしない）
 old.number = []; //過去に出た数字を記録（キャッシュしない）
 old.color = []; //過去の枠線色を記録（キャッシュしない）
+let anime;
+let themeStatus;
+/*Dark Theme*/
+const isDark = window.matchMedia("(prefers-color-scheme: dark)");
 var loadingTimeout;
-window.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", function () {
   loadingTimeout = setTimeout(() => {
     document.getElementById("fixed").classList.add("loaded");
     document.getElementById("loading").classList.add("loaded");
   }, 10000);
 });
-window.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", function () {
   window.addEventListener("load", () => {
     clearTimeout(loadingTimeout);
     document.getElementById("fixed").classList.add("loaded");
     document.getElementById("loading").classList.add("loaded");
   });
 });
-window.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", function () {
   if (storageAvailable("localStorage")) {
   } else {
     alert("お使いの環境では、保存機能はご利用になれません。"); //Localstorageが利用不可のとき
@@ -36,6 +40,15 @@ window.addEventListener("DOMContentLoaded", function () {
   flex();
   resize(); //レイアウト調整処理
   //読み込み
+  if (localStorage.getItem("theme")==="dark") {
+    toggleTheme("d");
+  } else if (localStorage.getItem("theme")==="light") {
+    toggleTheme("l");
+  } else if (localStorage.getItem("theme")==="auto") {
+    toggleTheme("a");
+  } else {
+    toggleTheme(isDark);
+  }
   if (localStorage.getItem("myHistory")) {
     /*履歴読み込み*/
     if (JSON.parse(localStorage.getItem("myHistory")).length >= 1) {
@@ -78,7 +91,7 @@ window.addEventListener("resize", function () {
   flex();
   resize(); //レイアウト調整
 });
-window.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", function () {
   //レンジとテキストボックスを連動
   var range = document.getElementById("bingoMax");
   var rangeText = document.getElementById("bingoMaxText");
@@ -108,6 +121,17 @@ window.addEventListener("DOMContentLoaded", function () {
     addSelect(); //ビンゴの候補のリストを更新
   });
 });
+try {
+  // Chrome & Firefox
+  isDark.addEventListener("change", toggleTheme);
+} catch (e1) {
+  try {
+    // Safari
+    isDark.addListener(toggleTheme);
+  } catch (e2) {
+    console.error(e2);
+  }
+}
 function spin() {
   //シャッフル
   if (select.length <= 0) {
@@ -380,6 +404,79 @@ document.getElementById("privacy").addEventListener("shown.bs.modal", () => {
   iframeElement.location.href = "https://r-40021.github.io/privacy.html";
   resize(); //レイアウト調整処理
 });
-function openPage(url){
+function openPage(url) {
   window.open(url);
+}
+function toggleTheme(mql) {
+  clearInterval(anime);
+  document.body.classList.add("anime");
+  let auto = document.getElementById("auto");
+  let light = document.getElementById("light");
+  let dark = document.getElementById("dark");
+  if (themeStatus) {
+    if (mql === "d") {
+      document.body.classList.add("dark");
+      document.getElementById("themeBtn").classList.replace("bi-brightness-high","bi-moon-fill");
+      noActive();
+      dark.classList.add("active");
+      localStorage.setItem("theme","dark");
+    } else if (mql === "l") {
+      document.body.classList.remove("dark");
+      document.getElementById("themeBtn").classList.replace("bi-moon-fill","bi-brightness-high");
+      noActive();
+      light.classList.add("active");
+      localStorage.setItem("theme","light");
+    } else if (mql === "a") {
+      if (isDark.matches) {
+        /* ダークテーマの時 */
+        document.body.classList.add("dark");
+        document.getElementById("themeBtn").classList.replace("bi-brightness-high","bi-moon-fill");
+        localStorage.setItem("theme","auto");
+      } else {
+        /* ライトテーマの時 */
+        document.body.classList.remove("dark");
+        document.getElementById("themeBtn").classList.replace("bi-moon-fill","bi-brightness-high");
+        localStorage.setItem("theme","auto");
+      }
+      noActive();
+      auto.classList.add("active");
+    }
+  } else {
+    if ((isDark.matches || mql === "d") && mql !== "l") {
+      /* ダークテーマの時 */
+      document.body.classList.add("dark");
+      document.getElementById("themeBtn").classList.replace("bi-brightness-high","bi-moon-fill");
+      if (mql === "d") {
+        noActive();
+        dark.classList.add("active");
+        localStorage.setItem("theme","dark");
+      } else {
+        localStorage.setItem("theme","auto");
+      }
+    } else {
+      /* ライトテーマの時 */
+      document.body.classList.remove("dark");
+      if (mql === "l") {
+        noActive();
+        light.classList.add("active");
+        localStorage.setItem("theme","light");
+      } else {
+        localStorage.setItem("theme","auto");
+      }
+    }
+  }
+  if (mql === "d" || mql === "l") {
+    themeStatus = 1;
+  } else if (mql === "a") {
+    themeStatus = 0;
+  }
+  anime = setInterval(() => {
+    document.body.classList.remove("anime");
+  }, 1000);
+}
+function noActive() {
+  let list = document.querySelectorAll("#theme .list-group-item");
+  list.forEach(function (element) {
+    element.classList.remove("active");
+  });
 }
