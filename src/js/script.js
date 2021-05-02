@@ -464,10 +464,10 @@ function toggleTheme(mql) {
       auto.classList.add("active"); //選択中のボタンを目立たせる
       localStorage.setItem("theme", "auto"); //Local Storageに保存
     }
-    anime = setInterval(() => {
-      document.body.classList.remove("anime"); //1秒後、bodyのトランジョンを解除
-    }, 1000);
   }
+  anime = setInterval(() => {
+    document.body.classList.remove("anime"); //1秒後、bodyのトランジョンを解除
+  }, 1000);
 }
 function noActive() {
   //すべてのボタンを非アクティブにする
