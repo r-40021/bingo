@@ -24,8 +24,7 @@
     <meta property="og:description" content="自動保存機能を搭載した、オンラインビンゴマシーン" />
     <meta property="og:site_name" content="やまだBINGO" />
     <meta property="og:image" content="https://r-40021.github.io/bingo/favicon/ogp.png" />
-    <link rel="stylesheet" type="text/css" href="./src/css/bootstrap.min.css" />
-    <link rel="stylesheet" type="text/css" href="./src/css/style.min.css" />
+    <link rel="stylesheet" type="text/css" href="./dist/style.min.css" />
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Kosugi+Maru&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="./src/css/bootstrap-icons.min.css" />
@@ -66,14 +65,14 @@
                         <div class="col-sm-4 buttons">
                             <div class="button">
                                 <div class="inline"><button type="button" class="btn btn-primary" id="spin"
-                                        onclick="spin()" disabled> Spin </button><button type="button"
-                                        class="btn btn-outline-danger" id="reset" onclick="resetAsk();" disabled> Reset
+                                        onclick="window.glSpin()" disabled> Spin </button><button type="button"
+                                        class="btn btn-outline-danger" id="reset" onclick="window.glResetAsk();" disabled> Reset
                                     </button></div>
                                 <div class="inline undoButton"><button type="button"
-                                        class="btn btn-outline-secondary btn-sm" onclick="undo()" aria-label="やり直す"
+                                        class="btn btn-outline-secondary btn-sm" onclick="window.glUndo()" aria-label="やり直す"
                                         title="やり直す" id="undo"><i class="bi bi-arrow-return-left"></i>やり直す
                                     </button><button type="button" class="btn btn-outline-secondary btn-sm"
-                                        onclick="startOver()" aria-label="元に戻す" title="元に戻す" id="startOver"> 元に戻す<i
+                                        onclick="window.glRedo()" aria-label="元に戻す" title="元に戻す" id="startOver"> 元に戻す<i
                                             class="bi bi-arrow-return-right"></i></button></div>
                             </div>
                         </div>
@@ -116,7 +115,7 @@
                 </div>
                 <div class="modal-body">履歴をリセットしてやりなおしますか？</div>
                 <div class="modal-footer"><button type="button" class="btn btn-secondary" data-bs-dismiss="modal"> キャンセル
-                    </button><button type="button" class="btn btn-primary" onclick="reset()" data-bs-dismiss="modal">
+                    </button><button type="button" class="btn btn-primary" onclick="window.glReset()" data-bs-dismiss="modal">
                         やりなおす </button></div>
             </div>
         </div>
@@ -134,7 +133,7 @@
                     <p>この操作は元に戻せません。</p>
                 </div>
                 <div class="modal-footer"><button type="button" class="btn btn-secondary" data-bs-dismiss="modal"> キャンセル
-                    </button><button type="button" class="btn btn-danger" onclick="reset()" data-bs-dismiss="modal">
+                    </button><button type="button" class="btn btn-danger" onclick="window.glReset()" data-bs-dismiss="modal">
                         リセット </button></div>
             </div>
         </div>
@@ -150,7 +149,7 @@
                     <div class="sh-content">
                         <p>このアプリは、皆様の口コミによって支えられています。</p>
                         <p>どんどん拡散してください！ご協力よろしくお願いします。</p>
-                        <div class="list-group"><button class="list-group-item list-group-item-action" onclick="copy()"
+                        <div class="list-group"><button class="list-group-item list-group-item-action" onclick="window.glCopy()"
                                 style="cursor: pointer" data-bs-dismiss="modal"><i class="bi bi-link-45deg"
                                     id="url-icon"></i><i class="bi bi-check2 text-success" id="checked-icon"></i>URLをコピー
                             </button><button class="list-group-item list-group-item-action"
@@ -202,20 +201,19 @@
                         <p>アプリのテーマを切り替えることができます。</p>
                         <p>定番のライトモードを選ぶか、最近話題のダークモードを選ぶかはあなた次第！</p>
                         <div class="list-group"><button class="list-group-item list-group-item-action active" id="auto"
-                                onclick="toggleTheme('a')" style="cursor: pointer"><i
+                                onclick="window.glTheme('a')" style="cursor: pointer"><i
                                     class="bi bi-gear-wide-connected"></i>システムの設定に従う
                             </button><button class="list-group-item list-group-item-action" id="light"
-                                onclick="toggleTheme('l')"><i class="bi bi-sun"></i>ライトモード</button>
+                                onclick="window.glTheme('l')"><i class="bi bi-sun"></i>ライトモード</button>
                             <button class="list-group-item list-group-item-action" id="dark"
-                                onclick="toggleTheme('d')"><i class="bi bi-moon"></i>ダークモード</button>
+                                onclick="window.glTheme('d')"><i class="bi bi-moon"></i>ダークモード</button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <script src="./src/js/bootstrap.min.js"></script>
-    <script src="./src/js/script.min.js"></script>
+    <script src="./dist/main.js"></script>
 </body>
 
 </html>

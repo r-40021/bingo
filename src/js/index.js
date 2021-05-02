@@ -1,3 +1,15 @@
+/*Bootstrap*/
+//import '../../node_modules/bootstrap/js/dist/alert';
+import "../../node_modules/bootstrap/js/dist/button";
+//import '../../node_modules/bootstrap/js/dist/carousel';
+//import '../../node_modules/bootstrap/js/dist/collapse';
+//import '../../node_modules/bootstrap/js/dist/dropdown';
+import Modal from "../../node_modules/bootstrap/js/dist/modal";
+//import '../../node_modules/bootstrap/js/dist/popover';
+//import '../../node_modules/bootstrap/js/dist/scrollspy';
+//import '../../node_modules/bootstrap/js/dist/tab';
+//import '../../node_modules/bootstrap/js/dist/toast';
+//import '../../node_modules/bootstrap/js/dist/tooltip';
 /*変数の定義*/
 var max = 75; //最大値
 var myHistory = []; //履歴
@@ -124,19 +136,7 @@ document.addEventListener("DOMContentLoaded", function () {
     addSelect(); //ビンゴの候補のリストを更新
   });
 });
-try {
-  //システムのテーマが変更されたときに発動
-  // Chrome & Firefox
-  isDark.addEventListener("change", toggleTheme);
-} catch (e1) {
-  try {
-    // Safari
-    isDark.addListener(toggleTheme);
-  } catch (e2) {
-    console.error(e2);
-  }
-}
-function spin() {
+const spin = () => {
   //シャッフル
   if (select.length <= 0) {
     var endModal = new bootstrap.Modal(document.getElementById("end-modal"));
@@ -191,7 +191,7 @@ function spin() {
       }
     }, 300);
   }
-}
+};
 function resize() {
   //レイアウトの調整
   var numberElement = document.getElementById("bingoNumber");
@@ -256,11 +256,11 @@ function removeDisableSet() {
   removeDisable("bingoMaxText");
   document.getElementById("spin").focus();
 }
-function resetAsk() {
+const resetAsk = () => {
   //履歴をリセットしてもいいか、尋ねる
-  new bootstrap.Modal(document.getElementById("reset-modal")).show();
-}
-function reset() {
+  new Modal(document.getElementById("reset-modal")).show();
+};
+const reset = () => {
   //履歴のリセット処理
   document.getElementById("undo").style.visibility = "hidden";
   document.getElementById("startOver").style.visibility = "hidden"; //Undo機能を無効化
@@ -281,7 +281,7 @@ function reset() {
   addSelect(); //ビンゴの数字候補を更新
   getHistoryLength(); //履歴の数を取得し、HTMLに出力
   removeDisableSet(); //フッターを選択可能にする
-}
+};
 function storageAvailable(type) {
   //localStorageが利用可能かチェック(引用:https://developer.mozilla.org/ja/docs/Web/API/Web_Storage_API/Using_the_Web_Storage_API#testing_for_availability)
   var storage;
@@ -316,7 +316,7 @@ function flex() {
   document.body.style.height = height + "px";
 }
 var checkedTimeout;
-function copy() {
+const copy = () => {
   /*URLコピー*/
   clearTimeout(checkedTimeout);
   var url = location.href;
@@ -328,7 +328,7 @@ function copy() {
     document.getElementById("checked-icon").style.display = "none";
     document.getElementById("url-icon").style.display = "inline";
   }, 10000);
-}
+};
 if ("serviceWorker" in navigator) {
   /*Service Worker登録
   (引用:https://developers.google.com/web/fundamentals/primers/service-workers)*/
@@ -348,7 +348,7 @@ if ("serviceWorker" in navigator) {
     );
   });
 }
-function undo() {
+const undo = () => {
   /*Undo処理　ビンゴを1ターン戻す*/
   var numberElements = document.getElementsByClassName("history-number"); //要素を変数に代入
   var removeNumber = numberElements[numberElements.length - 1]; //消去する数をセット
@@ -371,8 +371,8 @@ function undo() {
   document.getElementById("startOver").style.visibility = "visible"; //ボタン切り替え
   getHistoryLength(); //履歴の数を取得し、HTMLに出力
   document.getElementById("spin").focus(); //Spinボタンにフォーカス
-}
-function startOver() {
+};
+const startOver = () => {
   var historyBody = document.getElementById("history-body"); //要素を変数にセット
   /*もともとの数をHTMLに出力*/
   var div = document.createElement("div");
@@ -398,7 +398,7 @@ function startOver() {
   document.getElementById("startOver").style.visibility = "hidden"; //ボタン切り替え
   getHistoryLength(); //履歴の数を取得し、HTMLに出力
   document.getElementById("spin").focus(); //Spinボタンにフォーカス
-}
+};
 function getHistoryLength() {
   //履歴の数を取得し、HTMLに出力
   document.getElementById("historyLength").innerText = myHistory.length;
@@ -408,7 +408,7 @@ document.getElementById("privacy").addEventListener("shown.bs.modal", () => {
   iframeElement.location.href = "https://r-40021.github.io/privacy.html";
   resize(); //レイアウト調整処理
 });
-function toggleTheme(mql) {
+const toggleTheme = (mql) => {
   clearInterval(anime); //1秒後にbodyのトランジョン解除のタイマーを解除
   document.body.classList.add("anime"); //bodyのトランジョンを有効化
   let auto = document.getElementById("auto"); //「システムに従う」ボタン
@@ -495,11 +495,31 @@ function toggleTheme(mql) {
       }
     }
   }
-}
+};
 function noActive() {
   //すべてのボタンを非アクティブにする
   let list = document.querySelectorAll("#theme .list-group-item");
   list.forEach(function (element) {
     element.classList.remove("active");
   });
+}
+/*Global Functions*/
+window.glSpin = spin;
+window.glResetAsk = resetAsk;
+window.glReset = reset;
+window.glCopy = copy;
+window.glUndo = undo;
+window.glRedo = startOver;
+window.glTheme = toggleTheme;
+try {
+  //システムのテーマが変更されたときに発動
+  // Chrome & Firefox
+  isDark.addEventListener("change", toggleTheme);
+} catch (e1) {
+  try {
+    // Safari
+    isDark.addListener(toggleTheme);
+  } catch (e2) {
+    console.error(e2);
+  }
 }

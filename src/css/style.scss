@@ -1,3 +1,13 @@
+$theme-colors: (
+  "primary":#0080c9,
+  "secondary": #9193a0,
+  "success": #00984b,
+  "info": #44aeea,
+  "warning": #f2cf01,
+  "danger": #c50030,
+  "light": #f8f9fa,
+  "dark": #261e1c,
+);
 /* 全体 */
 :root {
   --bgcolor: #fff;
@@ -24,9 +34,9 @@ body {
   padding: 0;
   overflow: hidden;
   background-color: var(--bgcolor);
-  font-family: "Helvetica Neue", Helvetica, Arial, 
-    "Hiragino Kaku Gothic ProN", "游ゴシック体 Medium",
-    "游ゴシック Medium", "Yu Gothic Medium", YuGothic Medium, Meiryo, "Noto Sans JP", sans-serif;
+  font-family: "Helvetica Neue", Helvetica, Arial, "Hiragino Kaku Gothic ProN",
+    "游ゴシック体 Medium", "游ゴシック Medium", "Yu Gothic Medium",
+    YuGothic Medium, Meiryo, "Noto Sans JP", sans-serif;
 }
 h1,
 h2,
@@ -528,3 +538,5 @@ body.dark .modal-content {
   border-right-color: #333;
   border-bottom-color: #333;
 }
+//bootstrap
+@import "../../node_modules/bootstrap/scss/bootstrap";
