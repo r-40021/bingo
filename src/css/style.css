@@ -24,9 +24,9 @@ body {
   padding: 0;
   overflow: hidden;
   background-color: var(--bgcolor);
-  font-family: "Helvetica Neue", Helvetica, Arial, "游ゴシック体 Medium",
-    "游ゴシック Medium", "Yu Gothic Medium", YuGothic Medium,
-    "Hiragino Kaku Gothic ProN", Meiryo, "Noto Sans JP", sans-serif;
+  font-family: "Helvetica Neue", Helvetica, Arial, 
+    "Hiragino Kaku Gothic ProN", "游ゴシック体 Medium",
+    "游ゴシック Medium", "Yu Gothic Medium", YuGothic Medium, Meiryo, "Noto Sans JP", sans-serif;
 }
 h1,
 h2,
