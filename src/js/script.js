@@ -417,57 +417,87 @@ function toggleTheme(mql) {
   let auto = document.getElementById("auto"); //「システムに従う」ボタン
   let light = document.getElementById("light"); //「ライトモード」ボタン
   let dark = document.getElementById("dark"); //「ダークモード」ボタン
-  if (mql === "d" || mql === "l") {
-    themeStatus = 1; //手動でダークorライト
-  } else {
-    themeStatus = 0; //システムに従うを選択時
-  }
   if (themeStatus) {
-    // ユーザーがボタンを押した
+    // ユーザーがボタンを押した(2回目以降)
     if (mql === "d") {
       // 「ダークモード」選択時
       document.body.classList.add("dark"); //ダークモードにする
-      document
-        .getElementById("themeBtn")
-        .classList.replace("bi-sun", "bi-moon-fill"); //フッターのアイコンを変更
+      changeIcon("dark"); //フッターのアイコンを変更
       noActive();
       dark.classList.add("active"); //選択中のボタンを目立たせる
       localStorage.setItem("theme", "dark"); //Local Storageに保存
     } else if (mql === "l") {
       // 「ライトモード」選択時
       document.body.classList.remove("dark"); //ダークモード解除
-      document
-        .getElementById("themeBtn")
-        .classList.replace("bi-moon-fill", "bi-sun"); //フッターのアイコンを変更
+      changeIcon("light"); //フッターのアイコンを変更
       noActive();
       light.classList.add("active"); //選択中のボタンを目立たせる
       localStorage.setItem("theme", "light"); //Local Storageに保存
-    }
-  } else {
-    // 「システムに任せる」選択時
-    if (isDark.matches) {
-      /* ダークテーマの時 */
-      document.body.classList.add("dark"); //ダークモードにする
-      document
-        .getElementById("themeBtn")
-        .classList.replace("bi-sun", "bi-moon-fill"); //フッターのアイコンを変更
+    } else if (mql === "a") {
+      // 「システムに任せる」選択時
+      if (isDark.matches) {
+        /* ダークテーマの時 */
+        document.body.classList.add("dark"); //ダークモードにする
+        changeIcon("dark"); //フッターのアイコンを変更
+        localStorage.setItem("theme", "auto"); //Local Storageに保存
+      } else {
+        /* ライトテーマの時 */
+        document.body.classList.remove("dark");
+        changeIcon("light");
+        localStorage.setItem("theme", "auto"); //Local Storageに保存
+      }
       noActive();
       auto.classList.add("active"); //選択中のボタンを目立たせる
-      localStorage.setItem("theme", "auto"); //Local Storageに保存
+    }
+  } else {
+    /*現時点でオート設定の時*/
+    if ((isDark.matches || mql === "d") && mql !== "l") {
+      /* ダークテーマの時 */
+      document.body.classList.add("dark"); //ダークモードにする
+      changeIcon("dark"); //フッターのアイコンを変更
+      if (mql === "d") {
+        noActive();
+        dark.classList.add("active"); //選択中のボタンを目立たせる
+        localStorage.setItem("theme", "dark"); //Local Storageに保存
+      } else {
+        localStorage.setItem("theme", "auto"); //Local Storageに保存
+      }
     } else {
       /* ライトテーマの時 */
       document.body.classList.remove("dark"); //ダークモード解除
-      document
-        .getElementById("themeBtn")
-        .classList.replace("bi-moon-fill", "bi-sun"); //フッターのアイコンを変更
-      noActive();
-      auto.classList.add("active"); //選択中のボタンを目立たせる
-      localStorage.setItem("theme", "auto"); //Local Storageに保存
+      changeIcon("light"); //フッターのアイコンを変更
+      if (mql === "l") {
+        noActive();
+        light.classList.add("active"); //選択中のボタンを目立たせる
+        localStorage.setItem("theme", "light"); //Local Storageに保存
+      } else {
+        localStorage.setItem("theme", "auto"); //Local Storageに保存
+      }
     }
   }
+  if (mql === "d" || mql === "l") {
+    themeStatus = 1; //手動でダークorライト
+  } else if (mql === "a") {
+    themeStatus = 0; //システムに従うを選択時
+  }
   anime = setInterval(() => {
-    document.body.classList.remove("anime"); //1秒後、bodyのトランジョンを解除
-  }, 1000);
+    document.body.classList.remove("anime");
+  }, 1000); //1秒後、bodyのトランジョンを解除
+  function changeIcon(type) {
+    let elementsList = document.getElementsByClassName("themeIcon");
+    let classList = ["bi-sun", "bi-moon-fill"];
+    if (type === "dark") {
+      for (let i = 0; i < elementsList.length; i++) {
+        const element = elementsList[i];
+        element.classList.replace(classList[0], classList[1]);
+      }
+    } else {
+      for (let i = 0; i < elementsList.length; i++) {
+        const element = elementsList[i];
+        element.classList.replace(classList[1], classList[0]);
+      }
+    }
+  }
 }
 function noActive() {
   //すべてのボタンを非アクティブにする

@@ -7,7 +7,6 @@
 body.anime .fixed *,
 body.anime .modal *,
 body.anime .fixed,
-body.anime .modal,
 body.anime {
   transition: background-color 0.4s ease-in-out;
 }
