@@ -1,10 +1,15 @@
 /* 全体 */
+:root {
+  --bgcolor: #fff;
+  --textcolor: #000;
+  --graytext: rgb(54, 54, 54);
+}
 body.anime .fixed *,
 body.anime .modal *,
 body.anime .fixed,
 body.anime .modal,
 body.anime {
-  transition: background-color .4s ease-in-out;
+  transition: background-color 0.4s ease-in-out;
 }
 body.anime .btn {
   transition: background-color 0.2s, color 0.2s;
@@ -20,9 +25,17 @@ body {
   padding: 0;
   overflow: hidden;
   background-color: var(--bgcolor);
-  font-family: "Helvetica Neue", Helvetica, Arial, 
-    "游ゴシック体", "Yu Gothic", YuGothic, "Hiragino Kaku Gothic ProN", Meiryo,"Noto Sans JP",
-    sans-serif;
+  font-family: "Helvetica Neue", Helvetica, Arial, "游ゴシック体 Medium",
+    "游ゴシック Medium", "Yu Gothic Medium", YuGothic Medium,
+    "Hiragino Kaku Gothic ProN", Meiryo, "Noto Sans JP", sans-serif;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: bold;
 }
 /* 選択不可(inputのぞく) */
 * {
@@ -183,6 +196,10 @@ input[type="number"] {
   height: 100%;
   color: var(--graytext);
 }
+.card-header {
+  background-color: rgba(0, 0, 0, 0.03);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+}
 .history-inner .card-body {
   overflow: auto;
   -webkit-overflow-scrolling: touch;
@@ -207,6 +224,7 @@ input[type="number"] {
     rgba(17, 17, 26, 0.05) 0px -8px 32px;
   border-radius: 15vh 15vh 0 0;
   padding: 15px;
+  background-color: #f8f9fa;
 }
 /* ボタン4つ */
 .footer .buttons {
@@ -472,12 +490,13 @@ body.dark .footer {
   background-color: rgb(43, 43, 43);
 }
 body.dark .modal-header,
-.modal-footer,
-.modal-body,
-.modal-body,
-.list-group button {
+body.dark .modal-footer,
+body.dark .modal-body,
+body.dark .modal-body,
+body.dark .list-group button:not(.active) {
   background-color: var(--bgcolor);
   color: var(--textcolor);
+  border-color: rgb(97, 97, 97);
 }
 body.dark .list-group-item-action:not(.active):hover {
   background-color: #454546;

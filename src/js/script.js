@@ -7,18 +7,20 @@ var old = new Object(); //Undoボタン用のオブジェクト
 old.max = []; //過去の最大値を記録（キャッシュしない）
 old.number = []; //過去に出た数字を記録（キャッシュしない）
 old.color = []; //過去の枠線色を記録（キャッシュしない）
-let anime;
-let themeStatus;
+let anime; //テーマ変更時のアニメーション(timeout)
+let themeStatus; //テーマがユーザー設定(1)なのか否か(0)
 /*Dark Theme*/
 const isDark = window.matchMedia("(prefers-color-scheme: dark)");
 var loadingTimeout;
 document.addEventListener("DOMContentLoaded", function () {
   loadingTimeout = setTimeout(() => {
+    // 10秒後ローディング強制解除
     document.getElementById("fixed").classList.add("loaded");
     document.getElementById("loading").classList.add("loaded");
   }, 10000);
 });
 document.addEventListener("DOMContentLoaded", function () {
+  // ローディング解除
   window.addEventListener("load", () => {
     clearTimeout(loadingTimeout);
     document.getElementById("fixed").classList.add("loaded");
@@ -40,11 +42,12 @@ document.addEventListener("DOMContentLoaded", function () {
   flex();
   resize(); //レイアウト調整処理
   //読み込み
-  if (localStorage.getItem("theme")==="dark") {
+  if (localStorage.getItem("theme") === "dark") {
+    // ローカルストレージを読み込み、テーマを反映
     toggleTheme("d");
-  } else if (localStorage.getItem("theme")==="light") {
+  } else if (localStorage.getItem("theme") === "light") {
     toggleTheme("l");
-  } else if (localStorage.getItem("theme")==="auto") {
+  } else if (localStorage.getItem("theme") === "auto") {
     toggleTheme("a");
   } else {
     toggleTheme(isDark);
@@ -122,6 +125,7 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 try {
+  //システムのテーマが変更されたときに発動
   // Chrome & Firefox
   isDark.addEventListener("change", toggleTheme);
 } catch (e1) {
@@ -408,74 +412,65 @@ function openPage(url) {
   window.open(url);
 }
 function toggleTheme(mql) {
-  clearInterval(anime);
-  document.body.classList.add("anime");
-  let auto = document.getElementById("auto");
-  let light = document.getElementById("light");
-  let dark = document.getElementById("dark");
+  clearInterval(anime); //1秒後にbodyのトランジョン解除のタイマーを解除
+  document.body.classList.add("anime"); //bodyのトランジョンを有効化
+  let auto = document.getElementById("auto"); //「システムに従う」ボタン
+  let light = document.getElementById("light"); //「ライトモード」ボタン
+  let dark = document.getElementById("dark"); //「ダークモード」ボタン
+  if (mql === "d" || mql === "l") {
+    themeStatus = 1; //手動でダークorライト
+  } else {
+    themeStatus = 0; //システムに従うを選択時
+  }
   if (themeStatus) {
+    // ユーザーがボタンを押した
     if (mql === "d") {
-      document.body.classList.add("dark");
-      document.getElementById("themeBtn").classList.replace("bi-sun","bi-moon-fill");
+      // 「ダークモード」選択時
+      document.body.classList.add("dark"); //ダークモードにする
+      document
+        .getElementById("themeBtn")
+        .classList.replace("bi-sun", "bi-moon-fill"); //フッターのアイコンを変更
       noActive();
-      dark.classList.add("active");
-      localStorage.setItem("theme","dark");
+      dark.classList.add("active"); //選択中のボタンを目立たせる
+      localStorage.setItem("theme", "dark"); //Local Storageに保存
     } else if (mql === "l") {
-      document.body.classList.remove("dark");
-      document.getElementById("themeBtn").classList.replace("bi-moon-fill","bi-sun");
+      // 「ライトモード」選択時
+      document.body.classList.remove("dark"); //ダークモード解除
+      document
+        .getElementById("themeBtn")
+        .classList.replace("bi-moon-fill", "bi-sun"); //フッターのアイコンを変更
       noActive();
-      light.classList.add("active");
-      localStorage.setItem("theme","light");
-    } else if (mql === "a") {
-      if (isDark.matches) {
-        /* ダークテーマの時 */
-        document.body.classList.add("dark");
-        document.getElementById("themeBtn").classList.replace("bi-sun","bi-moon-fill");
-        localStorage.setItem("theme","auto");
-      } else {
-        /* ライトテーマの時 */
-        document.body.classList.remove("dark");
-        document.getElementById("themeBtn").classList.replace("bi-moon-fill","bi-sun");
-        localStorage.setItem("theme","auto");
-      }
-      noActive();
-      auto.classList.add("active");
+      light.classList.add("active"); //選択中のボタンを目立たせる
+      localStorage.setItem("theme", "light"); //Local Storageに保存
     }
   } else {
-    if ((isDark.matches || mql === "d") && mql !== "l") {
+    // 「システムに任せる」選択時
+    if (isDark.matches) {
       /* ダークテーマの時 */
-      document.body.classList.add("dark");
-      document.getElementById("themeBtn").classList.replace("bi-sun","bi-moon-fill");
-      if (mql === "d") {
-        noActive();
-        dark.classList.add("active");
-        localStorage.setItem("theme","dark");
-      } else {
-        localStorage.setItem("theme","auto");
-      }
+      document.body.classList.add("dark"); //ダークモードにする
+      document
+        .getElementById("themeBtn")
+        .classList.replace("bi-sun", "bi-moon-fill"); //フッターのアイコンを変更
+      noActive();
+      auto.classList.add("active"); //選択中のボタンを目立たせる
+      localStorage.setItem("theme", "auto"); //Local Storageに保存
     } else {
       /* ライトテーマの時 */
-      document.body.classList.remove("dark");
-      document.getElementById("themeBtn").classList.replace("bi-moon-fill","bi-sun");
-      if (mql === "l") {
-        noActive();
-        light.classList.add("active");
-        localStorage.setItem("theme","light");
-      } else {
-        localStorage.setItem("theme","auto");
-      }
+      document.body.classList.remove("dark"); //ダークモード解除
+      document
+        .getElementById("themeBtn")
+        .classList.replace("bi-moon-fill", "bi-sun"); //フッターのアイコンを変更
+      noActive();
+      auto.classList.add("active"); //選択中のボタンを目立たせる
+      localStorage.setItem("theme", "auto"); //Local Storageに保存
     }
+    anime = setInterval(() => {
+      document.body.classList.remove("anime"); //1秒後、bodyのトランジョンを解除
+    }, 1000);
   }
-  if (mql === "d" || mql === "l") {
-    themeStatus = 1;
-  } else if (mql === "a") {
-    themeStatus = 0;
-  }
-  anime = setInterval(() => {
-    document.body.classList.remove("anime");
-  }, 1000);
 }
 function noActive() {
+  //すべてのボタンを非アクティブにする
   let list = document.querySelectorAll("#theme .list-group-item");
   list.forEach(function (element) {
     element.classList.remove("active");
