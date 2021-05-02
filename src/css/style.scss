@@ -1,6 +1,6 @@
 $theme-colors: (
-  "primary":#0080c9,
-  "secondary": #9193a0,
+  "primary": #0d6efd,
+  "secondary": #6b6d77,
   "success": #00984b,
   "info": #44aeea,
   "warning": #f2cf01,
@@ -19,6 +19,14 @@ body.anime .modal *,
 body.anime .fixed,
 body.anime {
   transition: background-color 0.4s ease-in-out;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: bold;
 }
 body.anime .btn {
   transition: background-color 0.2s, color 0.2s;

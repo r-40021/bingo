@@ -6,11 +6,11 @@ module.exports = {
   // ファイルの出力設定
   output: {
     // 出力ファイル名
-    filename: "main.js"
+    filename: "main.min.js"
   },
-    // モード値を production に設定すると最適化された状態で、
-    // development に設定するとソースマップ有効でJSファイルが出力される
-    mode: MODE[0],
+    // モード値を [1](production) に設定すると最適化された状態で、
+    // [0](development) に設定するとソースマップ有効でJSファイルが出力される
+    mode: MODE[1],
   
     // ローカル開発用環境を立ち上げる
     // 実行時にブラウザが自動的に localhost を開く
