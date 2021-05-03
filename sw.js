@@ -1,8 +1,8 @@
 var CACHE_NAME = "bi-20210502v5",
   urlsToCache = [
-    "/",
+    "./",
     "./dist/style.min.css",
-    "./dist/main.min.css",
+    "./dist/main.min.js",
     "./favicon/favicon.ico",
     "./src/css/bootstrap-icons.min.css",
     "./src/css/fonts/bootstrap-icons.woff?231ce25e89ab5804f9a6c427b8d325c9",
@@ -12,7 +12,8 @@ var CACHE_NAME = "bi-20210502v5",
 self.addEventListener("install", function (event) {
   event.waitUntil(
     caches.open(CACHE_NAME).then(function (cache) {
-      return console.log("Opened cache"), cache.addAll(urlsToCache);
+      console.log("Opened cache");
+      return cache.addAll(urlsToCache.map(url => new Request(url, {credentials: 'same-origin'})));
     })
   );
 }),

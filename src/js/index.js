@@ -206,7 +206,7 @@ function resize() {
   }
   numberElement.style.fontSize = (numberElement.offsetHeight / 5) * 3 + "px"; //数字表示エリアのフォントサイズを指定
   numberElement.style.borderWidth = numberElement.offsetHeight * 0.1 + "px"; //数字表示エリアの枠線の太さを指定
-  if (window.innerWidth <= 576) {
+  if (window.innerWidth < 576) {
     historyElement.style.fontSize =
       ((historyElement.clientWidth * 0.12) / 3) * 2 + "px";
   } else {
