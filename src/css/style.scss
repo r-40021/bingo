@@ -291,15 +291,26 @@ input[type="number"] {
   display: inline-block;
   width: 100%;
   height: auto;
-  color: var(--textcolor);
+
 }
 /* レンジ */
 .bingoMaxRange {
   flex: 1;
   padding: 10px;
 }
-.bingoMax label {
-  color: var(--textcolor);
+input[type="range"]{
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -moz-appearance: none;
+}
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none; /*  🚩デフォルトのつまみのスタイルを解除 */
+  appearance: none;
+}
+input[type="range"]::-moz-range-thumb {
+  -moz-appearance: none;
+  appearance: none;
 }
 /* テキストボックス */
 .bingoMaxText {
