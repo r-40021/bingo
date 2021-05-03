@@ -8,6 +8,8 @@ $theme-colors: (
   "light": #f8f9fa,
   "dark": #261e1c,
 );
+//bootstrap
+@import "../../node_modules/bootstrap/scss/bootstrap";
 /* 全体 */
 :root {
   --bgcolor: #fff;
@@ -547,5 +549,3 @@ body.dark .modal-content {
   border-right-color: #333;
   border-bottom-color: #333;
 }
-//bootstrap
-@import "../../node_modules/bootstrap/scss/bootstrap";

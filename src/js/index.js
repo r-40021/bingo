@@ -139,7 +139,7 @@ document.addEventListener("DOMContentLoaded", function () {
 const spin = () => {
   //シャッフル
   if (select.length <= 0) {
-    var endModal = new bootstrap.Modal(document.getElementById("end-modal"));
+    var endModal = new Modal(document.getElementById("end-modal"));
     endModal.show();
   } else {
     makeDisableSet();
@@ -333,7 +333,7 @@ if ("serviceWorker" in navigator) {
   /*Service Worker登録
   (引用:https://developers.google.com/web/fundamentals/primers/service-workers)*/
   window.addEventListener("load", function () {
-    navigator.serviceWorker.register("sw.js").then(
+    navigator.serviceWorker.register("../sw.js").then(
       function (registration) {
         // Registration was successful
         console.log(
