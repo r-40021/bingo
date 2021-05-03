@@ -1,12 +1,11 @@
-var CACHE_NAME = "bi-20210502v5",
+var CACHE_NAME = "bi-20210503",
   urlsToCache = [
     "./",
-    "./dist/style.min.css",
+    "./dist/style.css",
     "./dist/main.min.js",
     "./favicon/favicon.ico",
-    "./src/css/bootstrap-icons.min.css",
-    "./src/css/fonts/bootstrap-icons.woff?231ce25e89ab5804f9a6c427b8d325c9",
-    "./src/css/fonts/bootstrap-icons.woff2?231ce25e89ab5804f9a6c427b8d325c9",
+    "./dist/fonts/bootstrap-icons.woff?231ce25e89ab5804f9a6c427b8d325c9",
+    "./dist/fonts/bootstrap-icons.woff2?231ce25e89ab5804f9a6c427b8d325c9",
     "./favicon/site.webmanifest",
   ];
 self.addEventListener("install", function (event) {
