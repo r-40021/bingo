@@ -23,22 +23,6 @@ let anime; //テーマ変更時のアニメーション(timeout)
 let themeStatus; //テーマがユーザー設定(1)なのか否か(0)
 /*Dark Theme*/
 const isDark = window.matchMedia("(prefers-color-scheme: dark)");
-var loadingTimeout;
-document.addEventListener("DOMContentLoaded", function () {
-  loadingTimeout = setTimeout(() => {
-    // 10秒後ローディング強制解除
-    document.getElementById("fixed").classList.add("loaded");
-    document.getElementById("loading").classList.add("loaded");
-  }, 10000);
-});
-document.addEventListener("DOMContentLoaded", function () {
-  // ローディング解除
-  window.addEventListener("load", () => {
-    clearTimeout(loadingTimeout);
-    document.getElementById("fixed").classList.add("loaded");
-    document.getElementById("loading").classList.add("loaded");
-  });
-});
 document.addEventListener("DOMContentLoaded", function () {
   if (storageAvailable("localStorage")) {
   } else {

@@ -1,6 +1,8 @@
 {
   "name": "やまだBINGO",
   "short_name": "やまだBINGO",
+  "description": "自動保存機能を搭載した、ビンゴマシーン",
+  "scope" : "/bingo/",
   "icons": [
     {
       "src": "android-chrome-192x192.png",
@@ -11,12 +13,17 @@
       "src": "android-chrome-384x384.png",
       "sizes": "384x384",
       "type": "image/png"
+    },
+    {
+      "src": "favicon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
     }
   ],
-  "theme_color": "#f8f9fa",
-  "background_color": "#f8f9fa",
   "display": "standalone",
   "start_url": "../index.html",
   "dir": "ltr",
-  "lang": "ja-jp"
+  "lang": "ja-jp",
+  "background_color": "#f8f9fa",
+  "theme_color": "#1155cc"
 }

@@ -1,16 +1,3 @@
-// var gulp = require('gulp');
-// var sass = require('gulp-sass');
-// var packageImporter = require('node-sass-package-importer');
-
-// gulp.task('build:sass', function() {
-//   return gulp.src('./src/css/style.scss')
-//     .pipe(sass({
-//       importer: packageImporter({
-//         extensions: ['.scss', '.css']
-//       })
-//     }))
-//     .pipe(gulp.dest('./dist'));
-// });
 // gulpプラグインの読み込み
 const gulp = require("gulp");
 // Sassをコンパイルするプラグインの読み込み
@@ -32,6 +19,7 @@ gulp.task("default", function () {
           }),
         })
       )
+      
       // cssフォルダー以下に保存
       .pipe(gulp.dest("./dist"))
   );

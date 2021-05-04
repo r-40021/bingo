@@ -8,7 +8,7 @@
     "build": "webpack",
     "start": "webpack serve",
     "watch": "webpack --watch",
-    "css" : "gulp"
+    "css": "gulp"
   },
   "repository": {
     "type": "git",
