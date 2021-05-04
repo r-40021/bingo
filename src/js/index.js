@@ -1,6 +1,6 @@
 /*Bootstrap*/
 //import '../../node_modules/bootstrap/js/dist/alert';
-import "../../node_modules/bootstrap/js/dist/button";
+//import "../../node_modules/bootstrap/js/dist/button";
 //import '../../node_modules/bootstrap/js/dist/carousel';
 //import '../../node_modules/bootstrap/js/dist/collapse';
 //import '../../node_modules/bootstrap/js/dist/dropdown';
@@ -37,6 +37,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
   flex();
   resize(); //レイアウト調整処理
+  document.getElementById("bingoNumber").style.opacity = 1;
   //読み込み
   if (localStorage.getItem("theme") === "dark") {
     // ローカルストレージを読み込み、テーマを反映
@@ -313,25 +314,6 @@ const copy = () => {
     document.getElementById("url-icon").style.display = "inline";
   }, 10000);
 };
-if ("serviceWorker" in navigator) {
-  /*Service Worker登録
-  (引用:https://developers.google.com/web/fundamentals/primers/service-workers)*/
-  window.addEventListener("load", function () {
-    navigator.serviceWorker.register("../sw.js").then(
-      function (registration) {
-        // Registration was successful
-        console.log(
-          "ServiceWorker registration successful with scope: ",
-          registration.scope
-        );
-      },
-      function (err) {
-        // registration failed :(
-        console.log("ServiceWorker registration failed: ", err);
-      }
-    );
-  });
-}
 const undo = () => {
   /*Undo処理　ビンゴを1ターン戻す*/
   var numberElements = document.getElementsByClassName("history-number"); //要素を変数に代入

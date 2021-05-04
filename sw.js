@@ -1,10 +1,9 @@
-var CACHE_NAME = "bi-20210504",
+var CACHE_NAME = "bi-20210504v2",
   urlsToCache = [
     "./",
     "./dist/style.css",
     "./dist/main.min.js",
     "./favicon/favicon.ico",
-    "./dist/fonts/bootstrap-icons.woff?231ce25e89ab5804f9a6c427b8d325c9",
     "./dist/fonts/bootstrap-icons.woff2?231ce25e89ab5804f9a6c427b8d325c9",
     "./favicon/site.webmanifest",
   ];
