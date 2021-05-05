@@ -1,6 +1,6 @@
 {
   "name": "bingo",
-  "version": "3.1.0",
+  "version": "3.1.1",
   "description": "This is a bingo machine which saves the history and the settings auto automatically.",
   "main": "sw.js",
   "scripts": {
