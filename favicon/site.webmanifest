@@ -2,7 +2,7 @@
   "name": "やまだBINGO",
   "short_name": "やまだBINGO",
   "description": "自動保存機能を搭載した、ビンゴマシーン",
-  "scope" : "/bingo/",
+  
   "icons": [
     {
       "src": "android-chrome-192x192.png",

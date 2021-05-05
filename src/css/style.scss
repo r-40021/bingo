@@ -10,7 +10,6 @@ $theme-colors: (
 );
 //bootstrap
 @import "../../node_modules/bootstrap/scss/bootstrap.scss";
-@import "~bootstrap-icons/font/bootstrap-icons.css";
 /* 全体 */
 :root {
   --bgcolor: #fff;
@@ -342,12 +341,16 @@ input[type="range"]::-moz-range-thumb {
 .share .btn-group {
   min-width: 60%;
 }
-i {
+.shareAndroid{
+  display: none;
+}
+svg {
   margin-right: 0.5em;
+  vertical-align: middle;
   display: inline;
 }
 .nomargin {
-  margin: 0em !important;
+  margin: 0em;
 }
 /* シェアモーダル */
 .sh-content:not(:last-child) {
@@ -365,17 +368,6 @@ i {
 }
 .inline:not(:last-child) {
   margin-bottom: 5px;
-}
-/* プライバシーポリシー(埋め込み) */
-.iframe-content {
-  overflow: auto;
-  -webkit-overflow-scrolling: touch;
-}
-.iframe-content iframe {
-  display: block;
-  width: 100%;
-  height: 100%;
-  border: none;
 }
 /* タブレット・スマホの設定 */
 @media screen and (max-width: 991px) {

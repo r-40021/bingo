@@ -30,9 +30,11 @@ document.addEventListener("DOMContentLoaded", function () {
   }
   if (window.navigator.userAgent.toLowerCase().indexOf("android") !== -1) {
     /*Androidのときに「共有」アイコンを変化*/
-    var elements = document.getElementsByClassName("shareIcon");
-    for (let i = 0; i < elements.length; i++) {
-      elements[i].classList.replace("bi-box-arrow-up", "bi-share");
+    var iOSElements = document.getElementsByClassName("shareiOS");
+    var AndroidElements = document.getElementsByClassName("shareAndroid");
+    for (let i = 0; i < iOSElements.length; i++) {
+      iOSElements[i].style.display = "none";
+      AndroidElements[i].style.display = "inline";
     }
   }
   flex();
@@ -198,10 +200,6 @@ function resize() {
     historyElement.style.fontSize =
       ((historyElement.clientWidth * 0.09) / 3) * 2 + "px";
   }
-  document.getElementById("privacy-iframe-wrap").style.width =
-    document.getElementById("privacyModalBody").clientWidth - 40 + "px";
-  document.getElementById("privacy-iframe-wrap").style.height =
-    document.getElementById("privacyModalBody").clientHeight - 40 + "px";
 }
 function addSelect() {
   select = []; //ビンゴの数字の候補
@@ -369,11 +367,6 @@ function getHistoryLength() {
   //履歴の数を取得し、HTMLに出力
   document.getElementById("historyLength").innerText = myHistory.length;
 }
-document.getElementById("privacy").addEventListener("shown.bs.modal", () => {
-  let iframeElement = document.getElementById("privacy-iframe").contentWindow;
-  iframeElement.location.href = "https://r-40021.github.io/privacy.html";
-  resize(); //レイアウト調整処理
-});
 const toggleTheme = (mql) => {
   clearInterval(anime); //1秒後にbodyのトランジョン解除のタイマーを解除
   document.body.classList.add("anime"); //bodyのトランジョンを有効化
@@ -447,17 +440,17 @@ const toggleTheme = (mql) => {
     document.body.classList.remove("anime");
   }, 1000); //1秒後、bodyのトランジョンを解除
   function changeIcon(type) {
-    let elementsList = document.getElementsByClassName("themeIcon");
-    let classList = ["bi-sun", "bi-moon-fill"];
+    let lightElementsList = document.getElementsByClassName("lightIcon");
+    let darkElementsList = document.getElementsByClassName("darkIcon");
     if (type === "dark") {
-      for (let i = 0; i < elementsList.length; i++) {
-        const element = elementsList[i];
-        element.classList.replace(classList[0], classList[1]);
+      for (let i = 0; i < lightElementsList.length; i++) {
+        lightElementsList[i].style.display = "none";
+        darkElementsList[i].style.display = "inline";
       }
     } else {
-      for (let i = 0; i < elementsList.length; i++) {
-        const element = elementsList[i];
-        element.classList.replace(classList[1], classList[0]);
+      for (let i = 0; i < darkElementsList.length; i++) {
+        darkElementsList[i].style.display = "none";
+        lightElementsList[i].style.display = "inline";
       }
     }
   }
