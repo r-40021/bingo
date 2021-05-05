@@ -44,27 +44,25 @@ body {
   padding: 0;
   overflow: hidden;
   background-color: var(--bgcolor);
-  font-family: -apple-system, blinkMacSystemFont, /* Macの欧文はSan Francisco (OS X 10.11以降) */
-               'Helvetica Neue', /* Macの欧文 (OS X 10.10以前) */
-               'Segoe UI',       /* Windowsの欧文 */
-               'Hiragino Kaku Gothic ProN', /* Macのヒラギノ */
-               YuGothicM,        /* Windows8.1以上は游ゴシック */
-               YuGothic,         /* Macの游ゴシック */
-               Meiryo,           /* 游ゴシックが入っていないWindows */
-               sans-serif;
+  font-family: -apple-system, blinkMacSystemFont,
+    /* Macの欧文はSan Francisco (OS X 10.11以降) */ "Helvetica Neue",
+    /* Macの欧文 (OS X 10.10以前) */ "Segoe UI",
+    /* Windowsの欧文 */ "Hiragino Kaku Gothic ProN",
+    /* Macのヒラギノ */ YuGothicM, /* Windows8.1以上は游ゴシック */ YuGothic,
+    /* Macの游ゴシック */ Meiryo,
+    /* 游ゴシックが入っていないWindows */ sans-serif;
 }
 @font-face {
   font-family: YuGothicM;
   font-weight: normal;
-  src: local('YuGothic-Medium'),  /* Mediumを明示的に指定 */
-       local('Yu Gothic Medium'), /* Chrome用 */
-       local('YuGothic-Regular'); /* Windows8.1ではMediumがないのでRegularを指定 */
+  src: local("YuGothic-Medium"),
+    /* Mediumを明示的に指定 */ local("Yu Gothic Medium"),
+    /* Chrome用 */ local("YuGothic-Regular"); /* Windows8.1ではMediumがないのでRegularを指定 */
 }
 @font-face {
   font-family: YuGothicM;
   font-weight: bold;
-  src: local('YoGothic-Bold'), /* Boldはそのまま */
-       local('Yu Gothic');     /* Chrome用 */
+  src: local("YoGothic-Bold"), /* Boldはそのまま */ local("Yu Gothic"); /* Chrome用 */
 }
 h1,
 h2,
@@ -209,9 +207,8 @@ input[type="number"] {
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
-  font-family: "Kosugi Maru", "ヒラギノ丸ゴ Pro W4", "ヒラギノ丸ゴ Pro",
-    "Hiragino Maru Gothic Pro", "ヒラギノ角ゴ Pro W3",
-    "Hiragino Kaku Gothic Pro", "HG丸ｺﾞｼｯｸM-PRO", "HGMaruGothicMPRO", sans-serif;
+  font-family: "Kosugi Maru", -apple-system, blinkMacSystemFont,
+    "Helvetica Neue", "Segoe UI", sans-serif;
 }
 /* カードを覆う */
 .history {
@@ -222,7 +219,8 @@ input[type="number"] {
   height: 100%;
 }
 /* カード */
-.card,.modal-content{
+.card,
+.modal-content {
   background-color: var(--bgcolor);
 }
 .history .card {
@@ -284,20 +282,19 @@ input[type="number"] {
   display: inline-block;
   width: 100%;
   height: auto;
-
 }
 /* レンジ */
 .bingoMaxRange {
   flex: 1;
   padding: 10px;
 }
-input[type="range"]{
+input[type="range"] {
   appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
 }
 input[type="range"]::-webkit-slider-thumb {
-  -webkit-appearance: none; 
+  -webkit-appearance: none;
   appearance: none;
 }
 input[type="range"]::-moz-range-thumb {
@@ -341,7 +338,7 @@ input[type="range"]::-moz-range-thumb {
 .share .btn-group {
   min-width: 60%;
 }
-.shareAndroid{
+.shareAndroid {
   display: none;
 }
 svg {
@@ -403,10 +400,10 @@ body.dark {
 }
 body.dark .card-header {
   background-color: rgba(0, 0, 0, 0.85);
-  border-bottom: 1px solid rgb(97,97,97);
+  border-bottom: 1px solid rgb(97, 97, 97);
 }
 body.dark .card {
-  border-color: rgb(97,97,97);
+  border-color: rgb(97, 97, 97);
 }
 body.dark .footer {
   background-color: rgb(43, 43, 43);
