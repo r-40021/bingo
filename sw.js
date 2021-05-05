@@ -1,4 +1,4 @@
-var CACHE_NAME = "bi-20210504v3",
+var CACHE_NAME = "bi-20210505",
   urlsToCache = [
     "./",
     "./dist/style.css",
