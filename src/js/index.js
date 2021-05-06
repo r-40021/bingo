@@ -453,6 +453,23 @@ const toggleTheme = (mql) => {
         lightElementsList[i].style.display = "inline";
       }
     }
+    changeThemeColor(type);
+  }
+  function changeThemeColor (type){
+    let color;
+    if (type === "dark") {
+      color = "#202020"
+    } else {
+      color = "#fff"
+    }
+    let head = document.head.children;
+    for (let index = 0; index < head.length; index++) {
+      const element = head[index].getAttribute("name");
+      if (element === "theme-color") {
+        head[index].setAttribute("content",color);
+        break;
+      }
+    }
   }
 };
 function noActive() {

@@ -24,5 +24,6 @@
   "start_url": "../index.html",
   "dir": "ltr",
   "lang": "ja-jp",
-  "background_color": "#f8f9fa"
+  "background_color": "#f8f9fa",
+  "theme_color": "#fff"
 }
