@@ -24,10 +24,6 @@ let themeStatus; //テーマがユーザー設定(1)なのか否か(0)
 /*Dark Theme*/
 const isDark = window.matchMedia("(prefers-color-scheme: dark)");
 document.addEventListener("DOMContentLoaded", function () {
-  if (storageAvailable("localStorage")) {
-  } else {
-    alert("お使いの環境では、保存機能はご利用になれません。"); //Localstorageが利用不可のとき
-  }
   if (window.navigator.userAgent.toLowerCase().indexOf("android") !== -1) {
     /*Androidのときに「共有」アイコンを変化*/
     var iOSElements = document.getElementsByClassName("shareiOS");
@@ -265,52 +261,16 @@ const reset = () => {
   getHistoryLength(); //履歴の数を取得し、HTMLに出力
   removeDisableSet(); //フッターを選択可能にする
 };
-function storageAvailable(type) {
-  //localStorageが利用可能かチェック(引用:https://developer.mozilla.org/ja/docs/Web/API/Web_Storage_API/Using_the_Web_Storage_API#testing_for_availability)
-  var storage;
-  try {
-    storage = window[type];
-    var x = "__storage_test__";
-    storage.setItem(x, x);
-    storage.removeItem(x);
-    return true;
-  } catch (e) {
-    return (
-      e instanceof DOMException &&
-      // everything except Firefox
-      (e.code === 22 ||
-        // Firefox
-        e.code === 1014 ||
-        // test name field too, because code might not be present
-        // everything except Firefox
-        e.name === "QuotaExceededError" ||
-        // Firefox
-        e.name === "NS_ERROR_DOM_QUOTA_REACHED") &&
-      // acknowledge QuotaExceededError only if there's something already stored
-      storage &&
-      storage.length !== 0
-    );
-  }
-}
 function flex() {
   /*スマホのURLバーに隠されないように、body部分の高さを調整*/
   var height = window.innerHeight;
   document.getElementsByClassName("fixed")[0].style.height = height + "px";
   document.body.style.height = height + "px";
 }
-var checkedTimeout;
 const copy = () => {
   /*URLコピー*/
-  clearTimeout(checkedTimeout);
   var url = location.href;
   navigator.clipboard.writeText(url);
-  document.getElementById("checked-icon").style.display = "inline";
-  document.getElementById("url-icon").style.display = "none"; //チェックアイコンを表示
-  checkedTimeout = setTimeout(() => {
-    /*10秒後、元に戻す*/
-    document.getElementById("checked-icon").style.display = "none";
-    document.getElementById("url-icon").style.display = "inline";
-  }, 10000);
 };
 const undo = () => {
   /*Undo処理　ビンゴを1ターン戻す*/
@@ -455,18 +415,18 @@ const toggleTheme = (mql) => {
     }
     changeThemeColor(type);
   }
-  function changeThemeColor (type){
+  function changeThemeColor(type) {
     let color;
     if (type === "dark") {
-      color = "#202020"
+      color = "#333";
     } else {
-      color = "#fff"
+      color = "#f8f9fa";
     }
     let head = document.head.children;
     for (let index = 0; index < head.length; index++) {
       const element = head[index].getAttribute("name");
       if (element === "theme-color") {
-        head[index].setAttribute("content",color);
+        head[index].setAttribute("content", color);
         break;
       }
     }
