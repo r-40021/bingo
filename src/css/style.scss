@@ -15,6 +15,7 @@ $theme-colors: (
   --bgcolor: #fff;
   --textcolor: #000;
   --graytext: rgb(54, 54, 54);
+  --bothGrayText: rgb(54,54,54);
 }
 body.anime .fixed *,
 body.anime .modal *,
@@ -44,13 +45,14 @@ body {
   padding: 0;
   overflow: hidden;
   background-color: var(--bgcolor);
-  font-family: -apple-system, blinkMacSystemFont,
-    /* Macの欧文はSan Francisco (OS X 10.11以降) */ "Helvetica Neue",
-    /* Macの欧文 (OS X 10.10以前) */ "Segoe UI",
-    /* Windowsの欧文 */ "Hiragino Kaku Gothic ProN",
-    /* Macのヒラギノ */ YuGothicM, /* Windows8.1以上は游ゴシック */ YuGothic,
-    /* Macの游ゴシック */ Meiryo,
-    /* 游ゴシックが入っていないWindows */ sans-serif;
+  font-family: -apple-system, blinkMacSystemFont, /* Macの欧文はSan Francisco (OS X 10.11以降) */ 
+              "Helvetica Neue",/* Macの欧文 (OS X 10.10以前) */ 
+              "Segoe UI","Arial", /* Windowsの欧文 */ 
+              "Hiragino Kaku Gothic ProN",/* Macのヒラギノ */ 
+              YuGothicM, /* Windows8.1以上は游ゴシック */ 
+              YuGothic,/* Macの游ゴシック */ 
+              Meiryo,/* 游ゴシックが入っていないWindows */ 
+              sans-serif;
 }
 @font-face {
   font-family: YuGothicM;
@@ -114,7 +116,7 @@ input {
 .about {
   display: inline-block;
   cursor: pointer;
-  color: var(--textcolor);
+  color: var(--bothGrayText);
 }
 .detail {
   z-index: -1;
@@ -128,7 +130,7 @@ input {
   text-align: left;
   font-size: small;
   background-color: var(--bgcolor);
-  color: var(--textcolor);
+  color: var(--bothGrayText);
   box-shadow: rgba(149, 157, 165, 0.103) 0px 8px 24px;
   padding: 10px;
   opacity: 0;
@@ -208,7 +210,7 @@ input[type="number"] {
   justify-content: center;
   box-sizing: border-box;
   font-family: "Kosugi Maru", -apple-system, blinkMacSystemFont,
-    "Helvetica Neue", "Segoe UI", sans-serif;
+    "Helvetica Neue", "Segoe UI", "Arial",sans-serif;
 }
 /* カードを覆う */
 .history {
@@ -235,7 +237,7 @@ input[type="number"] {
 .history-inner .card-body {
   overflow: auto;
   -webkit-overflow-scrolling: touch;
-  color: var(--textcolor);
+  color: var(--bothGrayText);
   background-color: var(--bgcolor);
 }
 .history-inner {
@@ -282,6 +284,9 @@ input[type="number"] {
   display: inline-block;
   width: 100%;
   height: auto;
+}
+.bingoMax label{
+  color: var(--bothGrayText);
 }
 /* レンジ */
 .bingoMaxRange {
@@ -397,6 +402,10 @@ body.dark {
   --bgcolor: rgb(32, 32, 32);
   --textcolor: rgb(233, 232, 232);
   --graytext: rgba(255, 255, 255, 0.884);
+  --bothGrayText: rgb(233,232,232);
+}
+body.dark html{
+  background-color: var(--bgcolor);
 }
 body.dark .card-header {
   background-color: rgba(0, 0, 0, 0.85);
