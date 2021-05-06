@@ -30,7 +30,7 @@
     "webpack-dev-server": "^3.11.2"
   },
   "dependencies": {
-    "bootstrap": "^5.0.0-beta3",
+    "bootstrap": "^5.0.0",
     "npm": "^7.11.2"
   }
 }
