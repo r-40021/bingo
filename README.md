@@ -7,18 +7,14 @@ This is a bingo machine which saves the history and the settings auto automatica
 [Open the app](https://r-40021.github.io/bingo/)
 
 # Screenshots
-#### Light Mode
-<img src="https://user-images.githubusercontent.com/75155258/115976733-eb439e80-a5ab-11eb-8133-782b151c9af8.png" alt="Light Mode" width="70%">
-
-#### Dark Mode
-<img src="https://user-images.githubusercontent.com/75155258/116798703-56055480-ab2d-11eb-86ab-24c3b299b91d.png" alt="Dark Mode" width="70%">
-
+<img src="https://user-images.githubusercontent.com/75155258/117523218-944db880-aff2-11eb-9ed0-f96f08dd79c5.jpg" alt="bingo" width="70%">
 
 # Features
 - The data of this application are automatically saved in LocalStorage. (Except for some browsers)
 - It is easy to use this app.
 - It has a "Redo" button.
 - You can switch the theme of this app.
+- This app loads quickly
 # OSS
 - Copyright (c) 2011-2021 Twitter, Inc.
 <br>Copyright (c) 2011-2021 The Bootstrap Authors
