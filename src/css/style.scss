@@ -390,8 +390,8 @@ svg {
   #bingoMaxText {
     display: inline;
   }
-  .bingoMax {
-    margin-top: 10px;
+  .bingoMax,.share {
+    margin-top: 30px;
     font-size: small;
   }
   .footer {
@@ -457,4 +457,31 @@ body.dark .modal-content {
   border-left-color: #333;
   border-right-color: #333;
   border-bottom-color: #333;
+}
+body.dark .btn-outline-danger{
+  border-color: #f16565;
+  color: #f16565;
+}
+body.dark .btn-outline-secondary{
+  border-color: #caccd8;
+  color: #caccd8;
+}
+body.dark .btn-outline-primary{
+  border-color: #2d82ff;
+  color: #2d82ff;
+}
+body.dark .btn-outline-danger:hover{
+  border-color: #f16565;
+  background-color: #f16565;
+  color: #fff;
+}
+body.dark .btn-outline-secondary:hover{
+  border-color: #caccd8;
+  background-color: #caccd8;
+  color: #fff;
+}
+body.dark .btn-outline-primary:hover{
+  border-color: #2d82ff;
+  background-color: #2d82ff;
+  color: #fff;
 }
