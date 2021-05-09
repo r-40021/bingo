@@ -24,7 +24,8 @@ let themeStatus; //テーマがユーザー設定(1)なのか否か(0)
 /*Dark Theme*/
 const isDark = window.matchMedia("(prefers-color-scheme: dark)");
 document.addEventListener("DOMContentLoaded", function () {
-  if (window.navigator.userAgent.toLowerCase().indexOf("android") !== -1) {
+  const userAgent = window.navigator.userAgent.toLowerCase();
+  if (userAgent.indexOf("android") !== -1 || (userAgent.indexOf("linux") !== -1 && 'ontouchstart' in document)) {
     /*Androidのときに「共有」アイコンを変化*/
     var iOSElements = document.getElementsByClassName("shareiOS");
     var AndroidElements = document.getElementsByClassName("shareAndroid");

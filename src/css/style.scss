@@ -59,14 +59,6 @@ body {
   font-weight: bold;
   src: local("YoGothic-Bold"), /* Boldはそのまま */ local("Yu Gothic"); /* Chrome用 */
 }
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-weight: bold;
-}
 /* 選択不可(inputのぞく) */
 * {
   -moz-user-select: none;
