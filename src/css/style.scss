@@ -365,6 +365,9 @@ svg {
   .history-wrap {
     height: 45%;
   }
+  .share>.btn-group{
+    transform: scale(0.9);
+  }
 }
 /* スマホのみに適用 */
 @media screen and (max-width: 576px) {
