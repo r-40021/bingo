@@ -344,11 +344,21 @@ svg {
 }
 /* シェアモーダル */
 .sh-content:not(:last-child) {
-  margin-bottom: 40px;
+  margin-bottom: 30px;
 }
 .sh-content button {
   outline: none;
 }
+.sh-content .list-group-item{
+  display: grid;
+  grid-template-columns: 30px 1fr;
+}
+.sh-content .list-group-item .svg{
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+} 
 #checked-icon {
   display: none;
   color: #00984b;
