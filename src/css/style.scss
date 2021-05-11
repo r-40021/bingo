@@ -15,7 +15,7 @@ $theme-colors: (
   --bgcolor: #fff;
   --textcolor: #000;
   --graytext: rgb(54, 54, 54);
-  --bothGrayText: rgb(54,54,54);
+  --bothGrayText: rgb(54, 54, 54);
 }
 body.anime .fixed *,
 body.anime .modal *,
@@ -37,15 +37,13 @@ body {
   padding: 0;
   overflow: hidden;
   background-color: var(--bgcolor);
-  font-family: -apple-system, blinkMacSystemFont, /* Macの欧文はSan Francisco (OS X 10.11以降) */ 
-              "Helvetica Neue",/* Macの欧文 (OS X 10.10以前) */ 
-              "Segoe UI","Arial", /* Windowsの欧文 */ 
-              "Roboto",/*Android*/
-              "Hiragino Kaku Gothic ProN",/* Macのヒラギノ */ 
-              YuGothicM, /* Windows8.1以上は游ゴシック */ 
-              YuGothic,/* Macの游ゴシック */ 
-              Meiryo,/* 游ゴシックが入っていないWindows */ 
-              sans-serif;
+  font-family: -apple-system, blinkMacSystemFont,
+    /* Macの欧文はSan Francisco (OS X 10.11以降) */ "Helvetica Neue",
+    /* Macの欧文 (OS X 10.10以前) */ "Segoe UI", "Arial",
+    /* Windowsの欧文 */ "Roboto", /*Android*/ "Hiragino Kaku Gothic ProN",
+    /* Macのヒラギノ */ YuGothicM, /* Windows8.1以上は游ゴシック */ YuGothic,
+    /* Macの游ゴシック */ Meiryo,
+    /* 游ゴシックが入っていないWindows */ sans-serif;
 }
 @font-face {
   font-family: YuGothicM;
@@ -195,7 +193,7 @@ input[type="number"] {
   justify-content: center;
   box-sizing: border-box;
   font-family: "Kosugi Maru", -apple-system, blinkMacSystemFont,
-    "Helvetica Neue", "Segoe UI", "Arial", "Roboto",sans-serif;
+    "Helvetica Neue", "Segoe UI", "Arial", "Roboto", sans-serif;
 }
 /* カードを覆う */
 .history {
@@ -270,7 +268,7 @@ input[type="number"] {
   width: 100%;
   height: auto;
 }
-.bingoMax label{
+.bingoMax label {
   color: var(--bothGrayText);
 }
 /* レンジ */
@@ -331,7 +329,7 @@ input[type="range"]::-moz-range-thumb {
 .shareAndroid {
   display: none;
 }
-.darkIcon{
+.darkIcon {
   display: none;
 }
 svg {
@@ -349,19 +347,15 @@ svg {
 .sh-content button {
   outline: none;
 }
-.sh-content .list-group-item{
+.sh-content .list-group-item {
   display: grid;
   grid-template-columns: 30px 1fr;
 }
-.sh-content .list-group-item .svg{
+.sh-content .list-group-item .svg {
   display: flex;
   align-items: center;
   width: 100%;
   height: 100%;
-} 
-#checked-icon {
-  display: none;
-  color: #00984b;
 }
 .inline {
   display: inline;
@@ -375,7 +369,7 @@ svg {
   .history-wrap {
     height: 45%;
   }
-  .share>.btn-group{
+  .share > .btn-group {
     transform: scale(0.9);
   }
 }
@@ -390,7 +384,8 @@ svg {
   #bingoMaxText {
     display: inline;
   }
-  .bingoMax,.share {
+  .bingoMax,
+  .share {
     margin-top: 30px;
     font-size: small;
   }
@@ -403,9 +398,9 @@ body.dark {
   --bgcolor: rgb(32, 32, 32);
   --textcolor: rgb(233, 232, 232);
   --graytext: rgba(255, 255, 255, 0.884);
-  --bothGrayText: rgb(233,232,232);
+  --bothGrayText: rgb(233, 232, 232);
 }
-body.dark html{
+body.dark html {
   background-color: var(--bgcolor);
 }
 body.dark .card-header {
@@ -458,29 +453,29 @@ body.dark .modal-content {
   border-right-color: #333;
   border-bottom-color: #333;
 }
-body.dark .btn-outline-danger{
+body.dark .btn-outline-danger {
   border-color: #f16565;
   color: #f16565;
 }
-body.dark .btn-outline-secondary{
+body.dark .btn-outline-secondary {
   border-color: #caccd8;
   color: #caccd8;
 }
-body.dark .btn-outline-primary{
+body.dark .btn-outline-primary {
   border-color: #2d82ff;
   color: #2d82ff;
 }
-body.dark .btn-outline-danger:hover{
+body.dark .btn-outline-danger:hover {
   border-color: #f16565;
   background-color: #f16565;
   color: #fff;
 }
-body.dark .btn-outline-secondary:hover{
+body.dark .btn-outline-secondary:hover {
   border-color: #caccd8;
   background-color: #caccd8;
   color: #fff;
 }
-body.dark .btn-outline-primary:hover{
+body.dark .btn-outline-primary:hover {
   border-color: #2d82ff;
   background-color: #2d82ff;
   color: #fff;
