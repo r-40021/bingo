@@ -350,6 +350,8 @@ svg {
 .sh-content .list-group-item {
   display: grid;
   grid-template-columns: 30px 1fr;
+  grid-template-rows: 100%;
+  grid-auto-flow: column;
 }
 .sh-content .list-group-item .svg {
   display: flex;
