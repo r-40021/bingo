@@ -1,26 +1,28 @@
-// gulpプラグインの読み込み
-const gulp = require("gulp");
-// Sassをコンパイルするプラグインの読み込み
+// gulpプラグインを読み込みます
+const { src, dest, watch } = require("gulp");
+// Sassをコンパイルするプラグインを読み込みます
 const sass = require("gulp-sass");
-const packageImporter = require('node-sass-package-importer');
 
-// style.scssをタスクを作成する
-gulp.task("default", function () {
+/**
+ * Sassをコンパイルするタスクです
+ */
+const compileSass = () =>
   // style.scssファイルを取得
-  return (
-    gulp
-      .src("./src/css/style.scss")
-      // Sassのコンパイルを実行
-      .pipe(
-        sass({
-          outputStyle: "compressed",
-          importer: packageImporter({
-            extensions: [".scss", ".css"],
-          }),
-        })
-      )
-      
-      // cssフォルダー以下に保存
-      .pipe(gulp.dest("./dist"))
-  );
-});
+  src("./src/css/style.scss")
+    // Sassのコンパイルを実行
+    .pipe(
+      // コンパイル後のCSSを展開
+      sass({
+        outputStyle: "compressed"
+      })
+    )
+    // 以下に保存
+    .pipe(dest("./dist"));
+
+/**
+ * Sassファイルを監視し、変更があったらSassを変換します
+ */
+const watchSassFiles = () => watch("./src/css/style.scss", compileSass);
+
+// npx gulpというコマンドを実行した時、watchSassFilesが実行されるようにします
+exports.default = watchSassFiles;

@@ -347,20 +347,21 @@ svg {
 .sh-content button {
   outline: none;
 }
-.sh-content .list-group-item {
-  display: grid;
-  grid-template-columns: 30px 1fr;
-  grid-template-rows: 100%;
-  grid-auto-flow: column;
-}
-.sh-content .list-group-item .svg-wrap{
+.share-btn-wrap {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
   height: 100%;
-  width: 30px;
+  width: 100%;
+  padding: 0;
 }
-.sh-content .list-group-item .svg {
+.share-btn-wrap .share-text {
+  flex: 1;
+}
+.share-btn-wrap .svg {
   display: flex;
   align-items: center;
-  width: 100%;
+  width: 30px;
   height: 100%;
 }
 .inline {
