@@ -38,24 +38,39 @@ body {
   overflow: hidden;
   background-color: var(--bgcolor);
   font-family: -apple-system, blinkMacSystemFont,
-    /* Macの欧文はSan Francisco (OS X 10.11以降) */ "Helvetica Neue",
-    /* Macの欧文 (OS X 10.10以前) */ "Segoe UI", "Arial",
-    /* Windowsの欧文 */ "Roboto", /*Android*/ "Hiragino Kaku Gothic ProN",
-    /* Macのヒラギノ */ YuGothicM, /* Windows8.1以上は游ゴシック */ YuGothic,
-    /* Macの游ゴシック */ Meiryo,
-    /* 游ゴシックが入っていないWindows */ sans-serif;
+    // Macの欧文はSan Francisco (OS X 10.11以降)
+    "Helvetica Neue",
+    // Macの欧文 (OS X 10.10以前)
+    "Segoe UI",
+    "Arial",
+    // Windowsの欧文
+    "Roboto",
+    //Android
+    "Hiragino Kaku Gothic ProN",
+    // Macのヒラギノ
+    YuGothicM,
+    // Windows8.1以上は游ゴシック
+    YuGothic,
+    // Macの游ゴシック
+    Meiryo,
+    // 游ゴシックが入っていないWindows
+    sans-serif;
 }
 @font-face {
   font-family: YuGothicM;
   font-weight: normal;
   src: local("YuGothic-Medium"),
-    /* Mediumを明示的に指定 */ local("Yu Gothic Medium"),
-    /* Chrome用 */ local("YuGothic-Regular"); /* Windows8.1ではMediumがないのでRegularを指定 */
+    // Mediumを明示的に指定
+    local("Yu Gothic Medium"),
+    // Chrome用
+    local("YuGothic-Regular"); /* Windows8.1ではMediumがないのでRegularを指定 */
 }
 @font-face {
   font-family: YuGothicM;
   font-weight: bold;
-  src: local("YoGothic-Bold"), /* Boldはそのまま */ local("Yu Gothic"); /* Chrome用 */
+  src: local("YoGothic-Bold"),
+    // Boldはそのまま
+    local("Yu Gothic"); // Chrome用
 }
 /* 選択不可(inputのぞく) */
 * {
@@ -66,12 +81,23 @@ body {
   -webkit-touch-callout: none;
 }
 input {
-  -moz-user-select: auto;
-  -webkit-user-select: auto;
-  -ms-user-select: auto;
-  user-select: auto;
   -webkit-touch-callout: inherit;
   background-color: var(--bgcolor);
+}
+// 数字は選択可
+.body .card-body,
+.body .number-wrap {
+  -moz-user-select: text;
+  -webkit-user-select: text;
+  -ms-user-select: text;
+  user-select: text;
+}
+.number-inner,
+.history-number {
+  -moz-user-select: all;
+  -webkit-user-select: all;
+  -ms-user-select: all;
+  user-select: all;
 }
 /* スクロールバー(webkitのみ) */
 ::-webkit-scrollbar {
