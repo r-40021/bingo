@@ -60,10 +60,10 @@ document.addEventListener("DOMContentLoaded", function () {
       for (let i = 0; i < myHistory.length; i++) {
         var div = document.createElement("div"); //HTMLに代入　それぞれにdiv要素を作成している
         div.className = "history-number";
-        div.innerHTML = myHistory[i];
+        div.textContent = myHistory[i];
         historyBody.appendChild(div);
       }
-      document.getElementById("number-inner").innerHTML =
+      document.getElementById("number-inner").textContent =
         myHistory[myHistory.length - 1];
       old.number.unshift(Number(myHistory[myHistory.length - 1]));
       historyBody.scroll(
@@ -144,7 +144,7 @@ const spin = () => {
     var spin = setInterval(() => {
       var index = Math.floor(Math.random() * select.length);
       var display = select[index];
-      document.getElementById("number-inner").innerHTML = display;
+      document.getElementById("number-inner").textContent = display;
       var colorIndex = count % colorList.length;
       numberElement.style.borderColor = colorList[colorIndex];
       count++;
@@ -153,7 +153,7 @@ const spin = () => {
         clearInterval(spin);
         var div = document.createElement("div");
         div.className = "history-number";
-        div.innerHTML = display;
+        div.textContent = display;
         myHistory.push(display);
         localStorage.setItem("myHistory", JSON.stringify(myHistory));
         localStorage.setItem("lastColor", colorIndex); //LocalStorageに保存
@@ -251,8 +251,8 @@ const reset = () => {
   makeDisableSet(); //フッターを選択不可にする
   localStorage.removeItem("myHistory");
   localStorage.removeItem("lastColor"); //LocalStorageから、履歴と数字表示エリアの枠線色を削除
-  document.getElementById("number-inner").innerHTML = null; //数字表示エリアを空に
-  document.getElementById("history-body").innerHTML = null; //履歴表示エリアを空に
+  document.getElementById("number-inner").textContent = null; //数字表示エリアを空に
+  document.getElementById("history-body").textContent = null; //履歴表示エリアを空に
   document.getElementById("bingoNumber").style.borderColor = colorList[0]; //数字表示エリアの枠線色を初期値に
   /*変数のリセット*/
   myHistory = [];
@@ -281,9 +281,9 @@ const undo = () => {
   var numberElements = document.getElementsByClassName("history-number"); //要素を変数に代入
   var removeNumber = numberElements[numberElements.length - 1]; //消去する数をセット
   removeNumber.remove(); //履歴表示エリアから削除
-  myHistory.splice(myHistory.indexOf(removeNumber.innerHTML), 1); //履歴のリストからも削除
+  myHistory.splice(myHistory.indexOf(removeNumber.textContent), 1); //履歴のリストからも削除
   /*1個前の数字・枠線色を反映*/
-  document.getElementById("number-inner").innerHTML = old.number[1];
+  document.getElementById("number-inner").textContent = old.number[1];
   document.getElementById("bingoNumber").style.borderColor =
     colorList[old.color[1]];
   max = old.max[1];
@@ -306,10 +306,10 @@ const startOver = () => {
   var div = document.createElement("div");
   var oldNumber = old.number[0];
   div.className = "history-number";
-  div.innerHTML = oldNumber;
+  div.textContent = oldNumber;
   historyBody.appendChild(div);
   /*HTMLに出力*/
-  document.getElementById("number-inner").innerHTML = oldNumber;
+  document.getElementById("number-inner").textContent = oldNumber;
   document.getElementById("bingoNumber").style.borderColor =
     colorList[old.color[0]];
   max = old.max[0]; //最大値を変数にセット
@@ -329,7 +329,7 @@ const startOver = () => {
 };
 function getHistoryLength() {
   //履歴の数を取得し、HTMLに出力
-  document.getElementById("historyLength").innerText = myHistory.length;
+  document.getElementById("historyLength").textContent = myHistory.length;
 }
 const toggleTheme = (mql) => {
   clearInterval(anime); //1秒後にbodyのトランジョン解除のタイマーを解除
