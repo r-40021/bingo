@@ -126,7 +126,7 @@ document.addEventListener("DOMContentLoaded", function () {
 const spin = () => {
   //シャッフル
   if (select.length <= 0) {
-    let bodyList = ["聖戦の記録をパラダイムシフトしてやり直しますか？","履歴を電脳空間から存在を抹消してやり直しますか？","履歴をリセットしてやり直しますか？…うっ……頭が……ッ","履歴をリセットして野村哲也を筆頭とするメンバーでリメイク、希望を私たちの光に変えますか…それとも感情に任せて俺を殺しますか？","セーブデータをリセットしてやり直しますか？","履歴をリセットしてやり直します――表向きは、ねかとか…な？"];
+    let bodyList = ["聖戦の記録をパラダイムシフトしてやり直しますか？","履歴を電脳空間から存在を抹消してやり直しますか？","履歴をリセットしてやり直しますか？…うっ……頭が……ッ","履歴をリセットして野村哲也を筆頭とするメンバーでリメイク、希望を私たちの光に変えますか…それとも感情に任せて俺を殺しますか？","履歴をリセットしてやり直します――表向きは、ねかとか…な？"];
     document.getElementById("end-body").textContent = bodyList[Date.now() % bodyList.length];
     var endModal = new Modal(document.getElementById("end-modal"));
     endModal.show();
