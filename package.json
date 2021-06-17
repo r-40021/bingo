@@ -31,6 +31,6 @@
   },
   "dependencies": {
     "bootstrap": "^5.0.1",
-    "npm": "^7.17.0"
+    "npm": "^7.18.1"
   }
 }
