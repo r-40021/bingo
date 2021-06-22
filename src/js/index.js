@@ -240,6 +240,7 @@ function removeDisableSet() {
   removeDisable("bingoMax");
   removeDisable("bingoMaxText");
   document.getElementById("spin").focus();
+  blurSpin();
 }
 const resetAsk = () => {
   //履歴をリセットしてもいいか、尋ねる
@@ -301,6 +302,7 @@ const undo = () => {
   document.getElementById("startOver").style.visibility = "visible"; //ボタン切り替え
   getHistoryLength(); //履歴の数を取得し、HTMLに出力
   document.getElementById("spin").focus(); //Spinボタンにフォーカス
+  blurSpin();
 };
 const startOver = () => {
   var historyBody = document.getElementById("history-body"); //要素を変数にセット
@@ -328,6 +330,7 @@ const startOver = () => {
   document.getElementById("startOver").style.visibility = "hidden"; //ボタン切り替え
   getHistoryLength(); //履歴の数を取得し、HTMLに出力
   document.getElementById("spin").focus(); //Spinボタンにフォーカス
+  blurSpin();
 };
 function getHistoryLength() {
   //履歴の数を取得し、HTMLに出力
@@ -464,4 +467,11 @@ try {
   } catch (e2) {
     console.error(e2);
   }
+}
+let blurTimeOut;
+function blurSpin(){
+  clearTimeout(blurTimeOut);
+  blurTimeOut = setTimeout(() => {
+    document.getElementById("spin").blur();
+  }, 1000 * 60 * 2);
 }
