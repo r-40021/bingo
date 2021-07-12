@@ -13,7 +13,7 @@ $theme-colors: (
 /* 全体 */
 :root {
   --bgcolor: #fff;
-  --textcolor: #000;
+  --textcolor: rgb(75, 75, 75);
   --graytext: rgb(54, 54, 54);
   --bothGrayText: rgb(54, 54, 54);
 }
@@ -262,11 +262,7 @@ input[type="number"] {
 }
 /* フッター */
 .footer {
-  box-shadow: rgba(17, 17, 26, 0.05) 0px -4px 16px,
-    rgba(17, 17, 26, 0.05) 0px -8px 32px;
-  border-radius: 15vh 15vh 0 0;
   padding: 15px;
-  background-color: #f8f9fa;
 }
 /* ボタン4つ */
 .footer .buttons {
@@ -421,9 +417,6 @@ svg {
     margin-top: 30px;
     font-size: small;
   }
-  .footer {
-    border-radius: 20px 20px 0 0;
-  }
 }
 /* dark mode */
 body.dark {
@@ -441,9 +434,6 @@ body.dark .card-header {
 }
 body.dark .card {
   border-color: rgb(97, 97, 97);
-}
-body.dark .footer {
-  background-color: rgb(43, 43, 43);
 }
 body.dark .modal-header,
 body.dark .modal-footer,
