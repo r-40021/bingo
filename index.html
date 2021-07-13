@@ -28,7 +28,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Kosugi+Maru&display=swap" media="print"
         onload="this.media='all'">
-    <link rel="stylesheet" type="text/css" href="./dist/style.css" />
+    <link rel="stylesheet" type="text/css" href="./dist/style.css"/>
     <meta content="サクサク動く！履歴や設定を自動で保存する機能を搭載した、インストール不要のビンゴマシーン。オフラインにも対応しています。" name="description" />
 </head>
 
@@ -67,81 +67,86 @@
                     </div>
                 </div>
             </div>
-            <div class="footer">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-sm-4 buttons">
-                            <div class="button">
-                                <div class="inline"><button type="button" class="btn btn-primary" id="spin"
-                                        onclick="window.glSpin()" disabled> Spin </button><button type="button"
-                                        class="btn btn-outline-danger" id="reset" onclick="window.glResetAsk();"
-                                        disabled> Reset
-                                    </button></div>
-                                <div class="inline undoButton"><button type="button"
-                                        class="btn btn-outline-secondary btn-sm" onclick="window.glUndo()"
-                                        aria-label="やり直す" title="やり直す" id="undo"><svg xmlns="http://www.w3.org/2000/svg"
-                                            width="16" height="16" fill="currentColor" class="bi bi-arrow-return-left"
-                                            viewBox="0 0 16 16">
-                                            <path fill-rule="evenodd"
-                                                d="M14.5 1.5a.5.5 0 0 1 .5.5v4.8a2.5 2.5 0 0 1-2.5 2.5H2.707l3.347 3.346a.5.5 0 0 1-.708.708l-4.2-4.2a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 8.3H12.5A1.5 1.5 0 0 0 14 6.8V2a.5.5 0 0 1 .5-.5z" />
-                                        </svg>やり直す
-                                    </button><button type="button" class="btn btn-outline-secondary btn-sm"
-                                        onclick="window.glRedo()" aria-label="元に戻す" title="元に戻す" id="startOver">
-                                        元に戻す<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                            fill="currentColor" class="bi bi-arrow-return-right nomargin"
-                                            style="margin-left:0.5em" viewBox="0 0 16 16">
-                                            <path fill-rule="evenodd"
-                                                d="M1.5 1.5A.5.5 0 0 0 1 2v4.8a2.5 2.5 0 0 0 2.5 2.5h9.793l-3.347 3.346a.5.5 0 0 0 .708.708l4.2-4.2a.5.5 0 0 0 0-.708l-4-4a.5.5 0 0 0-.708.708L13.293 8.3H3.5A1.5 1.5 0 0 1 2 6.8V2a.5.5 0 0 0-.5-.5z" />
-                                        </svg></button></div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6 col-8">
-                            <div class="bingoMax"><label for="bingoMax">最大値</label>
-                                <div class="bingoMaxInput">
-                                    <div class="bingoMaxRange"> <input type="range" class="form-range" min="1" max="99"
-                                            step="1" id="bingoMax" disabled /> </div>
-                                    <div class="bingoMaxText"> <input class="form-control form-control-sm" type="number"
-                                            aria-label="最大値" id="bingoMaxText" min="1" max="99" value="75" disabled
-                                            pattern="\d*" /> </div>
+            <div class="footer-wrap">
+                <div class="footer">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm-4 buttons">
+                                <div class="button">
+                                    <div class="inline"><button type="button" class="btn btn-primary" id="spin"
+                                            onclick="window.glSpin()" disabled> Spin </button><button type="button"
+                                            class="btn btn-outline-danger" id="reset" onclick="window.glResetAsk();"
+                                            disabled> Reset
+                                        </button></div>
+                                    <div class="inline undoButton"><button type="button"
+                                            class="btn btn-outline-secondary btn-sm" onclick="window.glUndo()"
+                                            aria-label="やり直す" title="やり直す" id="undo"><svg
+                                                xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                fill="currentColor" class="bi bi-arrow-return-left" viewBox="0 0 16 16">
+                                                <path fill-rule="evenodd"
+                                                    d="M14.5 1.5a.5.5 0 0 1 .5.5v4.8a2.5 2.5 0 0 1-2.5 2.5H2.707l3.347 3.346a.5.5 0 0 1-.708.708l-4.2-4.2a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 8.3H12.5A1.5 1.5 0 0 0 14 6.8V2a.5.5 0 0 1 .5-.5z" />
+                                            </svg>やり直す
+                                        </button><button type="button" class="btn btn-outline-secondary btn-sm"
+                                            onclick="window.glRedo()" aria-label="元に戻す" title="元に戻す" id="startOver">
+                                            元に戻す<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                fill="currentColor" class="bi bi-arrow-return-right nomargin"
+                                                style="margin-left:0.5em" viewBox="0 0 16 16">
+                                                <path fill-rule="evenodd"
+                                                    d="M1.5 1.5A.5.5 0 0 0 1 2v4.8a2.5 2.5 0 0 0 2.5 2.5h9.793l-3.347 3.346a.5.5 0 0 0 .708.708l4.2-4.2a.5.5 0 0 0 0-.708l-4-4a.5.5 0 0 0-.708.708L13.293 8.3H3.5A1.5 1.5 0 0 1 2 6.8V2a.5.5 0 0 0-.5-.5z" />
+                                            </svg></button></div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-sm-2 col-4 share">
-                            <div class="btn-group btn-group-sm">
-                                <button class="btn btn-outline-primary nomargin" data-bs-toggle="modal"
-                                    data-bs-target="#theme" aria-label="テーマ切り替え" title="テーマ切り替え"><svg
-                                        xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor"
-                                        class="nomargin bi bi-sun lightIcon" viewBox="0 0 16 16">
-                                        <path
-                                            d="M8 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6zm0 1a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z" />
-                                    </svg>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor"
-                                        class="bi bi-moon-fill darkIcon nomargin" viewBox="0 0 16 16">
-                                        <path
-                                            d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z" />
-                                    </svg></button>
-                                <button class="btn btn-outline-primary" aria-label="共有" data-bs-toggle="modal"
-                                    data-bs-target="#share" title="共有"><svg xmlns="http://www.w3.org/2000/svg"
-                                        width="14" height="14" fill="currentColor"
-                                        class="nomargin shareiOS bi bi-box-arrow-up" viewBox="0 0 16 16">
-                                        <path fill-rule="evenodd"
-                                            d="M3.5 6a.5.5 0 0 0-.5.5v8a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5v-8a.5.5 0 0 0-.5-.5h-2a.5.5 0 0 1 0-1h2A1.5 1.5 0 0 1 14 6.5v8a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 14.5v-8A1.5 1.5 0 0 1 3.5 5h2a.5.5 0 0 1 0 1h-2z" />
-                                        <path fill-rule="evenodd"
-                                            d="M7.646.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 1.707V10.5a.5.5 0 0 1-1 0V1.707L5.354 3.854a.5.5 0 1 1-.708-.708l3-3z" />
-                                    </svg>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor"
-                                        class="nomargin shareAndroid bi bi-share" viewBox="0 0 16 16">
-                                        <path
-                                            d="M13.5 1a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM11 2.5a2.5 2.5 0 1 1 .603 1.628l-6.718 3.12a2.499 2.499 0 0 1 0 1.504l6.718 3.12a2.5 2.5 0 1 1-.488.876l-6.718-3.12a2.5 2.5 0 1 1 0-3.256l6.718-3.12A2.5 2.5 0 0 1 11 2.5zm-8.5 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm11 5.5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3z" />
-                                    </svg>
-                                </button><button class="btn btn-outline-primary"
-                                    onclick="window.open('https://r-40021.github.io/privacy.html?fromApp=true', null, 'top=30,left=30,width=800,height=500');"
-                                    aria-label="プライバシーポリシー" rel="nofollow" title="プライバシーポリシー"><svg
-                                        xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor"
-                                        class="nomargin bi bi-lock" viewBox="0 0 16 16">
-                                        <path
-                                            d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2zm3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2zM5 8h6a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z" />
-                                    </svg></button>
+                            <div class="col-sm-6 col-8 maxNum">
+                                <div class="bingoMax"><label for="bingoMax">最大値</label>
+                                    <div class="bingoMaxInput">
+                                        <div class="bingoMaxRange"> <input type="range" class="form-range" min="1"
+                                                max="99" step="1" id="bingoMax" disabled /> </div>
+                                        <div class="bingoMaxText"> <input class="form-control form-control-sm"
+                                                type="number" aria-label="最大値" id="bingoMaxText" min="1" max="99"
+                                                value="75" disabled pattern="\d*" /> </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-2 col-4 share">
+                                <div class="btn-group btn-group-sm">
+                                    <button class="btn btn-outline-primary nomargin" data-bs-toggle="modal"
+                                        data-bs-target="#theme" aria-label="テーマ切り替え" title="テーマ切り替え"><svg
+                                            xmlns="http://www.w3.org/2000/svg" width="14" height="14"
+                                            fill="currentColor" class="nomargin bi bi-sun lightIcon"
+                                            viewBox="0 0 16 16">
+                                            <path
+                                                d="M8 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6zm0 1a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z" />
+                                        </svg>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12"
+                                            fill="currentColor" class="bi bi-moon-fill darkIcon nomargin"
+                                            viewBox="0 0 16 16">
+                                            <path
+                                                d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z" />
+                                        </svg></button>
+                                    <button class="btn btn-outline-primary" aria-label="共有" data-bs-toggle="modal"
+                                        data-bs-target="#share" title="共有"><svg xmlns="http://www.w3.org/2000/svg"
+                                            width="14" height="14" fill="currentColor"
+                                            class="nomargin shareiOS bi bi-box-arrow-up" viewBox="0 0 16 16">
+                                            <path fill-rule="evenodd"
+                                                d="M3.5 6a.5.5 0 0 0-.5.5v8a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5v-8a.5.5 0 0 0-.5-.5h-2a.5.5 0 0 1 0-1h2A1.5 1.5 0 0 1 14 6.5v8a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 14.5v-8A1.5 1.5 0 0 1 3.5 5h2a.5.5 0 0 1 0 1h-2z" />
+                                            <path fill-rule="evenodd"
+                                                d="M7.646.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 1.707V10.5a.5.5 0 0 1-1 0V1.707L5.354 3.854a.5.5 0 1 1-.708-.708l3-3z" />
+                                        </svg>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14"
+                                            fill="currentColor" class="nomargin shareAndroid bi bi-share"
+                                            viewBox="0 0 16 16">
+                                            <path
+                                                d="M13.5 1a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM11 2.5a2.5 2.5 0 1 1 .603 1.628l-6.718 3.12a2.499 2.499 0 0 1 0 1.504l6.718 3.12a2.5 2.5 0 1 1-.488.876l-6.718-3.12a2.5 2.5 0 1 1 0-3.256l6.718-3.12A2.5 2.5 0 0 1 11 2.5zm-8.5 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm11 5.5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3z" />
+                                        </svg>
+                                    </button><button class="btn btn-outline-primary"
+                                        onclick="window.open('https://r-40021.github.io/privacy.html?fromApp=true', null, 'top=30,left=30,width=800,height=500');"
+                                        aria-label="プライバシーポリシー" rel="nofollow" title="プライバシーポリシー"><svg
+                                            xmlns="http://www.w3.org/2000/svg" width="14" height="14"
+                                            fill="currentColor" class="nomargin bi bi-lock" viewBox="0 0 16 16">
+                                            <path
+                                                d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2zm3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2zM5 8h6a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z" />
+                                        </svg></button>
+                                </div>
                             </div>
                         </div>
                     </div>
