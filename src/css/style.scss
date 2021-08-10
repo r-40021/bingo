@@ -9,7 +9,22 @@ $theme-colors: (
   "dark": #261e1c,
 );
 //bootstrap
-@import "../../node_modules/bootstrap/scss/bootstrap.scss";
+@import "../../node_modules/bootstrap/scss/functions";
+@import "../../node_modules/bootstrap/scss/variables";
+@import "../../node_modules/bootstrap/scss/mixins";
+@import "../../node_modules/bootstrap/scss/utilities";
+@import "../../node_modules/bootstrap/scss/root";
+@import "../../node_modules/bootstrap/scss/reboot";
+@import "../../node_modules/bootstrap/scss/type";
+@import "../../node_modules/bootstrap/scss/containers";
+@import "../../node_modules/bootstrap/scss/grid";
+@import "../../node_modules/bootstrap/scss/forms";
+@import "../../node_modules/bootstrap/scss/buttons";
+@import "../../node_modules/bootstrap/scss/button-group";
+@import "../../node_modules/bootstrap/scss/list-group";
+@import "../../node_modules/bootstrap/scss/close";
+@import "../../node_modules/bootstrap/scss/modal";
+
 /* 全体 */
 :root {
   --bgcolor: #fff;
@@ -55,6 +70,9 @@ body {
     Meiryo,
     // 游ゴシックが入っていないWindows
     sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-font-smoothing: antialiased;
+    letter-spacing: .01em;
 }
 @font-face {
   font-family: YuGothicM;
@@ -136,7 +154,6 @@ input {
   width: auto;
   height: auto;
   text-align: left;
-  font-size: small;
   background-color: var(--bgcolor);
   color: var(--bothGrayText);
   box-shadow: rgba(149, 157, 165, 0.103) 0px 8px 24px;
@@ -233,20 +250,28 @@ input[type="number"] {
 .modal-content {
   background-color: var(--bgcolor);
 }
+.card {
+  display: flex;
+  flex-direction: column;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+  border-radius: 8px;
+  border: #ccc 1px solid;
+}
 .history .card {
   width: 100%;
   height: 100%;
   color: var(--graytext);
 }
 .card-header {
-  background-color: rgba(0, 0, 0, 0.03);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+  padding: .8em 1em;
+  font-size: 16px;
+  opacity: 0.8;
+  letter-spacing: .15em;
 }
 .history-inner .card-body {
   overflow: auto;
   -webkit-overflow-scrolling: touch;
   color: var(--bothGrayText);
-  background-color: var(--bgcolor);
 }
 .history-inner {
   width: 80%;
@@ -260,17 +285,24 @@ input[type="number"] {
   text-align: center;
   color: var(--graytext);
 }
+/* Modal */
+.modal-header {
+  letter-spacing: .05em;
+}
 /* フッター */
 .footer-wrap{
   padding:  0.5em;
   padding-bottom: 0.8em;
+  display: flex;
+  justify-content: center;
 }
 .footer {
   padding: 15px;
   width: 100%;
+  max-width: 67rem;
   height: 100%;
   border-radius: 0.35rem;
-  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
 }
 /* ボタン4つ */
 .footer .buttons {
@@ -299,6 +331,8 @@ input[type="number"] {
 }
 .bingoMax label {
   color: var(--bothGrayText);
+  opacity: 0.8;
+  letter-spacing: .15em;
 }
 /* レンジ */
 .bingoMaxRange {
@@ -435,10 +469,6 @@ body.dark {
 }
 body.dark html {
   background-color: var(--bgcolor);
-}
-body.dark .card-header {
-  background-color: rgba(0, 0, 0, 0.85);
-  border-bottom: 1px solid rgb(97, 97, 97);
 }
 body.dark .card {
   border-color: rgb(97, 97, 97);
