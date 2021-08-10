@@ -50,6 +50,7 @@ body {
   width: 100%;
   margin: 0;
   padding: 0;
+  line-height: 1.7;
   overflow: hidden;
   background-color: var(--bgcolor);
   font-family: -apple-system, blinkMacSystemFont,
@@ -267,6 +268,7 @@ input[type="number"] {
   font-size: 16px;
   opacity: 0.8;
   letter-spacing: .15em;
+  line-height: 1.2;
 }
 .history-inner .card-body {
   overflow: auto;
@@ -457,6 +459,9 @@ svg {
   .bingoMax,
   .share {
     margin-top: 30px;
+    font-size: small;
+  }
+  .card-header{
     font-size: small;
   }
 }
