@@ -1,15 +1,4 @@
-/*Bootstrap*/
-//import '../../node_modules/bootstrap/js/dist/alert';
-//import "../../node_modules/bootstrap/js/dist/button";
-//import '../../node_modules/bootstrap/js/dist/carousel';
-//import '../../node_modules/bootstrap/js/dist/collapse';
-//import '../../node_modules/bootstrap/js/dist/dropdown';
-import Modal from "../../node_modules/bootstrap/js/dist/modal";
-//import '../../node_modules/bootstrap/js/dist/popover';
-//import '../../node_modules/bootstrap/js/dist/scrollspy';
-//import '../../node_modules/bootstrap/js/dist/tab';
-//import '../../node_modules/bootstrap/js/dist/toast';
-//import '../../node_modules/bootstrap/js/dist/tooltip';
+import { modalClose, modalTrigger, openModal } from "./modal";
 /*変数の定義*/
 var max = 75; //最大値
 var myHistory = []; //履歴
@@ -21,6 +10,9 @@ old.number = []; //過去に出た数字を記録（キャッシュしない）
 old.color = []; //過去の枠線色を記録（キャッシュしない）
 let anime; //テーマ変更時のアニメーション(timeout)
 let themeStatus; //テーマがユーザー設定(1)なのか否か(0)
+
+modalTrigger();
+modalClose();
 /*Dark Theme*/
 const isDark = window.matchMedia("(prefers-color-scheme: dark)");
 document.addEventListener("DOMContentLoaded", function () {
@@ -128,8 +120,7 @@ const spin = () => {
   if (select.length <= 0) {
     let bodyList = ["聖戦の記録をパラダイムシフトしてやり直しますか？","履歴を電脳空間から存在を抹消してやり直しますか？","履歴をリセットしてやり直しますか？…うっ……頭が……ッ","履歴をリセットして野村哲也を筆頭とするメンバーでリメイク、希望を私たちの光に変えますか…それとも感情に任せて俺を殺しますか？","履歴をリセットしてやり直します――表向きは、ねかとか…な？"];
     document.getElementById("end-body").textContent = bodyList[Date.now() % bodyList.length];
-    var endModal = new Modal(document.getElementById("end-modal"));
-    endModal.show();
+    openModal(document.getElementById("end-modal"));
   } else {
     makeDisableSet();
     var undoElement = document.getElementById("undo");
@@ -244,7 +235,7 @@ function removeDisableSet() {
 }
 const resetAsk = () => {
   //履歴をリセットしてもいいか、尋ねる
-  new Modal(document.getElementById("reset-modal")).show();
+  openModal(document.getElementById("reset-modal"))
 };
 const reset = () => {
   //履歴のリセット処理

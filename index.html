@@ -25,21 +25,41 @@
     <meta property="og:image" content="https://r-40021.github.io/bingo/favicon/ogp.png" />
     <meta name="theme-color" content="#fff" />
     <!-- Splash Screens -->
-    <link href="./splashscreens/iphone5_splash.png" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image" />
-    <link href="./splashscreens/iphone6_splash.png" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image" />
-    <link href="./splashscreens/iphoneplus_splash.png" media="(device-width: 621px) and (device-height: 1104px) and (-webkit-device-pixel-ratio: 3)" rel="apple-touch-startup-image" />
-    <link href="./splashscreens/iphonex_splash.png" media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3)" rel="apple-touch-startup-image" />
-    <link href="./splashscreens/iphonexr_splash.png" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image" />
-    <link href="./splashscreens/iphonexsmax_splash.png" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3)" rel="apple-touch-startup-image" />
-    <link href="./splashscreens/ipad_splash.png" media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image" />
-    <link href="./splashscreens/ipadpro1_splash.png" media="(device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image" />
-    <link href="./splashscreens/ipadpro3_splash.png" media="(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image" />
-    <link href="./splashscreens/ipadpro2_splash.png" media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image" />
+    <link href="./splashscreens/iphone5_splash.png"
+        media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)"
+        rel="apple-touch-startup-image" />
+    <link href="./splashscreens/iphone6_splash.png"
+        media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2)"
+        rel="apple-touch-startup-image" />
+    <link href="./splashscreens/iphoneplus_splash.png"
+        media="(device-width: 621px) and (device-height: 1104px) and (-webkit-device-pixel-ratio: 3)"
+        rel="apple-touch-startup-image" />
+    <link href="./splashscreens/iphonex_splash.png"
+        media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3)"
+        rel="apple-touch-startup-image" />
+    <link href="./splashscreens/iphonexr_splash.png"
+        media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2)"
+        rel="apple-touch-startup-image" />
+    <link href="./splashscreens/iphonexsmax_splash.png"
+        media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3)"
+        rel="apple-touch-startup-image" />
+    <link href="./splashscreens/ipad_splash.png"
+        media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2)"
+        rel="apple-touch-startup-image" />
+    <link href="./splashscreens/ipadpro1_splash.png"
+        media="(device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2)"
+        rel="apple-touch-startup-image" />
+    <link href="./splashscreens/ipadpro3_splash.png"
+        media="(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2)"
+        rel="apple-touch-startup-image" />
+    <link href="./splashscreens/ipadpro2_splash.png"
+        media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2)"
+        rel="apple-touch-startup-image" />
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Kosugi+Maru&display=swap" media="print"
         onload="this.media='all'">
-    <link rel="stylesheet" type="text/css" href="./dist/style.css?2021-08-10-01"/>
+    <link rel="stylesheet" type="text/css" href="./dist/style.css?2021-08-11-01" />
     <meta content="サクサク動く！履歴や設定を自動で保存する機能を搭載した、インストール不要のビンゴマシーン。オフラインにも対応しています。" name="description" />
 </head>
 
@@ -120,11 +140,10 @@
                             </div>
                             <div class="col-sm-2 col-4 share">
                                 <div class="btn-group btn-group-sm">
-                                    <button class="btn btn-outline-primary nomargin" data-bs-toggle="modal"
-                                        data-bs-target="#theme" aria-label="テーマ切り替え" title="テーマ切り替え"><svg
-                                            xmlns="http://www.w3.org/2000/svg" width="14" height="14"
-                                            fill="currentColor" class="nomargin bi bi-sun lightIcon"
-                                            viewBox="0 0 16 16">
+                                    <button class="btn btn-outline-primary nomargin modal-trigger" modal-target="theme"
+                                        aria-label="テーマ切り替え" title="テーマ切り替え"><svg xmlns="http://www.w3.org/2000/svg"
+                                            width="14" height="14" fill="currentColor"
+                                            class="nomargin bi bi-sun lightIcon" viewBox="0 0 16 16">
                                             <path
                                                 d="M8 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6zm0 1a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z" />
                                         </svg>
@@ -134,8 +153,8 @@
                                             <path
                                                 d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z" />
                                         </svg></button>
-                                    <button class="btn btn-outline-primary" aria-label="共有" data-bs-toggle="modal"
-                                        data-bs-target="#share" title="共有"><svg xmlns="http://www.w3.org/2000/svg"
+                                    <button class="btn btn-outline-primary modal-trigger" aria-label="共有"
+                                        modal-target="share" title="共有"><svg xmlns="http://www.w3.org/2000/svg"
                                             width="14" height="14" fill="currentColor"
                                             class="nomargin shareiOS bi bi-box-arrow-up" viewBox="0 0 16 16">
                                             <path fill-rule="evenodd"
@@ -165,44 +184,45 @@
             </div>
         </div>
     </div>
-    <div class="modal fade" id="end-modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-        aria-labelledby="end-modal" aria-hidden="true">
-        <div class="modal-dialog">
+    <div class="modal-wrapper modal-overlay modalClose" style="z-index: -2;" id="modal-overlay">
+        <div class="modal" id="end-modal" aria-hidden="true">
             <div class="modal-content">
+                <div class="close"><a class="myBtn-basic modalClose"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16" aria-label="閉じる">
+                    <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"></path>
+                </svg></a></div>
                 <div class="modal-header">
-                    <h5 class="modal-title" id="staticBackdropLabel">終了</h5><button type="button" class="btn-close"
-                        data-bs-dismiss="modal" aria-label="Close"></button>
+                    <h5 class="modal-title" id="staticBackdropLabel">終了</h5>
                 </div>
-                <div class="modal-body" id="end-body"></div>
-                <div class="modal-footer"><button type="button" class="btn btn-secondary" data-bs-dismiss="modal"> キャンセル
-                    </button><button type="button" class="btn btn-primary" onclick="window.glReset()"
-                        data-bs-dismiss="modal">
+                <div class="modal-body">
+                    <p id="end-body"></p>
+                </div>
+                <div class="modal-footer"><button type="button" class="btn btn-secondary"> キャンセル
+                    </button><button type="button" class="btn btn-primary" onclick="window.glReset()">
                         やりなおす </button></div>
             </div>
         </div>
-    </div>
-    <div class="modal fade" id="reset-modal" data-bs-backdrop="static" tabindex="-1" aria-labelledby="Reset-Modal"
-        aria-hidden="true">
-        <div class="modal-dialog">
+        <div class="modal" id="reset-modal" aria-hidden="true">
             <div class="modal-content">
+                <div class="close"><a class="myBtn-basic modalClose"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16" aria-label="閉じる">
+                    <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"></path>
+                </svg></a></div>
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel"> リセットしますか？ </h5><button type="button"
-                        class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <h5 class="modal-title" id="exampleModalLabel"> リセットしますか？ </h5>
                 </div>
                 <div class="modal-body">
                     <p>リセットすると、データが初期値にリセットされます。</p>
                     <p>この操作は元に戻せません。</p>
                 </div>
-                <div class="modal-footer"><button type="button" class="btn btn-secondary" data-bs-dismiss="modal"> キャンセル
-                    </button><button type="button" class="btn btn-danger" onclick="window.glReset()"
-                        data-bs-dismiss="modal">
+                <div class="modal-footer"><button type="button" class="btn btn-secondary"> キャンセル
+                    </button><button type="button" class="btn btn-danger" onclick="window.glReset()">
                         リセット </button></div>
             </div>
         </div>
-    </div>
-    <div class="modal fade" id="share" tabindex="-1" aria-labelledby="share" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered">
+        <div class="modal" id="share" aria-hidden="true">
             <div class="modal-content">
+                <div class="close"><a class="myBtn-basic modalClose"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16" aria-label="閉じる">
+                    <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"></path>
+                </svg></a></div>
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel"><svg xmlns="http://www.w3.org/2000/svg" width="19"
                             height="19" fill="currentColor" class="shareiOS bi bi-box-arrow-up" viewBox="0 0 16 16">
@@ -215,7 +235,6 @@
                             <path
                                 d="M13.5 1a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM11 2.5a2.5 2.5 0 1 1 .603 1.628l-6.718 3.12a2.499 2.499 0 0 1 0 1.504l6.718 3.12a2.5 2.5 0 1 1-.488.876l-6.718-3.12a2.5 2.5 0 1 1 0-3.256l6.718-3.12A2.5 2.5 0 0 1 11 2.5zm-8.5 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm11 5.5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3z" />
                         </svg>共有 </h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <div class="sh-content">
@@ -223,8 +242,8 @@
                         <p>ご協力よろしくお願いします。</p>
                         <div class="list-group">
                             <!-- URL -->
-                            <button class="list-group-item list-group-item-action" onclick="window.glCopy()"
-                                style="cursor: pointer" data-bs-dismiss="modal">
+                            <button class="list-group-item list-group-item-action modalClose" onclick="window.glCopy()"
+                                style="cursor: pointer">
                                 <div class="share-btn-wrap">
                                     <div class="svg"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                             fill="currentColor" class="bi bi-link-45deg nomargin" viewBox="0 0 16 16">
@@ -237,9 +256,9 @@
                                 </div>
                             </button>
                             <!-- Twitter -->
-                            <button class="list-group-item list-group-item-action"
+                            <button class="list-group-item list-group-item-action modalClose"
                                 onclick="window.open(encodeURI(decodeURI('https://twitter.com/intent/tweet?text=自動保存機能付きビンゴマシーン%0a&url=https://r-40021.github.io/bingo&hashtags=やまだBINGO,やまだけんいち')), 'tweetwindow', 'width=650, height=470, personalbar=0, toolbar=0, scrollbars=1, sizable=1'); return false;"
-                                rel="nofollow" data-bs-dismiss="modal">
+                                rel="nofollow">
                                 <div class="share-btn-wrap">
                                     <div class="svg"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                             fill="currentColor" class="bi bi-twitter nomargin viewBox=" 0 0 16 16">
@@ -250,9 +269,9 @@
                                 </div>
                             </button>
                             <!-- LINE -->
-                            <button class="list-group-item list-group-item-action"
+                            <button class="list-group-item list-group-item-action modalClose"
                                 onclick="window.open(encodeURI('https://social-plugins.line.me/lineit/share?url=https://r-40021.github.io/bingo/'), 'LINE', 'width=650, height=550, personalbar=0, toolbar=0, scrollbars=1, sizable=1'); return false;"
-                                rel="nofollow" data-bs-dismiss="modal">
+                                rel="nofollow">
                                 <div class="share-btn-wrap">
                                     <div class="svg"><svg class="nomargin" xmlns="http://www.w3.org/2000/svg" width="19"
                                             height="19" fill="currentColor" viewBox="0 0 448 512">
@@ -270,9 +289,8 @@
                         <p>また、このアプリはオープンソースソフトウェアです。</p>
                         <div class="list-group">
                             <!-- GitHub -->
-                            <button class="list-group-item list-group-item-action" aria-current="true"
-                                onclick="window.open('https://github.com/r-40021/bingo')" rel="nofollow"
-                                data-bs-dismiss="modal">
+                            <button class="list-group-item list-group-item-action modalClose" aria-current="true"
+                                onclick="window.open('https://github.com/r-40021/bingo')" rel="nofollow">
                                 <div class="share-btn-wrap">
                                     <div class="svg"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                             fill="currentColor" class="bi bi-github nomargin" viewBox="0 0 16 16">
@@ -287,11 +305,12 @@
                 </div>
             </div>
         </div>
-    </div>
-    <!-- テーマ選択 -->
-    <div class="modal fade" id="theme" tabindex="-1" aria-labelledby="share" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered">
+        <!-- テーマ選択 -->
+        <div class="modal" id="theme" aria-hidden="true">
             <div class="modal-content">
+                <div class="close"><a class="myBtn-basic modalClose"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16" aria-label="閉じる">
+                    <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"></path>
+                </svg></a></div>
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel"><svg xmlns="http://www.w3.org/2000/svg" width="19"
                             height="19" fill="currentColor" class="bi bi-sun lightIcon" viewBox="0 0 16 16">
@@ -302,7 +321,6 @@
                             <path
                                 d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z" />
                         </svg>テーマ切り替え</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <div class="sh-content">
