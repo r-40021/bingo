@@ -130,45 +130,21 @@ input {
 }
 /* 右上 */
 .info {
-  position: relative;
+  position: absolute;
   top: 1px;
+  right: 0px;
   width: auto;
   height: auto;
   text-align: right;
   z-index: 99;
   padding: 5px;
-}
-.about {
-  display: inline-block;
+  color: var(--bothGrayText);
   cursor: pointer;
-  color: var(--bothGrayText);
-}
-.detail {
-  z-index: -1;
-  max-width: 100%;
-  position: absolute;
-  display: block;
-  right: 40px;
-  top: 0;
-  width: auto;
-  height: auto;
-  text-align: left;
-  background-color: var(--bgcolor);
-  color: var(--bothGrayText);
-  box-shadow: rgba(149, 157, 165, 0.103) 0px 8px 24px;
-  padding: 10px;
-  opacity: 0;
-  transform: translateX(10px);
-  transition: opacity 0.25s ease-in-out, transform 0.25s ease-in-out,
-    z-index 0.25s ease-in-out;
-}
-.about:hover + .detail {
-  z-index: 100;
-  display: block;
-  opacity: 1;
-  transform: translateX(0);
-  transition: opacity 0.25s ease-in-out, transform 0.25s ease-in-out,
-    z-index 0.25s ease-in-out;
+  transition: opacity 0.2s;
+  &:hover {
+    opacity: 0.5;
+    color: var(--bothGrayText);
+  }
 }
 /* iPhone対策 */
 input[type="number"] {
@@ -246,7 +222,7 @@ input[type="number"] {
   & .close {
     position: absolute;
     top: 0.2em;
-    right: 0;
+    right: 0.2em;
     & a {
       color: var(--bothGrayText);
       transition: opacity 0.2s;
@@ -256,21 +232,21 @@ input[type="number"] {
       }
     }
   }
-  transition: opacity .15s, transform .15s;
+  transition: opacity 0.15s, transform 0.15s;
   &:not(.active) {
-    transition: z-index .15s, opacity .15s, transform .15s;
+    transition: z-index 0.15s, opacity 0.15s, transform 0.15s;
   }
-  & .modal-footer{
+  & .modal-footer {
     width: 100%;
-    padding-top: .2em;
+    padding-top: 0.2em;
     display: flex;
     justify-content: flex-end;
-    & button{
-      margin: 0 .15em;
+    & button {
+      margin: 0 0.15em;
     }
   }
-  & p{
-    padding-left: .3em;
+  & p {
+    padding-left: 0.3em;
   }
 }
 .modal-overlay {
@@ -287,7 +263,7 @@ input[type="number"] {
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: opacity .15s;
+  transition: opacity 0.15s;
   background-color: rgba(0, 0, 0, 0.5);
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
@@ -303,7 +279,7 @@ input[type="number"] {
 }
 
 @media (max-width: 1020px) and (min-width: 768px) {
-  .modal{
+  .modal {
     width: 80%;
   }
 }
@@ -577,7 +553,7 @@ body.dark html {
 }
 body.dark .card {
   border-color: rgb(97, 97, 97);
-  & .card-header{
+  & .card-header {
     border-color: rgb(97, 97, 97);
   }
 }
@@ -634,11 +610,21 @@ body.dark .btn-outline-primary:hover {
   color: #fff;
 }
 
-body.dark .modal-header{
+body.dark .modal-header {
   border-bottom: #666 1px solid;
 }
 body.dark .list-group button:not(.active) {
   background-color: var(--bgcolor);
   color: var(--textcolor);
   border-color: #616161;
+}
+@media (min-width: 1400px) {
+  .container-xxl,
+  .container-xl,
+  .container-lg,
+  .container-md,
+  .container-sm,
+  .container {
+    max-width: 80%;
+  }
 }
