@@ -39,9 +39,6 @@ body.anime {
 body.anime .btn {
   transition: background-color 0.2s, color 0.2s;
 }
-.fade {
-  transition: opacity 0.15s linear;
-}
 html,
 body {
   height: 100vh;
@@ -232,9 +229,9 @@ input[type="number"] {
       }
     }
   }
-  transition: opacity 0.15s, transform 0.15s;
+  transition: opacity .2s, transform .2s;
   &:not(.active) {
-    transition: z-index 0.15s, opacity 0.15s, transform 0.15s;
+    transition: z-index .2s, opacity .2s, transform .2s;
   }
   & .modal-footer {
     width: 100%;
@@ -263,7 +260,7 @@ input[type="number"] {
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: opacity 0.15s;
+  transition: opacity .2s;
   background-color: rgba(0, 0, 0, 0.5);
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
