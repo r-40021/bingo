@@ -9,7 +9,6 @@ export function modalTrigger() {
                 leave = false;
                 element.addEventListener("touchend", (e) => {
                     if (!leave) {
-                        e.preventDefault();
                         openModal(document.getElementById(element.getAttribute("modal-target")));
                     }
                 })
@@ -21,7 +20,6 @@ export function modalTrigger() {
             }, false);
         } else {
             element.addEventListener("click", (e) => {
-                e.preventDefault();
                 openModal(document.getElementById(element.getAttribute("modal-target")));
             }, false);
         }
@@ -39,7 +37,6 @@ export function modalClose() {
                 element.addEventListener("touchend", (e) => {
                     if (!leave) {
                         if (!element.classList.contains("modal-overlay") || (element.classList.contains("modal-overlay") && element.classList.contains("active") && !e.target.closest(".modal"))) {
-                            e.preventDefault();
                             closeModal(document.querySelector(".modal.active"));
                         }
                     }
@@ -53,7 +50,6 @@ export function modalClose() {
         } else {
             element.addEventListener("click", (e) => {
                 if (!element.classList.contains("modal-overlay") || (element.classList.contains("modal-overlay") && element.classList.contains("active") && !e.target.closest(".modal"))) {
-                    e.preventDefault();
                     closeModal(document.querySelector(".modal.active"));
                 }
             }, false);
