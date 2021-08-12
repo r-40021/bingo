@@ -59,7 +59,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Kosugi+Maru&display=swap" media="print"
         onload="this.media='all'">
-    <link rel="stylesheet" type="text/css" href="./dist/style.css?2021-08-11-03" />
+    <link rel="stylesheet" type="text/css" href="./dist/style.css?2021-08-12-01" />
     <meta content="サクサク動く！履歴や設定を自動で保存する機能を搭載した、インストール不要のビンゴマシーン。オフラインにも対応しています。" name="description" />
 </head>
 
@@ -69,11 +69,11 @@
             document.body.classList.add("dark");
         }
     </script>
-    <a class="info modal-trigger" modal-target="about"><svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" fill="currentColor" class="bi bi-info-circle" viewBox="0 0 16 16">
+    <button class="myBtn-basic info modal-trigger" modal-target="about"><svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" fill="currentColor" class="bi bi-info-circle" viewBox="0 0 16 16">
         <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
         <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
       </svg>
-    </a>
+    </button>
     <div class="fixed" id="fixed">
         <div class="flex">
             <div class="body" id="body">
@@ -184,9 +184,9 @@
     <div class="modal-wrapper modal-overlay modalClose" style="z-index: -2;" id="modal-overlay">
         <div class="modal" id="end-modal" aria-hidden="true">
             <div class="modal-content">
-                <div class="close"><a class="myBtn-basic modalClose"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-x nomargin" viewBox="0 0 16 16" aria-label="閉じる">
+                <div class="close"><button class="myBtn-basic modalClose"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-x nomargin" viewBox="0 0 16 16" aria-label="閉じる">
                     <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"></path>
-                </svg></a></div>
+                </svg></button></div>
                 <div class="modal-header">
                     <h5 class="modal-title" id="staticBackdropLabel">終了</h5>
                 </div>
@@ -200,9 +200,9 @@
         </div>
         <div class="modal" id="reset-modal" aria-hidden="true">
             <div class="modal-content">
-                <div class="close"><a class="myBtn-basic modalClose"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-x nomargin" viewBox="0 0 16 16" aria-label="閉じる">
+                <div class="close"><button class="myBtn-basic modalClose"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-x nomargin" viewBox="0 0 16 16" aria-label="閉じる">
                     <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"></path>
-                </svg></a></div>
+                </svg></button></div>
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel"> リセットしますか？ </h5>
                 </div>
@@ -217,9 +217,9 @@
         </div>
         <div class="modal" id="share" aria-hidden="true">
             <div class="modal-content">
-                <div class="close"><a class="myBtn-basic modalClose"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-x nomargin" viewBox="0 0 16 16" aria-label="閉じる">
+                <div class="close"><button class="myBtn-basic modalClose"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-x nomargin" viewBox="0 0 16 16" aria-label="閉じる">
                     <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"></path>
-                </svg></a></div>
+                </svg></button></div>
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel"><svg xmlns="http://www.w3.org/2000/svg" width="24"
                             height="24" fill="currentColor" class="shareiOS bi bi-box-arrow-up" viewBox="0 0 16 16">
@@ -288,9 +288,9 @@
         <!-- テーマ選択 -->
         <div class="modal" id="theme" aria-hidden="true">
             <div class="modal-content">
-                <div class="close"><a class="myBtn-basic modalClose"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-x nomargin" viewBox="0 0 16 16" aria-label="閉じる">
+                <div class="close"><button class="myBtn-basic modalClose"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-x nomargin" viewBox="0 0 16 16" aria-label="閉じる">
                     <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"></path>
-                </svg></a></div>
+                </svg></button></div>
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel"><svg xmlns="http://www.w3.org/2000/svg" width="24"
                             height="24" fill="currentColor" class="bi bi-sun lightIcon" viewBox="0 0 16 16">
@@ -333,9 +333,9 @@
         <!-- About -->
         <div class="modal" id="about" aria-hidden="true">
             <div class="modal-content">
-                <div class="close"><a class="myBtn-basic modalClose"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-x nomargin" viewBox="0 0 16 16" aria-label="閉じる">
+                <div class="close"><button class="myBtn-basic modalClose"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-x nomargin" viewBox="0 0 16 16" aria-label="閉じる">
                     <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"></path>
-                </svg></a></div>
+                </svg></button></div>
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">このアプリについて</h5>
                 </div>

@@ -135,13 +135,6 @@ input {
   text-align: right;
   z-index: 99;
   padding: 5px;
-  color: var(--bothGrayText);
-  cursor: pointer;
-  transition: opacity 0.2s;
-  &:hover {
-    opacity: 0.5;
-    color: var(--bothGrayText);
-  }
 }
 /* iPhone対策 */
 input[type="number"] {
@@ -187,6 +180,23 @@ input[type="number"] {
   min-height: 180px;
 }
 
+/* Button */
+.myBtn-basic {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-color: var(--bgcolor);
+  color: var(--bothGrayText);
+  border: 0;
+  border-radius: 0;
+  cursor: pointer;
+  transition: opacity .2s;
+
+  &:hover {
+    opacity: 0.5;
+  }
+}
+
 /* Modal */
 .modal {
   opacity: 0;
@@ -220,14 +230,6 @@ input[type="number"] {
     position: absolute;
     top: 0.2em;
     right: 0.2em;
-    & a {
-      color: var(--bothGrayText);
-      transition: opacity 0.2s;
-      cursor: pointer;
-      &:hover {
-        opacity: 0.5;
-      }
-    }
   }
   transition: opacity .2s, transform .2s;
   &:not(.active) {
