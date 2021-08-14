@@ -118,7 +118,7 @@ document.addEventListener("DOMContentLoaded", function () {
 const spin = () => {
   //シャッフル
   if (select.length <= 0) {
-    let bodyList = ["聖戦の記録をパラダイムシフトしてやり直しますか？","履歴を電脳空間から存在を抹消してやり直しますか？","履歴をリセットしてやり直しますか？…うっ……頭が……ッ","履歴をリセットして野村哲也を筆頭とするメンバーでリメイク、希望を私たちの光に変えますか…それとも感情に任せて俺を殺しますか？","履歴をリセットしてやり直します――表向きは、ねかとか…な？"];
+    let bodyList = ["聖戦の記録をパラダイムシフトしてやり直しますか？", "履歴を電脳空間から存在を抹消してやり直しますか？", "履歴をリセットしてやり直しますか？…うっ……頭が……ッ", "履歴をリセットして野村哲也を筆頭とするメンバーでリメイク、希望を私たちの光に変えますか…それとも感情に任せて俺を殺しますか？", "履歴をリセットしてやり直します――表向きは、ねかとか…な？"];
     document.getElementById("end-body").textContent = bodyList[Date.now() % bodyList.length];
     openModal(document.getElementById("end-modal"));
   } else {
@@ -209,23 +209,23 @@ function addSelect() {
     }
   }
 }
-function makeDisable(element) {
-  //指定した要素(element)を選択不可にする
-  document.getElementById(element).setAttribute("disabled", null);
+function makeDisable(shareAPIElement) {
+  //指定した要素(shareAPIElement)を選択不可にする
+  document.getElementById(shareAPIElement).setAttribute("disabled", null);
 }
 function makeDisableSet() {
-  //「指定した要素(element)を選択不可にする」処理を、楽ちんなセットにしました。
+  //「指定した要素(shareAPIElement)を選択不可にする」処理を、楽ちんなセットにしました。
   makeDisable("spin");
   makeDisable("reset");
   makeDisable("bingoMax");
   makeDisable("bingoMaxText");
 }
-function removeDisable(element) {
-  //指定した要素(element)を選択可能にする
-  document.getElementById(element).removeAttribute("disabled");
+function removeDisable(shareAPIElement) {
+  //指定した要素(shareAPIElement)を選択可能にする
+  document.getElementById(shareAPIElement).removeAttribute("disabled");
 }
 function removeDisableSet() {
-  //「指定した要素(element)を選択可能にする」処理を、うれしいセットにしました。
+  //「指定した要素(shareAPIElement)を選択可能にする」処理を、うれしいセットにしました。
   removeDisable("spin");
   removeDisable("reset");
   removeDisable("bingoMax");
@@ -424,8 +424,8 @@ const toggleTheme = (mql) => {
     }
     let head = document.head.children;
     for (let index = 0; index < head.length; index++) {
-      const element = head[index].getAttribute("name");
-      if (element === "theme-color") {
+      const shareAPIElement = head[index].getAttribute("name");
+      if (shareAPIElement === "theme-color") {
         head[index].setAttribute("content", color);
         break;
       }
@@ -435,8 +435,8 @@ const toggleTheme = (mql) => {
 function noActive() {
   //すべてのボタンを非アクティブにする
   let list = document.querySelectorAll("#theme .list-group-item");
-  list.forEach(function (element) {
-    element.classList.remove("active");
+  list.forEach(function (shareAPIElement) {
+    shareAPIElement.classList.remove("active");
   });
 }
 /*Global Functions*/
@@ -460,9 +460,32 @@ try {
   }
 }
 let blurTimeOut;
-function blurSpin(){
+function blurSpin() {
   clearTimeout(blurTimeOut);
   blurTimeOut = setTimeout(() => {
     document.getElementById("spin").blur();
   }, 1000 * 60 * 2);
 }
+
+/* Web Share API */
+function shareAPI() {
+  const shareAPIElement = document.getElementById("shareAPI");
+  if (!navigator.share) {
+    shareAPIElement.remove();
+  }
+  shareAPIElement.addEventListener("click", async () => {
+    const shareData = {
+      title: "やまだBINGO",
+      text: "履歴や設定を自動で保存する機能を搭載した、インストール不要のビンゴマシーン",
+      url: location.href
+    }
+
+    try {
+      await navigator.share(shareData)
+    } catch (err) {
+      console.error("Web Share API:" + err);
+    }
+  })
+}
+
+shareAPI();
