@@ -7,7 +7,11 @@ This is a bingo machine which saves the history and the settings auto automatica
 [Open the app](https://r-40021.github.io/bingo/)
 
 # Screenshots
-<img src="https://user-images.githubusercontent.com/75155258/117523218-944db880-aff2-11eb-9ed0-f96f08dd79c5.jpg" alt="bingo" width="70%">
+## Light Mode
+![Light Mode](https://user-images.githubusercontent.com/75155258/129434355-a7dd1ea0-3779-4212-9e49-158d9b9bf1be.png)
+
+## Dark Mode
+![Dark Mode](https://user-images.githubusercontent.com/75155258/129434359-aaffeb9c-2d2e-4d32-9d6c-e3e67d928e2f.png)
 
 # Features
 - The data of this application are automatically saved in LocalStorage. (Except for some browsers)
