@@ -230,6 +230,10 @@ input[type="number"] {
     position: absolute;
     top: 0.2em;
     right: 0.2em;
+
+    & .myBtn-basic{
+      padding: 0;
+    }
   }
   transition: opacity .2s, transform .2s;
   &:not(.active) {
