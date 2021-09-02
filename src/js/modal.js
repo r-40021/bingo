@@ -55,6 +55,11 @@ export function modalClose() {
             }, false);
         }
     }
+    document.addEventListener("keydown", (e)=>{
+        if (!e.repeat && e.key ===  "Escape" && document.querySelector(".modal.active")) {
+            closeModal(document.querySelector(".modal.active"));
+        }
+    });
 }
 
 export function openModal(target) {
