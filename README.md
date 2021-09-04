@@ -1,3 +1,5 @@
+[日本語(Japanese)](README_ja.md)
+
 # <img src="./favicon/favicon.ico" alt="icon" height="35px">&nbsp;Bingo Machine
 
 This is a bingo machine which saves the history and the settings auto automatically.
