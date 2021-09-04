@@ -19,9 +19,8 @@ This is a bingo machine which saves the history and the settings auto automatica
 - It has a "Redo" button.
 - You can switch the theme of this app.
 - This app loads quickly
-# OSS
-- Copyright (c) 2011-2021 Twitter, Inc.
-<br>Copyright (c) 2011-2021 The Bootstrap Authors
-<br>[View on GitHub](https://github.com/twbs/bootstrap)
-# License
-Please Check [LICENSE](LICENSE)
+# Authors
+- [Bootstrap](https://github.com/twbs/bootstrap/blob/main/LICENSE) <br>&copy; 2011-2021 Twitter, Inc. <br> &copy; 2011-2020 The Bootstrap Authors
+- [Bootstrap Icons](https://github.com/twbs/icons/blob/main/LICENSE.md) &copy; 2019-2020 The Bootstrap Authors
+
+
