@@ -244,7 +244,10 @@ input[type="number"] {
     width: 100%;
     padding-top: 0.2em;
     display: flex;
+    position: relative;
     justify-content: flex-end;
+    top: 1.2rem;
+    left: .5rem;
     & button {
       margin: 0 0.15em;
     }
