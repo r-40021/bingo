@@ -1,4 +1,5 @@
 import { modalClose, modalTrigger, openModal } from "./modal";
+import { registerInstallAppEvent } from "./pwa";
 /*変数の定義*/
 var max = 75; //最大値
 var myHistory = []; //履歴
@@ -13,6 +14,8 @@ let themeStatus; //テーマがユーザー設定(1)なのか否か(0)
 
 modalTrigger();
 modalClose();
+
+registerInstallAppEvent(document.getElementById("getPWA"));
 /*Dark Theme*/
 const isDark = window.matchMedia("(prefers-color-scheme: dark)");
 document.addEventListener("DOMContentLoaded", function () {

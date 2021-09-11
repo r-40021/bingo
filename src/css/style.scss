@@ -136,6 +136,9 @@ input {
   text-align: right;
   z-index: 99;
   padding: 5px;
+  & button {
+    padding: 0 .5em;
+  }
 }
 /* iPhone対策 */
 input[type="number"] {
