@@ -54,10 +54,10 @@ body {
     "Helvetica Neue",
     // Macの欧文 (OS X 10.10以前)
     "Segoe UI",
-    "Arial",
-    // Windowsの欧文
     "Roboto",
     //Android
+    "Arial",
+    // Windowsの欧文
     "Hiragino Kaku Gothic ProN",
     // Macのヒラギノ
     YuGothicM,
@@ -320,7 +320,7 @@ input[type="number"] {
   justify-content: center;
   box-sizing: border-box;
   font-family: "Kosugi Maru", -apple-system, blinkMacSystemFont,
-    "Helvetica Neue", "Segoe UI", "Arial", "Roboto", sans-serif;
+    "Helvetica Neue", "Segoe UI", "Roboto", "Arial", sans-serif;
 }
 /* カードを覆う */
 .history {
