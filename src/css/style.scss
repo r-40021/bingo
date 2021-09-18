@@ -23,6 +23,8 @@ $theme-colors: (
 @import "../../node_modules/bootstrap/scss/button-group";
 @import "../../node_modules/bootstrap/scss/list-group";
 
+$ease-in-out: cubic-bezier(0.465, 0.183, 0.153, 0.946);
+
 /* 全体 */
 :root {
   --bgcolor: #fff;
@@ -206,7 +208,7 @@ input[type="number"] {
   opacity: 0;
   transform: scale(0.8);
   z-index: -1;
-  transform-origin: top center;
+  transform-origin: center center;
   position: fixed;
   margin: 0 auto;
   display: block;
@@ -239,9 +241,9 @@ input[type="number"] {
       padding: 0;
     }
   }
-  transition: opacity .2s, transform .2s;
+  transition: opacity .2s $ease-in-out, transform .2s $ease-in-out;
   &:not(.active) {
-    transition: z-index .2s, opacity .2s, transform .2s;
+    transition: z-index .2s $ease-in-out, opacity .2s $ease-in-out, transform .2s $ease-in-out;
   }
   & .modal-footer {
     width: 100%;
@@ -273,7 +275,7 @@ input[type="number"] {
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: opacity .2s;
+  transition: opacity .2s $ease-in-out;
   background-color: rgba(0, 0, 0, 0.5);
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
