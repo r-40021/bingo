@@ -7,10 +7,15 @@
 
 .body {
   flex: 1;
-  background-color: blue;
 }
 
 .footer {
-  height: 100px;
-  background-color: red;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+.range {
+  flex: 1;
 }
