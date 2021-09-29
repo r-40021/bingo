@@ -19,3 +19,15 @@
 .range {
   flex: 1;
 }
+
+.vflex {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  height: 100%;
+}
+
+.rangeValue {
+  font-size: 14px;
+  text-indent: .9rem;
+}
