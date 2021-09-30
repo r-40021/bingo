@@ -1,10 +1,9 @@
 import React from 'react';
 import './App.css';
-import { Box, ChakraProvider, Button, IconButton, ButtonGroup, Slider, SliderTrack, SliderFilledTrack, SliderThumb, Menu, MenuButton, MenuItem, MenuList, MenuGroup, MenuDivider, Flex, NumberInput, NumberInputField, NumberInputStepper, NumberIncrementStepper, NumberDecrementStepper, useColorModeValue } from "@chakra-ui/react";
-import { MdLoop, MdDelete, MdKeyboardArrowUp, MdLockOutline } from "react-icons/md";
-import { SelectTheme } from './theme';
-import { AboutApp } from './about'
-import { ShareMenu } from './share';
+import { Box, ChakraProvider, Button, ButtonGroup, Slider, SliderTrack, SliderFilledTrack, SliderThumb, Flex, NumberInput, NumberInputField, NumberInputStepper, NumberIncrementStepper, NumberDecrementStepper, useColorModeValue } from "@chakra-ui/react";
+import { MdLoop, MdDelete } from "react-icons/md";
+import { MoreTools } from './menu'
+
 
 
 class App extends React.Component {
@@ -24,29 +23,14 @@ class App extends React.Component {
                 </ButtonGroup>
               </Box>
             </div>
-            <div className="range vflex">
-              <RangeLabel />
-              <MaxNumSet />
-            </div>
-            <div className="moreTools">
-              <Box p={4}>
-                <Menu boundary="scrollParent" placement="top" autoSelect={false}>
-                  <MenuButton as={IconButton} icon={<MdKeyboardArrowUp />} aria-label="さらにメニューを表示">
-                  </MenuButton>
-                  <MenuList boxShadow="lg">
-                    <MenuGroup title="情報">
-                      <AboutApp />
-                      <MenuItem icon={<MdLockOutline />} onClick={() => { window.open("https://r-40021.github.io/privacy.html") }}>プライバシーポリシー</MenuItem>
-                    </MenuGroup>
-                    <MenuDivider />
-                    <MenuGroup title="設定">
-                      <SelectTheme />
-                    </MenuGroup>
-                    <MenuDivider />
-                    <ShareMenu />
-                  </MenuList>
-                </Menu>
-              </Box>
+            <div className="settings">
+              <div className="range vflex">
+                <RangeLabel />
+                <MaxNumSet />
+              </div>
+              <div className="moreTools">
+                <MoreTools />
+              </div>
             </div>
           </div>
         </div>
@@ -57,25 +41,31 @@ class App extends React.Component {
 
 function MaxNumSet() {
   const [value, setValue] = React.useState(75);
+  const [inWidth, changeWidth] = React.useState(document.body.clientWidth);
   const handleChange = (value) => {
     setValue(value);
   }
+  const sliderColor = useColorModeValue("gray.500", "gray.600");
+
+  window.addEventListener("resize", () => changeWidth(document.body.clientWidth));
 
   return (
     <Flex>
-      <Slider flex="1" focusThumbOnChange={false} value={value} onChange={handleChange} ml="0.9rem" max={99} min={1}>
+      {inWidth > 576 ? <Slider flex="1" focusThumbOnChange={false} value={value} onChange={handleChange} ml="0.9rem" max={99} min={1}>
         <SliderTrack>
           <SliderFilledTrack />
         </SliderTrack>
-        <SliderThumb fontSize="sm" boxSize="32px" color={useColorModeValue("gray.500", "gray.600")} children={value} />
-      </Slider>
-      <NumberInput maxW="100px" ml="2rem" value={value} onChange={handleChange} max={99} min={1}>
-        <NumberInputField />
-        <NumberInputStepper>
-          <NumberIncrementStepper />
-          <NumberDecrementStepper />
-        </NumberInputStepper>
-      </NumberInput>
+        <SliderThumb fontSize="sm" boxSize="32px" color={sliderColor} children={value} />
+      </Slider> : null}
+      <Box pr={0}>
+        <NumberInput maxW={inWidth > 576 ? "100px" : ""} ml={inWidth > 576 ? "2rem" : "0"} value={value} onChange={handleChange} max={99} min={1}>
+          <NumberInputField />
+          <NumberInputStepper>
+            <NumberIncrementStepper />
+            <NumberDecrementStepper />
+          </NumberInputStepper>
+        </NumberInput>
+      </Box>
     </Flex>
   );
 }
@@ -94,5 +84,7 @@ function Body() {
     </Flex>
   );
 }
+
+
 
 export default App;

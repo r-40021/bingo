@@ -16,6 +16,11 @@
   display: flex;
 }
 
+.settings {
+  flex: 1;
+  display: flex;
+}
+
 .range {
   flex: 1;
 }
@@ -106,5 +111,28 @@ transform-origin: center center;
 
   100% {
     transform: scale(1);
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .rangeValue {
+    text-indent: 0;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .rangeValue {
+    text-indent: .25rem;
+  }
+  .settings {
+    flex-direction: column;
+    align-items: flex-end;
+    padding-right: .6rem;
+  }
+  .moreTools {
+    width: 100%;
+  }
+  .moreSettings {
+    min-width: 100%!important;
   }
 }
