@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import { Box, ChakraProvider, Button, ButtonGroup, Slider, SliderTrack, SliderFilledTrack, SliderThumb, Flex, NumberInput, NumberInputField, NumberInputStepper, NumberIncrementStepper, NumberDecrementStepper, useColorModeValue } from "@chakra-ui/react";
+import { Box, ChakraProvider, Button, ButtonGroup, Container, Slider, SliderTrack, SliderFilledTrack, SliderThumb, Flex, NumberInput, NumberInputField, NumberInputStepper, NumberIncrementStepper, NumberDecrementStepper, useColorModeValue } from "@chakra-ui/react";
 import { MdLoop, MdDelete } from "react-icons/md";
 import { MoreTools } from './menu'
 
@@ -11,9 +11,7 @@ class App extends React.Component {
     return (
       <ChakraProvider>
         <div className="flex">
-          <div className="body">
             <Body />
-          </div>
           <div className="footer">
             <div className="btns">
               <Box p={4}>
@@ -78,10 +76,10 @@ function RangeLabel() {
 
 function Body() {
   return (
-    <Flex>
-      <span w="100px">ここに数字を表示したり、いろいろと。</span>
-      <span flex={1}>ここに履歴！</span>
-    </Flex>
+    <Container maxW="container.lg" className="body">
+      <div className="number">aaaa</div>
+      <div className="history">b</div>
+    </Container>
   );
 }
 

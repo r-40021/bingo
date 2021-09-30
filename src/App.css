@@ -7,6 +7,17 @@
 
 .body {
   flex: 1;
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+.number {
+  width: 45%;
+  text-align: center;
+}
+.history {
+  flex: 1;
 }
 
 .footer {
