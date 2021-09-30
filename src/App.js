@@ -12,7 +12,9 @@ class App extends React.Component {
     return (
       <ChakraProvider>
         <div className="flex">
-          <div className="body">ここに数字や履歴の表示エリアを作る</div>
+          <div className="body">
+            <Body />
+          </div>
           <div className="footer">
             <div className="btns">
               <Box p={4}>
@@ -78,9 +80,18 @@ function MaxNumSet() {
   );
 }
 
-function RangeLabel(){
+function RangeLabel() {
   return (
     <Box className="rangeValue" color={useColorModeValue("gray.600", "gray.400")}>最大値</Box>
+  );
+}
+
+function Body() {
+  return (
+    <Flex>
+      <span w="100px">ここに数字を表示したり、いろいろと。</span>
+      <span flex={1}>ここに履歴！</span>
+    </Flex>
   );
 }
 

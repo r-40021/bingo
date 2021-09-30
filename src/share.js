@@ -19,9 +19,9 @@ export function ShareMenu() {
                     isClosable: true,
                 })
             }}>URL をコピー</MenuItem>
-            <MenuItem icon={<AiOutlineTwitter />} onClick={()=>{ShareToSNS("twitter")}}>ツイート</MenuItem>
-            <MenuItem icon={<FaLine />} onClick={()=>{ShareToSNS("line")}}>LINE で送る</MenuItem>
-            <MenuItem icon={<MdMoreVert />} onClick={()=>{ShareToSNS()}}>その他の方法</MenuItem>
+            <MenuItem icon={<AiOutlineTwitter />} onClick={() => { ShareToSNS("twitter") }}>ツイート</MenuItem>
+            <MenuItem icon={<FaLine />} onClick={() => { ShareToSNS("line") }}>LINE で送る</MenuItem>
+            {navigator.share ? <MenuItem icon={<MdMoreVert />} onClick={() => { ShareToSNS() }}>その他の方法</MenuItem> : null}
         </MenuGroup>
     );
 }
@@ -39,7 +39,7 @@ function ShareToSNS(media) {
         case "line":
             window.open(encodeURI(`https://social-plugins.line.me/lineit/share?url=${window.location.href}`), 'LINE', 'width=650, height=550, personalbar=0, toolbar=0, scrollbars=1, sizable=1');
             break;
-            
+
         default:
             shareAPI();
             break;
@@ -47,15 +47,15 @@ function ShareToSNS(media) {
 }
 
 async function shareAPI() {
-        const shareData = {
-          title: "やまだBINGO",
-          text: "履歴や設定を自動で保存する機能を搭載した、インストール不要のビンゴマシーン",
-          url: window.location.href
-        }
-    
-        try {
-          await navigator.share(shareData)
-        } catch (err) {
-          console.error("Web Share API:" + err);
-        }
+    const shareData = {
+        title: "やまだBINGO",
+        text: "履歴や設定を自動で保存する機能を搭載した、インストール不要のビンゴマシーン",
+        url: window.location.href
+    }
+
+    try {
+        await navigator.share(shareData)
+    } catch (err) {
+        console.error("Web Share API:" + err);
+    }
 }

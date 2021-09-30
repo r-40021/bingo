@@ -31,3 +31,80 @@
   font-size: 14px;
   text-indent: .9rem;
 }
+.lightModeIcon {
+opacity: .65;
+transition: opacity .2s, color .2s;
+}
+.lightModeIcon svg {
+transform-origin: center center;
+}
+.darkModeIcon {
+opacity: .65;
+transition: opacity .2s, color .2s;
+}
+.darkModeIcon svg {
+transform-origin: center center;
+}
+.syncModeIcon {
+  opacity: .65;
+  transition: opacity .2s, color .2s;
+}
+.syncModeIcon svg {
+  transform-origin: center center;
+}
+
+
+.lightModeIcon.active{
+  opacity: 1;
+  color: #ff9500;
+}
+.lightModeIcon.active svg{
+  animation: zoom .6s;
+  -webkit-animation: zoom .6s;
+}
+
+.darkModeIcon.active{
+  opacity: 1;
+  color: #94c1e6;
+}
+.darkModeIcon.active svg{
+  animation: zoom .6s;
+  -webkit-animation: zoom .6s;
+}
+
+.syncModeIcon.active{
+  opacity: 1;
+  color: #1ac24d;
+}
+.syncModeIcon.active svg{
+  animation: zoom .6s;
+  -webkit-animation: zoom .6s;
+}
+
+@keyframes zoom {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.4);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+@-webkit-keyframes zoom {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.4);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}

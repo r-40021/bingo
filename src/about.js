@@ -2,13 +2,14 @@ import React from 'react';
 import './App.css';
 import { Button, Center, MenuItem, AlertDialog, AlertDialogBody, AlertDialogFooter, AlertDialogHeader, AlertDialogContent, AlertDialogOverlay, LinkOverlay, LinkBox, Flex } from "@chakra-ui/react"
 import { MdInfoOutline } from "react-icons/md";
-import { GrLicense } from "react-icons/gr";
+import { VscLaw } from "react-icons/vsc";
 import { AiFillGithub } from "react-icons/ai";
 
 export function AboutApp() {
     const [isOpen, setIsOpen] = React.useState(false)
     const onClose = () => setIsOpen(false)
     const cancelRef = React.useRef()
+    
 
     return (
         <>
@@ -41,14 +42,14 @@ export function AboutApp() {
                             <LinkBox as="article" maxW="sm" p="3" borderWidth="1px" rounded="md">
                                 <LinkOverlay href="https://github.com/r-40021/bingo/blob/main/LICENSE" isExternal>
                                     <Flex>
-                                        <Center p={1} pe={4}><GrLicense /></Center><span flex="1">このソフトウェアのライセンス</span>
+                                        <Center p={1} pe={4}><VscLaw /></Center><span flex="1">このソフトウェアのライセンス</span>
                                     </Flex>
                                 </LinkOverlay>
                             </LinkBox>
                             <LinkBox as="article" maxW="sm" p="3" borderWidth="1px" rounded="md">
                                 <LinkOverlay href="https://github.com/r-40021/bingo/blob/main/README_ja.md#%E3%83%A9%E3%82%A4%E3%82%BB%E3%83%B3%E3%82%B9%E8%A1%A8%E7%A4%BA" isExternal>
                                     <Flex>
-                                        <Center p={1} pe={4}><GrLicense /></Center><span flex="1">オープンソースライセンス</span>
+                                        <Center p={1} pe={4}><VscLaw /></Center><span flex="1">オープンソースライセンス</span>
                                     </Flex>
                                 </LinkOverlay>
                             </LinkBox>
