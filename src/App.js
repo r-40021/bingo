@@ -8,18 +8,21 @@ import { MoreTools } from './menu';
 
 
 function App() {
+  const [bingoMax, changeMax] = React.useState(75);
+  const [bingoHistory, updateHistory] = React.useState([]);
+  const [displayNum, changeNum] = React.useState();
   return (
     <ChakraProvider>
       <div className="flex">
-        <Body />
+        <Body {...{bingoMax, changeMax, bingoHistory, updateHistory, displayNum}} />
         <Container maxW="container.xl" className="footer">
           <div className="btns">
-            <Btns />
+            <Btns {...{changeNum, bingoMax}}/>
           </div>
           <div className="settings">
             <div className="range vflex">
               <RangeLabel />
-              <MaxNumSet />
+              <MaxNumSet max={bingoMax} changeMax={changeMax}/>
             </div>
             <div className="moreTools">
               <MoreTools />
@@ -31,22 +34,39 @@ function App() {
   );
 }
 
-function Btns() {
+function Btns(props) {
+  const spin = () => {
+    let count = 0;
+    const time = getRandomInt(5,12);
+    let shuffle = setInterval(() => {
+      props.changeNum(getRandomInt(1,Number(props.bingoMax)+1));
+      count ++;
+      if(count >= time) {
+        clearInterval(shuffle);
+      }
+    }, 300);
+  }
+
+  const getRandomInt = (min, max) => {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min) + min); //The maximum is exclusive and the minimum is inclusive
+  }
+
   return (
     <Box p={4}>
       <ButtonGroup spacing="1">
-        <Button leftIcon={<MdLoop />} colorScheme="blue">Spin</Button>{/* 【TODO】最大値のテキストボックスに値が入っているかを判定する処理を追加 */}
+        <Button leftIcon={<MdLoop />} colorScheme="blue" onClick={spin}>Spin</Button>{/* 【TODO】最大値のテキストボックスに値が入っているかを判定する処理を追加 */}
         <Button leftIcon={<MdDelete />} bg={useColorModeValue("gray.200", "gray.600")} color={useColorModeValue("gray.600", "gray.200")} _hover={{ bg: useColorModeValue("#ff4430", "#f56051"), color: "gray.50" }} variant="outline">Reset</Button>
       </ButtonGroup>
     </Box>
   );
 }
 
-function MaxNumSet() {
-  const [value, setValue] = React.useState(75);
+function MaxNumSet(props) {
   const [inWidth, changeWidth] = React.useState(document.body.clientWidth);
   const handleChange = (value) => {
-    setValue(value);
+    props.changeMax(value);
   }
   const sliderColor = useColorModeValue("gray.500", "gray.600");
 
@@ -54,14 +74,14 @@ function MaxNumSet() {
 
   return (
     <Flex>
-      {inWidth > 576 ? <Slider flex="1" focusThumbOnChange={false} value={value} onChange={handleChange} ml="0.9rem" max={99} min={1}>
+      {inWidth > 576 ? <Slider flex="1" focusThumbOnChange={false} value={props.max} onChange={handleChange} ml="0.9rem" max={99} min={1}>
         <SliderTrack>
           <SliderFilledTrack />
         </SliderTrack>
-        <SliderThumb fontSize="sm" boxSize="32px" color={sliderColor} children={value} />
+        <SliderThumb fontSize="sm" boxSize="32px" color={sliderColor} children={props.max} />
       </Slider> : null}
       <Box pr={0}>
-        <NumberInput maxW={inWidth > 576 ? "100px" : ""} ml={inWidth > 576 ? "2rem" : "0"} value={value} onChange={handleChange} max={99} min={1}>
+        <NumberInput maxW={inWidth > 576 ? "100px" : ""} ml={inWidth > 576 ? "2rem" : "0"} value={props.max} onChange={handleChange} max={99} min={1}>
           <NumberInputField />
           <NumberInputStepper>
             <NumberIncrementStepper />
@@ -79,11 +99,10 @@ function RangeLabel() {
   );
 }
 
-function Body() {
+function Body(props) {
   const numberElem = React.useRef(null);
   const historyElem = React.useRef(null);
   const { width, height } = useWindowSize();
-  const history = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 75];
 
   React.useEffect(() => {
     const numberCurrentElem = numberElem.current;
@@ -112,7 +131,7 @@ function Body() {
     <Container maxW="container.lg" className="body">
       <div className="number" {... { ref: numberElem }}>
         <div className="displayNumber">
-          75
+          {props.displayNum}
         </div>
       </div>
       <div className="history">
@@ -122,9 +141,9 @@ function Body() {
             lineHeight="tight"
             isTruncated
           >
-            履歴 ({history.length})</Box>
+            履歴 ({props.bingoHistory.length})</Box>
           <Box mt="3" as="div" color={useColorModeValue("gray.600", "gray.300")} fontSize="30px" className="historyCardBody" ref={historyElem}>
-            {history.map((num, index) => {
+            {props.bingoHistory.map((num, index) => {
               return (<div className="historyNum" key={index}>{num}</div>);
             })}
           </Box>
