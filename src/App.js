@@ -12,7 +12,7 @@ function App() {
     <ChakraProvider>
       <div className="flex">
         <Body />
-        <div className="footer">
+        <Container maxW="container.xl" className="footer">
           <div className="btns">
             <Btns />
           </div>
@@ -25,7 +25,7 @@ function App() {
               <MoreTools />
             </div>
           </div>
-        </div>
+        </Container>
       </div>
     </ChakraProvider>
   );
@@ -33,12 +33,12 @@ function App() {
 
 function Btns() {
   return (
-  <Box p={4}>
-    <ButtonGroup spacing="1">
-      <Button leftIcon={<MdLoop />} colorScheme="blue">Spin</Button>{/* 【TODO】最大値のテキストボックスに値が入っているかを判定する処理を追加 */}
-      <Button leftIcon={<MdDelete />} bg={useColorModeValue("gray.200", "gray.600")} color={useColorModeValue("gray.600", "gray.200")} _hover={{ bg: useColorModeValue("#ff4430", "#f56051"), color: "gray.50" }} variant="outline">Reset</Button>
-    </ButtonGroup>
-  </Box>
+    <Box p={4}>
+      <ButtonGroup spacing="1">
+        <Button leftIcon={<MdLoop />} colorScheme="blue">Spin</Button>{/* 【TODO】最大値のテキストボックスに値が入っているかを判定する処理を追加 */}
+        <Button leftIcon={<MdDelete />} bg={useColorModeValue("gray.200", "gray.600")} color={useColorModeValue("gray.600", "gray.200")} _hover={{ bg: useColorModeValue("#ff4430", "#f56051"), color: "gray.50" }} variant="outline">Reset</Button>
+      </ButtonGroup>
+    </Box>
   );
 }
 
@@ -81,14 +81,31 @@ function RangeLabel() {
 
 function Body() {
   const numberElem = React.useRef(null);
+  const historyElem = React.useRef(null);
   const { width, height } = useWindowSize();
-  const history = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,75];
+  const history = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 75];
 
   React.useEffect(() => {
-    const currentElem = numberElem.current;
-    currentElem.style.height = currentElem.offsetWidth + "px";
-    currentElem.style.fontSize = currentElem.offsetWidth / 5 * 3 + "px";
-    currentElem.style.borderWidth = currentElem.offsetWidth * 0.1 + "px";
+    const numberCurrentElem = numberElem.current;
+    numberCurrentElem.style.width = "";
+    numberCurrentElem.style.height = "";
+    if (numberCurrentElem.offsetWidth <= numberCurrentElem.offsetHeight * 1) {
+      numberCurrentElem.style.height = numberCurrentElem.offsetWidth + "px";
+    } else {
+      numberCurrentElem.style.width = numberCurrentElem.offsetHeight + "px";
+    }
+    numberCurrentElem.style.fontSize = numberCurrentElem.offsetWidth / 5 * 3 + "px";
+    numberCurrentElem.style.borderWidth = numberCurrentElem.offsetWidth * 0.1 + "px";
+
+    const historyCurrentElem = historyElem.current;
+    if (width < 576) {
+      historyCurrentElem.style.fontSize =
+        Math.min(((historyCurrentElem.clientWidth * 0.12) / 3) * 2, 30) + "px";
+    } else {
+      historyCurrentElem.style.fontSize =
+        Math.min(((historyCurrentElem.clientWidth * 0.11) / 3) * 2, 30) + "px";
+    }
+  
   }, [width, height]);
 
   return (
@@ -102,13 +119,12 @@ function Body() {
         <Box borderWidth="1px" borderRadius="lg" overflow="hidden" className="historyCard" p="4">
           <Box
             fontWeight="semibold"
-            as="h4"
             lineHeight="tight"
             isTruncated
           >
-            履歴</Box>
-          <Box mt="3" as="div" color={useColorModeValue("gray.600", "gray.300")} fontSize="30px">
-            {history.map((num, index)=>{
+            履歴 ({history.length})</Box>
+          <Box mt="3" as="div" color={useColorModeValue("gray.600", "gray.300")} fontSize="30px" className="historyCardBody" ref={historyElem}>
+            {history.map((num, index) => {
               return (<div className="historyNum" key={index}>{num}</div>);
             })}
           </Box>

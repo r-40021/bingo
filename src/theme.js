@@ -16,7 +16,6 @@ export function SelectTheme() {
   const isDark = window.matchMedia("(prefers-color-scheme: dark)");
 
   const ToggleTheme = () => {
-    console.log("toggle")
     if (autoTheme) {
       if (isDark.matches && colorMode === "light") {
         toggleColorMode();
