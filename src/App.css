@@ -41,6 +41,11 @@
   height: 100%;
   width: 100%;
 }
+.historyNum {
+  display: inline-block;
+  width: 20%;
+  text-align: center;
+}
 
 .footer {
   width: 100%;
@@ -92,26 +97,22 @@ transform-origin: center center;
 }
 
 
-.lightModeIcon.active{
+body.chakra-ui-light .lightModeIcon.active{
   opacity: 1;
   color: #ff9500;
 }
-.lightModeIcon.active svg{
+body.chakra-ui-light .lightModeIcon.active svg{
   animation: zoom .6s;
   -webkit-animation: zoom .6s;
-  animation-delay: .2s;
-  -webkit-animation-delay: .2s;
 }
 
-.darkModeIcon.active{
+body.chakra-ui-dark .darkModeIcon.active{
   opacity: 1;
   color: #94c1e6;
 }
-.darkModeIcon.active svg{
+body.chakra-ui-dark .darkModeIcon.active svg{
   animation: zoom .6s;
   -webkit-animation: zoom .6s;
-  animation-delay: .2s;
-  -webkit-animation-delay: .2s;
 }
 
 .syncModeIcon.active{
@@ -121,8 +122,6 @@ transform-origin: center center;
 .syncModeIcon.active svg{
   animation: zoom .6s;
   -webkit-animation: zoom .6s;
-  animation-delay: .2s;
-  -webkit-animation-delay: .2s;
 }
 
 @keyframes zoom {

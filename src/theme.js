@@ -16,6 +16,7 @@ export function SelectTheme() {
   const isDark = window.matchMedia("(prefers-color-scheme: dark)");
 
   const ToggleTheme = () => {
+    console.log("toggle")
     if (autoTheme) {
       if (isDark.matches && colorMode === "light") {
         toggleColorMode();
@@ -101,7 +102,7 @@ export function SelectTheme() {
                     }
                   }}>
                     <Flex>
-                      <Center p={1} pe={4} className={"lightModeIcon " + (!autoTheme && colorMode === "light" ? "active" : "")}><MdBrightnessHigh /></Center><span flex="1">ライトモード</span>
+                      <Center p={1} pe={4} className={"lightModeIcon " + (localStorage.getItem("theme") === "light" && !autoTheme && colorMode === "light" ? "active" : "")}><MdBrightnessHigh /></Center><span flex="1">ライトモード</span>
                     </Flex>
                   </LinkOverlay>
                 </LinkBox>
@@ -115,7 +116,7 @@ export function SelectTheme() {
                     }
                   }}>
                     <Flex>
-                      <Center p={1} pe={4} className={"darkModeIcon " + (!autoTheme && colorMode === "dark" ? "active" : "")}><BsMoon /></Center><span flex="1">ダークモード</span>
+                      <Center p={1} pe={4} className={"darkModeIcon " + (localStorage.getItem("theme") === "dark" && !autoTheme && colorMode === "dark" ? "active" : "")}><BsMoon /></Center><span flex="1">ダークモード</span>
                     </Flex>
                   </LinkOverlay>
                 </LinkBox>
