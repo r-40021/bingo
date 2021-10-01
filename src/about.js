@@ -33,21 +33,21 @@ export function AboutApp() {
                             <p>また、このアプリはオープンソースソフトウェアです。</p>
                             <br />
                             <LinkBox as="article" maxW="sm" p="3" borderWidth="1px" rounded="md">
-                                <LinkOverlay href="https://github.com/r-40021/bingo" isExternal>
+                                <LinkOverlay href="https://github.com/r-40021/bingo" isExternal onClick={onClose}>
                                     <Flex>
                                         <Center p={1} pe={4}><AiFillGithub /></Center><span flex="1">ソースコード</span>
                                     </Flex>
                                 </LinkOverlay>
                             </LinkBox>
                             <LinkBox as="article" maxW="sm" p="3" borderWidth="1px" rounded="md">
-                                <LinkOverlay href="https://github.com/r-40021/bingo/blob/main/LICENSE" isExternal>
+                                <LinkOverlay href="https://github.com/r-40021/bingo/blob/main/LICENSE" isExternal onClick={onClose}>
                                     <Flex>
                                         <Center p={1} pe={4}><VscLaw /></Center><span flex="1">このソフトウェアのライセンス</span>
                                     </Flex>
                                 </LinkOverlay>
                             </LinkBox>
                             <LinkBox as="article" maxW="sm" p="3" borderWidth="1px" rounded="md">
-                                <LinkOverlay href="https://github.com/r-40021/bingo/blob/main/README_ja.md#%E3%83%A9%E3%82%A4%E3%82%BB%E3%83%B3%E3%82%B9%E8%A1%A8%E7%A4%BA" isExternal>
+                                <LinkOverlay href="https://github.com/r-40021/bingo/blob/main/README_ja.md#%E3%83%A9%E3%82%A4%E3%82%BB%E3%83%B3%E3%82%B9%E8%A1%A8%E7%A4%BA" isExternal onClick={onClose}>
                                     <Flex>
                                         <Center p={1} pe={4}><VscLaw /></Center><span flex="1">オープンソースライセンス</span>
                                     </Flex>

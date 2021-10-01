@@ -1,13 +1,8 @@
 import React from 'react';
 import './App.css';
-import { MenuItem, AlertDialog, AlertDialogBody, AlertDialogHeader, AlertDialogContent, AlertDialogOverlay, Box, LinkOverlay, LinkBox, Flex, Center, useColorMode, extendTheme } from "@chakra-ui/react"
+import { MenuItem, AlertDialog, AlertDialogBody, AlertDialogHeader, AlertDialogContent, AlertDialogOverlay, Box, LinkOverlay, LinkBox, Flex, Center, useColorMode } from "@chakra-ui/react"
 import { MdBrightnessHigh, MdSync } from "react-icons/md";
 import { BsMoon } from "react-icons/bs";
-
-const config = {
-  initialColorMode: "light",
-  useSystemColorMode: false,
-}
 
 
 
@@ -29,10 +24,12 @@ export function SelectTheme() {
       }
     } else if (localStorage.getItem("theme") === "dark" && colorMode === "light") {
       toggleColorMode();
-    } else if (colorMode === "dark") {
+    } else if (localStorage.getItem("theme") === "light" && colorMode === "dark") {
       toggleColorMode();
     }
   }
+
+  React.useEffect(ToggleTheme,[autoTheme]);  
 
   window.addEventListener("load", ()=>{
     ToggleTheme();
@@ -82,9 +79,12 @@ export function SelectTheme() {
               <Box pb={3}>
                 <LinkBox as="article" maxW="sm" p="3" borderWidth="1px" rounded="md">
                   <LinkOverlay as="button" onClick={() => {
+                    const nowAuto = autoTheme;
                     toggleAutoTheme(true);
                     localStorage.setItem("theme", "auto");
-                    ToggleTheme();
+                    if(nowAuto){
+                      ToggleTheme();
+                    }
                   }}>
                     <Flex>
                       <Center p={1} pe={4} className={"syncModeIcon " + (autoTheme ? "active" : "")}><MdSync /></Center><span flex="1">システムと同期</span>
@@ -93,10 +93,11 @@ export function SelectTheme() {
                 </LinkBox>
                 <LinkBox as="article" maxW="sm" p="3" borderWidth="1px" rounded="md">
                   <LinkOverlay as="button" onClick={() => {
+                    const nowAuto = autoTheme;
                     localStorage.setItem("theme", "light");
                     toggleAutoTheme(false);
-                    if (colorMode === "dark") {
-                      toggleColorMode();
+                    if(colorMode === "dark" && !nowAuto) {
+                      ToggleTheme();
                     }
                   }}>
                     <Flex>
@@ -106,10 +107,11 @@ export function SelectTheme() {
                 </LinkBox>
                 <LinkBox as="article" maxW="sm" p="3" borderWidth="1px" rounded="md">
                   <LinkOverlay as="button" onClick={() => {
+                    const nowAuto = autoTheme;
                     localStorage.setItem("theme", "dark");
                     toggleAutoTheme(false);
-                    if (colorMode === "light") {
-                      toggleColorMode();
+                    if(colorMode === "light" && !nowAuto) {
+                      ToggleTheme();
                     }
                   }}>
                     <Flex>
@@ -126,6 +128,3 @@ export function SelectTheme() {
     </>
   )
 }
-
-export const theme = extendTheme({ config })
-

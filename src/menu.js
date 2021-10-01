@@ -18,7 +18,7 @@ export function MoreTools() {
                 <MenuList boxShadow="lg">
                     <MenuGroup title="情報">
                         <AboutApp />
-                        <MenuItem icon={<MdLockOutline />} onClick={() => { window.open("https://r-40021.github.io/privacy.html") }}>プライバシーポリシー</MenuItem>
+                        <MenuItem icon={<MdLockOutline />} onClick={() => { window.open('https://r-40021.github.io/privacy.html?fromApp=true', "privacy" , 'top=30,left=30,width=800,height=500'); }}>プライバシーポリシー</MenuItem>
                     </MenuGroup>
                     <MenuDivider />
                     <MenuGroup title="設定">

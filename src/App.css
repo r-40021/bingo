@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 .flex {
   display: flex;
   height: 100vh;
@@ -14,10 +18,28 @@
 }
 .number {
   width: 45%;
-  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: rgb(240, 96, 96) 40px solid;
+  height: 100%;
+}
+.displayNumber {
+  font-family: 'Kosugi Maru', sans-serif;
 }
 .history {
   flex: 1;
+  display: flex;
+  height: 100%;
+  width: 100%;
+  align-items: center;
+  justify-self: center;
+  padding: 2rem;
+}
+.historyCard {
+  height: 100%;
+  width: 100%;
 }
 
 .footer {
@@ -77,6 +99,8 @@ transform-origin: center center;
 .lightModeIcon.active svg{
   animation: zoom .6s;
   -webkit-animation: zoom .6s;
+  animation-delay: .2s;
+  -webkit-animation-delay: .2s;
 }
 
 .darkModeIcon.active{
@@ -86,6 +110,8 @@ transform-origin: center center;
 .darkModeIcon.active svg{
   animation: zoom .6s;
   -webkit-animation: zoom .6s;
+  animation-delay: .2s;
+  -webkit-animation-delay: .2s;
 }
 
 .syncModeIcon.active{
@@ -95,6 +121,8 @@ transform-origin: center center;
 .syncModeIcon.active svg{
   animation: zoom .6s;
   -webkit-animation: zoom .6s;
+  animation-delay: .2s;
+  -webkit-animation-delay: .2s;
 }
 
 @keyframes zoom {
@@ -128,6 +156,9 @@ transform-origin: center center;
 @media screen and (max-width: 576px) {
   .rangeValue {
     text-indent: 0;
+  }
+  .body {
+    flex-direction: column;
   }
 }
 
