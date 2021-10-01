@@ -11,18 +11,24 @@ function App() {
   const [bingoMax, changeMax] = React.useState(75);
   const [bingoHistory, updateHistory] = React.useState([]);
   const [displayNum, changeNum] = React.useState();
+  let select = [];
+  for (let i = 0; i < bingoMax; i++) {
+    if (bingoHistory.indexOf(i + 1) === -1) {
+      select.push(i + 1);
+    }
+  }
   return (
     <ChakraProvider>
       <div className="flex">
-        <Body {...{bingoMax, changeMax, bingoHistory, updateHistory, displayNum}} />
+        <Body {...{ bingoMax, changeMax, bingoHistory, updateHistory, displayNum }} />
         <Container maxW="container.xl" className="footer">
           <div className="btns">
-            <Btns {...{changeNum, bingoMax}}/>
+            <Btns {...{ changeNum, bingoMax, changeMax, updateHistory, bingoHistory, select }} />
           </div>
           <div className="settings">
             <div className="range vflex">
               <RangeLabel />
-              <MaxNumSet max={bingoMax} changeMax={changeMax}/>
+              <MaxNumSet max={bingoMax} changeMax={changeMax} />
             </div>
             <div className="moreTools">
               <MoreTools />
@@ -36,12 +42,21 @@ function App() {
 
 function Btns(props) {
   const spin = () => {
+    if (!props.bingoMax && props.bingoMax !== 0) {
+      props.changeMax(75);
+    }
+    let history;
     let count = 0;
-    const time = getRandomInt(5,12);
+    const time = getRandomInt(5, 12);
     let shuffle = setInterval(() => {
-      props.changeNum(getRandomInt(1,Number(props.bingoMax)+1));
-      count ++;
-      if(count >= time) {
+      const index = getRandomInt(0, props.select.length);
+      const num = props.select[index];
+      props.changeNum(num);
+      count++;
+      if (count >= time) {
+        history = [...props.bingoHistory, num];
+        props.select.splice(index, 1);
+        props.updateHistory(history);
         clearInterval(shuffle);
       }
     }, 300);
@@ -124,7 +139,7 @@ function Body(props) {
       historyCurrentElem.style.fontSize =
         Math.min(((historyCurrentElem.clientWidth * 0.11) / 3) * 2, 30) + "px";
     }
-  
+
   }, [width, height]);
 
   return (
