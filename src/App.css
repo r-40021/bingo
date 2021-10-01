@@ -17,6 +17,14 @@
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+}
+input {
+  user-select: text;
+  -webkit-user-select: text;
+  -moz-user-select: text;
 }
 .number {
   width: 45%;
@@ -39,6 +47,9 @@
   justify-self: center;
   padding: 2rem;
   overflow: hidden;
+  user-select: text;
+  -webkit-user-select: text;
+  -moz-user-select: text;
 }
 .historyCard {
   height: 100%;
@@ -55,6 +66,9 @@
   display: inline-block;
   width: 20%;
   text-align: center;
+  user-select: all;
+  -webkit-user-select: all;
+  -moz-user-select: all;
 }
 
 .footer {
@@ -160,6 +174,19 @@ body.chakra-ui-dark .darkModeIcon.active svg{
   100% {
     transform: scale(1);
   }
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+::-webkit-scrollbar-track {
+  border-radius: 5px;
+  background-color: rgba(0, 0, 0, 0.021);
+}
+::-webkit-scrollbar-thumb {
+  background-color: #ccc;
+  border-radius: 5px;
 }
 
 @media screen and (max-width: 576px) {
