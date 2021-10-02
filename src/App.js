@@ -11,18 +11,18 @@ function App() {
   let toHistory;
   if (localStorage.getItem("bi-data")) {
     toHistory = JSON.parse(localStorage.getItem("bi-data"));
-    if (localStorage.getItem("myHistory")){
+    if (localStorage.getItem("myHistory")) {
       localStorage.removeItem("myHistory");
     }
-    if (localStorage.getItem("lastColor")){
+    if (localStorage.getItem("lastColor")) {
       localStorage.removeItem("lastColor");
     }
-    if (localStorage.getItem("max")){
+    if (localStorage.getItem("max")) {
       localStorage.removeItem("max");
     }
   } else if (localStorage.getItem("myHistory") && JSON.parse(localStorage.getItem("myHistory")).length > 0) {
     toHistory = [];
-    let oldMax; 
+    let oldMax;
     let oldColor;
     const myHistory = JSON.parse(localStorage.getItem("myHistory"));
 
@@ -56,6 +56,7 @@ function App() {
   const [bingoHistory, updateHistory] = React.useState(toHistory);
   const [displayNum, changeNum] = React.useState();
   const [circleColor, changeColor] = React.useState(0);
+  const [isSpin, changeIsSpin] = React.useState(false);
   let select = [];
 
   React.useEffect(
@@ -84,12 +85,12 @@ function App() {
         <Body {...{ bingoMax, changeMax, bingoHistory, updateHistory, displayNum, circleColor }} />
         <Container maxW="container.xl" className="footer">
           <div className="btns">
-            <Btns {...{ changeNum, bingoMax, changeMax, updateHistory, bingoHistory, select, changeColor }} />
+            <Btns {...{ changeNum, bingoMax, changeMax, updateHistory, bingoHistory, select, changeColor, isSpin, changeIsSpin }} />
           </div>
           <div className="settings">
             <div className="range vflex">
               <RangeLabel />
-              <MaxNumSet max={bingoMax} changeMax={changeMax} />
+              <MaxNumSet max={bingoMax} {...{ changeMax, isSpin }} />
             </div>
             <div className="moreTools">
               <MoreTools />
@@ -111,6 +112,7 @@ function Btns(props) {
 
 
   const spin = () => {
+    props.changeIsSpin(true);
     let select = [];
     if (!props.bingoMax && props.bingoMax !== 0) {
       props.changeMax(75);
@@ -125,6 +127,7 @@ function Btns(props) {
     }
     if (select.length === 0) {
       setIsOpen(true);
+      props.changeIsSpin(false);
       return;
     }
     let history;
@@ -142,6 +145,7 @@ function Btns(props) {
         history = [...props.bingoHistory, { num: num, colorIndex: colorListIndex, max: props.bingoMax }];
         select.splice(index, 1);
         props.updateHistory(history);
+        props.changeIsSpin(false);
         clearInterval(shuffle);
       }
       colorIndex++;
@@ -158,7 +162,7 @@ function Btns(props) {
     <>
       <Box p={4}>
         <ButtonGroup spacing="1">
-          <Button leftIcon={<MdLoop />} colorScheme="blue" onClick={spin}>Spin</Button>
+          <Button leftIcon={<MdLoop />} colorScheme="blue" onClick={spin} disabled={props.isSpin}>Spin</Button>
           <AskReset {...{ props }} />
         </ButtonGroup>
       </Box>
@@ -206,14 +210,14 @@ function MaxNumSet(props) {
 
   return (
     <Flex>
-      {inWidth > 576 ? <Slider flex="1" focusThumbOnChange={false} value={props.max} onChange={handleChange} ml="0.9rem" max={99} min={1}>
+      {inWidth > 576 ? <Slider flex="1" focusThumbOnChange={false} value={props.max} onChange={handleChange} ml="0.9rem" max={99} min={1} disabled={props.isSpin}>
         <SliderTrack>
           <SliderFilledTrack />
         </SliderTrack>
         <SliderThumb fontSize="sm" boxSize="32px" color={sliderColor} children={props.max} />
       </Slider> : null}
       <Box pr={0}>
-        <NumberInput maxW={inWidth > 576 ? "100px" : ""} ml={inWidth > 576 ? "2rem" : "0"} value={props.max} onChange={handleChange} max={99} min={1}>
+        <NumberInput maxW={inWidth > 576 ? "100px" : ""} ml={inWidth > 576 ? "2rem" : "0"} value={props.max} onChange={handleChange} max={99} min={1} disabled={props.isSpin}>
           <NumberInputField />
           <NumberInputStepper>
             <NumberIncrementStepper />
@@ -300,7 +304,8 @@ function AskReset(props) {
         color={useColorModeValue("gray.600", "gray.200")}
         _hover={{ bg: useColorModeValue("#ff4430", "#f56051"), color: "gray.50" }}
         variant="outline"
-        onClick={() => setIsOpen(true)}>
+        onClick={() => setIsOpen(true)}
+        disabled={props.props.isSpin}>
         Reset
       </Button>
 
