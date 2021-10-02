@@ -8,17 +8,75 @@ import { MoreTools } from './menu';
 const colorList = ["#ffa500", "#d3e15c", "#b384c7", "#F06060", "#a9ceec"]; //数字表示エリアの枠線色
 
 function App() {
+  let toHistory;
+  if (localStorage.getItem("bi-data")) {
+    toHistory = JSON.parse(localStorage.getItem("bi-data"));
+    if (localStorage.getItem("myHistory")){
+      localStorage.removeItem("myHistory");
+    }
+    if (localStorage.getItem("lastColor")){
+      localStorage.removeItem("lastColor");
+    }
+    if (localStorage.getItem("max")){
+      localStorage.removeItem("max");
+    }
+  } else if (localStorage.getItem("myHistory") && JSON.parse(localStorage.getItem("myHistory")).length > 0) {
+    toHistory = [];
+    let oldMax; 
+    let oldColor;
+    const myHistory = JSON.parse(localStorage.getItem("myHistory"));
+
+    if (localStorage.getItem("lastColor")) {
+      oldColor = Number(localStorage.getItem("lastColor"));
+    } else {
+      oldColor = 0;
+    }
+
+    if (localStorage.getItem("max")) {
+      oldMax = Number(localStorage.getItem("max"));
+    } else {
+      oldMax = 75;
+    }
+
+    myHistory.map((value) => {
+      const data = {
+        num: value,
+        colorIndex: oldColor,
+        max: oldMax
+      }
+      toHistory.push(data);
+    });
+
+  } else {
+    toHistory = [];
+  }
+
   const [bingoMax, changeMax] = React.useState(75);
-  const [bingoHistory, updateHistory] = React.useState([]);
+  const [bingoHistory, updateHistory] = React.useState(toHistory);
   const [displayNum, changeNum] = React.useState();
-  const [circleColor, changeColor] = React.useState(colorList[0]);
+  const [circleColor, changeColor] = React.useState(0);
   let select = [];
+
+  React.useEffect(
+    () => localStorage.setItem("bi-data", JSON.stringify(bingoHistory))
+    , [bingoHistory]);
+
+  React.useEffect(() => {
+    if (bingoHistory.length > 0) {
+      const lastHistory = bingoHistory[bingoHistory.length - 1];
+      changeMax(lastHistory.max);
+      changeNum(lastHistory.num);
+      changeColor(lastHistory.colorIndex);
+    }
+  }, []);
+
   for (let i = 0; i < bingoMax; i++) {
-    const find = bingoHistory.some(elem => elem.num === i+1);
+    const find = bingoHistory.some(elem => elem.num === i + 1);
     if (!find) {
-      select.push(i+1);
+      select.push(i + 1);
     }
   }
+
   return (
     <ChakraProvider>
       <div className="flex">
@@ -56,9 +114,9 @@ function Btns(props) {
     if (!props.bingoMax && props.bingoMax !== 0) {
       props.changeMax(75);
       for (let i = 0; i < 75; i++) {
-        const find = props.bingoHistory.some(elem => elem.num === i+1);
+        const find = props.bingoHistory.some(elem => elem.num === i + 1);
         if (!find) {
-          select.push(i+1);
+          select.push(i + 1);
         }
       }
     } else {
@@ -76,10 +134,11 @@ function Btns(props) {
       const index = getRandomInt(0, select.length);
       const num = select[index];
       props.changeNum(num);
-      props.changeColor(colorList[colorIndex % colorList.length]);
+      const colorListIndex = colorIndex % colorList.length;
+      props.changeColor(colorListIndex);
       count++;
       if (count >= time) {
-        history = [...props.bingoHistory, {num:num, colorIndex: colorIndex % colorList.length, max: props.bingoMax}];
+        history = [...props.bingoHistory, { num: num, colorIndex: colorListIndex, max: props.bingoMax }];
         select.splice(index, 1);
         props.updateHistory(history);
         clearInterval(shuffle);
@@ -98,8 +157,8 @@ function Btns(props) {
     <>
       <Box p={4}>
         <ButtonGroup spacing="1">
-          <Button leftIcon={<MdLoop />} colorScheme="blue" onClick={spin}>Spin</Button>{/* 【TODO】最大値のテキストボックスに値が入っているかを判定する処理を追加 */}
-          <AskReset {...{props}}/>
+          <Button leftIcon={<MdLoop />} colorScheme="blue" onClick={spin}>Spin</Button>
+          <AskReset {...{ props }} />
         </ButtonGroup>
       </Box>
 
@@ -175,7 +234,7 @@ function Body(props) {
   const numberElem = React.useRef(null);
   const historyElem = React.useRef(null);
   const { width, height } = useWindowSize();
-  const circleStyle = {borderColor: props.circleColor};
+  const circleStyle = { borderColor: colorList[props.circleColor] };
 
   React.useEffect(() => {
     const numberCurrentElem = numberElem.current;
@@ -279,7 +338,7 @@ function AskReset(props) {
 function Reset(props) {
   props.updateHistory([]);
   props.changeNum(null);
-  props.changeColor(colorList[0]);
+  props.changeColor(0);
 }
 
 
