@@ -58,18 +58,28 @@ function App() {
   const [displayNum, changeNum] = React.useState();
   const [circleColor, changeColor] = React.useState(0);
   const [isSpin, changeIsSpin] = React.useState(false);
+  const [nowIndex, changeIndex] = React.useState(localStorage.getItem("bi-index") && Number(localStorage.getItem("bi-index")) >= -1 ? Number(localStorage.getItem("bi-index")) : toHistory.length - 1);
   let select = [];
 
   React.useEffect(
     () => localStorage.setItem("bi-data", JSON.stringify(bingoHistory))
     , [bingoHistory]);
 
+  React.useEffect(
+    () => localStorage.setItem("bi-index", nowIndex)
+    , [nowIndex]);
+
   React.useEffect(() => {
     if (bingoHistory.length > 0) {
-      const lastHistory = bingoHistory[bingoHistory.length - 1];
-      changeMax(lastHistory.max);
-      changeNum(lastHistory.num);
-      changeColor(lastHistory.colorIndex);
+      if (nowIndex > -1) {
+        const currentHistory = bingoHistory[nowIndex];
+        changeMax(currentHistory.max);
+        changeNum(currentHistory.num);
+        changeColor(currentHistory.colorIndex);
+      } else if (nowIndex === -1) {
+        changeNum("");
+        changeColor(0);
+      }
     }
   }, []);
 
@@ -83,10 +93,10 @@ function App() {
   return (
     <ChakraProvider>
       <div className="flex">
-        <Body {...{ bingoMax, changeMax, bingoHistory, updateHistory, displayNum, circleColor }} />
+        <Body {...{ bingoMax, changeMax, bingoHistory, updateHistory, displayNum, circleColor, nowIndex }} />
         <Container maxW="container.xl" className="footer">
           <div className="btns">
-            <Btns {...{ changeNum, bingoMax, changeMax, updateHistory, bingoHistory, select, changeColor, isSpin, changeIsSpin }} />
+            <Btns {...{ changeNum, bingoMax, changeMax, updateHistory, bingoHistory, select, changeColor, isSpin, changeIsSpin, nowIndex, changeIndex }} />
           </div>
           <div className="settings">
             <div className="range vflex">
@@ -108,7 +118,7 @@ function Btns(props) {
   const onClose = () => setIsOpen(false)
   const cancelRef = React.useRef()
   const bodyWordList = ["聖戦の記録をリセットしてリプレイしますか…そうは思わないか？", "聖痕をリセットしてリプレイし、希望を私たちの光に変えますか…さあ…この力…どう使う……？", "魔力の残滓を抹消してソフトリセットしますか？", "履歴を全てを”無”に還す《オール・リセット》してやり直しますか……クク、本当かよ？"];
-  const bodyWord = bodyWordList[Math.floor(Math.random() * (bodyWordList.length - 0) + 0)];
+  const bodyWord = bodyWordList[Date.now() % bodyWordList.length];
 
 
 
@@ -143,10 +153,11 @@ function Btns(props) {
       props.changeColor(colorListIndex);
       count++;
       if (count >= time) {
-        history = [...props.bingoHistory, { num: num, colorIndex: colorListIndex, max: props.bingoMax }];
+        history = [...props.bingoHistory.slice(0, props.nowIndex + 1), { num: num, colorIndex: colorListIndex, max: props.bingoMax }];
         select.splice(index, 1);
         props.updateHistory(history);
         props.changeIsSpin(false);
+        props.changeIndex(history.length - 1);
         clearInterval(shuffle);
       }
       colorIndex++;
@@ -289,9 +300,9 @@ function Body(props) {
             color={useColorModeValue("gray.600", "gray.300")}
             ref={historyElem}
           >
-            履歴 ({props.bingoHistory.length})</Box>
+            履歴 ({props.bingoHistory.slice(0, props.nowIndex + 1).length})</Box>
           <Box mt="3" as="div" color={useColorModeValue("gray.600", "gray.300")} fontSize="30px" className="historyCardBody" ref={historyElem}>
-            {props.bingoHistory.map((history, index) => {
+            {props.bingoHistory.slice(0, props.nowIndex + 1).map((history, index) => {
               return (<div className="historyNum" key={index}>{history.num}</div>);
             })}
           </Box>
@@ -357,6 +368,7 @@ function Reset(props) {
   props.updateHistory([]);
   props.changeNum(null);
   props.changeColor(0);
+  props.changeIndex(0);
 }
 
 
