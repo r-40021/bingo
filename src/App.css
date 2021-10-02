@@ -78,6 +78,19 @@ input {
   display: flex;
 }
 
+.undoRedo {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+.undoGroup {
+  width: 100%;
+  justify-content: center;
+}
+.undoGroup button {
+  min-width: 40%;
+}
+
 .settings {
   flex: 1;
   display: flex;

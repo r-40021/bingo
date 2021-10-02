@@ -4,6 +4,7 @@ import { AlertDialog, AlertDialogBody, AlertDialogFooter, AlertDialogHeader, Ale
 import { useWindowSize } from 'react-use';
 import { MdLoop, MdDelete } from "react-icons/md";
 import { MoreTools } from './menu';
+import { Undo } from './undo';
 
 const colorList = ["#ffa500", "#d3e15c", "#b384c7", "#F06060", "#a9ceec"]; //数字表示エリアの枠線色
 
@@ -160,11 +161,14 @@ function Btns(props) {
 
   return (
     <>
-      <Box p={4}>
+      <Box py={2} px={4}>
         <ButtonGroup spacing="1">
           <Button leftIcon={<MdLoop />} colorScheme="blue" onClick={spin} disabled={props.isSpin}>Spin</Button>
           <AskReset {...{ props }} />
         </ButtonGroup>
+      </Box>
+      <Box py={2} px={4} className="undoRedo">
+        <Undo {...{ props }} />
       </Box>
 
       <AlertDialog
@@ -242,6 +246,10 @@ function Body(props) {
   const circleStyle = { borderColor: colorList[props.circleColor] };
 
   React.useEffect(() => {
+    historyElem.current.scrollTop = historyElem.current.scrollHeight;
+  }, [props.bingoHistory])
+
+  React.useEffect(() => {
     const numberCurrentElem = numberElem.current;
     numberCurrentElem.style.width = "";
     numberCurrentElem.style.height = "";
@@ -272,11 +280,14 @@ function Body(props) {
         </div>
       </div>
       <div className="history">
-        <Box borderWidth="1px" borderRadius="lg" overflow="hidden" className="historyCard" p="4">
+        <Box borderWidth="1px" borderRadius="lg" overflow="hidden" className="historyCard">
           <Box
             fontWeight="semibold"
             lineHeight="tight"
             isTruncated
+            px="6" pt="4" pd="3"
+            color={useColorModeValue("gray.600", "gray.300")}
+            ref={historyElem}
           >
             履歴 ({props.bingoHistory.length})</Box>
           <Box mt="3" as="div" color={useColorModeValue("gray.600", "gray.300")} fontSize="30px" className="historyCardBody" ref={historyElem}>
@@ -305,7 +316,8 @@ function AskReset(props) {
         _hover={{ bg: useColorModeValue("#ff4430", "#f56051"), color: "gray.50" }}
         variant="outline"
         onClick={() => setIsOpen(true)}
-        disabled={props.props.isSpin}>
+        disabled={props.props.isSpin}
+      >
         Reset
       </Button>
 
@@ -346,6 +358,7 @@ function Reset(props) {
   props.changeNum(null);
   props.changeColor(0);
 }
+
 
 
 export default App;
