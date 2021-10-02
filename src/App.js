@@ -59,6 +59,8 @@ function App() {
   const [circleColor, changeColor] = React.useState(0);
   const [isSpin, changeIsSpin] = React.useState(false);
   const [nowIndex, changeIndex] = React.useState(localStorage.getItem("bi-index") && Number(localStorage.getItem("bi-index")) >= -1 ? Number(localStorage.getItem("bi-index")) : toHistory.length - 1);
+  const [flexStyle, changeFlexStyle] = React.useState({ height: "100vh" });
+  const { width, height } = useWindowSize();
   let select = [];
 
   React.useEffect(
@@ -68,6 +70,11 @@ function App() {
   React.useEffect(
     () => localStorage.setItem("bi-index", nowIndex)
     , [nowIndex]);
+
+  React.useEffect(() => {
+    const newStyle = {height: height + "px"};
+    changeFlexStyle(newStyle);
+  }, [width, height]);
 
   React.useEffect(() => {
     if (bingoHistory.length > 0) {
@@ -92,7 +99,7 @@ function App() {
 
   return (
     <ChakraProvider>
-      <div className="flex">
+      <div className="flex" style={flexStyle}>
         <Body {...{ bingoMax, changeMax, bingoHistory, updateHistory, displayNum, circleColor, nowIndex }} />
         <Container maxW="container.xl" className="footer">
           <div className="btns">
