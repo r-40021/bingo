@@ -20,14 +20,28 @@ export function SelectTheme() {
     if (localStorage.getItem("theme") === "auto") {
       if (isDark.matches && colorMode === "light") {
         toggleColorMode();
+        changeThemeColor("dark");
       } else if (!isDark.matches && colorMode === "dark") {
         toggleColorMode();
+        changeThemeColor("light");
       }
     } else if (localStorage.getItem("theme") === "dark" && colorMode === "light") {
       toggleColorMode();
+      changeThemeColor("dark");
     } else if (localStorage.getItem("theme") === "light" && colorMode === "dark") {
       toggleColorMode();
+      changeThemeColor("light");
     }
+  }
+
+  const changeThemeColor = type => {
+    let color;
+    if (type === "dark") {
+      color = "#33373d";
+    } else {
+      color = "#f8f9fa";
+    }
+    document.getElementById("headThemeColor").setAttribute("content", color);
   }
 
   const handleChange = () => {
