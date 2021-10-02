@@ -45,6 +45,7 @@ function App() {
         max: oldMax
       }
       toHistory.push(data);
+      return value;
     });
 
   } else {

@@ -7,7 +7,7 @@ import { BsMoon } from "react-icons/bs";
 
 
 export function SelectTheme() {
-  const [autoTheme, toggleAutoTheme] = React.useState(localStorage.getItem("theme") === "auto");
+  const [autoTheme, toggleAutoTheme] = React.useState((localStorage.getItem("theme") === "auto"));
   const [isOpen, setIsOpen] = React.useState(false);
   const onClose = () => setIsOpen(false);
   const cancelRef = React.useRef();
@@ -15,8 +15,9 @@ export function SelectTheme() {
   let themeIcon = colorMode === 'light' ? <MdBrightnessHigh /> : <BsMoon />;
   const isDark = window.matchMedia("(prefers-color-scheme: dark)");
 
+
   const ToggleTheme = () => {
-    if (autoTheme) {
+    if (autoTheme === true) {
       if (isDark.matches && colorMode === "light") {
         toggleColorMode();
       } else if (!isDark.matches && colorMode === "dark") {
@@ -31,30 +32,59 @@ export function SelectTheme() {
 
   React.useEffect(ToggleTheme,[autoTheme]);  
 
+  React.useEffect(()=>{
+    try {
+      //システムのテーマが変更されたときに発動
+      // Chrome & Firefox
+      isDark.addEventListener("change", ()=>{
+      if(autoTheme) {
+        ToggleTheme();
+      }
+    });
+    } catch (e1) {
+      try {
+        // Safari
+        isDark.addListener(()=>{
+      if(autoTheme) {
+        ToggleTheme();
+      }
+    });
+      } catch (e2) {
+        console.error(e2);
+      }
+    }
+  }, []);
+
+  const handleClickAuto = () => {
+    const nowAuto = autoTheme;
+    toggleAutoTheme(true);
+    localStorage.setItem("theme", "auto");
+    if(nowAuto){
+      ToggleTheme();
+    }
+  };
+
+  const handleClickLight = () => {
+    const nowAuto = autoTheme;
+    localStorage.setItem("theme", "light");
+    toggleAutoTheme(false);
+    if(colorMode === "dark" && !nowAuto) {
+      ToggleTheme();
+    }
+  };
+
+  const handleClickDark = () => {
+    const nowAuto = autoTheme;
+    localStorage.setItem("theme", "dark");
+    toggleAutoTheme(false);
+    if(colorMode === "light" && !nowAuto) {
+      ToggleTheme();
+    }
+  };
+
   window.addEventListener("load", ()=>{
     ToggleTheme();
   });
-
-  try {
-    //システムのテーマが変更されたときに発動
-    // Chrome & Firefox
-    isDark.addEventListener("change", ()=>{
-    if(autoTheme) {
-      ToggleTheme();
-    }
-  });
-  } catch (e1) {
-    try {
-      // Safari
-      isDark.addListener(()=>{
-    if(autoTheme) {
-      ToggleTheme();
-    }
-  });
-    } catch (e2) {
-      console.error(e2);
-    }
-  }
 
   return (
     <>
@@ -78,42 +108,21 @@ export function SelectTheme() {
               <br />
               <Box pb={3}>
                 <LinkBox as="article" maxW="sm" p="3" borderWidth="1px" rounded="md">
-                  <LinkOverlay as="button" onClick={() => {
-                    const nowAuto = autoTheme;
-                    toggleAutoTheme(true);
-                    localStorage.setItem("theme", "auto");
-                    if(nowAuto){
-                      ToggleTheme();
-                    }
-                  }}>
+                  <LinkOverlay as="button" onClick={handleClickAuto}>
                     <Flex>
                       <Center p={1} pe={4} className={"syncModeIcon " + (autoTheme ? "active" : "")}><MdSync /></Center><span flex="1">システムと同期</span>
                     </Flex>
                   </LinkOverlay>
                 </LinkBox>
                 <LinkBox as="article" maxW="sm" p="3" borderWidth="1px" rounded="md">
-                  <LinkOverlay as="button" onClick={() => {
-                    const nowAuto = autoTheme;
-                    localStorage.setItem("theme", "light");
-                    toggleAutoTheme(false);
-                    if(colorMode === "dark" && !nowAuto) {
-                      ToggleTheme();
-                    }
-                  }}>
+                  <LinkOverlay as="button" onClick={handleClickLight}>
                     <Flex>
                       <Center p={1} pe={4} className={"lightModeIcon " + (localStorage.getItem("theme") === "light" && !autoTheme && colorMode === "light" ? "active" : "")}><MdBrightnessHigh /></Center><span flex="1">ライトモード</span>
                     </Flex>
                   </LinkOverlay>
                 </LinkBox>
                 <LinkBox as="article" maxW="sm" p="3" borderWidth="1px" rounded="md">
-                  <LinkOverlay as="button" onClick={() => {
-                    const nowAuto = autoTheme;
-                    localStorage.setItem("theme", "dark");
-                    toggleAutoTheme(false);
-                    if(colorMode === "light" && !nowAuto) {
-                      ToggleTheme();
-                    }
-                  }}>
+                  <LinkOverlay as="button" onClick={handleClickDark}>
                     <Flex>
                       <Center p={1} pe={4} className={"darkModeIcon " + (localStorage.getItem("theme") === "dark" && !autoTheme && colorMode === "dark" ? "active" : "")}><BsMoon /></Center><span flex="1">ダークモード</span>
                     </Flex>
