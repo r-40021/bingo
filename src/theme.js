@@ -11,13 +11,13 @@ export function SelectTheme() {
   const [isOpen, setIsOpen] = React.useState(false);
   const onClose = () => setIsOpen(false);
   const cancelRef = React.useRef();
-  const { colorMode, toggleColorMode } = useColorMode();
+  const { colorMode, toggleColorMode } = useColorMode()
   let themeIcon = colorMode === 'light' ? <MdBrightnessHigh /> : <BsMoon />;
   const isDark = window.matchMedia("(prefers-color-scheme: dark)");
 
 
   const ToggleTheme = () => {
-    if (autoTheme === true) {
+    if (localStorage.getItem("theme") === "auto") {
       if (isDark.matches && colorMode === "light") {
         toggleColorMode();
       } else if (!isDark.matches && colorMode === "dark") {
@@ -30,36 +30,41 @@ export function SelectTheme() {
     }
   }
 
-  React.useEffect(ToggleTheme,[autoTheme]);  
-
-  React.useEffect(()=>{
-    try {
-      //システムのテーマが変更されたときに発動
-      // Chrome & Firefox
-      isDark.addEventListener("change", ()=>{
-      if(autoTheme) {
-        ToggleTheme();
-      }
-    });
-    } catch (e1) {
-      try {
-        // Safari
-        isDark.addListener(()=>{
-      if(autoTheme) {
-        ToggleTheme();
-      }
-    });
-      } catch (e2) {
-        console.error(e2);
-      }
+  const handleChange = () => {
+    if (autoTheme) {
+      ToggleTheme();
     }
-  }, []);
+  }
+
+  React.useEffect(() => {
+    ToggleTheme();
+  }, [autoTheme]);
+
+  try {
+    isDark.removeEventListener("change", handleChange);
+  } catch (e) {
+    isDark.removeListener(handleChange);
+  }
+
+  try {
+    //システムのテーマが変更されたときに発動
+    // Chrome & Firefox
+    isDark.addEventListener("change", handleChange);
+  } catch (e1) {
+    try {
+      // Safari
+      isDark.addListener(handleChange);
+    } catch (e2) {
+      console.error(e2);
+    }
+  }
+
 
   const handleClickAuto = () => {
     const nowAuto = autoTheme;
-    toggleAutoTheme(true);
     localStorage.setItem("theme", "auto");
-    if(nowAuto){
+    toggleAutoTheme(true);
+    if (nowAuto) {
       ToggleTheme();
     }
   };
@@ -68,7 +73,7 @@ export function SelectTheme() {
     const nowAuto = autoTheme;
     localStorage.setItem("theme", "light");
     toggleAutoTheme(false);
-    if(colorMode === "dark" && !nowAuto) {
+    if (colorMode === "dark" && !nowAuto) {
       ToggleTheme();
     }
   };
@@ -77,12 +82,12 @@ export function SelectTheme() {
     const nowAuto = autoTheme;
     localStorage.setItem("theme", "dark");
     toggleAutoTheme(false);
-    if(colorMode === "light" && !nowAuto) {
+    if (colorMode === "light" && !nowAuto) {
       ToggleTheme();
     }
   };
 
-  window.addEventListener("load", ()=>{
+  window.addEventListener("load", () => {
     ToggleTheme();
   });
 
