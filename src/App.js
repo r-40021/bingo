@@ -14,8 +14,9 @@ function App() {
   const [circleColor, changeColor] = React.useState(colorList[0]);
   let select = [];
   for (let i = 0; i < bingoMax; i++) {
-    if (bingoHistory.indexOf(i + 1) === -1) {
-      select.push(i + 1);
+    const find = bingoHistory.some(elem => elem.num === i+1);
+    if (!find) {
+      select.push(i+1);
     }
   }
   return (
@@ -55,8 +56,9 @@ function Btns(props) {
     if (!props.bingoMax && props.bingoMax !== 0) {
       props.changeMax(75);
       for (let i = 0; i < 75; i++) {
-        if (props.bingoHistory.indexOf(i + 1) === -1) {
-          select.push(i + 1);
+        const find = props.bingoHistory.some(elem => elem.num === i+1);
+        if (!find) {
+          select.push(i+1);
         }
       }
     } else {
@@ -69,20 +71,20 @@ function Btns(props) {
     let history;
     let count = 0;
     let colorIndex = 0;
-    const time = getRandomInt(5, 12);
+    const time = select.length === 1 ? 5 : getRandomInt(5, 12);
     let shuffle = setInterval(() => {
       const index = getRandomInt(0, select.length);
       const num = select[index];
       props.changeNum(num);
       props.changeColor(colorList[colorIndex % colorList.length]);
-      colorIndex++;
       count++;
       if (count >= time) {
-        history = [...props.bingoHistory, num];
+        history = [...props.bingoHistory, {num:num, colorIndex: colorIndex % colorList.length, max: props.bingoMax}];
         select.splice(index, 1);
         props.updateHistory(history);
         clearInterval(shuffle);
       }
+      colorIndex++;
     }, 275);
   }
 
@@ -214,8 +216,8 @@ function Body(props) {
           >
             履歴 ({props.bingoHistory.length})</Box>
           <Box mt="3" as="div" color={useColorModeValue("gray.600", "gray.300")} fontSize="30px" className="historyCardBody" ref={historyElem}>
-            {props.bingoHistory.map((num, index) => {
-              return (<div className="historyNum" key={index}>{num}</div>);
+            {props.bingoHistory.map((history, index) => {
+              return (<div className="historyNum" key={index}>{history.num}</div>);
             })}
           </Box>
         </Box>
