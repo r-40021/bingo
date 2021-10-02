@@ -5,12 +5,13 @@ import { useWindowSize } from 'react-use';
 import { MdLoop, MdDelete } from "react-icons/md";
 import { MoreTools } from './menu';
 
-
+const colorList = ["#ffa500", "#d3e15c", "#b384c7", "#F06060", "#a9ceec"]; //数字表示エリアの枠線色
 
 function App() {
   const [bingoMax, changeMax] = React.useState(75);
   const [bingoHistory, updateHistory] = React.useState([]);
   const [displayNum, changeNum] = React.useState();
+  const [circleColor, changeColor] = React.useState(colorList[0]);
   let select = [];
   for (let i = 0; i < bingoMax; i++) {
     if (bingoHistory.indexOf(i + 1) === -1) {
@@ -20,10 +21,10 @@ function App() {
   return (
     <ChakraProvider>
       <div className="flex">
-        <Body {...{ bingoMax, changeMax, bingoHistory, updateHistory, displayNum }} />
+        <Body {...{ bingoMax, changeMax, bingoHistory, updateHistory, displayNum, circleColor }} />
         <Container maxW="container.xl" className="footer">
           <div className="btns">
-            <Btns {...{ changeNum, bingoMax, changeMax, updateHistory, bingoHistory, select }} />
+            <Btns {...{ changeNum, bingoMax, changeMax, updateHistory, bingoHistory, select, changeColor }} />
           </div>
           <div className="settings">
             <div className="range vflex">
@@ -67,11 +68,14 @@ function Btns(props) {
     }
     let history;
     let count = 0;
+    let colorIndex = 0;
     const time = getRandomInt(5, 12);
     let shuffle = setInterval(() => {
       const index = getRandomInt(0, select.length);
       const num = select[index];
       props.changeNum(num);
+      props.changeColor(colorList[colorIndex % colorList.length]);
+      colorIndex++;
       count++;
       if (count >= time) {
         history = [...props.bingoHistory, num];
@@ -79,7 +83,7 @@ function Btns(props) {
         props.updateHistory(history);
         clearInterval(shuffle);
       }
-    }, 300);
+    }, 275);
   }
 
   const getRandomInt = (min, max) => {
@@ -169,6 +173,7 @@ function Body(props) {
   const numberElem = React.useRef(null);
   const historyElem = React.useRef(null);
   const { width, height } = useWindowSize();
+  const circleStyle = {borderColor: props.circleColor};
 
   React.useEffect(() => {
     const numberCurrentElem = numberElem.current;
@@ -195,7 +200,7 @@ function Body(props) {
 
   return (
     <Container maxW="container.lg" className="body">
-      <div className="number" {... { ref: numberElem }}>
+      <div className="number" {... { ref: numberElem, style: circleStyle }}>
         <div className="displayNumber">
           {props.displayNum}
         </div>
@@ -272,6 +277,7 @@ function AskReset(props) {
 function Reset(props) {
   props.updateHistory([]);
   props.changeNum(null);
+  props.changeColor(colorList[0]);
 }
 
 
