@@ -161,7 +161,7 @@ function Btns(props) {
 
   return (
     <>
-      <Box py={2} px={4}>
+      <Box py={2} px={4} className="spinResetBtn">
         <ButtonGroup spacing="1">
           <Button leftIcon={<MdLoop />} colorScheme="blue" onClick={spin} disabled={props.isSpin}>Spin</Button>
           <AskReset {...{ props }} />

@@ -78,6 +78,12 @@ input {
   display: flex;
 }
 
+.btns {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
 .undoRedo {
   display: flex;
   justify-content: center;
@@ -212,6 +218,16 @@ body.chakra-ui-dark .darkModeIcon.active svg{
   }
   .body {
     flex-direction: column;
+  }
+  .number {
+    height: 50%;
+  }
+  .spinResetBtn, .undoRedo {
+    padding: .5rem !important;
+    padding-inline-start: .1rem !important;
+  }
+  .history {
+    padding: 1rem 0;
   }
 }
 
