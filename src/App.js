@@ -89,6 +89,7 @@ function App() {
         changeColor(0);
       }
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   for (let i = 0; i < bingoMax; i++) {

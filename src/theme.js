@@ -52,6 +52,7 @@ export function SelectTheme() {
 
   React.useEffect(() => {
     ToggleTheme();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [autoTheme]);
 
   try {
