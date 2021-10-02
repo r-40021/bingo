@@ -176,6 +176,10 @@ body.chakra-ui-dark .darkModeIcon.active svg{
   }
 }
 
+.nomulish {
+  font-style: italic;
+}
+
 ::-webkit-scrollbar {
   width: 5px;
   height: 5px;

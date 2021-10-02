@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import { Box, ChakraProvider, Button, ButtonGroup, Container, Slider, SliderTrack, SliderFilledTrack, SliderThumb, Flex, NumberInput, NumberInputField, NumberInputStepper, NumberIncrementStepper, NumberDecrementStepper, useColorModeValue } from "@chakra-ui/react";
+import { AlertDialog, AlertDialogBody, AlertDialogFooter, AlertDialogHeader, AlertDialogContent, AlertDialogOverlay, Box, ChakraProvider, Button, ButtonGroup, Container, Slider, SliderTrack, SliderFilledTrack, SliderThumb, Flex, NumberInput, NumberInputField, NumberInputStepper, NumberIncrementStepper, NumberDecrementStepper, useColorModeValue } from "@chakra-ui/react";
 import { useWindowSize } from 'react-use';
 import { MdLoop, MdDelete } from "react-icons/md";
 import { MoreTools } from './menu';
@@ -41,21 +41,41 @@ function App() {
 }
 
 function Btns(props) {
+  const [isOpen, setIsOpen] = React.useState(false)
+  const onClose = () => setIsOpen(false)
+  const cancelRef = React.useRef()
+  const bodyWordList = ["聖戦の記録をリセットしてリプレイしますか…そうは思わないか？", "聖痕をリセットしてリプレイし、希望を私たちの光に変えますか…さあ…この力…どう使う……？", "魔力の残滓を抹消してソフトリセットしますか？", "履歴を全てを”無”に還す《オール・リセット》してやり直しますか……クク、本当かよ？"];
+  const bodyWord = bodyWordList[Math.floor(Math.random() * (bodyWordList.length - 0) + 0)];
+
+
+
   const spin = () => {
+    let select = [];
     if (!props.bingoMax && props.bingoMax !== 0) {
       props.changeMax(75);
+      for (let i = 0; i < 75; i++) {
+        if (props.bingoHistory.indexOf(i + 1) === -1) {
+          select.push(i + 1);
+        }
+      }
+    } else {
+      select = props.select.slice();
+    }
+    if (select.length === 0) {
+      setIsOpen(true);
+      return;
     }
     let history;
     let count = 0;
     const time = getRandomInt(5, 12);
     let shuffle = setInterval(() => {
-      const index = getRandomInt(0, props.select.length);
-      const num = props.select[index];
+      const index = getRandomInt(0, select.length);
+      const num = select[index];
       props.changeNum(num);
       count++;
       if (count >= time) {
         history = [...props.bingoHistory, num];
-        props.select.splice(index, 1);
+        select.splice(index, 1);
         props.updateHistory(history);
         clearInterval(shuffle);
       }
@@ -69,12 +89,43 @@ function Btns(props) {
   }
 
   return (
-    <Box p={4}>
-      <ButtonGroup spacing="1">
-        <Button leftIcon={<MdLoop />} colorScheme="blue" onClick={spin}>Spin</Button>{/* 【TODO】最大値のテキストボックスに値が入っているかを判定する処理を追加 */}
-        <Button leftIcon={<MdDelete />} bg={useColorModeValue("gray.200", "gray.600")} color={useColorModeValue("gray.600", "gray.200")} _hover={{ bg: useColorModeValue("#ff4430", "#f56051"), color: "gray.50" }} variant="outline">Reset</Button>
-      </ButtonGroup>
-    </Box>
+    <>
+      <Box p={4}>
+        <ButtonGroup spacing="1">
+          <Button leftIcon={<MdLoop />} colorScheme="blue" onClick={spin}>Spin</Button>{/* 【TODO】最大値のテキストボックスに値が入っているかを判定する処理を追加 */}
+          <AskReset {...{props}}/>
+        </ButtonGroup>
+      </Box>
+
+      <AlertDialog
+        isOpen={isOpen}
+        leastDestructiveRef={cancelRef}
+        onClose={onClose}
+        isCentered
+      >
+        <AlertDialogOverlay>
+          <AlertDialogContent>
+            <AlertDialogHeader fontSize="lg" fontWeight="bold">
+              終了！
+            </AlertDialogHeader>
+
+            <AlertDialogBody>
+              <p className="nomulish">{bodyWord}</p>
+              <p><br />― <a href="https://racing-lagoon.info/nomu/translate.php" target="_blank" rel="noopener noreferrer">ノムリッシュ翻訳</a>より</p>
+            </AlertDialogBody>
+
+            <AlertDialogFooter>
+              <Button ref={cancelRef} onClick={onClose}>
+                キャンセル
+              </Button>
+              <Button onClick={() => { onClose(); Reset(props); }} colorScheme="blue" ml={3}>
+                やり直す
+              </Button>
+            </AlertDialogFooter>
+          </AlertDialogContent>
+        </AlertDialogOverlay>
+      </AlertDialog>
+    </>
   );
 }
 
@@ -168,6 +219,60 @@ function Body(props) {
   );
 }
 
+
+function AskReset(props) {
+  const [isOpen, setIsOpen] = React.useState(false)
+  const onClose = () => setIsOpen(false)
+  const cancelRef = React.useRef()
+
+  return (
+    <>
+      <Button
+        leftIcon={<MdDelete />}
+        bg={useColorModeValue("gray.200", "gray.600")}
+        color={useColorModeValue("gray.600", "gray.200")}
+        _hover={{ bg: useColorModeValue("#ff4430", "#f56051"), color: "gray.50" }}
+        variant="outline"
+        onClick={() => setIsOpen(true)}>
+        Reset
+      </Button>
+
+      <AlertDialog
+        isOpen={isOpen}
+        leastDestructiveRef={cancelRef}
+        onClose={onClose}
+        isCentered
+      >
+        <AlertDialogOverlay>
+          <AlertDialogContent>
+            <AlertDialogHeader fontSize="lg" fontWeight="bold">
+              リセットしますか？
+            </AlertDialogHeader>
+
+            <AlertDialogBody>
+              <p>履歴をリセットして最初からやり直しますか？</p>
+              <p>この操作は元に戻せません。</p>
+            </AlertDialogBody>
+
+            <AlertDialogFooter>
+              <Button ref={cancelRef} onClick={onClose}>
+                キャンセル
+              </Button>
+              <Button onClick={() => { onClose(); Reset(props.props); }} colorScheme="red" ml={3}>
+                リセット
+              </Button>
+            </AlertDialogFooter>
+          </AlertDialogContent>
+        </AlertDialogOverlay>
+      </AlertDialog>
+    </>
+  )
+}
+
+function Reset(props) {
+  props.updateHistory([]);
+  props.changeNum(null);
+}
 
 
 export default App;
