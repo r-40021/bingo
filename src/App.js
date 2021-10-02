@@ -84,6 +84,7 @@ function App() {
         changeNum(currentHistory.num);
         changeColor(currentHistory.colorIndex);
       } else if (nowIndex === -1) {
+        changeMax(bingoHistory[0].max);
         changeNum("");
         changeColor(0);
       }
