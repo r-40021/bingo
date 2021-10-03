@@ -87,6 +87,7 @@ input {
   border: rgb(240, 96, 96) 40px solid;
   height: 100%;
   width: 100%;
+  font-size: 150px;
 }
 .displayNumber {
   font-family: 'Kosugi Maru', sans-serif;
@@ -276,6 +277,9 @@ body.chakra-ui-dark .darkModeIcon.active svg{
     height: 50%;
     padding: 1rem;
     width: 100%;
+  }
+  .number {
+    font-size: 60px;
   }
   .spinResetBtn, .undoRedo {
     padding: .5rem !important;
