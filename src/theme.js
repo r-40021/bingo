@@ -7,7 +7,7 @@ import { BsMoon } from "react-icons/bs";
 
 
 export function SelectTheme() {
-  const [autoTheme, toggleAutoTheme] = React.useState((localStorage.getItem("theme") === "auto"));
+  const [autoTheme, toggleAutoTheme] = React.useState(!localStorage.getItem("theme") || (localStorage.getItem("theme") === "auto"));
   const [isOpen, setIsOpen] = React.useState(false);
   const onClose = () => setIsOpen(false);
   const cancelRef = React.useRef();

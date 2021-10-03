@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import { MenuItem, MenuGroup, useToast } from "@chakra-ui/react";
 import { MdLink, MdMoreVert } from "react-icons/md";
-import { AiOutlineTwitter } from "react-icons/ai";
+import { FaTwitter } from "react-icons/fa";
 import { FaLine } from "react-icons/fa";
 
 export function ShareMenu() {
@@ -19,7 +19,7 @@ export function ShareMenu() {
                     isClosable: true,
                 })
             }}>URL をコピー</MenuItem>
-            <MenuItem icon={<AiOutlineTwitter />} onClick={() => { ShareToSNS("twitter") }}>ツイート</MenuItem>
+            <MenuItem icon={<FaTwitter />} onClick={() => { ShareToSNS("twitter") }}>ツイート</MenuItem>
             <MenuItem icon={<FaLine />} onClick={() => { ShareToSNS("line") }}>LINE で送る</MenuItem>
             {navigator.share ? <MenuItem icon={<MdMoreVert />} onClick={() => { ShareToSNS() }}>その他の方法</MenuItem> : null}
         </MenuGroup>

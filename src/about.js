@@ -2,8 +2,7 @@ import React from 'react';
 import './App.css';
 import { Button, Center, MenuItem, AlertDialog, AlertDialogBody, AlertDialogFooter, AlertDialogHeader, AlertDialogContent, AlertDialogOverlay, LinkOverlay, LinkBox, Flex } from "@chakra-ui/react"
 import { MdInfoOutline } from "react-icons/md";
-import { VscLaw } from "react-icons/vsc";
-import { AiFillGithub } from "react-icons/ai";
+import { VscLaw, VscGithubInverted } from "react-icons/vsc";
 
 export function AboutApp() {
     const [isOpen, setIsOpen] = React.useState(false)
@@ -35,7 +34,7 @@ export function AboutApp() {
                             <LinkBox as="article" maxW="sm" p="3" borderWidth="1px" rounded="md">
                                 <LinkOverlay href="https://github.com/r-40021/bingo" isExternal onClick={onClose}>
                                     <Flex>
-                                        <Center p={1} pe={4}><AiFillGithub /></Center><span flex="1">ソースコード</span>
+                                        <Center p={1} pe={4}><VscGithubInverted /></Center><span flex="1">ソースコード</span>
                                     </Flex>
                                 </LinkOverlay>
                             </LinkBox>
