@@ -10,10 +10,12 @@ This is a bingo machine which saves the history and the settings auto automatica
 
 # Screenshots
 ## Light Mode
-![Light Mode]()
+![Light Mode](https://user-images.githubusercontent.com/75155258/135741314-e7880a41-1aa5-4fe1-ac93-ac1f44596cfa.png)
+
 
 ## Dark Mode
-![Dark Mode]()
+![Dark Mode](https://user-images.githubusercontent.com/75155258/135741329-c8a939a2-0cc0-4950-9b0f-3f46b9f27531.png)
+
 
 # Features
 - The data of this application are automatically saved in LocalStorage. (Except for some browsers)
