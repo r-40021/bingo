@@ -274,11 +274,9 @@ function Body(props) {
     let nowHeight;
     const isResizing = setInterval(() => {
       if(document.body.clientWidth !== nowWidth && document.body.clientHeight !== nowHeight) {
-        console.log("変化中")
         nowWidth = document.body.clientWidth;
         nowHeight = document.body.clientHeight;
       } else {
-        console.log("リサイズ！")
         const numberCurrentElem = numberElem.current;
         numberCurrentElem.style.width = "";
         numberCurrentElem.style.height = "";
@@ -300,7 +298,7 @@ function Body(props) {
         }
         clearInterval(isResizing);
       }
-    }, 500);
+    }, 300);
   }, [width, height]);
 
   return (
