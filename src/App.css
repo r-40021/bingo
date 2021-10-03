@@ -64,20 +64,29 @@ body {
   user-select: none;
   -webkit-user-select: none;
   -moz-user-select: none;
+  max-width: 1400px !important;
 }
 input {
   user-select: text;
   -webkit-user-select: text;
   -moz-user-select: text;
 }
-.number {
+.numberWrapper {
   width: 45%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+.number {
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 50%;
   border: rgb(240, 96, 96) 40px solid;
   height: 100%;
+  width: 100%;
 }
 .displayNumber {
   font-family: 'Kosugi Maru', sans-serif;
@@ -263,8 +272,10 @@ body.chakra-ui-dark .darkModeIcon.active svg{
   .body {
     flex-direction: column;
   }
-  .number {
+  .numberWrapper {
     height: 50%;
+    padding: 1rem;
+    width: 100%;
   }
   .spinResetBtn, .undoRedo {
     padding: .5rem !important;

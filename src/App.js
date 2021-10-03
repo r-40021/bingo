@@ -302,11 +302,13 @@ function Body(props) {
   }, [width, height]);
 
   return (
-    <Container maxW="container.lg" className="body">
+    <Container maxW="container.xl" className="body">
+      <div className="numberWrapper">
       <div className="number" {... { ref: numberElem, style: circleStyle }}>
         <div className="displayNumber">
           {props.displayNum}
         </div>
+      </div>
       </div>
       <div className="history">
         <Box borderWidth="1px" borderRadius="lg" overflow="hidden" className="historyCard">
