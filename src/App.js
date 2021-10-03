@@ -72,7 +72,7 @@ function App() {
     , [nowIndex]);
 
   React.useEffect(() => {
-    const newStyle = {height: height + "px"};
+    const newStyle = { height: height + "px" };
     changeFlexStyle(newStyle);
   }, [width, height]);
 
@@ -126,7 +126,19 @@ function Btns(props) {
   const [isOpen, setIsOpen] = React.useState(false)
   const onClose = () => setIsOpen(false)
   const cancelRef = React.useRef()
-  const bodyWordList = ["聖戦の記録をリセットしてリプレイしますか…そうは思わないか？", "聖痕をリセットしてリプレイし、希望を私たちの光に変えますか…さあ…この力…どう使う……？", "魔力の残滓を抹消してソフトリセットしますか？", "履歴を全てを”無”に還す《オール・リセット》してやり直しますか……クク、本当かよ？"];
+  const bodyWordList = [
+    "聖戦の記録をリセットしてリプレイしますか…そうは思わないか？",
+    "聖痕をリセットしてリプレイし、希望を私たちの光に変えますか…さあ…この力…どう使う……？",
+    "魔力の残滓を抹消してリセットしますか？",
+    "履歴を全てを”無”に還す《オール・リセット》してやり直しますか……クク、本当かよ？",
+    "仮想化思念体に伝説の大崩壊を発生させてやり直しますか？",
+    "仮想化思念体（遺伝子組み換えでない）を Ｒｅｓｅｔ してリセットします…頼んだよ、未来の英雄達…か？",
+    "『シン』が消えてから、2年の月日が流れた―――データをダ＝カーポしてリセマラ続行…なんて…＂いつもの＂俺らしくねぇよな…か？",
+    "履歴を消してやり直しますか、本当にそれが貴公の望みなのか…？",
+    "履歴を消して最初、つまり光と闇の両側の世界からリセマラ続行しても運命に抗うというのか……か？",
+    "聖戦の記録を粉砕して零式からスキルリセットしますか！？逆行列か！",
+    "セーブデータをすべての記憶　すべての存在　すべての次元から消して最初からやり直しますか…？預言書には無かった出来事だ…"
+  ];
   const bodyWord = bodyWordList[Date.now() % bodyWordList.length];
 
 
@@ -213,7 +225,7 @@ function Btns(props) {
                 キャンセル
               </Button>
               <Button onClick={() => { onClose(); Reset(props); }} colorScheme="blue" ml={3}>
-                やり直す
+                リセット
               </Button>
             </AlertDialogFooter>
           </AlertDialogContent>
@@ -273,7 +285,7 @@ function Body(props) {
     let nowWidth;
     let nowHeight;
     const isResizing = setInterval(() => {
-      if(document.body.clientWidth !== nowWidth && document.body.clientHeight !== nowHeight) {
+      if (document.body.clientWidth !== nowWidth && document.body.clientHeight !== nowHeight) {
         nowWidth = document.body.clientWidth;
         nowHeight = document.body.clientHeight;
       } else {
@@ -287,7 +299,7 @@ function Body(props) {
         }
         numberCurrentElem.style.fontSize = numberCurrentElem.offsetWidth / 5 * 3 + "px";
         numberCurrentElem.style.borderWidth = numberCurrentElem.offsetWidth * 0.1 + "px";
-    
+
         const historyCurrentElem = historyElem.current;
         if (width < 576) {
           historyCurrentElem.style.fontSize =
@@ -304,11 +316,11 @@ function Body(props) {
   return (
     <Container maxW="container.xl" className="body">
       <div className="numberWrapper">
-      <div className="number" {... { ref: numberElem, style: circleStyle }}>
-        <div className="displayNumber">
-          {props.displayNum}
+        <div className="number" {... { ref: numberElem, style: circleStyle }}>
+          <div className="displayNumber">
+            {props.displayNum}
+          </div>
         </div>
-      </div>
       </div>
       <div className="history">
         <Box borderWidth="1px" borderRadius="lg" overflow="hidden" className="historyCard">
