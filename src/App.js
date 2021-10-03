@@ -61,7 +61,6 @@ function App() {
   const [nowIndex, changeIndex] = React.useState(localStorage.getItem("bi-index") && Number(localStorage.getItem("bi-index")) >= -1 ? Number(localStorage.getItem("bi-index")) : toHistory.length - 1);
   const [flexStyle, changeFlexStyle] = React.useState({ height: "100vh" });
   const { width, height } = useWindowSize();
-  const [blurTextBox, changeBlur] = React.useState(0);
   let select = [];
 
   React.useEffect(
@@ -103,7 +102,7 @@ function App() {
   return (
     <ChakraProvider>
       <div className="flex" style={flexStyle}>
-        <Body {...{ bingoMax, changeMax, bingoHistory, updateHistory, displayNum, circleColor, nowIndex, blurTextBox }} />
+        <Body {...{ bingoMax, changeMax, bingoHistory, updateHistory, displayNum, circleColor, nowIndex }} />
         <Container maxW="container.xl" className="footer">
           <div className="btns">
             <Btns {...{ changeNum, bingoMax, changeMax, updateHistory, bingoHistory, select, changeColor, isSpin, changeIsSpin, nowIndex, changeIndex }} />
@@ -111,7 +110,7 @@ function App() {
           <div className="settings">
             <div className="range vflex">
               <RangeLabel />
-              <MaxNumSet max={bingoMax} {...{ changeMax, isSpin, blurTextBox, changeBlur }} />
+              <MaxNumSet max={bingoMax} {...{ changeMax, isSpin }} />
             </div>
             <div className="moreTools">
               <MoreTools />
@@ -231,16 +230,6 @@ function MaxNumSet(props) {
   }
   const sliderColor = useColorModeValue("gray.500", "gray.600");
 
-  const handleBlur = () => {
-    if (props.blurTextBox === 0){
-      const newInt = 1;
-      props.changeBlur(newInt);
-    } else {
-      const newInt = 0;
-      props.changeBlur(newInt);
-    }
-  };
-
   window.addEventListener("resize", () => changeWidth(document.body.clientWidth));
 
   return (
@@ -252,7 +241,7 @@ function MaxNumSet(props) {
         <SliderThumb fontSize="sm" boxSize="32px" color={sliderColor} children={props.max} />
       </Slider> : null}
       <Box pr={0}>
-        <NumberInput maxW={inWidth > 576 ? "100px" : ""} ml={inWidth > 576 ? "2rem" : "0"} value={props.max} onChange={handleChange} onBlur={handleBlur} max={99} min={1} disabled={props.isSpin}>
+        <NumberInput maxW={inWidth > 576 ? "100px" : ""} ml={inWidth > 576 ? "2rem" : "0"} value={props.max} onChange={handleChange} max={99} min={1} disabled={props.isSpin}>
           <NumberInputField />
           <NumberInputStepper>
             <NumberIncrementStepper />
@@ -281,27 +270,38 @@ function Body(props) {
   }, [props.bingoHistory])
 
   React.useEffect(() => {
-    const numberCurrentElem = numberElem.current;
-    numberCurrentElem.style.width = "";
-    numberCurrentElem.style.height = "";
-    if (numberCurrentElem.offsetWidth <= numberCurrentElem.offsetHeight * 1) {
-      numberCurrentElem.style.height = numberCurrentElem.offsetWidth + "px";
-    } else {
-      numberCurrentElem.style.width = numberCurrentElem.offsetHeight + "px";
-    }
-    numberCurrentElem.style.fontSize = numberCurrentElem.offsetWidth / 5 * 3 + "px";
-    numberCurrentElem.style.borderWidth = numberCurrentElem.offsetWidth * 0.1 + "px";
-
-    const historyCurrentElem = historyElem.current;
-    if (width < 576) {
-      historyCurrentElem.style.fontSize =
-        Math.min(((historyCurrentElem.clientWidth * 0.12) / 3) * 2, 30) + "px";
-    } else {
-      historyCurrentElem.style.fontSize =
-        Math.min(((historyCurrentElem.clientWidth * 0.11) / 3) * 2, 30) + "px";
-    }
-
-  }, [width, height, props.blurTextBox]);
+    let nowWidth;
+    let nowHeight;
+    const isResizing = setInterval(() => {
+      if(document.body.clientWidth !== nowWidth && document.body.clientHeight !== nowHeight) {
+        console.log("変化中")
+        nowWidth = document.body.clientWidth;
+        nowHeight = document.body.clientHeight;
+      } else {
+        console.log("リサイズ！")
+        const numberCurrentElem = numberElem.current;
+        numberCurrentElem.style.width = "";
+        numberCurrentElem.style.height = "";
+        if (numberCurrentElem.offsetWidth <= numberCurrentElem.offsetHeight * 1) {
+          numberCurrentElem.style.height = numberCurrentElem.offsetWidth + "px";
+        } else {
+          numberCurrentElem.style.width = numberCurrentElem.offsetHeight + "px";
+        }
+        numberCurrentElem.style.fontSize = numberCurrentElem.offsetWidth / 5 * 3 + "px";
+        numberCurrentElem.style.borderWidth = numberCurrentElem.offsetWidth * 0.1 + "px";
+    
+        const historyCurrentElem = historyElem.current;
+        if (width < 576) {
+          historyCurrentElem.style.fontSize =
+            Math.min(((historyCurrentElem.clientWidth * 0.12) / 3) * 2, 30) + "px";
+        } else {
+          historyCurrentElem.style.fontSize =
+            Math.min(((historyCurrentElem.clientWidth * 0.11) / 3) * 2, 30) + "px";
+        }
+        clearInterval(isResizing);
+      }
+    }, 500);
+  }, [width, height]);
 
   return (
     <Container maxW="container.lg" className="body">
