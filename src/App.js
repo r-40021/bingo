@@ -61,6 +61,7 @@ function App() {
   const [nowIndex, changeIndex] = React.useState(localStorage.getItem("bi-index") && Number(localStorage.getItem("bi-index")) >= -1 ? Number(localStorage.getItem("bi-index")) : toHistory.length - 1);
   const [flexStyle, changeFlexStyle] = React.useState({ height: "100vh" });
   const { width, height } = useWindowSize();
+  const [blurTextBox, changeBlur] = React.useState(0);
   let select = [];
 
   React.useEffect(
@@ -102,7 +103,7 @@ function App() {
   return (
     <ChakraProvider>
       <div className="flex" style={flexStyle}>
-        <Body {...{ bingoMax, changeMax, bingoHistory, updateHistory, displayNum, circleColor, nowIndex }} />
+        <Body {...{ bingoMax, changeMax, bingoHistory, updateHistory, displayNum, circleColor, nowIndex, blurTextBox }} />
         <Container maxW="container.xl" className="footer">
           <div className="btns">
             <Btns {...{ changeNum, bingoMax, changeMax, updateHistory, bingoHistory, select, changeColor, isSpin, changeIsSpin, nowIndex, changeIndex }} />
@@ -110,7 +111,7 @@ function App() {
           <div className="settings">
             <div className="range vflex">
               <RangeLabel />
-              <MaxNumSet max={bingoMax} {...{ changeMax, isSpin }} />
+              <MaxNumSet max={bingoMax} {...{ changeMax, isSpin, blurTextBox, changeBlur }} />
             </div>
             <div className="moreTools">
               <MoreTools />
@@ -230,6 +231,16 @@ function MaxNumSet(props) {
   }
   const sliderColor = useColorModeValue("gray.500", "gray.600");
 
+  const handleBlur = () => {
+    if (props.blurTextBox === 0){
+      const newInt = 1;
+      props.changeBlur(newInt);
+    } else {
+      const newInt = 0;
+      props.changeBlur(newInt);
+    }
+  };
+
   window.addEventListener("resize", () => changeWidth(document.body.clientWidth));
 
   return (
@@ -241,7 +252,7 @@ function MaxNumSet(props) {
         <SliderThumb fontSize="sm" boxSize="32px" color={sliderColor} children={props.max} />
       </Slider> : null}
       <Box pr={0}>
-        <NumberInput maxW={inWidth > 576 ? "100px" : ""} ml={inWidth > 576 ? "2rem" : "0"} value={props.max} onChange={handleChange} max={99} min={1} disabled={props.isSpin}>
+        <NumberInput maxW={inWidth > 576 ? "100px" : ""} ml={inWidth > 576 ? "2rem" : "0"} value={props.max} onChange={handleChange} onBlur={handleBlur} max={99} min={1} disabled={props.isSpin}>
           <NumberInputField />
           <NumberInputStepper>
             <NumberIncrementStepper />
@@ -290,7 +301,7 @@ function Body(props) {
         Math.min(((historyCurrentElem.clientWidth * 0.11) / 3) * 2, 30) + "px";
     }
 
-  }, [width, height, props.bingoMax]);
+  }, [width, height, props.blurTextBox]);
 
   return (
     <Container maxW="container.lg" className="body">
