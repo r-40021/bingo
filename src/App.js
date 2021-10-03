@@ -93,7 +93,7 @@ function App() {
   }, []);
 
   for (let i = 0; i < bingoMax; i++) {
-    const find = bingoHistory.some(elem => elem.num === i + 1);
+    const find = bingoHistory.slice(0, nowIndex + 1).some(elem => elem.num === i + 1);
     if (!find) {
       select.push(i + 1);
     }
@@ -137,7 +137,7 @@ function Btns(props) {
     if (!props.bingoMax && props.bingoMax !== 0) {
       props.changeMax(75);
       for (let i = 0; i < 75; i++) {
-        const find = props.bingoHistory.some(elem => elem.num === i + 1);
+        const find = props.bingoHistory.slice(0, props.nowIndex + 1).some(elem => elem.num === i + 1);
         if (!find) {
           select.push(i + 1);
         }
