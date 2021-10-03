@@ -23,7 +23,11 @@ This is a bingo machine which saves the history and the settings auto automatica
 - The larger buttons make it comfortable to operate with a smartphone.
 
 # Credits
-- [create-react-app](https://github.com/facebook/create-react-app/blob/main/LICENSE) &copy; 2013-present, Facebook, Inc.
-- [Chakra UI](https://github.com/chakra-ui/chakra-ui/blob/main/LICENSE) &copy; 2019 Segun Adebayo
-- [React Icons](https://github.com/react-icons/react-icons/blob/master/LICENSE) &copy; 2018 kamijin_fanta
+- [create-react-app](https://github.com/facebook/create-react-app/) is licensed under [MIT License](https://opensource.org/licenses/MIT) &copy; 2013-present, Facebook, Inc.
+- [Chakra UI](https://github.com/chakra-ui/chakra-ui/) is licensed under [MIT License](https://opensource.org/licenses/MIT) &copy; 2019 Segun Adebayo
+- [React Icons](https://github.com/react-icons/react-icons/) is licensed under [proprietary license](https://github.com/react-icons/react-icons/blob/master/LICENSE) &copy; 2018 kamijin_fanta
+    - [Bootstrap Icons](https://github.com/twbs/icons) is licensed under [MIT License](https://opensource.org/licenses/MIT) &copy; 2019-2020 The Bootstrap Authors
+    - [Material design icons](https://github.com/google/material-design-icons) is licensed under [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0.txt) 
+    - [Visual Studio Code - Icons](https://github.com/microsoft/vscode-icons) is licensed under [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/)
+    - [Font Awesome](https://fontawesome.com/) is licensed under [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/)
 

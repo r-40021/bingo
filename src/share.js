@@ -2,8 +2,7 @@ import React from 'react';
 import './App.css';
 import { MenuItem, MenuGroup, useToast } from "@chakra-ui/react";
 import { MdLink, MdMoreVert } from "react-icons/md";
-import { FaTwitter } from "react-icons/fa";
-import { FaLine } from "react-icons/fa";
+import { FaLine, FaTwitter } from "react-icons/fa";
 
 export function ShareMenu() {
     const toast = useToast();
