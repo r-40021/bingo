@@ -8,10 +8,10 @@
 
 # スクリーンショット
 ## ライトモード
-![ライトモード]()
+![ライトモード](https://user-images.githubusercontent.com/75155258/135741314-e7880a41-1aa5-4fe1-ac93-ac1f44596cfa.png)
 
 ## ダークモード
-![ダークモード]()
+![ダークモード](https://user-images.githubusercontent.com/75155258/135741329-c8a939a2-0cc0-4950-9b0f-3f46b9f27531.png)
 
 # 特長
 - データが自動で保存されます。 (一部のブラウザを除く)
