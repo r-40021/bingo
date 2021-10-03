@@ -1,7 +1,9 @@
 {
-  "name": "bingo_neo",
-  "version": "0.1.0",
-  "private": true,
+  "name": "bingo",
+  "version": "4.0.0",
+  "description": "This is a bingo machine which saves the history and the settings auto automatically.",
+  "private": false,
+  "homepage": "https://r-40021.github.io/bingo/",
   "dependencies": {
     "@chakra-ui/react": "^1.6.8",
     "@emotion/react": "^11.4.1",
@@ -33,7 +35,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "deploy": "pnpm run build && gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
@@ -52,5 +55,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "gh-pages": "^3.2.3"
   }
 }

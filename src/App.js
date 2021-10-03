@@ -290,7 +290,7 @@ function Body(props) {
         Math.min(((historyCurrentElem.clientWidth * 0.11) / 3) * 2, 30) + "px";
     }
 
-  }, [width, height]);
+  }, [width, height, props.bingoMax]);
 
   return (
     <Container maxW="container.lg" className="body">
