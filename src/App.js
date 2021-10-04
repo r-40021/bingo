@@ -310,7 +310,7 @@ function Body(props) {
         }
         clearInterval(isResizing);
       }
-    }, 300);
+    }, 200);
   }, [width, height]);
 
   return (

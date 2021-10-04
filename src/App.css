@@ -90,7 +90,7 @@ input {
   font-size: 150px;
 }
 .displayNumber {
-  font-family: 'Kosugi Maru', sans-serif;
+  font-family: 'Kosugi Maru', -apple-system, blinkMacSystemFont, "Helvetica Neue", "Segoe UI", "Roboto", "Arial", sans-serif;
 }
 .history {
   flex: 1;
