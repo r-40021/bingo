@@ -90,7 +90,7 @@ input {
   font-size: 150px;
 }
 .displayNumber {
-  font-family: 'Kosugi Maru', -apple-system, blinkMacSystemFont, "Helvetica Neue", "Segoe UI", "Roboto", "Arial", sans-serif;
+  font-family: "Kosugi Maru", -apple-system, blinkMacSystemFont, "Helvetica Neue", "Segoe UI", "Roboto", "Arial", sans-serif;
 }
 .history {
   flex: 1;
@@ -123,6 +123,8 @@ input {
   user-select: all;
   -webkit-user-select: all;
   -moz-user-select: all;
+  font-family: "Segoe UI", "Roboto" , -apple-system, blinkMacSystemFont, "Helvetica Neue", "Arial", sans-serif;
+  line-height: 1.6;
 }
 
 .footer {

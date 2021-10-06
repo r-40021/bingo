@@ -278,7 +278,7 @@ function Body(props) {
   const circleStyle = { borderColor: colorList[props.circleColor] };
 
   React.useEffect(() => {
-    historyElem.current.scrollTop = historyElem.current.scrollHeight;
+    process.nextTick(()=>historyElem.current.scrollTop = historyElem.current.scrollHeight)
   }, [props.bingoHistory])
 
   React.useEffect(() => {
