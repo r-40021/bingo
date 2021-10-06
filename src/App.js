@@ -139,7 +139,13 @@ function Btns(props) {
     "聖戦の記録を粉砕して零式からスキルリセットしますか！？逆行列か！",
     "セーブデータをすべての記憶　すべての存在　すべての次元から消して最初からやり直しますか…？預言書には無かった出来事だ…"
   ];
-  const bodyWord = bodyWordList[Date.now() % bodyWordList.length];
+
+  const [bodyWord, changeBodyWord] = React.useState();
+
+  React.useEffect(()=>{
+    changeBodyWord(bodyWordList[Date.now() % bodyWordList.length]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [props.nowIndex]);
 
 
 
@@ -217,7 +223,7 @@ function Btns(props) {
 
             <AlertDialogBody>
               <p className="nomulish">{bodyWord}</p>
-              <p><br />― <a href="https://racing-lagoon.info/nomu/translate.php" target="_blank" rel="noopener noreferrer">ノムリッシュ翻訳</a>より</p>
+              <p><br />― <a href="https://racing-lagoon.info/nomu/translate.php" target="_blank" rel="noopener noreferrer" className="linkWithLine">ノムリッシュ翻訳</a>より</p>
             </AlertDialogBody>
 
             <AlertDialogFooter>

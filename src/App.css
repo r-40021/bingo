@@ -126,6 +126,9 @@ input {
   font-family: "Segoe UI", "Roboto" , -apple-system, blinkMacSystemFont, "Helvetica Neue", "Arial", sans-serif;
   line-height: 1.6;
 }
+.linkWithLine {
+  border-bottom: dotted 2px #b8b8b8;
+}
 
 .footer {
   width: 100%;
