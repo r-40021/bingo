@@ -279,7 +279,7 @@ function Body(props) {
 
   React.useEffect(() => {
     process.nextTick(()=>historyElem.current.scrollTop = historyElem.current.scrollHeight)
-  }, [props.bingoHistory])
+  }, [props.bingoHistory, props.nowIndex])
 
   React.useEffect(() => {
     let nowWidth;
