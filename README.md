@@ -2,9 +2,9 @@
 
 # <img src="./public/favicon/favicon.ico" alt="icon" height="35px">&nbsp;Bingo Machine
 
-This is a bingo machine which saves the history and the settings auto automatically.
+This is a bingo machine which saves the history and the settings automatically.
 
-(Except for some browsers.)
+(Except for some legacy browsers.)
 
 [Open the app](https://r-40021.github.io/bingo/)
 
@@ -18,7 +18,7 @@ This is a bingo machine which saves the history and the settings auto automatica
 
 
 # Features
-- The data of this application are automatically saved in LocalStorage. (Except for some browsers)
+- The data of this application are automatically saved in LocalStorage. (Except for some legacy browsers)
 - It is easy to use this app.
 - It has an undo button and a redo button.
 - You can switch the theme of this app.
