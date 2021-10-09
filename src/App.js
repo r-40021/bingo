@@ -142,7 +142,7 @@ function Btns(props) {
 
   const [bodyWord, changeBodyWord] = React.useState();
 
-  React.useEffect(()=>{
+  React.useEffect(() => {
     changeBodyWord(bodyWordList[Date.now() % bodyWordList.length]);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.nowIndex]);
@@ -282,9 +282,13 @@ function Body(props) {
   const historyElem = React.useRef(null);
   const { width, height } = useWindowSize();
   const circleStyle = { borderColor: colorList[props.circleColor] };
+  const currentHistory = props.bingoHistory.slice(0, props.nowIndex + 1);
 
   React.useEffect(() => {
-    process.nextTick(()=>historyElem.current.scrollTop = historyElem.current.scrollHeight)
+    if (currentHistory.length % 5 === 1) {
+      process.nextTick(() => historyElem.current.scrollTop = historyElem.current.scrollHeight);// 最下部にスクロール
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.bingoHistory, props.nowIndex])
 
   React.useEffect(() => {
@@ -338,9 +342,9 @@ function Body(props) {
             color={useColorModeValue("gray.600", "gray.300")}
             ref={historyElem}
           >
-            履歴 ({props.bingoHistory.slice(0, props.nowIndex + 1).length})</Box>
+            履歴 ({currentHistory.length})</Box>
           <Box mt="3" as="div" color={useColorModeValue("gray.600", "gray.300")} fontSize="30px" className="historyCardBody" ref={historyElem}>
-            {props.bingoHistory.slice(0, props.nowIndex + 1).map((history, index) => {
+            {currentHistory.map((history, index) => {
               return (<div className="historyNum" key={index}>{history.num}</div>);
             })}
           </Box>
