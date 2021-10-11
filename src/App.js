@@ -171,7 +171,7 @@ function Btns(props) {
     let history;
     let count = 0;
     let colorIndex = 0;
-    const time = select.length === 1 ? 5 : getRandomInt(5, 12);
+    const time = select.length === 1 ? 2 : getRandomInt(5, 12);
     let shuffle = setInterval(() => {
       const index = getRandomInt(0, select.length);
       const num = select[index];
