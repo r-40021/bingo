@@ -14,7 +14,7 @@ specifiers:
   react-icons: ^4.2.0
   react-scripts: 4.0.3
   react-use: ^17.3.1
-  web-vitals: ^2.1.1
+  web-vitals: ^2.1.2
   workbox-background-sync: ^6.3.0
   workbox-broadcast-update: ^6.3.0
   workbox-cacheable-response: ^6.3.0
@@ -41,7 +41,7 @@ dependencies:
   react-icons: 4.2.0_react@17.0.2
   react-scripts: 4.0.3_react@17.0.2
   react-use: 17.3.1_react-dom@17.0.2+react@17.0.2
-  web-vitals: 2.1.1
+  web-vitals: 2.1.2
   workbox-background-sync: 6.3.0
   workbox-broadcast-update: 6.3.0
   workbox-cacheable-response: 6.3.0
@@ -12747,8 +12747,8 @@ packages:
       minimalistic-assert: 1.0.1
     dev: false
 
-  /web-vitals/2.1.1:
-    resolution: {integrity: sha512-6i/cE+7l095Etvjo2kbtVC8OXzLc9D8XMIWBPWAt2CME/7qmIMZWQwVoKDD277poVHNdPcLgW5Jruhbi8+8Vcw==}
+  /web-vitals/2.1.2:
+    resolution: {integrity: sha512-nZnEH8dj+vJFqCRYdvYv0a59iLXsb8jJkt+xvXfwgnkyPdsSLtKNlYmtTDiHmTNGXeSXtpjTTUcNvFtrAk6VMQ==}
     dev: false
 
   /webidl-conversions/5.0.0:

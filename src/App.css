@@ -3,43 +3,12 @@
 }
 
 body {
-  font-family: -apple-system, blinkMacSystemFont,
-   /*Macの欧文はSan Francisco (OS X 10.11以降)*/
-  "Helvetica Neue",
-   /*Macの欧文 (OS X 10.10以前)*/
-  "Segoe UI",
-  "Roboto",
-  /*Android*/
-  "Arial",
-   /*Windowsの欧文*/
-  "Hiragino Kaku Gothic ProN",
-   /*Macのヒラギノ*/
-  YuGothicM,
-   /*Windows8.1以上は游ゴシック*/
-  YuGothic,
-   /*Macの游ゴシック*/
-  Meiryo,
-   /*游ゴシックが入っていないWindows*/
-  sans-serif;
--webkit-font-smoothing: antialiased;
--moz-font-smoothing: antialiased;
+  -webkit-font-smoothing: antialiased;
+  -moz-font-smoothing: antialiased;
 }
 
-@font-face {
-  font-family: YuGothicM;
-  font-weight: normal;
-  src: local("YuGothic-Medium"),
-     /*Mediumを明示的に指定*/
-    local("Yu Gothic Medium"),
-     /*Chrome用*/
-    local("YuGothic-Regular"); /* Windows8.1ではMediumがないのでRegularを指定 */
-}
-@font-face {
-  font-family: YuGothicM;
-  font-weight: bold;
-  src: local("YoGothic-Bold"),
-     /*Boldはそのまま*/
-    local("Yu Gothic"); /* Chrome用*/
+p {
+  margin-bottom: .7em;
 }
 
 .flex {
