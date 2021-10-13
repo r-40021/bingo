@@ -31,9 +31,9 @@ export function Undo(props) {
         }
     }
 
-    const handleKeydownUndo = (e) => e.ctrlKey && e.key === 'z' && !props.props.isSpin && props.props.nowIndex >= 0 && props.props.bingoHistory.length > 0;
+    const handleKeydownUndo = (e) => e.ctrlKey && e.key === 'z' && !props.props.isSpin && props.props.nowIndex >= 0 && props.props.bingoHistory.length > 0 && document.activeElement.tagName.toLocaleLowerCase() !== "input";
 
-    const handleKeydownRedo = (e) => e.ctrlKey && e.key === 'y' && !props.props.isSpin && props.props.nowIndex < props.props.bingoHistory.length - 1 && props.props.bingoHistory.length > 0;
+    const handleKeydownRedo = (e) => e.ctrlKey && e.key === 'y' && !props.props.isSpin && props.props.nowIndex < props.props.bingoHistory.length - 1 && props.props.bingoHistory.length > 0 && document.activeElement.tagName.toLocaleLowerCase() !== "input";
 
     useKey(handleKeydownUndo, undo, {event: 'keyup'});
     useKey(handleKeydownRedo, redo, {event: 'keyup'});
