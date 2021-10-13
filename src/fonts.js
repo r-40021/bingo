@@ -22,6 +22,14 @@ const Fonts = () => (
       }
       @font-face {
         font-family: YuGothicM;
+        font-weight: 600;
+        src: local("YoGothic-Bold"),
+           /*Boldはそのまま*/
+           local("游ゴシック"),
+          local("Yu Gothic"); /* Chrome用*/
+      }
+      @font-face {
+        font-family: YuGothicM;
         font-weight: bold;
         src: local("YoGothic-Bold"),
            /*Boldはそのまま*/
