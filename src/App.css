@@ -30,15 +30,7 @@ p {
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  user-select: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
   max-width: 1400px !important;
-}
-input {
-  user-select: text;
-  -webkit-user-select: text;
-  -moz-user-select: text;
 }
 .numberWrapper {
   width: 45%;
