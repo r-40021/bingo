@@ -1,5 +1,4 @@
 import React from 'react';
-import './App.css';
 import { MenuItem, MenuGroup, useToast } from "@chakra-ui/react";
 import { MdLink, MdMoreVert } from "react-icons/md";
 import { FaLine, FaTwitter } from "react-icons/fa";

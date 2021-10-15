@@ -1,5 +1,4 @@
 import React from 'react';
-import './App.css';
 import { MenuItem, AlertDialog, AlertDialogBody, AlertDialogHeader, AlertDialogContent, AlertDialogOverlay, Box, LinkOverlay, LinkBox, Flex, Center, useColorMode } from "@chakra-ui/react"
 import { MdBrightnessHigh, MdSync } from "react-icons/md";
 import { BsMoon } from "react-icons/bs";

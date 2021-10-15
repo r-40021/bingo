@@ -24,7 +24,7 @@
   <meta property="og:description" content="自動保存機能を搭載した、インストール不要のオンラインビンゴマシーン" />
   <meta property="og:site_name" content="やまだBINGO" />
   <meta property="og:image" content="https://r-40021.github.io/bingo/favicon/ogp.png" />
-  <meta name="theme-color" content="#f8f9fa" id="headThemeColor"/>
+  <meta name="theme-color" content="#f8f9fa" id="headThemeColor" />
   <!-- Splash Screens -->
   <link href="./splashscreens/iphone5_splash.png"
     media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)"
@@ -59,13 +59,13 @@
   <meta content="履歴や設定を自動で保存する機能を搭載した、インストール不要のビンゴマシーン。大幅リニューアルでさらに使いやすく！" name="description" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Kosugi+Maru&family=Roboto&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Kosugi+Maru&display=swap" rel="stylesheet">
 
   <title>やまだBINGO</title>
 
-  <script data-goatcounter="https://2vyj09dj8fxuy8uygrir.goatcounter.com/count"
-        async src="//gc.zgo.at/count.js"></script>
+  <script data-goatcounter="https://2vyj09dj8fxuy8uygrir.goatcounter.com/count" async
+    src="//gc.zgo.at/count.js"></script>
 </head>
 
 <body>
@@ -74,26 +74,26 @@
 
   <script defer>
     if ("serviceWorker" in navigator) {
-        /*Service Worker登録
-        (引用:https://developers.google.com/web/fundamentals/primers/service-workers)*/
-        window.addEventListener("load", function () {
-            navigator.serviceWorker.register("sw.js").then(
-                function (registration) {
-                    // Registration was successful
-                    console.log(
-                        "ServiceWorker registration successful with scope: ",
-                        registration.scope
-                    );
-                },
-                function (err) {
-                    // registration failed :(
-                    console.log("ServiceWorker registration failed: ", err);
-                }
+      /*Service Worker登録
+      (引用:https://developers.google.com/web/fundamentals/primers/service-workers)*/
+      window.addEventListener("load", function () {
+        navigator.serviceWorker.register("sw.js").then(
+          function (registration) {
+            // Registration was successful
+            console.log(
+              "ServiceWorker registration successful with scope: ",
+              registration.scope
             );
-        });
+          },
+          function (err) {
+            // registration failed :(
+            console.log("ServiceWorker registration failed: ", err);
+          }
+        );
+      });
     }
   </script>
-  
+
 </body>
 
 </html>

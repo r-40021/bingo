@@ -1,5 +1,4 @@
 import React from 'react';
-import './App.css';
 import { Button, Center, MenuItem, AlertDialog, AlertDialogBody, AlertDialogFooter, AlertDialogHeader, AlertDialogContent, AlertDialogOverlay, LinkOverlay, LinkBox, Flex } from "@chakra-ui/react"
 import { MdInfoOutline } from "react-icons/md";
 import { VscLaw, VscGithubInverted } from "react-icons/vsc";

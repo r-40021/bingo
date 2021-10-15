@@ -1,5 +1,4 @@
 import React from 'react';
-import './App.css';
 import { Box, IconButton, Menu, MenuButton, MenuItem, MenuList, MenuGroup, MenuDivider } from "@chakra-ui/react";
 import { MdKeyboardArrowUp, MdLockOutline } from "react-icons/md";
 

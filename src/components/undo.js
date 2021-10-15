@@ -1,5 +1,4 @@
 import React from 'react';
-import './App.css';
 import { ButtonGroup, IconButton, Tooltip } from "@chakra-ui/react";
 import { MdUndo, MdRedo } from "react-icons/md";
 import { useKey } from 'react-use';
