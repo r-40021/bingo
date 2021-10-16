@@ -14,7 +14,7 @@ export function MoreTools() {
             <Menu boundary="scrollParent" placement="top" autoSelect={false}>
                 <MenuButton as={IconButton} className="moreSettings" icon={<MdKeyboardArrowUp />} aria-label="さらにメニューを表示">
                 </MenuButton>
-                <MenuList boxShadow="lg" lineHeight="1.5em">
+                <MenuList boxShadow="lg" lineHeight="1.6em" maxH="80vh" overflowY="auto">
                     <MenuGroup title="情報">
                         <AboutApp />
                         <MenuItem icon={<MdLockOutline />} onClick={() => { window.open('https://r-40021.github.io/privacy.html?fromApp=true', "privacy" , 'top=30,left=30,width=800,height=500'); }}>プライバシーポリシー</MenuItem>
