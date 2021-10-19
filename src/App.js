@@ -174,7 +174,7 @@ function Btns(props) {
     let history;
     let count = 0;
     let colorIndex = 0;
-    const time = select.length === 1 ? 2 : getRandomInt(5, 12);
+    const time = select.length === 1 ? 2 : getRandomInt(5, 11);
     let shuffle = setInterval(() => {
       const index = getRandomInt(0, select.length);
       const num = select[index];
@@ -288,9 +288,7 @@ function Body(props) {
   const currentHistory = props.bingoHistory.slice(0, props.nowIndex + 1);
 
   React.useEffect(() => {
-    if (currentHistory.length % 5 === 1) {
       process.nextTick(() => historyElem.current.scrollTop = historyElem.current.scrollHeight);// 最下部にスクロール
-    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.bingoHistory, props.nowIndex])
 
