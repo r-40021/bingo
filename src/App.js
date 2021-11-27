@@ -143,14 +143,7 @@ function Btns(props) {
     "セーブデータをすべての記憶　すべての存在　すべての次元から消して最初からやり直しますか…？預言書には無かった出来事だ…"
   ];
 
-  const [bodyWord, changeBodyWord] = React.useState();
-
-  React.useEffect(() => {
-    changeBodyWord(bodyWordList[Date.now() % bodyWordList.length]);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [props.nowIndex]);
-
-
+  const bodyWord = React.useRef(bodyWordList[Date.now() % bodyWordList.length]);
 
   const spin = () => {
     props.changeIsSpin(true);
@@ -167,6 +160,7 @@ function Btns(props) {
       select = props.select.slice();
     }
     if (select.length === 0) {
+      bodyWord.current = bodyWordList[Date.now() % bodyWordList.length];
       setIsOpen(true);
       props.changeIsSpin(false);
       return;
@@ -225,7 +219,7 @@ function Btns(props) {
             </AlertDialogHeader>
 
             <AlertDialogBody>
-              <p className="nomulish">{bodyWord}</p>
+              <p className="nomulish">{bodyWord.current}</p>
               <p><br />― <a href="https://racing-lagoon.info/nomu/translate.php" target="_blank" rel="noopener noreferrer" className="linkWithLine">ノムリッシュ翻訳</a>より</p>
             </AlertDialogBody>
 
@@ -288,7 +282,7 @@ function Body(props) {
   const currentHistory = props.bingoHistory.slice(0, props.nowIndex + 1);
 
   React.useEffect(() => {
-      process.nextTick(() => historyElem.current.scrollTop = historyElem.current.scrollHeight);// 最下部にスクロール
+    process.nextTick(() => historyElem.current.scrollTop = historyElem.current.scrollHeight);// 最下部にスクロール
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.bingoHistory, props.nowIndex])
 
