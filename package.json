@@ -5,7 +5,7 @@
   "private": false,
   "homepage": "https://r-40021.github.io/bingo/",
   "dependencies": {
-    "@chakra-ui/react": "^1.7.2",
+    "@chakra-ui/react": "^1.7.3",
     "@emotion/react": "^11.7.0",
     "@emotion/styled": "^11.6.0",
     "@testing-library/jest-dom": "^5.16.1",
