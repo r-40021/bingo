@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/bingo/static/css/main.78f84b32.chunk.css",
-    "main.js": "/bingo/static/js/main.67b95eca.chunk.js",
-    "main.js.map": "/bingo/static/js/main.67b95eca.chunk.js.map",
+    "main.js": "/bingo/static/js/main.352c683a.chunk.js",
+    "main.js.map": "/bingo/static/js/main.352c683a.chunk.js.map",
     "runtime-main.js": "/bingo/static/js/runtime-main.a6a76200.js",
     "runtime-main.js.map": "/bingo/static/js/runtime-main.a6a76200.js.map",
     "static/js/2.bb7581d3.chunk.js": "/bingo/static/js/2.bb7581d3.chunk.js",
@@ -19,6 +19,6 @@
     "static/js/runtime-main.a6a76200.js",
     "static/js/2.bb7581d3.chunk.js",
     "static/css/main.78f84b32.chunk.css",
-    "static/js/main.67b95eca.chunk.js"
+    "static/js/main.352c683a.chunk.js"
   ]
 }
