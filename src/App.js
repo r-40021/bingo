@@ -357,7 +357,7 @@ function AskReset(props) {
   const bodyWord = React.useRef(props.bodyWordList[Date.now() % props.bodyWordList.length])
 
   React.useEffect(() => {
-    if (!isOpen) return
+    if (isOpen) return
     bodyWord.current = props.bodyWordList[Date.now() % props.bodyWordList.length]
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isOpen])
