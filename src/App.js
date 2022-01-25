@@ -199,7 +199,7 @@ function Btns(props) {
       <Box py={2} px={4} className="spinResetBtn">
         <ButtonGroup spacing="1">
           <Button leftIcon={<MdLoop />} colorScheme="blue" onClick={spin} disabled={props.isSpin}>Spin</Button>
-          <AskReset {...{ props }} />
+          <AskReset {...{ props, bodyWordList }} />
         </ButtonGroup>
       </Box>
       <Box py={2} px={4} className="undoRedo">
@@ -354,6 +354,13 @@ function AskReset(props) {
   const [isOpen, setIsOpen] = React.useState(false)
   const onClose = () => setIsOpen(false)
   const cancelRef = React.useRef()
+  const bodyWord = React.useRef(props.bodyWordList[Date.now() % props.bodyWordList.length])
+
+  React.useEffect(() => {
+    if (!isOpen) return
+    bodyWord.current = props.bodyWordList[Date.now() % props.bodyWordList.length]
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isOpen])
 
   return (
     <>
@@ -382,8 +389,8 @@ function AskReset(props) {
             </AlertDialogHeader>
 
             <AlertDialogBody>
-              <p>履歴をリセットして最初からやり直しますか？</p>
-              <p>この操作は元に戻せません。</p>
+              <p className="nomulish">{bodyWord.current}</p>
+              <p><br />― <a href="https://racing-lagoon.info/nomu/translate.php" target="_blank" rel="noopener noreferrer" className="linkWithLine">ノムリッシュ翻訳</a>より</p>
             </AlertDialogBody>
 
             <AlertDialogFooter>
