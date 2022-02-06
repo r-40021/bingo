@@ -6,7 +6,6 @@ import { MdLoop, MdDelete } from "react-icons/md";
 import { MoreTools } from './components/menu';
 import { Undo } from './components/undo';
 import theme from './components/style';
-import Fonts from "./components/fonts";
 
 const colorList = ["#ffa500", "#d3e15c", "#b384c7", "#F06060", "#a9ceec"]; //数字表示エリアの枠線色
 
@@ -103,7 +102,6 @@ function App() {
 
   return (
     <ChakraProvider theme={theme}>
-      <Fonts />
       <div className="flex" style={flexStyle}>
         <Body {...{ bingoMax, changeMax, bingoHistory, updateHistory, displayNum, circleColor, nowIndex }} />
         <Container maxW="container.xl" className="footer">
