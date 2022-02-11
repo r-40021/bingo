@@ -268,7 +268,7 @@ function MaxNumSet(props) {
 
 function RangeLabel() {
   return (
-    <Box className="rangeValue" color={useColorModeValue("gray.600", "gray.400")}>最大値</Box>
+    <Box className="rangeValue" color={useColorModeValue("gray.600", "gray.400")} mb={2}>最大値</Box>
   );
 }
 
