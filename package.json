@@ -14,7 +14,7 @@
     "ansi-regex": "^6.0.1",
     "browserslist": "^4.19.3",
     "follow-redirects": "^1.14.9",
-    "framer-motion": "^4",
+    "framer-motion": "^6",
     "glob-parent": "^6.0.2",
     "immer": "^9.0.6",
     "node-forge": "^1.0.0",
