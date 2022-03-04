@@ -12350,12 +12350,12 @@ workbox-broadcast-update@^5.1.4:
   dependencies:
     workbox-core "^5.1.4"
 
-workbox-broadcast-update@^6.5.0:
-  version "6.5.0"
-  resolved "https://registry.yarnpkg.com/workbox-broadcast-update/-/workbox-broadcast-update-6.5.0.tgz#0104b9ea41b40f8c5e03780226de66bec15141f2"
-  integrity sha512-JC97c7tYqoGWcCfbKO9KHG6lkU+WhXCnDB2j1oFWEiv53nUHy3yjPpzMmAGNLD9oV5lInO15n6V18HfwgkhISw==
+workbox-broadcast-update@^6.5.1:
+  version "6.5.1"
+  resolved "https://registry.yarnpkg.com/workbox-broadcast-update/-/workbox-broadcast-update-6.5.1.tgz#9aecb116979b0709480b84cfd1beca7a901d01d4"
+  integrity sha512-mb/oyblyEpDbw167cCTyHnC3RqCnCQHtFYuYZd+QTpuExxM60qZuBH1AuQCgvLtDcztBKdEYK2VFD9SZYgRbaQ==
   dependencies:
-    workbox-core "6.5.0"
+    workbox-core "6.5.1"
 
 workbox-build@^5.1.4:
   version "5.1.4"
@@ -12413,10 +12413,15 @@ workbox-cacheable-response@^6.5.0:
   dependencies:
     workbox-core "6.5.0"
 
-workbox-core@6.5.0, workbox-core@^6.4.1:
+workbox-core@6.5.0:
   version "6.5.0"
   resolved "https://registry.yarnpkg.com/workbox-core/-/workbox-core-6.5.0.tgz#076e03840ca568bd04284e9f9f30e86c8dd09f1c"
   integrity sha512-5SPwNipUzYBhrneLVT02JFA0fw3LG82jFAN/G2NzxkIW10t4MVZuML2nU94bbkgjq25u0fkY8+4JXzMfHgxEWQ==
+
+workbox-core@6.5.1, workbox-core@^6.4.1:
+  version "6.5.1"
+  resolved "https://registry.yarnpkg.com/workbox-core/-/workbox-core-6.5.1.tgz#0dba3bccf883a46dfa61cc412eaa3cb09bb549e6"
+  integrity sha512-qObXZ39aFJ2N8X7IUbGrJHKWguliCuU1jOXM/I4MTT84u9BiKD2rHMkIzgeRP1Ixu9+cXU4/XHJq3Cy0Qqc5hw==
 
 workbox-core@^5.1.4:
   version "5.1.4"
