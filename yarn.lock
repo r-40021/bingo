@@ -2358,10 +2358,10 @@
     lz-string "^1.4.4"
     pretty-format "^27.0.2"
 
-"@testing-library/jest-dom@^5.16.2":
-  version "5.16.2"
-  resolved "https://registry.yarnpkg.com/@testing-library/jest-dom/-/jest-dom-5.16.2.tgz#f329b36b44aa6149cd6ced9adf567f8b6aa1c959"
-  integrity sha512-6ewxs1MXWwsBFZXIk4nKKskWANelkdUehchEOokHsN8X7c2eKXGw+77aRV63UU8f/DTSVUPLaGxdrj4lN7D/ug==
+"@testing-library/jest-dom@^5.16.3":
+  version "5.16.3"
+  resolved "https://registry.yarnpkg.com/@testing-library/jest-dom/-/jest-dom-5.16.3.tgz#b76851a909586113c20486f1679ffb4d8ec27bfa"
+  integrity sha512-u5DfKj4wfSt6akfndfu1eG06jsdyA/IUrlX2n3pyq5UXgXMhXY+NJb8eNK/7pqPWAhCKsCGWDdDO0zKMKAYkEA==
   dependencies:
     "@babel/runtime" "^7.9.2"
     "@types/testing-library__jest-dom" "^5.9.1"
@@ -12405,12 +12405,12 @@ workbox-cacheable-response@^5.1.4:
   dependencies:
     workbox-core "^5.1.4"
 
-workbox-cacheable-response@^6.5.1:
-  version "6.5.1"
-  resolved "https://registry.yarnpkg.com/workbox-cacheable-response/-/workbox-cacheable-response-6.5.1.tgz#f71d0a75b3d6846e39594955e99ac42fd26f8693"
-  integrity sha512-3TdtH/luDiytmM+Cn72HCBLZXmbeRNJqZx2yaVOfUZhj0IVwZqQXhNarlGE9/k6U5Jelb+TtpH2mLVhnzfiSMg==
+workbox-cacheable-response@^6.5.2:
+  version "6.5.2"
+  resolved "https://registry.yarnpkg.com/workbox-cacheable-response/-/workbox-cacheable-response-6.5.2.tgz#d9252eb99f0d0fceb70f63866172f4eaac56a3e8"
+  integrity sha512-UnHGih6xqloV808T7ve1iNKZMbpML0jGLqkkmyXkJbZc5j16+HRSV61Qrh+tiq3E3yLvFMGJ3AUBODOPNLWpTg==
   dependencies:
-    workbox-core "6.5.1"
+    workbox-core "6.5.2"
 
 workbox-core@6.5.1:
   version "6.5.1"
@@ -12434,13 +12434,13 @@ workbox-expiration@^5.1.4:
   dependencies:
     workbox-core "^5.1.4"
 
-workbox-expiration@^6.5.1:
-  version "6.5.1"
-  resolved "https://registry.yarnpkg.com/workbox-expiration/-/workbox-expiration-6.5.1.tgz#9f105fcf3362852754884ad153888070ce98b692"
-  integrity sha512-iY/cTADAQATMmPkUBRmQdacqq0TJd2wMHimBQz+tRnPGHSMH+/BoLPABPnu7O7rT/g/s59CUYYRGxe3mEgoJCA==
+workbox-expiration@^6.5.2:
+  version "6.5.2"
+  resolved "https://registry.yarnpkg.com/workbox-expiration/-/workbox-expiration-6.5.2.tgz#ee6ed755a220a0b375d67831f9237e4dcbccb59c"
+  integrity sha512-5Hfp0uxTZJrgTiy9W7AjIIec+9uTOtnxY/tRBm4DbqcWKaWbVTa+izrKzzOT4MXRJJIJUmvRhWw4oo8tpmMouw==
   dependencies:
     idb "^6.1.4"
-    workbox-core "6.5.1"
+    workbox-core "6.5.2"
 
 workbox-google-analytics@^5.1.4:
   version "5.1.4"
