@@ -5,12 +5,12 @@
   "private": false,
   "homepage": "https://r-40021.github.io/bingo/",
   "dependencies": {
-    "@chakra-ui/react": "^1.8.6",
+    "@chakra-ui/react": "^1.8.7",
     "@emotion/react": "^11",
     "@emotion/styled": "^11",
     "@testing-library/jest-dom": "^5.16.3",
     "@testing-library/react": "^12.1.4",
-    "@testing-library/user-event": "^13.5.0",
+    "@testing-library/user-event": "^14.0.0",
     "ansi-regex": "^6.0.1",
     "browserslist": "^4.20.2",
     "follow-redirects": "^1.14.9",
@@ -34,7 +34,7 @@
     "workbox-google-analytics": "^6.5.2",
     "workbox-navigation-preload": "^6.5.1",
     "workbox-precaching": "^6.5.2",
-    "workbox-range-requests": "^6.5.1",
+    "workbox-range-requests": "^6.5.2",
     "workbox-routing": "^6.5.0",
     "workbox-strategies": "^6.5.1",
     "workbox-streams": "^6.5.2"
