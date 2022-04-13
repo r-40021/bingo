@@ -12337,13 +12337,13 @@ word-wrap@^1.2.3, word-wrap@~1.2.3:
   resolved "https://registry.yarnpkg.com/word-wrap/-/word-wrap-1.2.3.tgz#610636f6b1f703891bd34771ccb17fb93b47079c"
   integrity sha512-Hz/mrNwitNRh/HUAtM/VT/5VH+ygD6DV7mYKZAtHOrbs8U7lvPS6xf7EJKMF0uW1KJCl0H701g3ZGus+muE5vQ==
 
-workbox-background-sync@6.5.2, workbox-background-sync@^6.4.1:
-  version "6.5.2"
-  resolved "https://registry.yarnpkg.com/workbox-background-sync/-/workbox-background-sync-6.5.2.tgz#28be9bf89b8e4e0379d45903280c7c12f4df836f"
-  integrity sha512-EjG37LSMDJ1TFlFg56wx6YXbH4/NkG09B9OHvyxx+cGl2gP5OuOzsCY3rOPJSpbcz6jpuA40VIC3HzSD4OvE1g==
+workbox-background-sync@6.5.3, workbox-background-sync@^6.4.1:
+  version "6.5.3"
+  resolved "https://registry.yarnpkg.com/workbox-background-sync/-/workbox-background-sync-6.5.3.tgz#7c66c1836aeca6f3762dc48d17a1852a33b3168c"
+  integrity sha512-0DD/V05FAcek6tWv9XYj2w5T/plxhDSpclIcAGjA/b7t/6PdaRkQ7ZgtAX6Q/L7kV7wZ8uYRJUoH11VjNipMZw==
   dependencies:
     idb "^6.1.4"
-    workbox-core "6.5.2"
+    workbox-core "6.5.3"
 
 workbox-background-sync@^5.1.4:
   version "5.1.4"
@@ -12462,15 +12462,15 @@ workbox-google-analytics@^5.1.4:
     workbox-routing "^5.1.4"
     workbox-strategies "^5.1.4"
 
-workbox-google-analytics@^6.5.2:
-  version "6.5.2"
-  resolved "https://registry.yarnpkg.com/workbox-google-analytics/-/workbox-google-analytics-6.5.2.tgz#a79fa7a40824873baaa333dcd72d1fdf1c53adf5"
-  integrity sha512-8SMar+N0xIreP5/2we3dwtN1FUmTMScoopL86aKdXBpio8vXc8Oqb5fCJG32ialjN8BAOzDqx/FnGeCtkIlyvw==
+workbox-google-analytics@^6.5.3:
+  version "6.5.3"
+  resolved "https://registry.yarnpkg.com/workbox-google-analytics/-/workbox-google-analytics-6.5.3.tgz#cc8c3a61f449131660a4ed2f5362d9a3599b18fe"
+  integrity sha512-3GLCHotz5umoRSb4aNQeTbILETcrTVEozSfLhHSBaegHs1PnqCmN0zbIy2TjTpph2AGXiNwDrWGF0AN+UgDNTw==
   dependencies:
-    workbox-background-sync "6.5.2"
-    workbox-core "6.5.2"
-    workbox-routing "6.5.2"
-    workbox-strategies "6.5.2"
+    workbox-background-sync "6.5.3"
+    workbox-core "6.5.3"
+    workbox-routing "6.5.3"
+    workbox-strategies "6.5.3"
 
 workbox-navigation-preload@^5.1.4:
   version "5.1.4"
