@@ -280,7 +280,7 @@ function Body(props) {
   const currentHistory = props.bingoHistory.slice(0, props.nowIndex + 1);
 
   React.useEffect(() => {
-    process.nextTick(() => historyElem.current.scrollTop = historyElem.current.scrollHeight);// 最下部にスクロール
+    historyElem.current.scrollTop = historyElem.current.scrollHeight;// 最下部にスクロール
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.bingoHistory, props.nowIndex])
 
@@ -330,7 +330,6 @@ function Body(props) {
           <Box
             fontWeight="semibold"
             lineHeight="tight"
-            isTruncated
             px="6" pt="4" pd="3"
             color={useColorModeValue("gray.600", "gray.300")}
             ref={historyElem}

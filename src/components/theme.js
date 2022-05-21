@@ -123,7 +123,7 @@ export function SelectTheme() {
 
             <AlertDialogBody>
               <p>アプリのテーマを選択することができます。</p>
-              <p>定番のライトモードを選ぶか、トレンドのダークモードを選ぶかはあなた次第！</p>
+              <p>是非お気に入りのテーマを見つけてみてください！(と言ってもテーマは2つしかありませんが)</p>
               <br />
               <Box pb={3}>
                 <LinkBox as="article" maxW="sm" p="3" borderWidth="1px" rounded="md">

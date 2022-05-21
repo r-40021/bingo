@@ -26,9 +26,9 @@ export function AboutApp() {
                         </AlertDialogHeader>
 
                         <AlertDialogBody>
-                            <p>ブラウザ上で動くビンゴマシーンです。履歴は自動保存されます。</p>
+                            <p>ブラウザ上で動く、履歴が自動保存されるビンゴマシーンです。</p>
 
-                            <p>また、このアプリはオープンソースソフトウェアです。</p>
+                            <p>ソースコードは GitHub で公開しています。</p>
                             <br />
                             <LinkBox as="article" maxW="sm" p="3" borderWidth="1px" rounded="md">
                                 <LinkOverlay href="https://github.com/r-40021/bingo" isExternal onClick={onClose}>
