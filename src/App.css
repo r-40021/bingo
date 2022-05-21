@@ -51,7 +51,9 @@ p {
   font-size: 150px;
 }
 .displayNumber {
-  font-family: "Kosugi Maru", -apple-system, blinkMacSystemFont, "Helvetica Neue", "Segoe UI", "Roboto", "Arial", sans-serif;
+  font-family: 'Roboto', -apple-system, blinkMacSystemFont, "Helvetica Neue", "Segoe UI", "Roboto", "Arial", sans-serif;
+  letter-spacing: -0.03em;
+  text-indent: -0.03em;
 }
 .history {
   flex: 1;
