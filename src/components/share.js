@@ -32,10 +32,10 @@ function CopyURL() {
 function ShareToSNS(media) {
     switch (media) {
         case "twitter":
-            window.open(encodeURI(decodeURI(`https://twitter.com/intent/tweet?text=自動保存機能付きビンゴマシーン%0a&url=${window.location.href}&hashtags=やまだBINGO,やまだのアプリ`)), 'tweetwindow', 'width=650, height=470, personalbar=0, toolbar=0, scrollbars=1, sizable=1');
+            window.open(encodeURI(decodeURI(`https://twitter.com/intent/tweet?text=自動保存機能付きビンゴマシーン%0a&url=${window.location.href}&hashtags=やまだBINGO,やまだのアプリ`)));
             break;
         case "line":
-            window.open(encodeURI(`https://social-plugins.line.me/lineit/share?url=${window.location.href}`), 'LINE', 'width=650, height=550, personalbar=0, toolbar=0, scrollbars=1, sizable=1');
+            window.open(encodeURI(`https://social-plugins.line.me/lineit/share?url=${window.location.href}`));
             break;
 
         default:
