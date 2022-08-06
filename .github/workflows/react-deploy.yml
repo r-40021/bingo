@@ -27,8 +27,8 @@ jobs:
       # パッケージのインストールとアプリのビルド
       - name: install and build
         run: |
-          npm ci
-          npm run build
+          yarn install
+          yarn run build
         env:
           CI: true
       
