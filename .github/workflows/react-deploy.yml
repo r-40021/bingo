@@ -23,12 +23,11 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-          cache: 'yarn'
       
       # パッケージのインストールとアプリのビルド
       - name: install and build
         run: |
-          yarn install
+          yarn install --frozen-lockfile
           yarn run build
         env:
           CI: true
@@ -36,7 +35,7 @@ jobs:
       # GitHub Pages にデプロイ
       - name: deploy
         uses: peaceiris/actions-gh-pages@v3
-        env:
+        with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_branch: gh-pages
           publish_dir: ./build
