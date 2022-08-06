@@ -1,0 +1,41 @@
+name: Deploy to GitHub Pages
+
+# mainブランチへのpushを検知
+on:
+  push:
+    branches: [ "main" ]
+
+  # Actions タブから手動で実行できるようにする
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    strategy:
+      matrix:
+        node-version: ['18.x']
+    
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+      
+      # パッケージのインストールとアプリのビルド
+      - name: install and build
+        run: |
+          npm ci
+          npm run build
+        env:
+          CI: true
+      
+      # GitHub Pages にデプロイ
+      - name: deploy
+        uses: peaceiris/actions-gh-pages@v3
+        env:
+          ACTIONS_DEPLOY_KEY: ${{ secrets.ACTIONS_DEPLOY_KEY }}
+          PUBLISH_BRANCH: gh-pages
+          PUBLISH_DIR: ./build
