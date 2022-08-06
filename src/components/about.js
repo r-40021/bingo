@@ -40,14 +40,14 @@ export function AboutApp() {
                             <LinkBox as="article" maxW="sm" p="3" borderWidth="1px" rounded="md">
                                 <LinkOverlay href="https://github.com/r-40021/bingo/blob/main/LICENSE" isExternal onClick={onClose}>
                                     <Flex>
-                                        <Center p={1} pe={4}><VscLaw /></Center><span flex="1">このソフトウェアのライセンス</span>
+                                        <Center p={1} pe={4}><VscLaw /></Center><span flex="1">ライセンス</span>
                                     </Flex>
                                 </LinkOverlay>
                             </LinkBox>
                             <LinkBox as="article" maxW="sm" p="3" borderWidth="1px" rounded="md">
                                 <LinkOverlay href="https://github.com/r-40021/bingo/blob/main/README_ja.md#%E3%82%AA%E3%83%BC%E3%83%97%E3%83%B3%E3%82%BD%E3%83%BC%E3%82%B9%E3%83%A9%E3%82%A4%E3%82%BB%E3%83%B3%E3%82%B9" isExternal onClick={onClose}>
                                     <Flex>
-                                        <Center p={1} pe={4}><VscLaw /></Center><span flex="1">オープンソースライセンス</span>
+                                        <Center p={1} pe={4}><VscLaw /></Center><span flex="1">謝辞</span>
                                     </Flex>
                                 </LinkOverlay>
                             </LinkBox>
