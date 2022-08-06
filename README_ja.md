@@ -20,7 +20,7 @@
 - ライトモード/ダークモードを切り替えられます。
 - ボタンを大きめにしたため、スマートフォンでの操作も快適です。
 
-# オープンソースライセンス
+# 謝辞
 - [create-react-app](https://github.com/facebook/create-react-app/) is licensed under [MIT License](https://opensource.org/licenses/MIT) &copy; 2013-present, Facebook, Inc.
 - [Chakra UI](https://github.com/chakra-ui/chakra-ui/) is licensed under [MIT License](https://opensource.org/licenses/MIT) &copy; 2019 Segun Adebayo
 - [React Icons](https://github.com/react-icons/react-icons/) is licensed under [the proprietary license](https://github.com/react-icons/react-icons/blob/master/LICENSE) &copy; 2018 kamijin_fanta
