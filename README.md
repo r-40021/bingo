@@ -6,7 +6,7 @@ This is a bingo machine which saves the history and the settings automatically.
 
 (Except for some legacy browsers.)
 
-[Open the app](https://r-40021.github.io/bingo/)
+[Open the app](https://bingo.frogapp.net)
 
 # Screenshots
 ## Light Mode
