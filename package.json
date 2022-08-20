@@ -3,7 +3,7 @@
   "version": "4.0.1",
   "description": "This is a bingo machine which saves the history and the settings auto automatically.",
   "private": false,
-  "homepage": "https://r-40021.github.io/bingo/",
+  "homepage": "https://bingo.frogapp.net",
   "dependencies": {
     "@chakra-ui/react": "^2.2.8",
     "@emotion/react": "^11",
