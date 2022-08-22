@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button, Center, MenuItem, AlertDialog, AlertDialogBody, AlertDialogFooter, AlertDialogHeader, AlertDialogContent, AlertDialogOverlay, LinkOverlay, LinkBox, Flex } from "@chakra-ui/react"
-import { MdInfoOutline } from "react-icons/md";
+import { MdInfo, MdPerson } from "react-icons/md";
 import { VscLaw, VscGithubInverted } from "react-icons/vsc";
 
 export function AboutApp() {
@@ -11,7 +11,7 @@ export function AboutApp() {
 
     return (
         <>
-            <MenuItem icon={<MdInfoOutline />} onClick={() => setIsOpen(true)}>このアプリについて</MenuItem>
+            <MenuItem icon={<MdInfo />} onClick={() => setIsOpen(true)}>このアプリについて</MenuItem>
 
             <AlertDialog
                 isOpen={isOpen}
@@ -30,21 +30,28 @@ export function AboutApp() {
 
                             <p>ソースコードは GitHub で公開しています。</p>
                             <br />
-                            <LinkBox as="article" maxW="sm" p="3" borderWidth="1px" rounded="md">
+                            <LinkBox as="div" maxW="sm" p="3" borderWidth="1px" rounded="md">
+                                <LinkOverlay href="https://frogapp.net/" isExternal onClick={onClose}>
+                                    <Flex>
+                                        <Center p={1} pe={4}><MdPerson /></Center><span flex="1">作者 HP</span>
+                                    </Flex>
+                                </LinkOverlay>
+                            </LinkBox>
+                            <LinkBox as="div" maxW="sm" p="3" borderWidth="1px" rounded="md">
                                 <LinkOverlay href="https://github.com/r-40021/bingo" isExternal onClick={onClose}>
                                     <Flex>
                                         <Center p={1} pe={4}><VscGithubInverted /></Center><span flex="1">ソースコード</span>
                                     </Flex>
                                 </LinkOverlay>
                             </LinkBox>
-                            <LinkBox as="article" maxW="sm" p="3" borderWidth="1px" rounded="md">
+                            <LinkBox as="div" maxW="sm" p="3" borderWidth="1px" rounded="md">
                                 <LinkOverlay href="https://github.com/r-40021/bingo/blob/main/LICENSE" isExternal onClick={onClose}>
                                     <Flex>
                                         <Center p={1} pe={4}><VscLaw /></Center><span flex="1">ライセンス</span>
                                     </Flex>
                                 </LinkOverlay>
                             </LinkBox>
-                            <LinkBox as="article" maxW="sm" p="3" borderWidth="1px" rounded="md">
+                            <LinkBox as="div" maxW="sm" p="3" borderWidth="1px" rounded="md">
                                 <LinkOverlay href="https://github.com/r-40021/bingo/blob/main/README_ja.md#%E3%82%AA%E3%83%BC%E3%83%97%E3%83%B3%E3%82%BD%E3%83%BC%E3%82%B9%E3%83%A9%E3%82%A4%E3%82%BB%E3%83%B3%E3%82%B9" isExternal onClick={onClose}>
                                     <Flex>
                                         <Center p={1} pe={4}><VscLaw /></Center><span flex="1">謝辞</span>
