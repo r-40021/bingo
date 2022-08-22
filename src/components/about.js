@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button, Center, MenuItem, AlertDialog, AlertDialogBody, AlertDialogFooter, AlertDialogHeader, AlertDialogContent, AlertDialogOverlay, LinkOverlay, LinkBox, Flex } from "@chakra-ui/react"
-import { MdInfo, MdPerson } from "react-icons/md";
+import { MdInfoOutline, MdPerson } from "react-icons/md";
 import { VscLaw, VscGithubInverted } from "react-icons/vsc";
 
 export function AboutApp() {
@@ -11,7 +11,7 @@ export function AboutApp() {
 
     return (
         <>
-            <MenuItem icon={<MdInfo />} onClick={() => setIsOpen(true)}>このアプリについて</MenuItem>
+            <MenuItem icon={<MdInfoOutline />} onClick={() => setIsOpen(true)}>このアプリについて</MenuItem>
 
             <AlertDialog
                 isOpen={isOpen}
