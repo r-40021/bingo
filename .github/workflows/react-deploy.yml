@@ -1,4 +1,4 @@
-name: Deploy to GitHub Pages
+name: Deploy to GitHub Pages & Purge Cache
 
 # mainブランチへのpushを検知
 on:
@@ -25,7 +25,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
       
       # パッケージのインストールとアプリのビルド
-      - name: install and build
+      - name: Install and Build
         run: |
           yarn install --frozen-lockfile
           yarn run build
@@ -33,9 +33,21 @@ jobs:
           CI: true
       
       # GitHub Pages にデプロイ
-      - name: deploy
+      - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_branch: gh-pages
           publish_dir: ./build
+      # Cloudflare のキャッシュを削除
+      - name: Purge Cache
+        env: 
+          ZONE_ID: ${{ secrets.ZONE_ID }}
+          GLOBAL_API_KEY: ${{ secrets.GLOBAL_API_KEY }}
+          EMAIL_ADDRESS: ${{ secrets.EMAIL_ADDRESS }}        
+        run: |
+          curl -X DELETE "https://api.cloudflare.com/client/v4/zones/${ZONE_ID}/purge_cache" \
+          -H "X-Auth-Email: ${EMAIL_ADDRESS}" \
+          -H "X-Auth-Key: ${GLOBAL_API_KEY}" \
+          -H "Content-Type: application/json" \
+          --data '{"purge_everything":true}'
