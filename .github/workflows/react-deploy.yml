@@ -9,7 +9,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  build-and-deploy:
+  build:
     runs-on: ubuntu-latest
     
     strategy:
@@ -31,11 +31,7 @@ jobs:
           yarn run build
         env:
           CI: true
-
-  purge-cache:
-    runs-on: ubuntu-latest
-      
-    steps: 
+          
       # GitHub Pages にデプロイ
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
@@ -43,6 +39,12 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_branch: gh-pages
           publish_dir: ./build
+          
+  purge-cache:
+    needs: build
+    runs-on: ubuntu-latest
+    
+    steps:
       # Cloudflare のキャッシュを削除
       - name: Purge Cache
         env: 
