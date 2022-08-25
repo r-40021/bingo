@@ -1,4 +1,4 @@
-name: Deploy to GitHub Pages & Purge Cache
+name: Deploy & Purge Cache
 
 # mainブランチへのpushを検知
 on:
@@ -9,7 +9,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
     
     strategy:
@@ -31,7 +31,11 @@ jobs:
           yarn run build
         env:
           CI: true
+
+  purge-cache:
+    runs-on: ubuntu-latest
       
+    steps: 
       # GitHub Pages にデプロイ
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
