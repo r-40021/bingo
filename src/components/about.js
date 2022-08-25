@@ -26,7 +26,7 @@ export function AboutApp() {
                         </AlertDialogHeader>
 
                         <AlertDialogBody>
-                            <p>ブラウザ上で動く、履歴が自動保存されるビンゴマシーンです。</p>
+                            <p>履歴が自動保存されるオンラインビンゴマシーンです。</p>
 
                             <p>ソースコードは GitHub で公開しています。</p>
                             <br />
