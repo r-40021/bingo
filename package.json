@@ -6,8 +6,8 @@
   "homepage": "https://bingo.frogapp.net",
   "dependencies": {
     "@chakra-ui/react": "^2.3.1",
-    "@emotion/react": "^11",
-    "@emotion/styled": "^11",
+    "@emotion/react": "^11.10.4",
+    "@emotion/styled": "^11.10.4",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.3.0",
     "@testing-library/user-event": "^14.4.3",
