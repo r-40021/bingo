@@ -1,0 +1,6 @@
+[
+  {
+    "url": "https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap&text=1234567890",
+    "content": "@font-face{font-family:'Roboto';font-style:normal;font-weight:500;font-display:swap;src:url(https://fonts.gstatic.com/l/font?kit=KFOlCnqEu92Fr1MmEU9vAAU3GvDAprx7TUyMOA&skey=ee881451c540fdec&v=v30) format('woff')}@font-face{font-family:'Roboto';font-style:normal;font-weight:500;font-display:swap;src:url(https://fonts.gstatic.com/l/font?kit=KFOlCnqEu92Fr1MmEU9vBh0_IsHAn7h_SUiANG8oWw0&skey=ee881451c540fdec&v=v30) format('woff2')}"
+  }
+]
