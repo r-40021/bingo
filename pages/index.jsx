@@ -1,4 +1,4 @@
-import { useEffect, useLayoutEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef } from "react";
 import {
   AlertDialog,
   AlertDialogBody,
@@ -42,7 +42,7 @@ function Home() {
   const [flexStyle, changeFlexStyle] = useState({ height: "100vh" });
   const { width, height } = useWindowSize();
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     let toHistory = [];
     if (localStorage.getItem("bi-data")) {
       try {
@@ -50,7 +50,6 @@ function Home() {
       } catch (error) {
         toHistory = [];
       }
-      console.log(toHistory)
       if (localStorage.getItem("myHistory")) {
         localStorage.removeItem("myHistory");
       }
@@ -99,7 +98,6 @@ function Home() {
     ? Number(localStorage.getItem("bi-index"))
     : toHistory.length -1;
 
-    console.log(initialIndex)
     if (toHistory.length > 0) {
       if (initialIndex > -1) {
         const currentHistory = toHistory[initialIndex];
@@ -123,7 +121,11 @@ function Home() {
     }
   }, [bingoHistory]);
 
-  useEffect(() => localStorage.setItem("bi-index", nowIndex), [nowIndex]);
+  useEffect(() => {
+    if (nowIndex || nowIndex === 0) {
+      localStorage.setItem("bi-index", nowIndex);
+    }
+  }, [nowIndex]);
 
   useEffect(() => {
     const newStyle = { height: height + "px" };
