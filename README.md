@@ -19,7 +19,6 @@ This is a bingo machine which saves the history and the settings automatically.
 
 # Features
 - The data of this application are automatically saved in LocalStorage. (Except for some legacy browsers)
-- It is easy to use this app.
 - It has an undo button and a redo button.
 - You can switch the theme of this app.
 - The larger buttons make it comfortable to operate with a smartphone.
