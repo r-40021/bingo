@@ -1,112 +1,176 @@
-import React from 'react';
-import '../src/App.css';
-import { AlertDialog, AlertDialogBody, AlertDialogFooter, AlertDialogHeader, AlertDialogContent, AlertDialogOverlay, Box, ChakraProvider, Button, ButtonGroup, Container, Slider, SliderTrack, SliderFilledTrack, SliderThumb, Flex, NumberInput, NumberInputField, NumberInputStepper, NumberIncrementStepper, NumberDecrementStepper, useColorModeValue } from "@chakra-ui/react";
-import { useWindowSize } from 'react-use';
+import { useEffect, useLayoutEffect, useState, useRef } from "react";
+import {
+  AlertDialog,
+  AlertDialogBody,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogContent,
+  AlertDialogOverlay,
+  Box,
+  ChakraProvider,
+  Button,
+  ButtonGroup,
+  Container,
+  Slider,
+  SliderTrack,
+  SliderFilledTrack,
+  SliderThumb,
+  Flex,
+  NumberInput,
+  NumberInputField,
+  NumberInputStepper,
+  NumberIncrementStepper,
+  NumberDecrementStepper,
+  useColorModeValue,
+} from "@chakra-ui/react";
+import { useWindowSize } from "react-use";
 import { MdLoop, MdDelete } from "react-icons/md";
-import { MoreTools } from '../components/menu';
-import { Undo } from '../components/undo';
-import theme from '../components/style';
+import { MoreTools } from "../components/menu";
+import { Undo } from "../components/undo";
+import theme from "../components/style";
 
 const colorList = ["#ffa500", "#d3e15c", "#b384c7", "#F06060", "#a9ceec"]; //数字表示エリアの枠線色
 
-function App() {
-  let toHistory;
-  if (localStorage.getItem("bi-data")) {
-    toHistory = JSON.parse(localStorage.getItem("bi-data"));
-    if (localStorage.getItem("myHistory")) {
-      localStorage.removeItem("myHistory");
-    }
-    if (localStorage.getItem("lastColor")) {
-      localStorage.removeItem("lastColor");
-    }
-    if (localStorage.getItem("max")) {
-      localStorage.removeItem("max");
-    }
-  } else if (localStorage.getItem("myHistory") && JSON.parse(localStorage.getItem("myHistory")).length > 0) {
-    toHistory = [];
-    let oldMax;
-    let oldColor;
-    const myHistory = JSON.parse(localStorage.getItem("myHistory"));
-
-    if (localStorage.getItem("lastColor")) {
-      oldColor = Number(localStorage.getItem("lastColor"));
-    } else {
-      oldColor = 0;
-    }
-
-    if (localStorage.getItem("max")) {
-      oldMax = Number(localStorage.getItem("max"));
-    } else {
-      oldMax = 75;
-    }
-
-    myHistory.map((value) => {
-      const data = {
-        num: value,
-        colorIndex: oldColor,
-        max: oldMax
-      }
-      toHistory.push(data);
-      return value;
-    });
-
-  } else {
-    toHistory = [];
-  }
-
-  const [bingoMax, changeMax] = React.useState(75);
-  const [bingoHistory, updateHistory] = React.useState(toHistory);
-  const [displayNum, changeNum] = React.useState();
-  const [circleColor, changeColor] = React.useState(0);
-  const [isSpin, changeIsSpin] = React.useState(false);
-  const [nowIndex, changeIndex] = React.useState(localStorage.getItem("bi-index") && Number(localStorage.getItem("bi-index")) >= -1 ? Number(localStorage.getItem("bi-index")) : toHistory.length - 1);
-  const [flexStyle, changeFlexStyle] = React.useState({ height: "100vh" });
-  const { width, height } = useWindowSize();
+function Home() {
   let select = [];
+  const [bingoMax, changeMax] = useState(75);
+  const [bingoHistory, updateHistory] = useState();
+  const [displayNum, changeNum] = useState();
+  const [circleColor, changeColor] = useState(0);
+  const [isSpin, changeIsSpin] = useState(false);
+  const [nowIndex, changeIndex] = useState();
+  const [flexStyle, changeFlexStyle] = useState({ height: "100vh" });
+  const { width, height } = useWindowSize();
 
-  React.useEffect(
-    () => localStorage.setItem("bi-data", JSON.stringify(bingoHistory))
-    , [bingoHistory]);
+  useLayoutEffect(() => {
+    let toHistory = [];
+    if (localStorage.getItem("bi-data")) {
+      try {
+        toHistory = JSON.parse(localStorage.getItem("bi-data")); 
+      } catch (error) {
+        toHistory = [];
+      }
+      console.log(toHistory)
+      if (localStorage.getItem("myHistory")) {
+        localStorage.removeItem("myHistory");
+      }
+      if (localStorage.getItem("lastColor")) {
+        localStorage.removeItem("lastColor");
+      }
+      if (localStorage.getItem("max")) {
+        localStorage.removeItem("max");
+      }
+    } else if (
+      localStorage.getItem("myHistory") &&
+      JSON.parse(localStorage.getItem("myHistory")).length > 0
+    ) {
+      toHistory = [];
+      let oldMax;
+      let oldColor;
+      const myHistory = JSON.parse(localStorage.getItem("myHistory"));
 
-  React.useEffect(
-    () => localStorage.setItem("bi-index", nowIndex)
-    , [nowIndex]);
+      if (localStorage.getItem("lastColor")) {
+        oldColor = Number(localStorage.getItem("lastColor"));
+      } else {
+        oldColor = 0;
+      }
 
-  React.useEffect(() => {
-    const newStyle = { height: height + "px" };
-    changeFlexStyle(newStyle);
-  }, [width, height]);
+      if (localStorage.getItem("max")) {
+        oldMax = Number(localStorage.getItem("max"));
+      } else {
+        oldMax = 75;
+      }
 
-  React.useEffect(() => {
-    if (bingoHistory.length > 0) {
-      if (nowIndex > -1) {
-        const currentHistory = bingoHistory[nowIndex];
+      toHistory = myHistory.map((value) => {
+        return {
+          num: value,
+          colorIndex: oldColor,
+          max: oldMax,
+        };
+      });
+    } else {
+      toHistory = [];
+    }
+    updateHistory(toHistory);
+
+    // 画面初期化処理
+    const initialIndex = localStorage.getItem("bi-index") &&
+    Number(localStorage.getItem("bi-index")) >= -1
+    ? Number(localStorage.getItem("bi-index"))
+    : toHistory.length -1;
+
+    console.log(initialIndex)
+    if (toHistory.length > 0) {
+      if (initialIndex > -1) {
+        const currentHistory = toHistory[initialIndex];
         changeMax(currentHistory.max);
         changeNum(currentHistory.num);
         changeColor(currentHistory.colorIndex);
-      } else if (nowIndex === -1) {
-        changeMax(bingoHistory[0].max);
+      } else if (initialIndex === -1) {
+        changeMax(toHistory[0].max);
         changeNum("");
         changeColor(0);
       }
     }
+
+    changeIndex(initialIndex);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  for (let i = 0; i < bingoMax; i++) {
-    const find = bingoHistory.slice(0, nowIndex + 1).some(elem => elem.num === i + 1);
-    if (!find) {
-      select.push(i + 1);
+  useEffect(() => {
+    if (bingoHistory) {
+      localStorage.setItem("bi-data", JSON.stringify(bingoHistory));
+    }
+  }, [bingoHistory]);
+
+  useEffect(() => localStorage.setItem("bi-index", nowIndex), [nowIndex]);
+
+  useEffect(() => {
+    const newStyle = { height: height + "px" };
+    changeFlexStyle(newStyle);
+  }, [width, height]);
+  if (bingoHistory) {
+    for (let i = 0; i < bingoMax; i++) {
+      const find = bingoHistory
+        .slice(0, nowIndex + 1)
+        .some((elem) => elem.num === i + 1);
+      if (!find) {
+        select.push(i + 1);
+      }
     }
   }
 
   return (
     <ChakraProvider theme={theme}>
       <div className="flex" style={flexStyle}>
-        <Body {...{ bingoMax, changeMax, bingoHistory, updateHistory, displayNum, circleColor, nowIndex }} />
+        <Body
+          {...{
+            bingoMax,
+            changeMax,
+            bingoHistory,
+            updateHistory,
+            displayNum,
+            circleColor,
+            nowIndex,
+          }}
+        />
         <Container maxW="container.xl" className="footer">
           <div className="btns">
-            <Btns {...{ changeNum, bingoMax, changeMax, updateHistory, bingoHistory, select, changeColor, isSpin, changeIsSpin, nowIndex, changeIndex }} />
+            <Btns
+              {...{
+                changeNum,
+                bingoMax,
+                changeMax,
+                updateHistory,
+                bingoHistory,
+                select,
+                changeColor,
+                isSpin,
+                changeIsSpin,
+                nowIndex,
+                changeIndex,
+              }}
+            />
           </div>
           <div className="settings">
             <div className="range vflex">
@@ -124,9 +188,9 @@ function App() {
 }
 
 function Btns(props) {
-  const [isOpen, setIsOpen] = React.useState(false)
-  const onClose = () => setIsOpen(false)
-  const cancelRef = React.useRef()
+  const [isOpen, setIsOpen] = useState(false);
+  const onClose = () => setIsOpen(false);
+  const cancelRef = useRef();
   const bodyWordList = [
     "聖戦の記録をリセットしてリプレイしますか…そうは思わないか？",
     "聖痕をリセットしてリプレイし、希望を私たちの光に変えますか…さあ…この力…どう使う……？",
@@ -138,10 +202,10 @@ function Btns(props) {
     "履歴を消してやり直しますか、本当にそれが貴公の望みなのか…？",
     "履歴を消して最初、つまり光と闇の両側の世界からリセマラ続行しても運命に抗うというのか……か？",
     "聖戦の記録を粉砕して零式からスキルリセットしますか！？逆行列か！",
-    "セーブデータをすべての記憶　すべての存在　すべての次元から消して最初からやり直しますか…？預言書には無かった出来事だ…"
+    "セーブデータをすべての記憶　すべての存在　すべての次元から消して最初からやり直しますか…？預言書には無かった出来事だ…",
   ];
 
-  const bodyWord = React.useRef(bodyWordList[Date.now() % bodyWordList.length]);
+  const bodyWord = useRef(bodyWordList[Date.now() % bodyWordList.length]);
 
   const spin = () => {
     props.changeIsSpin(true);
@@ -149,7 +213,9 @@ function Btns(props) {
     if (!props.bingoMax && props.bingoMax !== 0) {
       props.changeMax(75);
       for (let i = 0; i < 75; i++) {
-        const find = props.bingoHistory.slice(0, props.nowIndex + 1).some(elem => elem.num === i + 1);
+        const find = props.bingoHistory
+          .slice(0, props.nowIndex + 1)
+          .some((elem) => elem.num === i + 1);
         if (!find) {
           select.push(i + 1);
         }
@@ -175,7 +241,10 @@ function Btns(props) {
       props.changeColor(colorListIndex);
       count++;
       if (count >= time) {
-        history = [...props.bingoHistory.slice(0, props.nowIndex + 1), { num: num, colorIndex: colorListIndex, max: props.bingoMax }];
+        history = [
+          ...props.bingoHistory.slice(0, props.nowIndex + 1),
+          { num: num, colorIndex: colorListIndex, max: props.bingoMax },
+        ];
         select.splice(index, 1);
         props.updateHistory(history);
         props.changeIsSpin(false);
@@ -184,19 +253,26 @@ function Btns(props) {
       }
       colorIndex++;
     }, 275);
-  }
+  };
 
   const getRandomInt = (min, max) => {
     min = Math.ceil(min);
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min) + min); //The maximum is exclusive and the minimum is inclusive
-  }
+  };
 
   return (
     <>
       <Box py={2} px={4} className="spinResetBtn">
         <ButtonGroup spacing="1">
-          <Button leftIcon={<MdLoop />} colorScheme="blue" onClick={spin} disabled={props.isSpin}>Spin</Button>
+          <Button
+            leftIcon={<MdLoop />}
+            colorScheme="blue"
+            onClick={spin}
+            disabled={props.isSpin}
+          >
+            Spin
+          </Button>
           <AskReset {...{ props, bodyWordList }} />
         </ButtonGroup>
       </Box>
@@ -218,14 +294,32 @@ function Btns(props) {
 
             <AlertDialogBody>
               <p className="nomulish">{bodyWord.current}</p>
-              <p><br />― <a href="https://racing-lagoon.info/nomu/translate.php" target="_blank" rel="noopener noreferrer" className="linkWithLine">ノムリッシュ翻訳</a>より</p>
+              <p>
+                <br />―{" "}
+                <a
+                  href="https://racing-lagoon.info/nomu/translate.php"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="linkWithLine"
+                >
+                  ノムリッシュ翻訳
+                </a>
+                より
+              </p>
             </AlertDialogBody>
 
             <AlertDialogFooter>
               <Button ref={cancelRef} onClick={onClose}>
                 キャンセル
               </Button>
-              <Button onClick={() => { onClose(); Reset(props); }} colorScheme="blue" ml={3}>
+              <Button
+                onClick={() => {
+                  onClose();
+                  Reset(props);
+                }}
+                colorScheme="blue"
+                ml={3}
+              >
                 リセット
               </Button>
             </AlertDialogFooter>
@@ -237,24 +331,53 @@ function Btns(props) {
 }
 
 function MaxNumSet(props) {
-  const [inWidth, changeWidth] = React.useState(document.body.clientWidth);
+  const [inWidth, changeWidth] = useState();
   const handleChange = (value) => {
     props.changeMax(value);
-  }
+  };
   const sliderColor = useColorModeValue("gray.500", "gray.600");
 
-  window.addEventListener("resize", () => changeWidth(document.body.clientWidth));
+  useEffect(() => {
+    changeWidth(document.body.clientWidth);
+    window.addEventListener("resize", () =>
+      changeWidth(document.body.clientWidth)
+    );
+  }, []);
 
   return (
     <Flex>
-      {inWidth > 576 ? <Slider flex="1" focusThumbOnChange={false} value={props.max} onChange={handleChange} ml="0.9rem" max={99} min={1} disabled={props.isSpin}>
-        <SliderTrack>
-          <SliderFilledTrack />
-        </SliderTrack>
-        <SliderThumb fontSize="sm" boxSize="32px" color={sliderColor} children={props.max} />
-      </Slider> : null}
+      {inWidth > 576 ? (
+        <Slider
+          flex="1"
+          focusThumbOnChange={false}
+          value={props.max}
+          onChange={handleChange}
+          ml="0.9rem"
+          max={99}
+          min={1}
+          disabled={props.isSpin}
+        >
+          <SliderTrack>
+            <SliderFilledTrack />
+          </SliderTrack>
+          <SliderThumb
+            fontSize="sm"
+            boxSize="32px"
+            color={sliderColor}
+            children={props.max}
+          />
+        </Slider>
+      ) : null}
       <Box pr={0}>
-        <NumberInput maxW={inWidth > 576 ? "100px" : ""} ml={inWidth > 576 ? "2rem" : "0"} value={props.max} onChange={handleChange} max={99} min={1} disabled={props.isSpin}>
+        <NumberInput
+          maxW={inWidth > 576 ? "100px" : ""}
+          ml={inWidth > 576 ? "2rem" : "0"}
+          value={props.max}
+          onChange={handleChange}
+          max={99}
+          min={1}
+          disabled={props.isSpin}
+        >
           <NumberInputField />
           <NumberInputStepper>
             <NumberIncrementStepper />
@@ -268,48 +391,64 @@ function MaxNumSet(props) {
 
 function RangeLabel() {
   return (
-    <Box className="rangeValue" color={useColorModeValue("gray.600", "gray.400")} mb={2}>最大値</Box>
+    <Box
+      className="rangeValue"
+      color={useColorModeValue("gray.600", "gray.400")}
+      mb={2}
+    >
+      最大値
+    </Box>
   );
 }
 
 function Body(props) {
-  const numberElem = React.useRef(null);
-  const historyElem = React.useRef(null);
+  const numberElem = useRef(null);
+  const historyElem = useRef(null);
   const { width, height } = useWindowSize();
   const circleStyle = { borderColor: colorList[props.circleColor] };
-  const currentHistory = props.bingoHistory.slice(0, props.nowIndex + 1);
+  const currentHistory = props.bingoHistory ? props.bingoHistory.slice(0, props.nowIndex + 1) : [];
 
-  React.useEffect(() => {
-    historyElem.current.scrollTop = historyElem.current.scrollHeight;// 最下部にスクロール
+  useEffect(() => {
+    historyElem.current.scrollTop = historyElem.current.scrollHeight; // 最下部にスクロール
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [props.bingoHistory, props.nowIndex])
+  }, [props.bingoHistory, props.nowIndex]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     let nowWidth;
     let nowHeight;
     const isResizing = setInterval(() => {
-      if (document.body.clientWidth !== nowWidth && document.body.clientHeight !== nowHeight) {
+      if (
+        document.body.clientWidth !== nowWidth &&
+        document.body.clientHeight !== nowHeight
+      ) {
         nowWidth = document.body.clientWidth;
         nowHeight = document.body.clientHeight;
       } else {
         const numberCurrentElem = numberElem.current;
         numberCurrentElem.style.width = "";
         numberCurrentElem.style.height = "";
-        if (numberCurrentElem.offsetWidth <= numberCurrentElem.offsetHeight * 1) {
+        if (
+          numberCurrentElem.offsetWidth <=
+          numberCurrentElem.offsetHeight * 1
+        ) {
           numberCurrentElem.style.height = numberCurrentElem.offsetWidth + "px";
         } else {
           numberCurrentElem.style.width = numberCurrentElem.offsetHeight + "px";
         }
-        numberCurrentElem.style.fontSize = numberCurrentElem.offsetWidth / 5 * 3 + "px";
-        numberCurrentElem.style.borderWidth = numberCurrentElem.offsetWidth * 0.1 + "px";
+        numberCurrentElem.style.fontSize =
+          (numberCurrentElem.offsetWidth / 5) * 3 + "px";
+        numberCurrentElem.style.borderWidth =
+          numberCurrentElem.offsetWidth * 0.1 + "px";
 
         const historyCurrentElem = historyElem.current;
         if (width < 576) {
           historyCurrentElem.style.fontSize =
-            Math.min(((historyCurrentElem.clientWidth * 0.12) / 3) * 2, 30) + "px";
+            Math.min(((historyCurrentElem.clientWidth * 0.12) / 3) * 2, 30) +
+            "px";
         } else {
           historyCurrentElem.style.fontSize =
-            Math.min(((historyCurrentElem.clientWidth * 0.11) / 3) * 2, 30) + "px";
+            Math.min(((historyCurrentElem.clientWidth * 0.11) / 3) * 2, 30) +
+            "px";
         }
         clearInterval(isResizing);
       }
@@ -319,25 +458,42 @@ function Body(props) {
   return (
     <Container maxW="container.xl" className="body">
       <div className="numberWrapper">
-        <div className="number" {... { ref: numberElem, style: circleStyle }}>
-          <div className="displayNumber">
-            {props.displayNum}
-          </div>
+        <div className="number" {...{ ref: numberElem, style: circleStyle }}>
+          <div className="displayNumber">{props.displayNum}</div>
         </div>
       </div>
       <div className="history">
-        <Box borderWidth="1px" borderRadius="lg" overflow="hidden" className="historyCard">
+        <Box
+          borderWidth="1px"
+          borderRadius="lg"
+          overflow="hidden"
+          className="historyCard"
+        >
           <Box
             fontWeight="semibold"
             lineHeight="tight"
-            px="6" pt="4" pd="3"
+            px="6"
+            pt="4"
+            pd="3"
             color={useColorModeValue("gray.600", "gray.300")}
             ref={historyElem}
           >
-            履歴 ({currentHistory.length})</Box>
-          <Box mt="3" as="div" color={useColorModeValue("gray.600", "gray.300")} fontSize="30px" className="historyCardBody" ref={historyElem}>
+            履歴 ({currentHistory.length})
+          </Box>
+          <Box
+            mt="3"
+            as="div"
+            color={useColorModeValue("gray.600", "gray.300")}
+            fontSize="30px"
+            className="historyCardBody"
+            ref={historyElem}
+          >
             {currentHistory.map((history, index) => {
-              return (<div className="historyNum" key={index}>{history.num}</div>);
+              return (
+                <div className="historyNum" key={index}>
+                  {history.num}
+                </div>
+              );
             })}
           </Box>
         </Box>
@@ -346,18 +502,20 @@ function Body(props) {
   );
 }
 
-
 function AskReset(props) {
-  const [isOpen, setIsOpen] = React.useState(false)
-  const onClose = () => setIsOpen(false)
-  const cancelRef = React.useRef()
-  const bodyWord = React.useRef(props.bodyWordList[Date.now() % props.bodyWordList.length])
+  const [isOpen, setIsOpen] = useState(false);
+  const onClose = () => setIsOpen(false);
+  const cancelRef = useRef();
+  const bodyWord = useRef(
+    props.bodyWordList[Date.now() % props.bodyWordList.length]
+  );
 
-  React.useEffect(() => {
-    if (isOpen) return
-    bodyWord.current = props.bodyWordList[Date.now() % props.bodyWordList.length]
+  useEffect(() => {
+    if (isOpen) return;
+    bodyWord.current =
+      props.bodyWordList[Date.now() % props.bodyWordList.length];
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isOpen])
+  }, [isOpen]);
 
   return (
     <>
@@ -365,7 +523,10 @@ function AskReset(props) {
         leftIcon={<MdDelete />}
         bg={useColorModeValue("gray.200", "gray.600")}
         color={useColorModeValue("gray.600", "gray.200")}
-        _hover={{ bg: useColorModeValue("#ff4430", "#f56051"), color: "gray.50" }}
+        _hover={{
+          bg: useColorModeValue("#ff4430", "#f56051"),
+          color: "gray.50",
+        }}
         variant="outline"
         onClick={() => setIsOpen(true)}
         disabled={props.props.isSpin}
@@ -387,14 +548,32 @@ function AskReset(props) {
 
             <AlertDialogBody>
               <p className="nomulish">{bodyWord.current}</p>
-              <p><br />― <a href="https://racing-lagoon.info/nomu/translate.php" target="_blank" rel="noopener noreferrer" className="linkWithLine">ノムリッシュ翻訳</a>より</p>
+              <p>
+                <br />―{" "}
+                <a
+                  href="https://racing-lagoon.info/nomu/translate.php"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="linkWithLine"
+                >
+                  ノムリッシュ翻訳
+                </a>
+                より
+              </p>
             </AlertDialogBody>
 
             <AlertDialogFooter>
               <Button ref={cancelRef} onClick={onClose}>
                 キャンセル
               </Button>
-              <Button onClick={() => { onClose(); Reset(props.props); }} colorScheme="red" ml={3}>
+              <Button
+                onClick={() => {
+                  onClose();
+                  Reset(props.props);
+                }}
+                colorScheme="red"
+                ml={3}
+              >
                 リセット
               </Button>
             </AlertDialogFooter>
@@ -402,7 +581,7 @@ function AskReset(props) {
         </AlertDialogOverlay>
       </AlertDialog>
     </>
-  )
+  );
 }
 
 function Reset(props) {
@@ -412,6 +591,4 @@ function Reset(props) {
   props.changeIndex(0);
 }
 
-
-
-export default App;
+export default Home;
