@@ -38,5 +38,5 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_branch: gh-pages
-          publish_dir: ./build
+          publish_dir: ./out
           cname: bingo.frogapp.net
