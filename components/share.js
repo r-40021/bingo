@@ -5,6 +5,10 @@ import { FaLine, FaTwitter } from "react-icons/fa";
 
 export function ShareMenu() {
     const toast = useToast();
+    const [navigatorShare, setnavigatorShare] = React.useState(false);
+    React.useEffect(() => {
+        setnavigatorShare(Boolean(navigator.share));
+    }, []);
     return (
         <MenuGroup title="共有">
             <MenuItem icon={<MdLink />} onClick={() => {
@@ -19,7 +23,7 @@ export function ShareMenu() {
             }}>URL をコピー</MenuItem>
             <MenuItem icon={<FaTwitter />} onClick={() => { ShareToSNS("twitter") }}>ツイート</MenuItem>
             <MenuItem icon={<FaLine />} onClick={() => { ShareToSNS("line") }}>LINE で送る</MenuItem>
-            {navigator.share ? <MenuItem icon={<MdMoreVert />} onClick={() => { ShareToSNS() }}>その他の方法</MenuItem> : null}
+            {navigatorShare ? <MenuItem icon={<MdMoreVert />} onClick={() => { ShareToSNS() }}>その他の方法</MenuItem> : null}
         </MenuGroup>
     );
 }

@@ -7,8 +7,12 @@ import { AboutApp } from './about'
 import { ShareMenu } from './share';
 
 export function MoreTools() {
-    const [inWidth, changeWidth] = React.useState(document.body.clientWidth);
-    window.addEventListener("resize", () => changeWidth(document.body.clientWidth));
+    const [inWidth, changeWidth] = React.useState();
+    React.useEffect(() => {
+        changeWidth(document.body.clientWidth)
+        window.addEventListener("resize", () => changeWidth(document.body.clientWidth));
+    }, []);
+
     return (
         <Box p={4} pr={inWidth > 400 ? 4 : 0} pl={inWidth > 400 ? 1.5 : 0}>
             <Menu boundary="scrollParent" placement="top" autoSelect={false}>

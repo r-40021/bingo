@@ -11,7 +11,7 @@ export function AboutApp() {
 
     return (
         <>
-            <MenuItem icon={<MdInfoOutline />} onClick={() => setIsOpen(true)}>やまだ BINGO について</MenuItem>
+            <MenuItem icon={<MdInfoOutline />} onClick={() => setIsOpen(true)}>このアプリについて</MenuItem>
 
             <AlertDialog
                 isOpen={isOpen}

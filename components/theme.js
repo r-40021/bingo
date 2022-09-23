@@ -6,21 +6,24 @@ import { BsMoon } from "react-icons/bs";
 
 
 export function SelectTheme() {
-  const [autoTheme, toggleAutoTheme] = React.useState(!localStorage.getItem("theme") || (localStorage.getItem("theme") === "auto"));
+  const [autoTheme, toggleAutoTheme] = React.useState("auto");
   const [isOpen, setIsOpen] = React.useState(false);
   const onClose = () => setIsOpen(false);
   const cancelRef = React.useRef();
   const { colorMode, toggleColorMode } = useColorMode()
   let themeIcon = colorMode === 'light' ? <MdBrightnessHigh /> : <BsMoon />;
-  const isDark = window.matchMedia("(prefers-color-scheme: dark)");
-
+  let isDark = React.useRef(false);
+  React.useEffect(() => {
+    toggleAutoTheme(!localStorage.getItem("theme") || (localStorage.getItem("theme") === "auto"));
+    isDark.current = window.matchMedia("(prefers-color-scheme: dark)");
+  }, [])
 
   const ToggleTheme = () => {
     if (localStorage.getItem("theme") === "auto") {
-      if (isDark.matches && colorMode === "light") {
+      if (isDark.current.matches && colorMode === "light") {
         toggleColorMode();
         changeThemeColor("dark");
-      } else if (!isDark.matches && colorMode === "dark") {
+      } else if (!isDark.current.matches && colorMode === "dark") {
         toggleColorMode();
         changeThemeColor("light");
       }
@@ -50,29 +53,32 @@ export function SelectTheme() {
   }
 
   React.useEffect(() => {
+    try {
+      isDark.current.removeEventListener("change", handleChange);
+    } catch (e) {
+      isDark.current.removeListener(handleChange);
+    }
+  
+    try {
+      //システムのテーマが変更されたときに発動
+      // Chrome & Firefox
+      isDark.current.addEventListener("change", handleChange);
+    } catch (e1) {
+      try {
+        // Safari
+        isDark.current.addListener(handleChange);
+      } catch (e2) {
+        console.error(e2);
+      }
+    }
+    ToggleTheme();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
+  React.useEffect(() => {
     ToggleTheme();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [autoTheme]);
-
-  try {
-    isDark.removeEventListener("change", handleChange);
-  } catch (e) {
-    isDark.removeListener(handleChange);
-  }
-
-  try {
-    //システムのテーマが変更されたときに発動
-    // Chrome & Firefox
-    isDark.addEventListener("change", handleChange);
-  } catch (e1) {
-    try {
-      // Safari
-      isDark.addListener(handleChange);
-    } catch (e2) {
-      console.error(e2);
-    }
-  }
-
 
   const handleClickAuto = () => {
     const nowAuto = autoTheme;
@@ -100,10 +106,6 @@ export function SelectTheme() {
       ToggleTheme();
     }
   };
-
-  window.addEventListener("load", () => {
-    ToggleTheme();
-  });
 
   return (
     <>
@@ -136,14 +138,14 @@ export function SelectTheme() {
                 <LinkBox as="article" maxW="sm" p="3" borderWidth="1px" rounded="md">
                   <LinkOverlay as="button" onClick={handleClickLight}>
                     <Flex>
-                      <Center p={1} pe={4} className={"lightModeIcon " + (localStorage.getItem("theme") === "light" && !autoTheme && colorMode === "light" ? "active" : "")}><MdBrightnessHigh /></Center><span flex="1">ライトモード</span>
+                      <Center p={1} pe={4} className={"lightModeIcon " + (!autoTheme && colorMode === "light" ? "active" : "")}><MdBrightnessHigh /></Center><span flex="1">ライトモード</span>
                     </Flex>
                   </LinkOverlay>
                 </LinkBox>
                 <LinkBox as="article" maxW="sm" p="3" borderWidth="1px" rounded="md">
                   <LinkOverlay as="button" onClick={handleClickDark}>
                     <Flex>
-                      <Center p={1} pe={4} className={"darkModeIcon " + (localStorage.getItem("theme") === "dark" && !autoTheme && colorMode === "dark" ? "active" : "")}><BsMoon /></Center><span flex="1">ダークモード</span>
+                      <Center p={1} pe={4} className={"darkModeIcon " + (!autoTheme && colorMode === "dark" ? "active" : "")}><BsMoon /></Center><span flex="1">ダークモード</span>
                     </Flex>
                   </LinkOverlay>
                 </LinkBox>
