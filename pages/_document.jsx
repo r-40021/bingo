@@ -110,7 +110,7 @@ class Document extends NextDocument {
             rel="apple-touch-startup-image"
           />
           <meta
-            content="履歴や設定を自動で保存する機能を搭載した、インストール不要のビンゴマシーン。大幅リニューアルでさらに使いやすく！"
+            content="履歴や設定を自動で保存する機能を搭載した、インストール不要のビンゴマシーンです。"
             name="description"
           />
 
