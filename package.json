@@ -15,8 +15,7 @@
     "react-dom": "^18.2.0",
     "react-icons": "^4.4.0",
     "react-scripts": "^5",
-    "react-use": "^17.3.2",
-    "web-vitals": "^3.0.2"
+    "react-use": "^17.3.2"
   },
   "scripts": {
     "dev": "next dev",
