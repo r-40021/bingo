@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, useLayoutEffect } from "react";
 import {
   AlertDialog,
   AlertDialogBody,
@@ -42,7 +42,7 @@ function Home() {
   const [flexStyle, changeFlexStyle] = useState({ height: "100vh" });
   const { width, height } = useWindowSize();
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     let toHistory = [];
     if (localStorage.getItem("bi-data")) {
       try {
@@ -415,7 +415,7 @@ function Body(props) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.bingoHistory, props.nowIndex]);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     let nowWidth;
     let nowHeight;
     const isResizing = setInterval(() => {
