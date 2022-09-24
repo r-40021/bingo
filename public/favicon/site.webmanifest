@@ -22,7 +22,7 @@
     }
   ],
   "display": "standalone",
-  "start_url": "../index.html",
+  "start_url": "/index.html",
   "dir": "ltr",
   "lang": "ja-jp",
   "background_color": "#f8f9fa",
