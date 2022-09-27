@@ -21,6 +21,7 @@ import {
   NumberInputStepper,
   NumberIncrementStepper,
   NumberDecrementStepper,
+  Progress,
   useColorModeValue,
 } from "@chakra-ui/react";
 import { useWindowSize } from "react-use";
@@ -41,6 +42,7 @@ function Home() {
   const [nowIndex, changeIndex] = useState();
   const [flexStyle, changeFlexStyle] = useState({ height: "100vh" });
   const { width, height } = useWindowSize();
+  const [isLoaded, changeIsLoaded] = useState(false);
 
   useLayoutEffect(() => {
     let toHistory = [];
@@ -115,6 +117,8 @@ function Home() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  useEffect(() => changeIsLoaded(true), []);
+
   useEffect(() => {
     if (bingoHistory) {
       localStorage.setItem("bi-data", JSON.stringify(bingoHistory));
@@ -145,6 +149,7 @@ function Home() {
   return (
     <ChakraProvider theme={theme}>
       <div className="flex" style={flexStyle}>
+        {!isLoaded && <Progress className="progressBar" size='xs' isIndeterminate />}
         <Body
           {...{
             bingoMax,

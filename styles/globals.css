@@ -138,18 +138,24 @@ code {
   text-indent: .9rem;
 }
 .lightModeIcon {
-opacity: .65;
-transition: opacity .2s, color .2s;
+  opacity: .65;
+  transition: opacity .2s, color .2s;
 }
 .lightModeIcon svg {
-transform-origin: center center;
+  transform-origin: center center;
 }
 .darkModeIcon {
-opacity: .65;
-transition: opacity .2s, color .2s;
+  opacity: .65;
+  transition: opacity .2s, color .2s;
 }
 .darkModeIcon svg {
-transform-origin: center center;
+  transform-origin: center center;
+}
+.progressBar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
 }
 .syncModeIcon {
   opacity: .65;
@@ -272,4 +278,3 @@ body.chakra-ui-dark .darkModeIcon.active svg{
     min-width: 100%!important;
   }
 }
-
