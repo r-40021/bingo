@@ -22,7 +22,7 @@ export function AboutApp() {
                 <AlertDialogOverlay>
                     <AlertDialogContent>
                         <AlertDialogHeader fontSize="lg" fontWeight="bold">
-                            やまだ BINGO について
+                            このアプリについて
                         </AlertDialogHeader>
 
                         <AlertDialogBody>
