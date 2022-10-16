@@ -151,12 +151,6 @@ code {
 .darkModeIcon svg {
   transform-origin: center center;
 }
-.progressBar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-}
 .syncModeIcon {
   opacity: .65;
   transition: opacity .2s, color .2s;

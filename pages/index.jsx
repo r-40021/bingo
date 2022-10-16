@@ -149,7 +149,7 @@ function Home() {
   return (
     <ChakraProvider theme={theme}>
       <div className="flex" style={flexStyle}>
-        {!isLoaded && <Progress className="progressBar" size='xs' isIndeterminate />}
+      {!isLoaded && <Progress size='xs' isIndeterminate style={{position: 'fixed', top: 0.3, left: 0, width: '100%'}} />}
         <Body
           {...{
             bingoMax,
