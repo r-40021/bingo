@@ -117,8 +117,6 @@ function Home() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  useEffect(() => changeIsLoaded(true), []);
-
   useEffect(() => {
     if (bingoHistory) {
       localStorage.setItem("bi-data", JSON.stringify(bingoHistory));
@@ -135,6 +133,9 @@ function Home() {
     const newStyle = { height: height + "px" };
     changeFlexStyle(newStyle);
   }, [width, height]);
+  
+  useEffect(() => changeIsLoaded(true), []); // プログレスバー非表示
+  
   if (bingoHistory) {
     for (let i = 0; i < bingoMax; i++) {
       const find = bingoHistory
