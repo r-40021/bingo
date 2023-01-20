@@ -50,10 +50,10 @@ export function Undo(props) {
             className="undoGroup"
         >
             <Tooltip label={`戻る (${ctrlKey}+Z)`}>
-                <IconButton aria-label="戻る" icon={<MdUndo />} disabled={!props.props.bingoHistory || props.props.isSpin || props.props.nowIndex < 0 || props.props.bingoHistory.length === 0} onClick={undo} />
+                <IconButton aria-label="戻る" icon={<MdUndo />} isDisabled={!props.props.bingoHistory || props.props.isSpin || props.props.nowIndex < 0 || props.props.bingoHistory.length === 0} onClick={undo} />
             </Tooltip>
             <Tooltip label={`進む (${ctrlKey}+Y)`}>
-                <IconButton aria-label="進む" icon={<MdRedo />} disabled={!props.props.bingoHistory || props.props.isSpin || props.props.nowIndex >= props.props.bingoHistory.length - 1 || props.props.bingoHistory.length === 0} onClick={redo} />
+                <IconButton aria-label="進む" icon={<MdRedo />} isDisabled={!props.props.bingoHistory || props.props.isSpin || props.props.nowIndex >= props.props.bingoHistory.length - 1 || props.props.bingoHistory.length === 0} onClick={redo} />
             </Tooltip>
         </ButtonGroup>
     );
