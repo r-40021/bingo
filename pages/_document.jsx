@@ -5,7 +5,7 @@ class Document extends NextDocument {
     return (
       <Html lang="ja">
         <Head>
-          <meta charset="utf-8" />
+          <meta charSet="utf-8" />
           <meta name="viewport" content="width=device-width, initial-scale=1" />
           {/* Favicon */}
           <link
@@ -115,7 +115,7 @@ class Document extends NextDocument {
           />
 
           <link rel="preconnect" href="https://fonts.googleapis.com" />
-          <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+          <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin />
           <link
             href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap&text=1234567890"
             rel="stylesheet"
