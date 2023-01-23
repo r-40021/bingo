@@ -277,7 +277,7 @@ function Btns(props) {
             leftIcon={<MdLoop />}
             colorScheme="blue"
             onClick={spin}
-            disabled={props.isSpin}
+            isDisabled={props.isSpin}
           >
             Spin
           </Button>
@@ -363,7 +363,7 @@ function MaxNumSet(props) {
           ml="0.9rem"
           max={99}
           min={1}
-          disabled={props.isSpin}
+          isDisabled={props.isSpin}
         >
           <SliderTrack>
             <SliderFilledTrack />
@@ -384,7 +384,7 @@ function MaxNumSet(props) {
           onChange={handleChange}
           max={99}
           min={1}
-          disabled={props.isSpin}
+          isDisabled={props.isSpin}
         >
           <NumberInputField />
           <NumberInputStepper>
@@ -537,7 +537,7 @@ function AskReset(props) {
         }}
         variant="outline"
         onClick={() => setIsOpen(true)}
-        disabled={props.props.isSpin}
+        isDisabled={props.props.isSpin}
       >
         Reset
       </Button>
