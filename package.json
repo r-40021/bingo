@@ -6,7 +6,7 @@
   "homepage": "https://bingo.frogapp.net",
   "dependencies": {
     "@chakra-ui/react": "^2.6.0",
-    "@emotion/react": "^11.10.6",
+    "@emotion/react": "^11.10.8",
     "@emotion/styled": "^11.10.8",
     "framer-motion": "^10",
     "next": "^13.3.2",
