@@ -21,8 +21,8 @@ import {
   NumberInputStepper,
   NumberIncrementStepper,
   NumberDecrementStepper,
+  Progress,
   useColorModeValue,
-  Progress
 } from "@chakra-ui/react";
 import { useWindowSize } from "react-use";
 import { MdLoop, MdDelete } from "react-icons/md";
