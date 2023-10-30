@@ -1,7 +1,8 @@
 import React from 'react';
 import { MenuItem, MenuGroup, useToast } from "@chakra-ui/react";
 import { MdLink, MdMoreVert } from "react-icons/md";
-import { FaLine, FaTwitter } from "react-icons/fa";
+import { FaLine } from "react-icons/fa";
+import { RiTwitterXFill } from "react-icons/ri"
 
 export function ShareMenu() {
     const toast = useToast();
@@ -21,7 +22,7 @@ export function ShareMenu() {
                     isClosable: true,
                 })
             }}>URL をコピー</MenuItem>
-            <MenuItem icon={<FaTwitter />} onClick={() => { ShareToSNS("twitter") }}>ツイート</MenuItem>
+            <MenuItem icon={<RiTwitterXFill />} onClick={() => { ShareToSNS("twitter") }}>ポスト</MenuItem>
             <MenuItem icon={<FaLine />} onClick={() => { ShareToSNS("line") }}>LINE で送る</MenuItem>
             {navigatorShare ? <MenuItem icon={<MdMoreVert />} onClick={() => { ShareToSNS() }}>その他の方法</MenuItem> : null}
         </MenuGroup>
@@ -36,7 +37,7 @@ function CopyURL() {
 function ShareToSNS(media) {
     switch (media) {
         case "twitter":
-            window.open(encodeURI(decodeURI(`https://twitter.com/intent/tweet?text=自動保存機能付きビンゴマシーン%0a&url=${window.location.href}&hashtags=やまだBINGO,やまだのアプリ`)));
+            window.open(encodeURI(decodeURI(`https://x.com/intent/tweet?text=自動保存機能付きビンゴマシーン%0a&url=${window.location.href}&hashtags=やまだBINGO,やまだのアプリ`)));
             break;
         case "line":
             window.open(encodeURI(`https://social-plugins.line.me/lineit/share?url=${window.location.href}`));
