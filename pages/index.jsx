@@ -21,8 +21,8 @@ import {
   NumberInputStepper,
   NumberIncrementStepper,
   NumberDecrementStepper,
-  Progress,
   useColorModeValue,
+  Progress
 } from "@chakra-ui/react";
 import { useWindowSize } from "react-use";
 import { MdLoop, MdDelete } from "react-icons/md";
@@ -42,13 +42,12 @@ function Home() {
   const [nowIndex, changeIndex] = useState();
   const [flexStyle, changeFlexStyle] = useState({ height: "100vh" });
   const { width, height } = useWindowSize();
-  const [isLoaded, changeIsLoaded] = useState(false);
 
   useLayoutEffect(() => {
     let toHistory = [];
     if (localStorage.getItem("bi-data")) {
       try {
-        toHistory = JSON.parse(localStorage.getItem("bi-data")); 
+        toHistory = JSON.parse(localStorage.getItem("bi-data"));
       } catch (error) {
         toHistory = [];
       }
@@ -96,9 +95,9 @@ function Home() {
 
     // 画面初期化処理
     const initialIndex = localStorage.getItem("bi-index") &&
-    Number(localStorage.getItem("bi-index")) >= -1
-    ? Number(localStorage.getItem("bi-index"))
-    : toHistory.length -1;
+      Number(localStorage.getItem("bi-index")) >= -1
+      ? Number(localStorage.getItem("bi-index"))
+      : toHistory.length - 1;
 
     if (toHistory.length > 0) {
       if (initialIndex > -1) {
@@ -133,9 +132,7 @@ function Home() {
     const newStyle = { height: height + "px" };
     changeFlexStyle(newStyle);
   }, [width, height]);
-  
-  useEffect(() => changeIsLoaded(true), []); // プログレスバー非表示
-  
+
   if (bingoHistory) {
     for (let i = 0; i < bingoMax; i++) {
       const find = bingoHistory
@@ -150,7 +147,6 @@ function Home() {
   return (
     <ChakraProvider theme={theme}>
       <div className="flex" style={flexStyle}>
-      {!isLoaded && <Progress size='xs' isIndeterminate style={{position: 'fixed', top: 0.3, left: 0, width: '100%'}} />}
         <Body
           {...{
             bingoMax,
@@ -415,6 +411,9 @@ function Body(props) {
   const { width, height } = useWindowSize();
   const circleStyle = { borderColor: colorList[props.circleColor] };
   const currentHistory = props.bingoHistory ? props.bingoHistory.slice(0, props.nowIndex + 1) : [];
+  const [isLoaded, changeIsLoaded] = useState(false);
+
+  useEffect(() => changeIsLoaded(true), []); // プログレスバー非表示
 
   useEffect(() => {
     historyElem.current.scrollTop = historyElem.current.scrollHeight; // 最下部にスクロール
@@ -496,6 +495,7 @@ function Body(props) {
             className="historyCardBody"
             ref={historyElem}
           >
+            {!isLoaded && <Progress size='xs' width='100%' isIndeterminate/>}
             {currentHistory.map((history, index) => {
               return (
                 <div className="historyNum" key={index}>
