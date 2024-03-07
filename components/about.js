@@ -28,12 +28,12 @@ export function AboutApp() {
                         <AlertDialogBody>
                             <p>履歴が自動保存されるオンラインビンゴマシーンです。</p>
 
-                            <p>ソースコードは GitHub で公開しています。</p>
+                            <p>ソースコードはGitHubで公開しています。</p>
                             <br />
                             <LinkBox as="div" maxW="sm" p="3" borderWidth="1px" rounded="md">
                                 <LinkOverlay href="https://frogapp.net/" isExternal onClick={onClose}>
                                     <Flex>
-                                        <Center p={1} pe={4}><MdPerson /></Center><span flex="1">作者 HP</span>
+                                        <Center p={1} pe={4}><MdPerson /></Center><span flex="1">作者HP</span>
                                     </Flex>
                                 </LinkOverlay>
                             </LinkBox>

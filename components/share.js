@@ -15,15 +15,15 @@ export function ShareMenu() {
             <MenuItem icon={<MdLink />} onClick={() => {
                 CopyURL();
                 toast({
-                    title: "URL をコピーしました",
+                    title: "URLをコピーしました",
                     position: "top",
                     status: "success",
                     duration: 3000,
                     isClosable: true,
                 })
-            }}>URL をコピー</MenuItem>
+            }}>URLをコピー</MenuItem>
             <MenuItem icon={<RiTwitterXFill />} onClick={() => { ShareToSNS("twitter") }}>ポスト</MenuItem>
-            <MenuItem icon={<FaLine />} onClick={() => { ShareToSNS("line") }}>LINE で送る</MenuItem>
+            <MenuItem icon={<FaLine />} onClick={() => { ShareToSNS("line") }}>LINEで送る</MenuItem>
             {navigatorShare ? <MenuItem icon={<MdMoreVert />} onClick={() => { ShareToSNS() }}>その他の方法</MenuItem> : null}
         </MenuGroup>
     );
