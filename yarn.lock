@@ -1262,10 +1262,10 @@
   resolved "https://registry.yarnpkg.com/@bcoe/v8-coverage/-/v8-coverage-0.2.3.tgz#75a2e8b51cb758a7553d6804a5932d7aace75c39"
   integrity sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==
 
-"@chakra-ui/react@^3.0.0":
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/@chakra-ui/react/-/react-3.0.0.tgz#0abca7ca85bb02b0b8d90364bb866d837ee42e55"
-  integrity sha512-Fe2bd97AS4hYJAi2AnypaJV6JtObybOs21AV8zIOyK/TIUJbMp3hVQP+5RsP+7lkizUGdQ2pigXyUYPwD0Kh5Q==
+"@chakra-ui/react@^3.0.1":
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/@chakra-ui/react/-/react-3.0.1.tgz#ab601d87e23ca8050179ee4eaef3c3332a6521ae"
+  integrity sha512-OHpX77s/IlPlx1ACnL/8gsxak6VQ5u9tL6q86MtNZscjrdjZN67TWWhWP6yWR4y4DmqHm5zKyKk9TiRCMM0KRA==
   dependencies:
     "@ark-ui/anatomy" "3.5.0"
     "@ark-ui/react" "4.1.2"
