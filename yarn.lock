@@ -1221,10 +1221,10 @@
   resolved "https://registry.yarnpkg.com/@bcoe/v8-coverage/-/v8-coverage-0.2.3.tgz#75a2e8b51cb758a7553d6804a5932d7aace75c39"
   integrity sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==
 
-"@chakra-ui/react@^3.4.0":
-  version "3.4.0"
-  resolved "https://registry.yarnpkg.com/@chakra-ui/react/-/react-3.4.0.tgz#d5c8748e75474b5598729c0f9ae563a10ebabed8"
-  integrity sha512-ImnUqpZspxVbEMiKUbkIb1ReA9sXioQawKMbW/bGY21O3MjPpNPs9KX1bMk5n4VfsEUlyN0BXwK51lqhFDCEUg==
+"@chakra-ui/react@^3.5.0":
+  version "3.5.0"
+  resolved "https://registry.yarnpkg.com/@chakra-ui/react/-/react-3.5.0.tgz#67d2a2d6e5d370dfca219941d67cd0826603b2f8"
+  integrity sha512-GUX9xOkSF9QeG8Efv5K8Fl5RvQwTPf9bDktuCOH6oIIBWJr3KiHTchIQsVzVNJ1wZjCXlGTXBG4yAq4cJFBhOQ==
   dependencies:
     "@ark-ui/react" "4.8.1"
     "@emotion/is-prop-valid" "1.3.1"
