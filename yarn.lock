@@ -5715,12 +5715,12 @@ fraction.js@^4.2.0:
   integrity sha512-MhLuK+2gUcnZe8ZHlaaINnQLl0xRIGRfcGk2yl8xoQAfHrSsL3rYu6FCmBdkdbhc9EPlwyGHewaRsvwRMJtAlA==
 
 framer-motion@^12:
-  version "12.11.4"
-  resolved "https://registry.yarnpkg.com/framer-motion/-/framer-motion-12.11.4.tgz#a6df0afd56def01038a1d8f9241b010c761b9b1b"
-  integrity sha512-kyE5oWZCUxhDb7LtpEyyadNThJJvoE8a6bfUTBqz++zw3XxDOosPAvw1lqNhYbjOgy57YuAlJ5qG/Cx5BigiEQ==
+  version "12.14.0"
+  resolved "https://registry.yarnpkg.com/framer-motion/-/framer-motion-12.14.0.tgz#f3f42405ca8a8212f5a63a53312bedb2cf3e0cfa"
+  integrity sha512-P/CLiA+YLc0GL1nB2bgtRBFAbRh0aawU5KPLqnXi6QEZQE2BEwqgIH8qUIT7cMN+4a4nj0iZ2uWTKOrzcYsyGQ==
   dependencies:
-    motion-dom "^12.11.4"
-    motion-utils "^12.9.4"
+    motion-dom "^12.14.0"
+    motion-utils "^12.12.1"
     tslib "^2.4.0"
 
 fresh@0.5.2:
@@ -7444,17 +7444,17 @@ mkdirp@~0.5.1:
   dependencies:
     minimist "^1.2.6"
 
-motion-dom@^12.11.4:
-  version "12.11.4"
-  resolved "https://registry.yarnpkg.com/motion-dom/-/motion-dom-12.11.4.tgz#5826919155057a31655aff822da0b5ca8b003dad"
-  integrity sha512-1z/qYsrDjSx5QjOH8GfJ2RfFBvEzI2gdAEt2zNW+f7QkLlqjM3sQieESJr5+QtVmvD81qPANM7t97ROixKIt9Q==
+motion-dom@^12.14.0:
+  version "12.14.0"
+  resolved "https://registry.yarnpkg.com/motion-dom/-/motion-dom-12.14.0.tgz#15582ba2495e66c8da97f121e8f9079c60f41a58"
+  integrity sha512-t5v1QNXrOsLmIzTdmB9OlZ1cA8zkHlpPhn85123/B+8Xe6tiENWKELAZm0yvAoFjcbFmq4u80uUXortZTTvDbg==
   dependencies:
-    motion-utils "^12.9.4"
+    motion-utils "^12.12.1"
 
-motion-utils@^12.9.4:
-  version "12.9.4"
-  resolved "https://registry.yarnpkg.com/motion-utils/-/motion-utils-12.9.4.tgz#9d5a45a19971e20059911526d7af2217c5158fa2"
-  integrity sha512-BW3I65zeM76CMsfh3kHid9ansEJk9Qvl+K5cu4DVHKGsI52n76OJ4z2CUJUV+Mn3uEP9k1JJA3tClG0ggSrRcg==
+motion-utils@^12.12.1:
+  version "12.12.1"
+  resolved "https://registry.yarnpkg.com/motion-utils/-/motion-utils-12.12.1.tgz#63e28751325cb9d1cd684f3c273a570022b0010e"
+  integrity sha512-f9qiqUHm7hWSLlNW8gS9pisnsN7CRFRD58vNjptKdsqFLpkVnX00TNeD6Q0d27V9KzT7ySFyK1TZ/DShfVOv6w==
 
 ms@2.0.0:
   version "2.0.0"
